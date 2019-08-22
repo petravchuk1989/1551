@@ -1,7 +1,7 @@
 {
-  "ModelType": "Connection",
-  "Code": "CRM_1551_Analitics_Replication",
-  "Name": "CRM_1551_Analitics_Replication",
-  "ProviderCode": "System.Data.SqlClient",
-  "ConnectionString": "*****"
+    "ModelType": "Connection",
+    "Code": "CRM_1551_Analitics_Replication",
+    "Name": "CRM_1551_Analitics_Replication",
+    "ProviderCode": "System.Data.SqlClient",
+    "ConnectionString": "**12345***"
 }
