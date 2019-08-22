@@ -1,0 +1,19 @@
+{
+  "ModelType": "Query",
+  "Code": "ak_EditAssigmentsClarified",
+  "Name": "ak_EditAssigmentsClarified",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    }
+  ]
+}

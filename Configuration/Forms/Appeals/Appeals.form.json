@@ -1,0 +1,32 @@
+{
+  "ModelType": "Form",
+  "Code": "Appeals",
+  "Name": "Картка оператора",
+  "Details": [
+    "json:Details\\Detail_Aplicant.detail.json",
+    "json:Details\\Detail_QuestionObjectAplicant.detail.json",
+    "json:Details\\Detail_Event.detail.json",
+    "json:Details\\Detail_QuestionApplicant.detail.json",
+    "json:Details\\Detail_QuestionNumberAppeal.detail.json",
+    "json:Details\\Detail_QuestionPhone.detail.json",
+    "json:Details\\Detail_ConsultationAplicant.detail.json",
+    "json:Details\\Detail_QuestionBuildingAplicant.detail.json",
+    "json:Details\\Detail_QuestionReestration.detail.json",
+    "json:Details\\Detail_Consultation.detail.json",
+    "json:Details\\Detail_GorodokClaim.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\Group_Appeal.fieldgroup.json",
+      "json:FieldGroups\\Group_Aplicant.fieldgroup.json",
+      "json:FieldGroups\\Group_CreateQuestion.fieldgroup.json",
+      "json:FieldGroups\\Group_Preview_Question.fieldgroup.json",
+      "json:FieldGroups\\Group_Events.fieldgroup.json",
+      "json:FieldGroups\\Group_GorodokClaims.fieldgroup.json",
+      "json:FieldGroups\\Group_WIKI.fieldgroup.json",
+      "json:FieldGroups\\Group_Work_with_a_question.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:Appeals.form.js"
+  }
+}

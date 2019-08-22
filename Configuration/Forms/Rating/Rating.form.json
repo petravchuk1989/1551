@@ -1,0 +1,12 @@
+{
+  "ModelType": "Form",
+  "Code": "Rating",
+  "Name": "Форма: довідник рейтинги",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\name.fieldgroup.json"
+    ],
+    "DefaultFields": []
+  }
+}

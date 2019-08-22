@@ -1,0 +1,12 @@
+{
+  "ModelType": "Form",
+  "Code": "Roles",
+  "Name": "Форма довідника Ролі",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\Roles.fieldgroup.json"
+    ],
+    "DefaultFields": []
+  }
+}

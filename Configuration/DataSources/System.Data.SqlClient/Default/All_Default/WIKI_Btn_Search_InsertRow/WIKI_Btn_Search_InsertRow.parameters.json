@@ -1,0 +1,26 @@
+[
+  {
+    "Code": "@AppealId",
+    "Name": "AppealId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Applicant_Building",
+    "Name": "Applicant_Building",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@CreatedUser",
+    "Name": "CreatedUser",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@applicant_id",
+    "Name": "applicant_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Applicant_Phone",
+    "Name": "Applicant_Phone"
+  }
+]

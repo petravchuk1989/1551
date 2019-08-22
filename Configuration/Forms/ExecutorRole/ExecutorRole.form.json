@@ -1,0 +1,16 @@
+{
+  "ModelType": "Form",
+  "Code": "ExecutorRole",
+  "Name": "Форма довідника: Роль виконавця",
+  "Details": [
+    "json:Details\\Districts.detail.json",
+    "json:Details\\City.detail.json",
+    "json:Details\\Build.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\ExecutorRole.fieldgroup.json"
+    ],
+    "DefaultFields": []
+  }
+}

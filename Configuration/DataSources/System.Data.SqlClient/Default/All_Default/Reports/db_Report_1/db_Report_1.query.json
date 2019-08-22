@@ -1,0 +1,65 @@
+{
+  "ModelType": "Query",
+  "Code": "db_Report_1",
+  "Name": "db_Report_1",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Operator",
+      "Name": "Operator",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "u.UserId",
+      "FilterParameterCode": "@Operator"
+    },
+    {
+      "Code": "AppealCount",
+      "Name": "AppealCount",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "QuestionCount",
+      "Name": "QuestionCount",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "DoneAssignments",
+      "Name": "DoneAssignments",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "reWorkAssignments",
+      "Name": "reWorkAssignments",
+      "Position": 5,
+      "IsPrintable": false
+    },
+    {
+      "Code": "notAnswerAssignments",
+      "Name": "notAnswerAssignments",
+      "Position": 6,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@dateFrom",
+      "Name": "dateFrom",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@dateTo",
+      "Name": "dateTo",
+      "ParameterType": "DateTime"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "Code": "@role_id",
+    "Name": "role_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@is_main",
+    "Name": "is_main",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@programuser_id",
+    "Name": "programuser_id"
+  },
+  {
+    "Code": "@position",
+    "Name": "position"
+  },
+  {
+    "Code": "@active",
+    "Name": "active",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@name",
+    "Name": "name"
+  },
+  {
+    "Code": "@position_code",
+    "Name": "position_code"
+  },
+  {
+    "Code": "@address",
+    "Name": "address"
+  },
+  {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@organization_id",
+    "Name": "organization_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@phone_number",
+    "Name": "phone_number"
+  },
+  {
+    "Code": "@parent_id",
+    "Name": "parent_id",
+    "ParameterType": "Integer"
+  }
+]

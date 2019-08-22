@@ -1,0 +1,21 @@
+{
+  "ModelType": "Form",
+  "Code": "Form_Applicants",
+  "Name": "Картка заявника",
+  "IsPrintable": false,
+  "Details": [
+    "json:Details\\Consultation.detail.json",
+    "json:Details\\Questions.detail.json",
+    "json:Details\\ApplicantAdress.detail.json",
+    "json:Details\\Phone.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\Group_Applicant.fieldgroup.json",
+      "json:FieldGroups\\Group_Applicant_LiveAdress.fieldgroup.json",
+      "json:FieldGroups\\Group_Applicants_AddInform.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:Form_Applicants.form.js"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "Code": "Group_Appeals_App",
+  "Name": "Заявник",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "applicant_id",
+      "Name": "Заявник",
+      "FieldType": "select",
+      "Position": 1,
+      "Icon": "add_circle",
+      "IconHint": "Додати нового заявника",
+      "QueryCode": "cx_filter_applicantsForLookup",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "full_name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "app_phone",
+      "Name": "Телефон",
+      "FieldType": "text",
+      "Position": 2
+    },
+    {
+      "Code": "adress",
+      "Name": "Адреса проживання",
+      "FieldType": "text",
+      "Position": 3
+    },
+    {
+      "Code": "q",
+      "Name": "Додаткова інформація",
+      "FieldType": "textarea",
+      "Position": 5
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "ModelType": "Query",
+  "Code": "Button_Nadiishlo_VzyatyVRobotu",
+  "Name": "Button_Nadiishlo_VzyatyVRobotu",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@Ids",
+      "Name": "Ids"
+    },
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    }
+  ]
+}

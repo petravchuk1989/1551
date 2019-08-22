@@ -1,0 +1,14 @@
+{
+  "ModelType": "Form",
+  "Code": "Rules",
+  "Name": "Форма довідника Правила вибору",
+  "Details": [
+    "json:Details\\RulesForExecutorRole.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\Rules.fieldgroup.json"
+    ],
+    "DefaultFields": []
+  }
+}

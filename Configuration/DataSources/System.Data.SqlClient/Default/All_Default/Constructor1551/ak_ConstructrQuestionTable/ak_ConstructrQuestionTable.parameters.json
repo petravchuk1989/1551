@@ -1,0 +1,32 @@
+[
+  {
+    "Code": "@OrganizationExecGroupId",
+    "Name": "OrganizationExecGroupId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@OrganizationExecId",
+    "Name": "OrganizationExecId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@RegistrationDateTo",
+    "Name": "RegistrationDateTo",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@QuestionGroupId",
+    "Name": "QuestionGroupId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@ReceiptSourcesId",
+    "Name": "ReceiptSourcesId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@RegistrationDateFrom",
+    "Name": "RegistrationDateFrom",
+    "ParameterType": "DateTime"
+  }
+]

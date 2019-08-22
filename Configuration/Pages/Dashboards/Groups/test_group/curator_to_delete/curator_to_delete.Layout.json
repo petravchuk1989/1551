@@ -1,0 +1,234 @@
+{
+  "css": ".dx-datagrid-group-opened{\n    margin: 10px;\n    font: 18px/18px DXIcons;\n    height: 18px;\n    background-position: 0 0;\n    background-size: 10px 8px;\n    padding: 0;\n    text-align: center;\n    color: #959595;\n    background-image: url('assets/img/1551/crm1551_arrow_open.png');\n    background-repeat: no-repeat;\n}\n.dx-datagrid-group-opened::before{\n    display:none;\n}\n.dx-datagrid-group-closed::before{\n    display:none;\n}\n.dx-datagrid-group-closed{\n    margin: 10px;\n    font: 18px/18px DXIcons;\n    height: 18px;\n    background-position: 0 0;\n    background-size: 10px 10px;\n    padding: 0;\n    text-align: center;\n    color: #959595;\n    background-image: url('assets/img/1551/crm1551_arrow_close.png');\n    background-repeat: no-repeat;\n    \n}\n.dx-datagrid-text-content{\n    font-family: 'Roboto';\n    font-weight: 400;\n    font-style: normal;\n    font-size: 14px;\n    color: #999999;\n    text-align: left;\n}\n.dx-data-row{\n    font-weight: 400;\n    font-style: normal;\n    text-align: left;\n    font-size: 14px;\n    color: #000000;\n}\n.dx-master-detail-cell{\n    background-color: rgba(239, 247, 249, 1)!important;    \n}\n.dx-button-default{\n    background-color: rgba(21, 189, 244, 1)!important;\n}\n\n.dx-datagrid-export-button{\n    background-color: rgba(21, 189, 244, 1)!important;\n    color: #fff!important;\n    padding: 0 8px!important;\n}\n.dx-icon-export-excel-button{\n    color: #fff!important;\n    margin-right: 9px!important;\n}\n.dx-header-row>td>.dx-datagrid-text-content {\n    text-transform: uppercase;\n    text-align: center;\n}",
+  "rootContainer": {
+    "width": "auto",
+    "margin": "0",
+    "flexWrap": "wrap",
+    "flexDirection": "column",
+    "order": 1,
+    "flexGrow": 1,
+    "alignSelf": "auto",
+    "border": "none",
+    "children": [
+      {
+        "width": "auto",
+        "margin": "0 ",
+        "flexWrap": "wrap",
+        "flexDirection": "column",
+        "order": "1",
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-5",
+                "type": "CustomWidgetComponent",
+                "name": "header"
+              }
+            ],
+            "id": "Container-2",
+            "height": "auto",
+            "minHeight": "calc(100% - 10px)",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white",
+            "containerId": ""
+          }
+        ],
+        "id": "Container-0",
+        "height": "220px",
+        "minHeight": "220px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white",
+        "containerId": "header1"
+      },
+      {
+        "width": "auto",
+        "margin": "0 45px",
+        "flexWrap": "wrap",
+        "flexDirection": "column",
+        "order": "3",
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-0",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "table5_NeVKompetencii"
+              }
+            ],
+            "id": "Container-2",
+            "height": "auto",
+            "minHeight": "100px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white",
+            "containerId": "table5__NeVKompetentsii"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-1",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "table7__dooproc"
+              }
+            ],
+            "id": "Container-2",
+            "height": "auto",
+            "minHeight": "100px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white",
+            "containerId": "table7__dooproc"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-2",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "table6_rozyasneno"
+              }
+            ],
+            "id": "Container-2",
+            "height": "auto",
+            "minHeight": "100px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white",
+            "containerId": "table6_rozyasneno"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-3",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "table8_prosctoch"
+              }
+            ],
+            "id": "Container-2",
+            "height": "auto",
+            "minHeight": "100px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white",
+            "containerId": "table8_prosctoch"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-4",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "table9_neMozhluvo"
+              }
+            ],
+            "id": "Container-2",
+            "height": "auto",
+            "minHeight": "100px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white",
+            "containerId": "table9_neMozhluvo"
+          }
+        ],
+        "id": "Container-1",
+        "height": "auto",
+        "minHeight": "calc(100% -  350px)",
+        "minWidth": "100px",
+        "backgroundColor": "white",
+        "containerId": "allTables"
+      },
+      {
+        "width": "auto",
+        "margin": "0 45px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": "2",
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-6",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "finder"
+              }
+            ],
+            "id": "Container-3",
+            "height": "auto",
+            "minHeight": "100px",
+            "minWidth": "100px",
+            "backgroundColor": "white"
+          }
+        ],
+        "id": "Container-2",
+        "height": "auto",
+        "minHeight": "100px",
+        "minWidth": "100px",
+        "backgroundColor": "white",
+        "containerId": "searchTable"
+      }
+    ],
+    "id": "Container-0",
+    "height": "100%",
+    "minHeight": "100%",
+    "minWidth": "100%",
+    "backgroundColor": "white"
+  }
+}

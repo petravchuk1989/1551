@@ -1,0 +1,12 @@
+{
+  "ModelType": "Form",
+  "Code": "ComplainTypes",
+  "Name": "Форма довідника: Типи скарг",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\ComplainTypes.fieldgroup.json"
+    ],
+    "DefaultFields": []
+  }
+}

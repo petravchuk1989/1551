@@ -1,0 +1,21 @@
+{
+  "ModelType": "Form",
+  "Code": "Form_Appeals",
+  "Name": "Звернення",
+  "IsPrintable": false,
+  "Details": [
+    "json:Details\\Detail_App_Questions.detail.json",
+    "json:Details\\Detail_test.detail.json",
+    "json:Details\\Detail_App_Concult.detail.json",
+    "json:Details\\Detail_Appeals_OtherByPhone.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\Group_Appeals_info.fieldgroup.json",
+      "json:FieldGroups\\Group_Appeals_User.fieldgroup.json",
+      "json:FieldGroups\\Group_Appeals_App.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:Form_Appeals.form.js"
+  }
+}

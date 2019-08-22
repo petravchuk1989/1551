@@ -1,0 +1,12 @@
+{
+  "ModelType": "Form",
+  "Code": "OperationTypes",
+  "Name": "Форма довідника. Типи операцій",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\OperationTypes.fieldgroup.json"
+    ],
+    "DefaultFields": []
+  }
+}

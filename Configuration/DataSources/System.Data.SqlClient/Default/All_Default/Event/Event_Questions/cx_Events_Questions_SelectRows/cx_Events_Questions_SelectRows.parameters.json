@@ -1,0 +1,29 @@
+[
+  {
+    "Code": "@obj_id",
+    "Name": "obj_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@pageOffsetRows",
+    "Name": "pageOffsetRows",
+    "ParameterType": "Integer",
+    "IsPageOffsetRows": true
+  },
+  {
+    "Code": "@que_type",
+    "Name": "que_type",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@pageLimitRows",
+    "Name": "pageLimitRows",
+    "ParameterType": "Integer",
+    "IsPageLimitRows": true
+  },
+  {
+    "Code": "@start_date",
+    "Name": "start_date",
+    "ParameterType": "DateTime"
+  }
+]

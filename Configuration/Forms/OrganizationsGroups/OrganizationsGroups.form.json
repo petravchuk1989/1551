@@ -1,0 +1,15 @@
+{
+  "ModelType": "Form",
+  "Code": "OrganizationsGroups",
+  "Name": "Форма довідника: Групи організацій",
+  "IsPrintable": false,
+  "Details": [
+    "json:Details\\Detail_OrganizationsInGroup.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "json:FieldGroups\\OrganizationsGroupInformation.fieldgroup.json"
+    ],
+    "DefaultFields": []
+  }
+}

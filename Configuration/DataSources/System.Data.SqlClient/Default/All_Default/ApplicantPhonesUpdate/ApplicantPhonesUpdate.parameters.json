@@ -1,0 +1,26 @@
+[
+  {
+    "Code": "@TypePhone",
+    "Name": "TypePhone",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@IsMain",
+    "Name": "IsMain",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@IdPhone",
+    "Name": "IdPhone",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Phone",
+    "Name": "Phone"
+  },
+  {
+    "Code": "@Applicant_id",
+    "Name": "Applicant_id",
+    "ParameterType": "Integer"
+  }
+]

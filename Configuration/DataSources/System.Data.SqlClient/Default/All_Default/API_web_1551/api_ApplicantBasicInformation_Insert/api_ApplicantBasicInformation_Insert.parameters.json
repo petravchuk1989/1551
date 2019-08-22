@@ -1,0 +1,38 @@
+[
+  {
+    "Code": "@inn",
+    "Name": "inn",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@applicantprivilage_id",
+    "Name": "applicantprivilage_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@birthdate",
+    "Name": "birthdate",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@surname",
+    "Name": "surname"
+  },
+  {
+    "Code": "@firstname",
+    "Name": "firstname"
+  },
+  {
+    "Code": "@socialstate_id",
+    "Name": "socialstate_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@sex",
+    "Name": "sex"
+  },
+  {
+    "Code": "@fathername",
+    "Name": "fathername"
+  }
+]

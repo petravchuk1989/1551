@@ -1,0 +1,80 @@
+[
+  {
+    "Code": "@Question_Organization",
+    "Name": "Question_Organization",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@applicant_id",
+    "Name": "applicant_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Question_Content",
+    "Name": "Question_Content"
+  },
+  {
+    "Code": "@Question_EventId",
+    "Name": "Question_EventId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Question_TypeId",
+    "Name": "Question_TypeId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@flat",
+    "Name": "flat"
+  },
+  {
+    "Code": "@AppealId",
+    "Name": "AppealId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Question_OrganizationId",
+    "Name": "Question_OrganizationId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Applicant_Phone",
+    "Name": "Applicant_Phone"
+  },
+  {
+    "Code": "@Question_AnswerType",
+    "Name": "Question_AnswerType",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Question_Building",
+    "Name": "Question_Building",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@AppealNumber",
+    "Name": "AppealNumber"
+  },
+  {
+    "Code": "@CreatedUser",
+    "Name": "CreatedUser",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@Applicant_Building",
+    "Name": "Applicant_Building"
+  },
+  {
+    "Code": "@Question_ControlDate",
+    "Name": "Question_ControlDate",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@Applicant_Email",
+    "Name": "Applicant_Email"
+  },
+  {
+    "Code": "@entrance",
+    "Name": "entrance"
+  }
+]

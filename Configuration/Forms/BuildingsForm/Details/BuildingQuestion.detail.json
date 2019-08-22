@@ -1,0 +1,15 @@
+{
+  "ModelType": "Detail",
+  "Code": "BuildingQuestion",
+  "Name": "Питання",
+  "SelectRowsQueryCode": "SelectAllBuildingQuestions",
+  "SectionCode": "",
+  "Position": 1,
+  "IsExpand": true,
+  "QueryParameters": [
+    {
+      "FormFieldName": "Id",
+      "ParameterCode": "@Id"
+    }
+  ]
+}

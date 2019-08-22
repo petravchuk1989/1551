@@ -1,0 +1,38 @@
+[
+  {
+    "Code": "@phone_number",
+    "Name": "phone_number"
+  },
+  {
+    "Code": "@name",
+    "Name": "name"
+  },
+  {
+    "Code": "@roles_id",
+    "Name": "roles_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@active",
+    "Name": "active",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@organization_id",
+    "Name": "organization_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@worker_user_id",
+    "Name": "worker_user_id"
+  },
+  {
+    "Code": "@position",
+    "Name": "position"
+  }
+]

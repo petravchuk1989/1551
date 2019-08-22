@@ -1,0 +1,27 @@
+{
+  "ModelType": "Query",
+  "Code": "api_NaPerevirSelectRow",
+  "Name": "api_NaPerevirSelectRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    },
+    {
+      "Code": "@ApplicantFromSiteId",
+      "Name": "ApplicantFromSiteId",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    }
+  ]
+}

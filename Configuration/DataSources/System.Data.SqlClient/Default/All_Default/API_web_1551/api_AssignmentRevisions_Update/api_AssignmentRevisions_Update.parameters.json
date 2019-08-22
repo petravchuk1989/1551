@@ -1,0 +1,33 @@
+[
+  {
+    "Code": "@grade",
+    "Name": "grade",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@appeal_id",
+    "Name": "appeal_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@grade_comment",
+    "Name": "grade_comment"
+  },
+  {
+    "Code": "@pageOffsetRows",
+    "Name": "pageOffsetRows",
+    "ParameterType": "Integer",
+    "IsPageOffsetRows": true
+  },
+  {
+    "Code": "@pageLimitRows",
+    "Name": "pageLimitRows",
+    "ParameterType": "Integer",
+    "IsPageLimitRows": true
+  },
+  {
+    "Code": "@result",
+    "Name": "result",
+    "ParameterType": "Integer"
+  }
+]
