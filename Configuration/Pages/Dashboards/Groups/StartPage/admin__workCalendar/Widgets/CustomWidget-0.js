@@ -83,7 +83,7 @@
         });
         
         this.yearCalendar.forEach( month => {
-            var dayBox;
+            let dayBox;
             let monday = this.createElement('div', {  className: 'calenDay', innerText: 'ПН'});
             let tuesday = this.createElement('div', {  className: 'calenDay', innerText: 'ВТ'});
             let wednesday = this.createElement('div', {  className: 'calenDay', innerText: 'СР'});
@@ -114,42 +114,43 @@
                     monthBox.appendChild(dayBox);
                 }
             }
+            let title ;
             switch(month.month) {
               case 1: 
-                var title = 'Січень' 
+                title = 'Січень' 
                 break
               case 2: 
-                var title = 'Лютий' 
+                title = 'Лютий' 
                 break
               case 3: 
-                var title = 'Березень' 
+                title = 'Березень' 
                 break
               case 4: 
-                var title = 'Квітень' 
+                title = 'Квітень' 
                 break
               case 5: 
-                var title = 'Травень' 
+                title = 'Травень' 
                 break
               case 6: 
-                var title = 'Червень' 
+                title = 'Червень' 
                 break
               case 7: 
-                var title = 'Липень' 
+                title = 'Липень' 
                 break
               case 8: 
-                var title = 'Серпень' 
+                title = 'Серпень' 
                 break
               case 9: 
-                var title = 'Вересень' 
+                title = 'Вересень' 
                 break
               case 10: 
-                var title = 'Жовтень' 
+                title = 'Жовтень' 
                 break
               case 11: 
-                var title = 'Листопад' 
+                title = 'Листопад' 
                 break
               case 12: 
-                var title = 'Грудень' 
+                title = 'Грудень' 
                 break
             }
             let monthTitle = this.createElement('div', {  className: 'monthTitle', innerText: title});
@@ -157,7 +158,7 @@
             yearContainer.appendChild(monthWrapper);
         });
         
-        var days = document.querySelectorAll('.day');
+        let days = document.querySelectorAll('.day');
         days = Array.from(days);
         days.forEach(  day => {
             day.addEventListener( 'dblclick',  event => {
@@ -185,12 +186,12 @@
         data.rows.forEach( day => {
             dateCode = data.columns.findIndex(el => el.code.toLowerCase() === 'date' );
             isWorkCode = data.columns.findIndex(el => el.code.toLowerCase() === 'is_work' );
-            var fullDay = new Date( day.values[dateCode] );
-            var year = fullDay.getFullYear();
-            var month = fullDay.getMonth();
-            var date = fullDay.getDate();
+            let fullDay = new Date( day.values[dateCode] );
+            let year = fullDay.getFullYear();
+            let month = fullDay.getMonth();
+            let date = fullDay.getDate();
             month = month + 1;
-            var cellDay = document.getElementById('day_'+year+'_'+month+'_'+date+'');
+            let cellDay = document.getElementById('day_'+year+'_'+month+'_'+date+'');
             if( day.values[isWorkCode] === false ){
                 cellDay.isWork = false;
                 cellDay.style.backgroundColor = '#f4b084';
