@@ -14,7 +14,7 @@
                 caption: 'Повторних (п. 2.2)',
                 columns: [
                     {
-                        caption: 'previoustYear',
+                        caption: 'previousYear',
                         dataFields: 'qtyRepeated_prev',
                         alignment: 'center',
                         customizeText: function(cellInfo) {
@@ -35,7 +35,7 @@
                 caption: 'колективних (п. 5.2)',
                 columns: [
                     {
-                        caption: 'previoustYear',
+                        caption: 'previousYear',
                         dataFields: 'qtyСollective_prev',
                         alignment: 'center',
                         customizeText: function(cellInfo) {
@@ -56,7 +56,7 @@
                 caption: 'від учасників та інвалідів війни, учасників бойових дій (п. 7.1, 7.3, 7.4, 7.5)',
                 columns: [
                     {
-                        caption: 'previoustYear',
+                        caption: 'previousYear',
                         dataFields: 'qtyWarsParticipants_prev',
                         alignment: 'center',
                         customizeText: function(cellInfo) {
@@ -77,7 +77,7 @@
                 caption: 'від інвалідів I, II, III групи (п. 7.7, 7.8, 7.9)',
                 columns: [
                     {
-                        caption: 'previoustYear',
+                        caption: 'previousYear',
                         dataFields: 'qtyInvalids_prev',
                         alignment: 'center',
                         customizeText: function(cellInfo) {
@@ -98,7 +98,7 @@
                 caption: 'від ветеранів праці (п. 7.6)',
                 columns: [
                     {
-                        caption: 'previoustYear',
+                        caption: 'previousYear',
                         dataFields: 'qtyWorkVeterans_prev',
                         alignment: 'center',
                         customizeText: function(cellInfo) {
@@ -119,7 +119,7 @@
                 caption: 'від дітей війни (п. 7.2)',
                 columns: [
                     {
-                        caption: 'previoustYear',
+                        caption: 'previousYear',
                         dataFields: 'qtyWarKids_prev',
                         alignment: 'center',
                         customizeText: function(cellInfo) {
@@ -140,7 +140,7 @@
                 caption: 'від членів багатодітних сімей, одиноких матерів, матерів-героїнь (п. 7.11, 7.12, 7.13)',
                 columns: [
                     {
-                        caption: 'previoustYear',
+                        caption: 'previousYear',
                         dataFields: 'qtyFamily_prev',
                         alignment: 'center',
                         customizeText: function(cellInfo) {
@@ -161,7 +161,7 @@
                 caption: 'від учасників ліквідації аварії на ЧАЕС та осіб, що потерпіли від Чорнобильської катастрофи (п. 7.14, 7.15)',
                 columns: [
                     {
-                        caption: 'previoustYear',
+                        caption: 'previousYear',
                         dataFields: 'qtyChernobyl_prev',
                         alignment: 'center',
                         customizeText: function(cellInfo) {
@@ -186,7 +186,7 @@
         let date = new Date();
         let yyyy = date.getFullYear();
 	    this.currentYear = yyyy
-        this.previoustYear = yyyy - 1;
+        this.previousYear = yyyy - 1;
         
         this.sub =  this.messageService.subscribe( 'GlobalFilterChanged', this.getFilterParams, this );
         this.config.onContentReady = this.afterRenderTable.bind(this);
@@ -194,7 +194,7 @@
     },
     afterRenderTable: function(){
         this.config.columns.forEach( el => {
-			el.columns[0].caption = this.previoustYear;
+			el.columns[0].caption = this.previousYear;
 			el.columns[1].caption = this.currentYear;
 		});
 		let tds = document.querySelectorAll('td');
@@ -218,17 +218,15 @@
                 this.dateFrom =  period.dateFrom;
                 this.dateTo = period.dateTo;
                 
-        	    this.previoustYear = this.changeDateTimeValues(this.dateFrom);
+        	    this.previousYear = this.changeDateTimeValues(this.dateFrom);
         	    this.currentYear = this.changeDateTimeValues(this.dateTo);
-        	    if( this.previoustYear === this.currentYear){
-        	        this.previoustYear -= 1;
+        	    if( this.previousYear === this.currentYear){
+        	        this.previousYear -= 1;
                     this.config.query.parameterValues = [ 
                         {key: '@dateFrom' , value: this.dateFrom },  
                         {key: '@dateTo', value: this.dateTo },  
                     ];
                     this.loadData(this.afterLoadDataHandler);
-        	    }else{
-        	       // alert('оберIть правильну дату');
         	    }
 	        }
 	    }
@@ -242,11 +240,12 @@
         this.sub.unsubscribe();
     },
     afterLoadDataHandler: function(data) {
+        this.messageService.publish( {name: 'setData', rep2_data: data} );
         this.render(this.onContentReady());
     },
 	onContentReady: function(){
 	   this.config.columns.forEach( el => {
-			el.columns[0].caption = this.previoustYear;
+            el.columns[0].caption = this.previousYear;
 			el.columns[1].caption = this.currentYear;
 		}); 
 	},    
