@@ -1,10 +1,5 @@
 [
   {
-    "Code": "@ApplicantFromSite_SocialState",
-    "Name": "ApplicantFromSite_SocialState",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@1551_ApplicantFromSite_Address_Building",
     "Name": "1551_ApplicantFromSite_Address_Building",
     "ParameterType": "Integer"
@@ -13,6 +8,10 @@
     "Code": "@1551_ApplicantFromSite_Address_Entrance",
     "Name": "1551_ApplicantFromSite_Address_Entrance",
     "ParameterType": "Integer"
+  },
+  {
+    "Code": "@1551_ApplicantFromSite_Address_Flat",
+    "Name": "1551_ApplicantFromSite_Address_Flat"
   },
   {
     "Code": "@Applicant_Id",
@@ -25,21 +24,13 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@1551_ApplicantFromSite_Address_Flat",
-    "Name": "1551_ApplicantFromSite_Address_Flat"
+    "Code": "@Question_Content",
+    "Name": "Question_Content"
   },
   {
-    "Code": "@ApplicantFromSite_Sex",
-    "Name": "ApplicantFromSite_Sex"
-  },
-  {
-    "Code": "@Question_TypeId",
-    "Name": "Question_TypeId",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@1551_ApplicantFromSite_PIB",
-    "Name": "1551_ApplicantFromSite_PIB"
+    "Code": "@CreatedByUserId",
+    "Name": "CreatedByUserId",
+    "ParameterType": "CurrentUserId"
   },
   {
     "Code": "@ApplicantFromSite_Age",
@@ -47,12 +38,31 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@entrance",
-    "Name": "entrance"
+    "Code": "@ApplicantFromSite_SocialState",
+    "Name": "ApplicantFromSite_SocialState",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@Applicant_Privilege",
-    "Name": "Applicant_Privilege",
+    "Code": "@flat",
+    "Name": "flat"
+  },
+  {
+    "Code": "@ApplicantFromSite_Birthdate",
+    "Name": "ApplicantFromSite_Birthdate",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@Question_Organization",
+    "Name": "Question_Organization",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@1551_ApplicantFromSite_PIB",
+    "Name": "1551_ApplicantFromSite_PIB"
+  },
+  {
+    "Code": "@Question_TypeId",
+    "Name": "Question_TypeId",
     "ParameterType": "Integer"
   },
   {
@@ -61,31 +71,21 @@
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@CreatedByUserId",
-    "Name": "CreatedByUserId",
-    "ParameterType": "CurrentUserId"
+    "Code": "@Applicant_Privilege",
+    "Name": "Applicant_Privilege",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@ApplicantFromSite_Birthdate",
-    "Name": "ApplicantFromSite_Birthdate",
-    "ParameterType": "DateTime"
+    "Code": "@ApplicantFromSite_Sex",
+    "Name": "ApplicantFromSite_Sex"
   },
   {
-    "Code": "@flat",
-    "Name": "flat"
-  },
-  {
-    "Code": "@Question_Content",
-    "Name": "Question_Content"
+    "Code": "@entrance",
+    "Name": "entrance"
   },
   {
     "Code": "@Question_Building",
     "Name": "Question_Building",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@Question_Organization",
-    "Name": "Question_Organization",
     "ParameterType": "Integer"
   }
 ]

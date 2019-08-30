@@ -29,15 +29,15 @@
       "IsPageLimitRows": true
     },
     {
+      "Code": "@district_id",
+      "Name": "district_id",
+      "ParameterType": "Integer"
+    },
+    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
       "IsPageOffsetRows": true
-    },
-    {
-      "Code": "@district_id",
-      "Name": "district_id",
-      "ParameterType": "Integer"
     }
   ]
 }

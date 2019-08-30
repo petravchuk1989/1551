@@ -3,11 +3,11 @@
   "Code": "Rules",
   "Name": "Форма довідника Правила вибору",
   "Details": [
-    "string:Details\\RulesForExecutorRole.detail.json"
+    "json:Details\\RulesForExecutorRole.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\Rules.fieldgroup.json"
+      "json:FieldGroups\\Rules.fieldgroup.json"
     ],
     "DefaultFields": []
   }

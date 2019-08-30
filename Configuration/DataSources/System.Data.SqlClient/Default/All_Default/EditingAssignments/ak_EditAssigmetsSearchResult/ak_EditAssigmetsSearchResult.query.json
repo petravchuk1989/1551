@@ -6,10 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@appealNum",
-      "Name": "appealNum"
-    },
-    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
@@ -20,6 +16,10 @@
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@appealNum",
+      "Name": "appealNum"
     }
   ]
 }

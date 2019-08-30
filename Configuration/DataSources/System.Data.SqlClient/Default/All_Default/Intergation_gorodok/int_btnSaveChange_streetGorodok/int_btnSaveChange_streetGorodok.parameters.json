@@ -1,13 +1,8 @@
 [
   {
-    "Code": "@id_1551",
-    "Name": "id_1551",
+    "Code": "@cat_id",
+    "Name": "cat_id",
     "ParameterType": "Integer"
-  },
-  {
-    "Code": "@user_id",
-    "Name": "user_id",
-    "ParameterType": "CurrentUserId"
   },
   {
     "Code": "@key",
@@ -15,12 +10,8 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@comment",
-    "Name": "comment"
-  },
-  {
-    "Code": "@cat_id",
-    "Name": "cat_id",
+    "Code": "@id_1551_new",
+    "Name": "id_1551_new",
     "ParameterType": "Integer"
   },
   {
@@ -29,8 +20,17 @@
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@id_1551_new",
-    "Name": "id_1551_new",
+    "Code": "@comment",
+    "Name": "comment"
+  },
+  {
+    "Code": "@id_1551",
+    "Name": "id_1551",
     "ParameterType": "Integer"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
   }
 ]

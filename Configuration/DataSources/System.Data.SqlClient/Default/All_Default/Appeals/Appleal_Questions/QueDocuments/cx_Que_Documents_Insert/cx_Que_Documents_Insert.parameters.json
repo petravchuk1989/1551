@@ -1,10 +1,5 @@
 [
   {
-    "Code": "@doc_type_id",
-    "Name": "doc_type_id",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@Id",
     "Name": "Id",
     "ParameterType": "Integer",
@@ -16,13 +11,9 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@name",
-    "Name": "name"
-  },
-  {
-    "Code": "@add_user_id",
-    "Name": "add_user_id",
-    "ParameterType": "CurrentUserId"
+    "Code": "@doc_type_id",
+    "Name": "doc_type_id",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@edit_user_id",
@@ -32,5 +23,14 @@
   {
     "Code": "@content",
     "Name": "content"
+  },
+  {
+    "Code": "@name",
+    "Name": "name"
+  },
+  {
+    "Code": "@add_user_id",
+    "Name": "add_user_id",
+    "ParameterType": "CurrentUserId"
   }
 ]

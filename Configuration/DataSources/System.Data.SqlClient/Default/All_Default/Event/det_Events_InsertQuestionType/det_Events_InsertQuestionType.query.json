@@ -6,11 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@event_id",
-      "Name": "event_id",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@is_hard_connection",
       "Name": "Признак пов'язаності",
       "ParameterType": "Boolean"
@@ -18,6 +13,11 @@
     {
       "Code": "@question_type_id",
       "Name": "Тип питання"
+    },
+    {
+      "Code": "@event_id",
+      "Name": "event_id",
+      "ParameterType": "Integer"
     }
   ]
 }

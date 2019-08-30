@@ -56,8 +56,7 @@ BEGIN
 			   ,[edit_date]
 			   ,[user_edit_id]
 			   ,AssignmentResultsId
-			   ,AssignmentResolutionsId
-			   ,LogUpdated_Query)
+			   ,AssignmentResolutionsId)
 
 		output inserted.Id into @output([Id])
 		  VALUES(
@@ -75,7 +74,6 @@ BEGIN
 				  ,@user_edit_id
 				  ,1
 				  ,null
-				  ,N'cx_InsetManyNewAssigments_ROW78'
 				)
 
 	set @ass_id = (select top 1 [Id] from @output);

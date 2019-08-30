@@ -24,7 +24,6 @@ begin
 	where [Appeals].applicant_id = @applicant_id
 	and #filter_columns#
 	order by [Questions].registration_date desc
-	offset @pageOffsetRows rows fetch next @pageLimitRows rows only
 end
 
 if @type = N'Зареєстровано'
@@ -49,7 +48,6 @@ begin
 	and [QuestionStates].[name] in (N'Зареєстровано')
 	and #filter_columns#
 	order by [Questions].registration_date desc
-	offset @pageOffsetRows rows fetch next @pageLimitRows rows only
 end
 
 
@@ -75,7 +73,6 @@ begin
 	and [QuestionStates].[name] in (N'В роботі', N'На перевірці')
 	and #filter_columns#
 	order by [Questions].registration_date desc
-	offset @pageOffsetRows rows fetch next @pageLimitRows rows only
 end
 
 if @type = N'Просрочено'
@@ -101,7 +98,6 @@ begin
 	and [QuestionStates].[name] not in (N'Закрито')
 	and #filter_columns#
 	order by [Questions].registration_date desc
-	offset @pageOffsetRows rows fetch next @pageLimitRows rows only
 end
 
 if @type = N'Виконано'
@@ -126,7 +122,6 @@ begin
 	and [QuestionStates].[name] in (N'Закрито')
 	and #filter_columns#
 	order by [Questions].registration_date desc
-	offset @pageOffsetRows rows fetch next @pageLimitRows rows only
 end
 
 
@@ -152,7 +147,9 @@ begin
 	and [QuestionStates].[name] in (N'Не виконано')
 	and #filter_columns#
 	order by [Questions].registration_date desc
-
-offset @pageOffsetRows rows fetch next @pageLimitRows rows only
-
 end
+
+/*and #filter_columns#
+     #sort_columns#
+offset @pageOffsetRows rows fetch next @pageLimitRows rows only
+*/

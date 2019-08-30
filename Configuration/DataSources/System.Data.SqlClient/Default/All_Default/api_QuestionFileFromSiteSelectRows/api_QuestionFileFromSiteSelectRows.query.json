@@ -25,12 +25,6 @@
   ],
   "Parameters": [
     {
-      "Code": "@appeal_id",
-      "Name": "appeal_id",
-      "ParameterType": "Integer",
-      "IsPrimaryKey": true
-    },
-    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
@@ -41,6 +35,12 @@
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@appeal_id",
+      "Name": "appeal_id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
     }
   ]
 }

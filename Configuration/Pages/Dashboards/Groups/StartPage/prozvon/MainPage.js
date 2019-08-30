@@ -1,6 +1,7 @@
 (function () {
   return {
     init: function() {
+
         let select2LibraryJS = 'select2LibraryJS'; 
         let jQueryLibraryJS = 'jQueryLibraryJS'; 
         let select2LibraryCSS = 'select2LibraryCSS'; 
@@ -9,13 +10,14 @@
             let script  = document.createElement('script');
             script.id   = 'jQueryLibraryJS';
             script.type = 'text/javascript';
-            script.src = 'select2-develop/select2-develop/tests/vendor/jquery-1.7.3.js';
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js';
             head.appendChild(script);
+            
             script.onload = function () {
                     let script2  = document.createElement('script');
                     script2.id   = 'select2LibraryJS';
                     script2.type = 'text/javascript';
-                     script2.src = 'https://select2.org/assets/8847b4bddacab3fd8e99a5f5b14d69c9.js';
+                     script2.src = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js';
                     head.appendChild(script2);
                                   
                     script2.onload = function () {
@@ -23,7 +25,7 @@
                     let styleDefault  = document.createElement('style');
                     let styleSelect = document.createElement('link');
                         styleSelect.rel = 'stylesheet';
-                        styleSelect.href =  'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css';
+                        styleSelect.href =  'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css';
                         styleSelect.type = 'text/css';
                         
                     let tag_head = document.getElementsByTagName('head');

@@ -6,7 +6,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\Group_dictionary_universal.fieldgroup.json"
+      "json:FieldGroups\\Group_dictionary_universal.fieldgroup.json"
     ],
     "DefaultFields": []
   }

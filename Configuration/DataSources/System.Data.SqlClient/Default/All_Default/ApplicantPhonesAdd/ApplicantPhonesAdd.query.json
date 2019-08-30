@@ -6,23 +6,23 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@TypePhone",
-      "Name": "TypePhone",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@Applicant_id",
       "Name": "Applicant_id",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@Phone",
-      "Name": "Phone"
-    },
-    {
       "Code": "@IsMain",
       "Name": "IsMain",
       "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@TypePhone",
+      "Name": "TypePhone",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@Phone",
+      "Name": "Phone"
     }
   ]
 }

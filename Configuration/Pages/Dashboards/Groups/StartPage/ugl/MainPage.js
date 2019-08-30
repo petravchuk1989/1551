@@ -2,50 +2,7 @@
   return {
     init: function() {
         this.showPagePreloader('Зачекайте, сторінка завантажується');
-        let select2LibraryJS = 'select2LibraryJS'; 
-        let jQueryLibraryJS = 'jQueryLibraryJS'; 
-        let select2LibraryCSS = 'select2LibraryCSS'; 
-        if (!document.getElementById(select2LibraryJS)) {
-            let head  = document.getElementsByTagName('head')[0];
-            let script  = document.createElement('script');
-            script.id   = 'jQueryLibraryJS';
-            script.type = 'text/javascript';
-            script.src = 'select2-develop/select2-develop/tests/vendor/jquery-1.7.3.js';
-            head.appendChild(script);
-            script.onload = function () {
-                    let script2  = document.createElement('script');
-                    script2.id   = 'select2LibraryJS';
-                    script2.type = 'text/javascript';
-                    // script2.src = 'select2-develop/dist/js/select2.min.js';
-                     script2.src = 'https://select2.org/assets/8847b4bddacab3fd8e99a5f5b14d69c9.js';
-                    head.appendChild(script2);
-                                  
-                    script2.onload = function () {
-                    let style  = document.createElement('style');
-                    let styleDefault  = document.createElement('style');
-                    let styleSelect = document.createElement('link');
-                        styleSelect.rel = 'stylesheet';
-                        styleSelect.href =  'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css';
-                        styleSelect.type = 'text/css';
-                        
-                    let tag_head = document.getElementsByTagName('head');
-                        tag_head[0].appendChild(styleSelect);
-                        style.onload = function () {
-                                    
-                                let messageSelect = {
-                                    name: 'LoadLib',
-                                    package: {
-                                        value: 1
-                                    }
-                                }
-                                self.messageService.publish(messageSelect);    
-                            
-                        }.bind(self);
-                  }.bind(self); 
-              console.clear();
-            }.bind(self);  
-        }
-        this.showPreloader = false;
+
         this.sub  = this.messageService.subscribe( 'showPagePreloader', this.showMyPreloader, this)
         this.sub1 = this.messageService.subscribe( 'hidePagePreloader', this.hideMyPreloader, this)
     },

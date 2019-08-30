@@ -6,8 +6,9 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@Session",
-      "Name": "Session"
+      "Code": "@UserId",
+      "Name": "UserId",
+      "ParameterType": "CurrentUserId"
     },
     {
       "Code": "@AssigmentId",
@@ -15,9 +16,8 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@UserId",
-      "Name": "UserId",
-      "ParameterType": "CurrentUserId"
+      "Code": "@Session",
+      "Name": "Session"
     }
   ]
 }

@@ -6,10 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@phone_number",
-      "Name": "phone_number"
-    },
-    {
       "Code": "@phone_type_id",
       "Name": "phone_type_id",
       "ParameterType": "Integer"
@@ -19,6 +15,10 @@
       "Name": "Id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
+    },
+    {
+      "Code": "@phone_number",
+      "Name": "phone_number"
     }
   ]
 }

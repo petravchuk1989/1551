@@ -6,13 +6,13 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@object_id",
-      "Name": "object_id",
+      "Code": "@event_id",
+      "Name": "event_id",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@event_id",
-      "Name": "event_id",
+      "Code": "@object_id",
+      "Name": "object_id",
       "ParameterType": "Integer"
     }
   ]

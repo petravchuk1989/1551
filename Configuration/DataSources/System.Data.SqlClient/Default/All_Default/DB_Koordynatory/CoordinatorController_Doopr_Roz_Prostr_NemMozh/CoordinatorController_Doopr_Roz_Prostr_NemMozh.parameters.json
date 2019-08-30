@@ -1,15 +1,5 @@
 [
   {
-    "Code": "@navigation",
-    "Name": "navigation"
-  },
-  {
-    "Code": "@pageLimitRows",
-    "Name": "pageLimitRows",
-    "ParameterType": "Integer",
-    "IsPageLimitRows": true
-  },
-  {
     "Code": "@user_id",
     "Name": "user_id",
     "ParameterType": "CurrentUserId"
@@ -19,9 +9,19 @@
     "Name": "column"
   },
   {
+    "Code": "@pageLimitRows",
+    "Name": "pageLimitRows",
+    "ParameterType": "Integer",
+    "IsPageLimitRows": true
+  },
+  {
     "Code": "@pageOffsetRows",
     "Name": "pageOffsetRows",
     "ParameterType": "Integer",
     "IsPageOffsetRows": true
+  },
+  {
+    "Code": "@navigation",
+    "Name": "navigation"
   }
 ]

@@ -12,13 +12,13 @@
       "IsPrimaryKey": true
     },
     {
-      "Code": "@Name",
-      "Name": "Name"
-    },
-    {
       "Code": "@File",
       "Name": "File",
       "ParameterType": "Varbinary"
+    },
+    {
+      "Code": "@Name",
+      "Name": "Name"
     }
   ]
 }

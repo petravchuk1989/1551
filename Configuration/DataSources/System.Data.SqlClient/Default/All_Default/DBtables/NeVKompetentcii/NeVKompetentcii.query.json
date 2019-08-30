@@ -16,12 +16,12 @@
       "ParameterType": "CurrentUserId"
     },
     {
-      "Code": "@organizationName",
-      "Name": "organizationName"
-    },
-    {
       "Code": "@navigation",
       "Name": "navigation"
+    },
+    {
+      "Code": "@organizationName",
+      "Name": "organizationName"
     }
   ]
 }

@@ -1,42 +1,26 @@
 [
   {
-    "Code": "@question_type_id",
-    "Name": "question_type_id",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@Id",
     "Name": "Id",
     "ParameterType": "Integer",
     "IsPrimaryKey": true
   },
   {
-    "Code": "@Organization_is",
-    "Name": "Organization_is",
-    "ParameterType": "Boolean"
+    "Code": "@Attention_term_hours",
+    "Name": "Attention_term_hours"
   },
   {
-    "Code": "@active",
-    "Name": "active",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@rule_id",
-    "Name": "rule_id",
+    "Code": "@parent_organization_is",
+    "Name": "parent_organization_is",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@zhytraion",
-    "Name": "zhytraion",
-    "ParameterType": "Integer"
+    "Code": "@comments",
+    "Name": "comments"
   },
   {
     "Code": "@execution_term",
     "Name": "execution_term"
-  },
-  {
-    "Code": "@name",
-    "Name": "name"
   },
   {
     "Code": "@zhkg",
@@ -49,22 +33,23 @@
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@parent_organization_is",
-    "Name": "parent_organization_is",
+    "Code": "@name",
+    "Name": "name"
+  },
+  {
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserFullName"
+  },
+  {
+    "Code": "@question_type_id",
+    "Name": "question_type_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@blag",
-    "Name": "blag",
+    "Code": "@zhytraion",
+    "Name": "zhytraion",
     "ParameterType": "Integer"
-  },
-  {
-    "Code": "@comments",
-    "Name": "comments"
-  },
-  {
-    "Code": "@Attention_term_hours",
-    "Name": "Attention_term_hours"
   },
   {
     "Code": "@emergency",
@@ -72,9 +57,24 @@
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@user_edit_id",
-    "Name": "user_edit_id",
-    "ParameterType": "CurrentUserFullName"
+    "Code": "@active",
+    "Name": "active",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@Organization_is",
+    "Name": "Organization_is",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@rule_id",
+    "Name": "rule_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@blag",
+    "Name": "blag",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@index",

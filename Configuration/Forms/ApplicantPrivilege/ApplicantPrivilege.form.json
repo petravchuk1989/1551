@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\ApplicantPrivilege.fieldgroup.json"
+      "json:FieldGroups\\ApplicantPrivilege.fieldgroup.json"
     ],
     "DefaultFields": []
   }

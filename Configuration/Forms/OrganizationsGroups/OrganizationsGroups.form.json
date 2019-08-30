@@ -4,11 +4,11 @@
   "Name": "Форма довідника: Групи організацій",
   "IsPrintable": false,
   "Details": [
-    "string:Details\\Detail_OrganizationsInGroup.detail.json"
+    "json:Details\\Detail_OrganizationsInGroup.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\OrganizationsGroupInformation.fieldgroup.json"
+      "json:FieldGroups\\OrganizationsGroupInformation.fieldgroup.json"
     ],
     "DefaultFields": []
   }

@@ -6,10 +6,10 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\Group_New_Applicant.fieldgroup.json",
-      "string:FieldGroups\\Group_Applicant_LiveAdress2.fieldgroup.json",
-      "string:FieldGroups\\Group_Applicants_AddInform2.fieldgroup.json",
-      "string:FieldGroups\\Group_UpdateInfo2.fieldgroup.json"
+      "json:FieldGroups\\Group_New_Applicant.fieldgroup.json",
+      "json:FieldGroups\\Group_Applicant_LiveAdress2.fieldgroup.json",
+      "json:FieldGroups\\Group_Applicants_AddInform2.fieldgroup.json",
+      "json:FieldGroups\\Group_UpdateInfo2.fieldgroup.json"
     ],
     "DefaultFields": [
       {

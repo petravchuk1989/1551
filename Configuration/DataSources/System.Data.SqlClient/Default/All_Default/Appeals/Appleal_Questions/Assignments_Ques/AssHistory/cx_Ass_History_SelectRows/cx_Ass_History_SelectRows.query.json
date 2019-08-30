@@ -34,6 +34,12 @@
   ],
   "Parameters": [
     {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    },
+    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
@@ -44,12 +50,6 @@
       "Name": "Id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
-    },
-    {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
-      "ParameterType": "Integer",
-      "IsPageLimitRows": true
     }
   ]
 }

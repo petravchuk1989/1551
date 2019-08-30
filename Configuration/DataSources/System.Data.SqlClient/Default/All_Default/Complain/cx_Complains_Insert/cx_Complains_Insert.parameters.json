@@ -1,16 +1,20 @@
 [
   {
-    "Code": "@complain_type_id",
-    "Name": "complain_type_id",
-    "ParameterType": "Integer"
+    "Code": "@guilty",
+    "Name": "guilty"
+  },
+  {
+    "Code": "@culpritname",
+    "Name": "culpritname"
   },
   {
     "Code": "@text",
     "Name": "text"
   },
   {
-    "Code": "@culpritname",
-    "Name": "culpritname"
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
   },
   {
     "Code": "@Id",
@@ -19,12 +23,8 @@
     "IsPrimaryKey": true
   },
   {
-    "Code": "@guilty",
-    "Name": "guilty"
-  },
-  {
-    "Code": "@user_id",
-    "Name": "user_id",
-    "ParameterType": "CurrentUserId"
+    "Code": "@complain_type_id",
+    "Name": "complain_type_id",
+    "ParameterType": "Integer"
   }
 ]

@@ -11,6 +11,10 @@
       "ParameterType": "Integer"
     },
     {
+      "Code": "@organizationName",
+      "Name": "organizationName"
+    },
+    {
       "Code": "@navigation",
       "Name": "navigation"
     },
@@ -18,10 +22,6 @@
       "Code": "@user_id",
       "Name": "user_id",
       "ParameterType": "CurrentUserId"
-    },
-    {
-      "Code": "@organizationName",
-      "Name": "organizationName"
     }
   ]
 }

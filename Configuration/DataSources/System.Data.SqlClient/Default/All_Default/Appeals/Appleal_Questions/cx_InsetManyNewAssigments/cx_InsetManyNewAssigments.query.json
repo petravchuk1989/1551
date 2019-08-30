@@ -6,11 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@organization_id",
-      "Name": "organization_id",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@user_edit_id",
       "Name": "user_edit_id",
       "ParameterType": "CurrentUserId"
@@ -18,6 +13,11 @@
     {
       "Code": "@question_id",
       "Name": "question_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@organization_id",
+      "Name": "organization_id",
       "ParameterType": "Integer"
     }
   ]
