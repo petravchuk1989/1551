@@ -5,36 +5,33 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@submission_date",
-    "Name": "submission_date",
-    "ParameterType": "DateTime"
+    "Code": "@answer_mail",
+    "Name": "answer_mail"
   },
   {
-    "Code": "@birth_date",
-    "Name": "birth_date",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@object_id",
-    "Name": "object_id",
+    "Code": "@event_id",
+    "Name": "event_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@start_date",
-    "Name": "start_date",
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@applicant_type_id",
+    "Name": "applicant_type_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@control_date",
+    "Name": "control_date",
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@house_block",
-    "Name": "house_block"
-  },
-  {
-    "Code": "@question_content",
-    "Name": "question_content"
-  },
-  {
-    "Code": "@applicant_category_id",
-    "Name": "applicant_category_id",
+    "Code": "@answer_form_id",
+    "Name": "answer_form_id",
     "ParameterType": "Integer"
   },
   {
@@ -43,21 +40,45 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@city_receipt",
-    "Name": "city_receipt"
+    "Code": "@question_state_id",
+    "Name": "question_state_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@article",
+    "Name": "article"
+  },
+  {
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserFullName"
+  },
+  {
+    "Code": "@enter_number",
+    "Name": "enter_number"
+  },
+  {
+    "Code": "@receipt_date",
+    "Name": "receipt_date",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@sex",
+    "Name": "sex",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@building_id",
+    "Name": "building_id",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@sender_post_adrress",
     "Name": "sender_post_adrress"
   },
   {
-    "Code": "@sender_name",
-    "Name": "sender_name"
-  },
-  {
-    "Code": "@applicant_type_id",
-    "Name": "applicant_type_id",
-    "ParameterType": "Integer"
+    "Code": "@answer_post",
+    "Name": "answer_post"
   },
   {
     "Code": "@answer_phone",
@@ -68,79 +89,13 @@
     "Name": "full_name"
   },
   {
-    "Code": "@age",
-    "Name": "age",
+    "Code": "@entrance",
+    "Name": "entrance",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@end_date",
-    "Name": "end_date",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@mail",
-    "Name": "mail"
-  },
-  {
-    "Code": "@social_state_id",
-    "Name": "social_state_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@enter_number",
-    "Name": "enter_number"
-  },
-  {
-    "Code": "@Id",
-    "Name": "Id",
-    "ParameterType": "Integer",
-    "IsPrimaryKey": true
-  },
-  {
-    "Code": "@answer_post",
-    "Name": "answer_post"
-  },
-  {
-    "Code": "@answer_form_id",
-    "Name": "answer_form_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@organization_id",
-    "Name": "organization_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@event_id",
-    "Name": "event_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@question_state_id",
-    "Name": "question_state_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@comment",
-    "Name": "comment"
-  },
-  {
-    "Code": "@user_edit_id",
-    "Name": "user_edit_id",
-    "ParameterType": "CurrentUserFullName"
-  },
-  {
-    "Code": "@article",
-    "Name": "article"
-  },
-  {
-    "Code": "@building_id",
-    "Name": "building_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@control_date",
-    "Name": "control_date",
+    "Code": "@start_date",
+    "Name": "start_date",
     "ParameterType": "DateTime"
   },
   {
@@ -148,9 +103,44 @@
     "Name": "flat"
   },
   {
-    "Code": "@entrance",
-    "Name": "entrance",
+    "Code": "@sender_name",
+    "Name": "sender_name"
+  },
+  {
+    "Code": "@applicant_category_id",
+    "Name": "applicant_category_id",
     "ParameterType": "Integer"
+  },
+  {
+    "Code": "@mail",
+    "Name": "mail"
+  },
+  {
+    "Code": "@age",
+    "Name": "age",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@question_content",
+    "Name": "question_content"
+  },
+  {
+    "Code": "@comment",
+    "Name": "comment"
+  },
+  {
+    "Code": "@house_block",
+    "Name": "house_block"
+  },
+  {
+    "Code": "@organization_id",
+    "Name": "organization_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@birth_date",
+    "Name": "birth_date",
+    "ParameterType": "DateTime"
   },
   {
     "Code": "@object_comment",
@@ -162,17 +152,27 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@sex",
-    "Name": "sex",
+    "Code": "@social_state_id",
+    "Name": "social_state_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@receipt_date",
-    "Name": "receipt_date",
+    "Code": "@city_receipt",
+    "Name": "city_receipt"
+  },
+  {
+    "Code": "@end_date",
+    "Name": "end_date",
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@answer_mail",
-    "Name": "answer_mail"
+    "Code": "@object_id",
+    "Name": "object_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@submission_date",
+    "Name": "submission_date",
+    "ParameterType": "DateTime"
   }
 ]

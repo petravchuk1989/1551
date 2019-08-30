@@ -22,10 +22,10 @@
   ],
   "Parameters": [
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
       "ParameterType": "Integer",
-      "IsPageLimitRows": true
+      "IsPageOffsetRows": true
     },
     {
       "Code": "@event_id",
@@ -33,10 +33,10 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
       "ParameterType": "Integer",
-      "IsPageOffsetRows": true
+      "IsPageLimitRows": true
     }
   ]
 }

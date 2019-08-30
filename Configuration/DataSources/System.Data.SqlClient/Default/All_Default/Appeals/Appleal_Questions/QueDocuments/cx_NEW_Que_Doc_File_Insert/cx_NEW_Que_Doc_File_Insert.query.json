@@ -11,12 +11,12 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@Name",
-      "Name": "Name"
-    },
-    {
       "Code": "@File",
       "Name": "File"
+    },
+    {
+      "Code": "@Name",
+      "Name": "Name"
     },
     {
       "Code": "@user_id",

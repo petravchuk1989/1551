@@ -4,18 +4,18 @@
   "Name": "Питання",
   "IsPrintable": false,
   "Details": [
-    "json:Details\\Detail_Question_File.detail.json",
-    "json:Details\\Detail_Que_Event.detail.json",
-    "json:Details\\Detail_Que_Hisroty.detail.json",
-    "json:Details\\Detail_Que_Assignments.detail.json",
-    "json:Details\\Question_History.detail.json"
+    "string:Details\\Detail_Que_Assignments.detail.json",
+    "string:Details\\Question_History.detail.json",
+    "string:Details\\Detail_Que_Hisroty.detail.json",
+    "string:Details\\Detail_Que_Event.detail.json",
+    "string:Details\\Detail_Question_File.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Group_Questions_User.fieldgroup.json",
-      "json:FieldGroups\\Group_Questions_info.fieldgroup.json",
-      "json:FieldGroups\\Group_Questuions.fieldgroup.json",
-      "json:FieldGroups\\Group_Questuions_Answer.fieldgroup.json"
+      "string:FieldGroups\\Group_Questions_User.fieldgroup.json",
+      "string:FieldGroups\\Group_Questions_info.fieldgroup.json",
+      "string:FieldGroups\\Group_Questuions.fieldgroup.json",
+      "string:FieldGroups\\Group_Questuions_Answer.fieldgroup.json"
     ],
     "DefaultFields": [
       {

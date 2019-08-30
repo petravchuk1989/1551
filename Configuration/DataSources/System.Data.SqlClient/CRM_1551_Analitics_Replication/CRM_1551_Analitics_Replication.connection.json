@@ -3,5 +3,5 @@
   "Code": "CRM_1551_Analitics_Replication",
   "Name": "CRM_1551_Analitics_Replication",
   "ProviderCode": "System.Data.SqlClient",
-  "ConnectionString": "***7777***"
+  "ConnectionString": "full version"
 }

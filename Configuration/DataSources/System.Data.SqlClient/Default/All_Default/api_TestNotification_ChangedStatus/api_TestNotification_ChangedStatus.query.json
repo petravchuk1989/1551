@@ -13,13 +13,13 @@
   ],
   "Parameters": [
     {
-      "Code": "@QuestionStateId",
-      "Name": "QuestionStateId",
+      "Code": "@appeal_from_site_id",
+      "Name": "appeal_from_site_id",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@appeal_from_site_id",
-      "Name": "appeal_from_site_id",
+      "Code": "@QuestionStateId",
+      "Name": "QuestionStateId",
       "ParameterType": "Integer"
     }
   ]

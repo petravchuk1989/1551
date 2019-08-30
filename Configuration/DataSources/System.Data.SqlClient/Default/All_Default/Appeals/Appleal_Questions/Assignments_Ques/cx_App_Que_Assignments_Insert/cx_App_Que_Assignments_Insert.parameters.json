@@ -1,37 +1,12 @@
 [
   {
-    "Code": "@result_id",
-    "Name": "result_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@transfer_date",
-    "Name": "transfer_date",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@user_edit_id",
-    "Name": "user_edit_id",
-    "ParameterType": "CurrentUserId"
-  },
-  {
-    "Code": "@ass_type_id",
-    "Name": "ass_type_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@question_id",
-    "Name": "question_id",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@close_date",
     "Name": "close_date",
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@organization_id",
-    "Name": "organization_id",
+    "Code": "@resolution_id",
+    "Name": "resolution_id",
     "ParameterType": "Integer"
   },
   {
@@ -41,18 +16,18 @@
     "IsPrimaryKey": true
   },
   {
-    "Code": "@ass_state_id",
-    "Name": "ass_state_id",
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@organization_id",
+    "Name": "organization_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@turn_organization_id",
-    "Name": "turn_organization_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@resolution_id",
-    "Name": "resolution_id",
+    "Code": "@result_id",
+    "Name": "result_id",
     "ParameterType": "Integer"
   },
   {
@@ -61,13 +36,28 @@
     "ParameterType": "Boolean"
   },
   {
+    "Code": "@short_answer",
+    "Name": "short_answer"
+  },
+  {
+    "Code": "@question_id",
+    "Name": "question_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@transfer_date",
+    "Name": "transfer_date",
+    "ParameterType": "DateTime"
+  },
+  {
     "Code": "@performer_id",
     "Name": "performer_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@short_answer",
-    "Name": "short_answer"
+    "Code": "@turn_organization_id",
+    "Name": "turn_organization_id",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@user_id",
@@ -75,8 +65,18 @@
     "ParameterType": "CurrentUserId"
   },
   {
+    "Code": "@ass_state_id",
+    "Name": "ass_state_id",
+    "ParameterType": "Integer"
+  },
+  {
     "Code": "@execution_date",
     "Name": "execution_date",
     "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@ass_type_id",
+    "Name": "ass_type_id",
+    "ParameterType": "Integer"
   }
 ]

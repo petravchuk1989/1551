@@ -6,10 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@sort",
-      "Name": "sort"
-    },
-    {
       "Code": "@ApplicantsId",
       "Name": "ApplicantsId",
       "ParameterType": "Integer"
@@ -17,6 +13,10 @@
     {
       "Code": "@filter",
       "Name": "filter"
+    },
+    {
+      "Code": "@sort",
+      "Name": "sort"
     }
   ]
 }

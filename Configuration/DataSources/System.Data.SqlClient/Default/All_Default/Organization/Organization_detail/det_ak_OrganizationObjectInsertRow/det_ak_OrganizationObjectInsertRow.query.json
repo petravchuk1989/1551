@@ -6,13 +6,13 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@executor_role_id",
-      "Name": "executor_role_id",
+      "Code": "@organization_id",
+      "Name": "organization_id",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@organization_id",
-      "Name": "organization_id",
+      "Code": "@executor_role_id",
+      "Name": "executor_role_id",
       "ParameterType": "Integer"
     },
     {

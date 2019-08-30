@@ -46,6 +46,12 @@
   ],
   "Parameters": [
     {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
       "Code": "@street_id",
       "Name": "street_id",
       "ParameterType": "Integer"
@@ -55,12 +61,6 @@
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
-    },
-    {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
     }
   ]
 }

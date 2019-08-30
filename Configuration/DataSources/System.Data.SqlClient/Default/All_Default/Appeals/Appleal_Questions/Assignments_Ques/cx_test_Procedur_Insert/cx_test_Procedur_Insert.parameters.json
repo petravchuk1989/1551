@@ -1,5 +1,20 @@
 [
   {
+    "Code": "@organization_execut",
+    "Name": "organization_execut",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@dictrict",
+    "Name": "dictrict",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@question_id",
+    "Name": "question_id",
+    "ParameterType": "Integer"
+  },
+  {
     "Code": "@user_id",
     "Name": "user_id"
   },
@@ -9,23 +24,8 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@question_id",
-    "Name": "question_id",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@question_type_id",
     "Name": "question_type_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@organization_execut",
-    "Name": "organization_execut",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@dictrict",
-    "Name": "dictrict",
     "ParameterType": "Integer"
   }
 ]

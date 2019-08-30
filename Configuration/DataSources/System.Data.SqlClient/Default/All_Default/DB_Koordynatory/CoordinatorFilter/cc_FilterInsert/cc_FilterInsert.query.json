@@ -6,8 +6,13 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@district_id",
-      "Name": "district_id",
+      "Code": "@department_id",
+      "Name": "department_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@questiondirection_id",
+      "Name": "questiondirection_id",
       "ParameterType": "Integer"
     },
     {
@@ -16,13 +21,8 @@
       "ParameterType": "CurrentUserId"
     },
     {
-      "Code": "@department_id",
-      "Name": "department_id",
-      "ParameterType": "Integer"
-    },
-    {
-      "Code": "@questiondirection_id",
-      "Name": "questiondirection_id",
+      "Code": "@district_id",
+      "Name": "district_id",
       "ParameterType": "Integer"
     }
   ]

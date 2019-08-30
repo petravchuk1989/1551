@@ -1,7 +1,7 @@
 {
   "ModelType": "Query",
   "Code": "db_Report_1|ForReplication",
-  "Name": "db_Report_1888",
+  "Name": "db_Report_1",
   "ConnectionCode": "CRM_1551_Analitics_Replication",
   "IsUsedForRightsFilter": false,
   "Columns": [

@@ -11,9 +11,9 @@
       "ParameterType": "DateTime"
     },
     {
-      "Code": "@dateTo",
-      "Name": "dateTo",
-      "ParameterType": "DateTime"
+      "Code": "@questionType",
+      "Name": "questionType",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@questionGroup",
@@ -21,9 +21,9 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@questionType",
-      "Name": "questionType",
-      "ParameterType": "Integer"
+      "Code": "@dateTo",
+      "Name": "dateTo",
+      "ParameterType": "DateTime"
     }
   ]
 }

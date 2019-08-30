@@ -6,13 +6,13 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@AppealFromSite_CommentModerator",
-      "Name": "AppealFromSite_CommentModerator"
-    },
-    {
       "Code": "@Id",
       "Name": "Id",
       "ParameterType": "Integer"
+    },
+    {
+      "Code": "@AppealFromSite_CommentModerator",
+      "Name": "AppealFromSite_CommentModerator"
     }
   ]
 }
