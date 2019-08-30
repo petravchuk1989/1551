@@ -3,5 +3,5 @@
   "Code": "Default",
   "Name": "Подключение по-умолчанию2",
   "ProviderCode": "System.Data.SqlClient",
-  "ConnectionString": "***reload after fail merge***"
+  "ConnectionString": "***reload after fail merge version 2***"
 }
