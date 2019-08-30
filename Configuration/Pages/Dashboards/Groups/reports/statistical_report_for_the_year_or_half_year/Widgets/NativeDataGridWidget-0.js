@@ -133,16 +133,16 @@
 		let date = new Date();
         let yyyy = date.getFullYear();
 	    this.currentYear = yyyy
-        this.previoustYear = yyyy - 1;
+        this.previousYear = yyyy - 1;
         this.sub =  this.messageService.subscribe( 'GlobalFilterChanged', this.getFilterParams, this );
         this.config.onContentReady = this.afterRenderTable.bind(this);
         this.dataGridInstance.onContentReady = this.onContentReady();
     },
 	afterRenderTable: function(){
 	    this.config.columns.forEach( el => {
-			el.columns[0].caption = this.previoustYear;
-			el.columns[1].caption = this.currentYear;
-		});
+			el.columns[0].caption = this.previousYear;
+			el.columns[1].caption = this.currenYear;
+        });
 		let tds = document.querySelectorAll('td');
 		tdsArr = Array.from(tds);
 		tdsArr.forEach( el => {
@@ -164,10 +164,10 @@
                 this.dateFrom =  period.dateFrom;
                 this.dateTo = period.dateTo;
                 
-        	    this.previoustYear = this.changeDateTimeValues(this.dateFrom);
+        	    this.previousYear = this.changeDateTimeValues(this.dateFrom);
         	    this.currentYear = this.changeDateTimeValues(this.dateTo);
-        	    if( this.previoustYear === this.currentYear){
-        	        this.previoustYear -= 1;
+        	    if( this.previousYear === this.currentYear){
+        	        this.previousYear -= 1;
                     this.config.query.parameterValues = [ 
                         {key: '@dateFrom' , value: this.dateFrom },  
                         {key: '@dateTo', value: this.dateTo },  
@@ -185,12 +185,13 @@
         return yyyy;
     },      
     afterLoadDataHandler: function(data) {
+        this.messageService.publish( {name: 'setData', rep1_data: data} );
         this.render(this.onContentReady());
     },
 	onContentReady: function(){
 		this.config.columns.forEach( el => {
 		    el.columns.forEach( elem =>  {
-			    elem.columns[0].caption = this.previoustYear;
+			    elem.columns[0].caption = this.previousYear;
 			    elem.columns[1].caption = this.currentYear;
 		        
 		    });

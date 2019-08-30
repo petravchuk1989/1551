@@ -3,5 +3,5 @@
   "Code": "CRM_1551_Analitics_Replication",
   "Name": "CRM_1551_Analitics_Replication",
   "ProviderCode": "System.Data.SqlClient",
-  "ConnectionString": "Data Source=db.ukrods.cf;Initial Catalog=CRM_1551_Analitics;User Id=smartbi; Password=smartbi; Connection Timeout=120;"
+  "ConnectionString": "***7777***"
 }

@@ -260,11 +260,9 @@
             },
             location: "after"
         });        
-
-
         toolbarItems.push({
             widget: "dxButton", 
-            options: { 
+            options: {
                 icon: "upload",
                 type: "default",
                 text: "Передати",
