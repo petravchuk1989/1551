@@ -3,13 +3,13 @@
   "Code": "Form_Organizations",
   "Name": "Організації",
   "Details": [
-    "json:Details\\det_Organization.detail.json",
-    "json:Details\\det_Workeds.detail.json",
-    "json:Details\\detail_Objects.detail.json"
+    "string:Details\\detail_Objects.detail.json",
+    "string:Details\\det_Workeds.detail.json",
+    "string:Details\\det_Organization.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Organizations.fieldgroup.json"
+      "string:FieldGroups\\Organizations.fieldgroup.json"
     ],
     "DefaultFields": [
       {

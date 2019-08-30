@@ -6,12 +6,12 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@groupName",
-      "Name": "groupName"
-    },
-    {
       "Code": "@typeName",
       "Name": "typeName"
+    },
+    {
+      "Code": "@groupName",
+      "Name": "groupName"
     }
   ]
 }

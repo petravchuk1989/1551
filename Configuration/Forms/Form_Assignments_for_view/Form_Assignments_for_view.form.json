@@ -3,11 +3,11 @@
   "Code": "Form_Assignments_for_view",
   "Name": "Доручення для перегляду",
   "Details": [
-    "json:Details\\Detail_Assignments_for_view_FILE.detail.json"
+    "string:Details\\Detail_Assignments_for_view_FILE.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Group_Assigments_Assigments.fieldgroup.json"
+      "string:FieldGroups\\Group_Assigments_Assigments.fieldgroup.json"
     ],
     "DefaultFields": [],
     "Script": "string:Form_Assignments_for_view.form.js"

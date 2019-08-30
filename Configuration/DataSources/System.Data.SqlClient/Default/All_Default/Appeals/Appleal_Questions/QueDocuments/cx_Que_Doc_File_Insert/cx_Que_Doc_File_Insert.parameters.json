@@ -5,17 +5,8 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@edit_user_id",
-    "Name": "edit_user_id",
-    "ParameterType": "CurrentUserId"
-  },
-  {
     "Code": "@Name",
     "Name": "Name"
-  },
-  {
-    "Code": "@File",
-    "Name": "File"
   },
   {
     "Code": "@user_id",
@@ -27,5 +18,14 @@
     "Name": "Id",
     "ParameterType": "Integer",
     "IsPrimaryKey": true
+  },
+  {
+    "Code": "@File",
+    "Name": "File"
+  },
+  {
+    "Code": "@edit_user_id",
+    "Name": "edit_user_id",
+    "ParameterType": "CurrentUserId"
   }
 ]

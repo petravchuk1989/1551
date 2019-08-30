@@ -11,13 +11,13 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@executor_id",
-      "Name": "executor_id",
+      "Code": "@build_id",
+      "Name": "build_id",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@build_id",
-      "Name": "build_id",
+      "Code": "@executor_id",
+      "Name": "executor_id",
       "ParameterType": "Integer"
     }
   ]

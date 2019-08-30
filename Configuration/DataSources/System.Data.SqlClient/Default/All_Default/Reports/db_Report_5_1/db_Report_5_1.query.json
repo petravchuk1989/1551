@@ -29,9 +29,9 @@
   ],
   "Parameters": [
     {
-      "Code": "@dateFrom",
-      "Name": "dateFrom",
-      "ParameterType": "DateTime"
+      "Code": "@pos",
+      "Name": "pos",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@dateTo",
@@ -39,9 +39,9 @@
       "ParameterType": "DateTime"
     },
     {
-      "Code": "@pos",
-      "Name": "pos",
-      "ParameterType": "Integer"
+      "Code": "@dateFrom",
+      "Name": "dateFrom",
+      "ParameterType": "DateTime"
     }
   ]
 }

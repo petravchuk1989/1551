@@ -6,14 +6,14 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
+      "Code": "@name",
+      "Name": "name"
+    },
+    {
       "Code": "@Id",
       "Name": "Id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
-    },
-    {
-      "Code": "@name",
-      "Name": "name"
     }
   ]
 }

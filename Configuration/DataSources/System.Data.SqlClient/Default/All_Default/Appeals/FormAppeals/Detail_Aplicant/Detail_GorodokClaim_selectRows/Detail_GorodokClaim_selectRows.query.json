@@ -51,20 +51,20 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
       "ParameterType": "Integer",
-      "IsPageLimitRows": true
+      "IsPageOffsetRows": true
     },
     {
       "Code": "@type",
       "Name": "type"
     },
     {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
       "ParameterType": "Integer",
-      "IsPageOffsetRows": true
+      "IsPageLimitRows": true
     }
   ]
 }

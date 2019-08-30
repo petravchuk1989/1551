@@ -61,15 +61,15 @@
     "Position": 8
   },
   {
-    "Code": "index",
-    "Name": "Поштовий індекс",
-    "Position": 10
-  },
-  {
     "Code": "full_name",
     "Name": "Назва",
     "Position": 10,
     "SqlName": "[Streets].name+N', '+[Buildings].name",
     "FilterParameterCode": "@full_name"
+  },
+  {
+    "Code": "index",
+    "Name": "Поштовий індекс",
+    "Position": 10
   }
 ]

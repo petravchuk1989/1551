@@ -11,14 +11,14 @@
     "IsPageOffsetRows": true
   },
   {
+    "Code": "@phone_number",
+    "Name": "phone_number"
+  },
+  {
     "Code": "@pageLimitRows",
     "Name": "pageLimitRows",
     "ParameterType": "Integer",
     "IsPageLimitRows": true
-  },
-  {
-    "Code": "@phone_number",
-    "Name": "phone_number"
   },
   {
     "Code": "@applicant_id",

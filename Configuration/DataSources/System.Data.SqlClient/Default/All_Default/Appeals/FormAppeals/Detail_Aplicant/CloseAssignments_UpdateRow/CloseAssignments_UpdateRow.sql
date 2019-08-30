@@ -39,6 +39,7 @@ begin
 	    		,[state_change_date] = GETUTCDATE()
 	    		,[edit_date] = GETUTCDATE()
 	    		,[user_edit_id] = @UserId
+				,LogUpdated_Query = N'CloseAssignments_UpdateRow42'
 	    	where Id = @assignment_id
 	
 	update dbo.AssignmentRevisions set
@@ -138,6 +139,7 @@ begin
 	    		,[close_date] = GETUTCDATE()
 	    		,[edit_date] = GETUTCDATE()
 	    		,[user_edit_id] = @UserId
+				,LogUpdated_Query = N'CloseAssignments_UpdateRow141'
 	    	where Id = @assignment_id
 	    
 	    	update [dbo].[AssignmentConsiderations] set  

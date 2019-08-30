@@ -1,6 +1,6 @@
 
-declare @organization_id int =2348;
-declare @user_id nvarchar(300)=N'02ece542-2d75-479d-adad-fd333d09604d';
+declare @organization_id int --=2348;
+declare @user_id nvarchar(300)--=N'02ece542-2d75-479d-adad-fd333d09604d';
 
 declare @Organization table(Id int);
 
