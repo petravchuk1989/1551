@@ -1,7 +1,7 @@
-{
-    "ModelType": "Connection",
-    "Code": "Default",
-    "Name": "Подключение по-умолчанию2",
-    "ProviderCode": "System.Data.SqlClient",
-    "ConnectionString": "**master**"
+
+  "ModelType": "Connection",
+  "Code": "Default",
+  "Name": "Подключение по-умолчанию2",
+  "ProviderCode": "System.Data.SqlClient",
+  "ConnectionString": "***7777***"
 }

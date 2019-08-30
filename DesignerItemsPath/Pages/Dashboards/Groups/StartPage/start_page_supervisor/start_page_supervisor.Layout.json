@@ -21,7 +21,7 @@
         "border": "none",
         "children": [
           {
-            "code": "StartPageOperator__Widget",
+            "code": "SupervisorMain__Widget",
             "type": "CustomWidgetComponent",
             "name": "Навігація"
           }

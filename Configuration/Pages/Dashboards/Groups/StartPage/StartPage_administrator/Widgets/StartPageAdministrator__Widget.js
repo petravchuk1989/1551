@@ -75,7 +75,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#f44336;"> settings </i>
                         </div>
-                        <div class="description"> Налаштування </div>
+                        <div class="description">Налаштування</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>
@@ -84,7 +84,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#f44336;"> view_module </i>
                         </div>
-                        <div class="description"> Календар </div>
+                        <div class="description">Календар</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>
@@ -93,7 +93,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#ff7961;"> view_list </i>
                         </div>
-                        <div class="description">  Секції </div>
+                        <div class="description">Секції</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>
@@ -102,7 +102,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#ff7961;"> list </i>
                         </div>
-                        <div class="description">  Стандартні звіти </div>
+                        <div class="description">Стандартні звіти</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>
@@ -111,7 +111,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#ff7961;"> build </i>
                         </div>
-                        <div class="description">  Конструктор звітів </div>
+                        <div class="description">Конструктор звітів</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>                      

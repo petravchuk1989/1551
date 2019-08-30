@@ -22,6 +22,7 @@
                 ]
             };
             this.queryExecutor(executeQuery, this.load, this);
+            this.showPreloader = false; 
         }
     },
     load: function(data) {
@@ -78,6 +79,7 @@
                 parameterValues: []
             };
             this.queryExecutor(executeQuery);
+            this.showPreloader = false; 
         });
         
         this.yearCalendar.forEach( month => {
@@ -168,6 +170,7 @@
                     parameterValues: [ { key: '@Id', value: target.dayId} ]
                 };
                 this.queryExecutor(executeQuery);
+                this.showPreloader = false;
                 if( target.isWork === true  ){
                     target.isWork = false;
                     target.style.backgroundColor = '#f4b084';
