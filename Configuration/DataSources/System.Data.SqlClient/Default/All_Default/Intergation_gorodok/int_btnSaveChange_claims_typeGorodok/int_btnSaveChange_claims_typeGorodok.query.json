@@ -6,24 +6,24 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@key",
-      "Name": "key",
+      "Code": "@comment",
+      "Name": "comment",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@user_id",
-      "Name": "user_id",
-      "ParameterType": "CurrentUserId"
-    },
-    {
-      "Code": "@comment",
-      "Name": "comment",
+      "Code": "@key",
+      "Name": "key",
       "ParameterType": "Integer"
     },
     {
       "Code": "@is_done",
       "Name": "is_done",
       "ParameterType": "Integer"
+    },
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
     }
   ]
 }

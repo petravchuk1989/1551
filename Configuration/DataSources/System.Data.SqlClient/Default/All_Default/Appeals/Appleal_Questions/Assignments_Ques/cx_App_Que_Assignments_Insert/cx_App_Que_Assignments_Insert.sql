@@ -19,7 +19,8 @@ INSERT INTO [dbo].[Assignments]
            ,[edit_date]
            ,[user_edit_id]
            ,AssignmentResultsId
-           ,AssignmentResolutionsId)
+           ,AssignmentResolutionsId
+           ,LogUpdated_Query)
 
 	output inserted.Id into @output([Id])
      VALUES
@@ -39,7 +40,8 @@ INSERT INTO [dbo].[Assignments]
            ,getutcdate()  
            ,@user_edit_id
            ,@result_id
-           ,@resolution_id)
+           ,@resolution_id
+           ,N'cx_App_Que_Assignments_Insert_ROW44')
 
 	set @ass_id = (select top 1 [Id] from @output);
 

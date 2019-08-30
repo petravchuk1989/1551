@@ -51,13 +51,13 @@
   ],
   "Parameters": [
     {
-      "Code": "@old_assignment_state_id",
-      "Name": "old_assignment_state_id",
+      "Code": "@old_assignment_result_id",
+      "Name": "old_assignment_result_id",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@old_assignment_result_id",
-      "Name": "old_assignment_result_id",
+      "Code": "@old_assignment_state_id",
+      "Name": "old_assignment_state_id",
       "ParameterType": "Integer"
     }
   ]

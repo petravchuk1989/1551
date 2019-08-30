@@ -6,6 +6,11 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
+      "Code": "@params_id",
+      "Name": "params_id",
+      "ParameterType": "Integer"
+    },
+    {
       "Code": "@value",
       "Name": "value"
     },
@@ -14,11 +19,6 @@
       "Name": "Id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
-    },
-    {
-      "Code": "@params_id",
-      "Name": "params_id",
-      "ParameterType": "Integer"
     }
   ]
 }

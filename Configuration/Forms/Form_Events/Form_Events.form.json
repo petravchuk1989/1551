@@ -3,19 +3,19 @@
   "Code": "Form_Events",
   "Name": "Заходи",
   "Details": [
-    "json:Details\\Detail_Event_Questions.detail.json",
-    "json:Details\\P_Question.detail.json",
-    "json:Details\\Detail_Events_Objects.detail.json",
-    "json:Details\\Detail_EventQuestionsTypes_create.detail.json",
-    "json:Details\\Detail_EventQuestionsTypes.detail.json",
-    "json:Details\\EventHistory.detail.json",
-    "json:Details\\Files.detail.json",
-    "json:Details\\EventHistory_Details.detail.json"
+    "string:Details\\Files.detail.json",
+    "string:Details\\EventHistory.detail.json",
+    "string:Details\\Detail_Event_Questions.detail.json",
+    "string:Details\\EventHistory_Details.detail.json",
+    "string:Details\\P_Question.detail.json",
+    "string:Details\\Detail_Events_Objects.detail.json",
+    "string:Details\\Detail_EventQuestionsTypes_create.detail.json",
+    "string:Details\\Detail_EventQuestionsTypes.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Group_Events_Main.fieldgroup.json",
-      "json:FieldGroups\\Group_Events_Audio.fieldgroup.json"
+      "string:FieldGroups\\Group_Events_Main.fieldgroup.json",
+      "string:FieldGroups\\Group_Events_Audio.fieldgroup.json"
     ],
     "DefaultFields": [
       {

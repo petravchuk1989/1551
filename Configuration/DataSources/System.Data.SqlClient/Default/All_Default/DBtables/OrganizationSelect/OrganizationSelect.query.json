@@ -22,14 +22,14 @@
   ],
   "Parameters": [
     {
-      "Code": "@user_id",
-      "Name": "user_id",
-      "ParameterType": "CurrentUserId"
-    },
-    {
       "Code": "@organization_id",
       "Name": "organization_id",
       "ParameterType": "Integer"
+    },
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
     }
   ]
 }

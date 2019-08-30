@@ -22,15 +22,15 @@
   ],
   "Parameters": [
     {
+      "Code": "@pos",
+      "Name": "pos",
+      "ParameterType": "Integer"
+    },
+    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
-    },
-    {
-      "Code": "@pos",
-      "Name": "pos",
-      "ParameterType": "Integer"
     },
     {
       "Code": "@pageOffsetRows",

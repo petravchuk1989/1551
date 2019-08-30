@@ -21,7 +21,7 @@
         "border": "none",
         "children": [
           {
-            "code": "StartPageAdministrator__Widget",
+            "code": "CustomWidget-0",
             "type": "CustomWidgetComponent",
             "name": "Навігація"
           }
