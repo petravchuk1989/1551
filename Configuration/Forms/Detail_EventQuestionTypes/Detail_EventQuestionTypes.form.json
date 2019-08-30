@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\EventClassType.fieldgroup.json"
+      "json:FieldGroups\\EventClassType.fieldgroup.json"
     ],
     "DefaultFields": [
       {

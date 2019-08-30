@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\Roles.fieldgroup.json"
+      "json:FieldGroups\\Roles.fieldgroup.json"
     ],
     "DefaultFields": []
   }

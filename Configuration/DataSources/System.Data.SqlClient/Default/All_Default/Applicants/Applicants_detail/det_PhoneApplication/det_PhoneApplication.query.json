@@ -44,10 +44,6 @@
   ],
   "Parameters": [
     {
-      "Code": "@phone",
-      "Name": "phone"
-    },
-    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
@@ -58,6 +54,10 @@
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@phone",
+      "Name": "phone"
     }
   ]
 }

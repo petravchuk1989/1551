@@ -1,16 +1,59 @@
 [
   {
-    "Code": "@house_block",
-    "Name": "house_block",
-    "ParameterType": "Integer"
+    "Code": "@mail",
+    "Name": "mail"
   },
   {
     "Code": "@flat",
     "Name": "flat"
   },
   {
-    "Code": "@full_name",
-    "Name": "full_name"
+    "Code": "@birth_date",
+    "Name": "birth_date",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@house_block",
+    "Name": "house_block",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@social_state_id",
+    "Name": "social_state_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@sex",
+    "Name": "sex",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@age",
+    "Name": "age",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@day_month",
+    "Name": "day_month"
+  },
+  {
+    "Code": "@phone_type_id2",
+    "Name": "phone_type_id2",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@comment",
+    "Name": "comment"
+  },
+  {
+    "Code": "@phone_number",
+    "Name": "phone_number"
   },
   {
     "Code": "@applicant_privilage_id",
@@ -23,36 +66,8 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@phone_type_id2",
-    "Name": "phone_type_id2",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@phone_number",
-    "Name": "phone_number"
-  },
-  {
-    "Code": "@phone_number2",
-    "Name": "phone_number2"
-  },
-  {
-    "Code": "@sex",
-    "Name": "sex",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@category_type_id",
     "Name": "category_type_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@entrance",
-    "Name": "entrance",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@phone_type_id",
-    "Name": "phone_type_id",
     "ParameterType": "Integer"
   },
   {
@@ -61,32 +76,13 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@applicant_type_id",
-    "Name": "applicant_type_id",
+    "Code": "@phone_number2",
+    "Name": "phone_number2"
+  },
+  {
+    "Code": "@entrance",
+    "Name": "entrance",
     "ParameterType": "Integer"
-  },
-  {
-    "Code": "@mail",
-    "Name": "mail"
-  },
-  {
-    "Code": "@Id",
-    "Name": "Id",
-    "ParameterType": "Integer",
-    "IsPrimaryKey": true
-  },
-  {
-    "Code": "@age",
-    "Name": "age",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@day_month",
-    "Name": "day_month"
-  },
-  {
-    "Code": "@comment",
-    "Name": "comment"
   },
   {
     "Code": "@user_id",
@@ -94,13 +90,17 @@
     "ParameterType": "CurrentUserId"
   },
   {
-    "Code": "@social_state_id",
-    "Name": "social_state_id",
+    "Code": "@full_name",
+    "Name": "full_name"
+  },
+  {
+    "Code": "@applicant_type_id",
+    "Name": "applicant_type_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@birth_date",
-    "Name": "birth_date",
-    "ParameterType": "DateTime"
+    "Code": "@phone_type_id",
+    "Name": "phone_type_id",
+    "ParameterType": "Integer"
   }
 ]

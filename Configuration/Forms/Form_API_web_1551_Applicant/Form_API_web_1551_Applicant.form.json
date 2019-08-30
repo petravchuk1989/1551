@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\Group_API_web_1551_Applicant_Basic_Information.fieldgroup.json"
+      "json:FieldGroups\\Group_API_web_1551_Applicant_Basic_Information.fieldgroup.json"
     ],
     "DefaultFields": []
   }

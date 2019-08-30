@@ -22,25 +22,25 @@
   ],
   "Parameters": [
     {
-      "Code": "@user_Id",
-      "Name": "@user_Id",
-      "ParameterType": "CurrentUserId"
-    },
-    {
-      "Code": "@Street_Id",
-      "Name": "Street_Id"
-    },
-    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
       "IsPageOffsetRows": true
     },
     {
+      "Code": "@Street_Id",
+      "Name": "Street_Id"
+    },
+    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@user_Id",
+      "Name": "@user_Id",
+      "ParameterType": "CurrentUserId"
     }
   ]
 }

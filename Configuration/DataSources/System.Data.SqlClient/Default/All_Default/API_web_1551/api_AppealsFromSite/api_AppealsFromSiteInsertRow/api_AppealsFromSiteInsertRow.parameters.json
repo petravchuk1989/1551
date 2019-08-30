@@ -1,5 +1,24 @@
 [
   {
+    "Code": "@appeal_content",
+    "Name": "appeal_content"
+  },
+  {
+    "Code": "@work_direction_type_id",
+    "Name": "work_direction_type_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@object_id",
+    "Name": "object_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@applicant_from_site_id",
+    "Name": "applicant_from_site_id",
+    "ParameterType": "Integer"
+  },
+  {
     "Code": "@pageLimitRows",
     "Name": "pageLimitRows",
     "ParameterType": "Integer",
@@ -10,24 +29,5 @@
     "Name": "pageOffsetRows",
     "ParameterType": "Integer",
     "IsPageOffsetRows": true
-  },
-  {
-    "Code": "@object_id",
-    "Name": "object_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@appeal_content",
-    "Name": "appeal_content"
-  },
-  {
-    "Code": "@work_direction_type_id",
-    "Name": "work_direction_type_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@applicant_from_site_id",
-    "Name": "applicant_from_site_id",
-    "ParameterType": "Integer"
   }
 ]

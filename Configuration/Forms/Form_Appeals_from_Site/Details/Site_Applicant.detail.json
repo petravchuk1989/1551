@@ -1,10 +1,23 @@
 {
-    "ModelType": "Detail",
-    "Code": "Site_Applicant",
-    "Name": "Заявники в системі",
-    "SelectRowsQueryCode": "Site_SearchApplicant",
-    "SectionCode": "",
-    "Position": 1,
-    "IsExpand": true,
-    "QueryParameters": []
+  "ModelType": "Detail",
+  "Code": "Site_Applicant",
+  "Name": "Заявники в системі",
+  "SelectRowsQueryCode": "Site_SearchApplicant",
+  "SectionCode": "",
+  "Position": 1,
+  "IsExpand": true,
+  "QueryParameters": [
+    {
+      "FormFieldName": "btn_SearchApplicant1551",
+      "ParameterCode": "@AppealFromSite_Id"
+    },
+    {
+      "FormFieldName": "btn_SearchApplicant1551",
+      "ParameterCode": "@Flat"
+    },
+    {
+      "FormFieldName": "btn_SearchApplicant1551",
+      "ParameterCode": "@BuildingId"
+    }
+  ]
 }

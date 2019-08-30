@@ -6,13 +6,13 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
+      "Code": "@Ids",
+      "Name": "Ids"
+    },
+    {
       "Code": "@user_id",
       "Name": "user_id",
       "ParameterType": "CurrentUserId"
-    },
-    {
-      "Code": "@Ids",
-      "Name": "Ids"
     }
   ]
 }

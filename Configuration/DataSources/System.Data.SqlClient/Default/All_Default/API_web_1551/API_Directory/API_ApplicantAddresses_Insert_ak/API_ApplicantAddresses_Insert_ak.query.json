@@ -14,15 +14,15 @@
   ],
   "Parameters": [
     {
-      "Code": "@applicant_id",
-      "Name": "applicant_id",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@Id",
       "Name": "Id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
+    },
+    {
+      "Code": "@applicant_id",
+      "Name": "applicant_id",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@addresstype_id",

@@ -1,39 +1,14 @@
 [
   {
-    "Code": "@problem_place",
-    "Name": "problem_place"
-  },
-  {
-    "Code": "@phone_number",
-    "Name": "phone_number"
-  },
-  {
-    "Code": "@user_edit_id",
-    "Name": "user_edit_id",
-    "ParameterType": "CurrentUserId"
-  },
-  {
-    "Code": "@comment_moderator",
-    "Name": "comment_moderator"
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
   },
   {
     "Code": "@appeal_id",
     "Name": "appeal_id",
     "ParameterType": "Integer"
-  },
-  {
-    "Code": "@aditional_Information",
-    "Name": "aditional_Information"
-  },
-  {
-    "Code": "@mail",
-    "Name": "mail"
-  },
-  {
-    "Code": "@Id",
-    "Name": "Id",
-    "ParameterType": "Integer",
-    "IsPrimaryKey": true
   },
   {
     "Code": "@question_direction",
@@ -44,8 +19,29 @@
     "Name": "applicant_adrress"
   },
   {
+    "Code": "@comment_moderator",
+    "Name": "comment_moderator"
+  },
+  {
+    "Code": "@problem_place",
+    "Name": "problem_place"
+  },
+  {
     "Code": "@name",
     "Name": "name"
+  },
+  {
+    "Code": "@aditional_Information",
+    "Name": "aditional_Information"
+  },
+  {
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@phone_number",
+    "Name": "phone_number"
   },
   {
     "Code": "@user_id",
@@ -53,12 +49,16 @@
     "ParameterType": "CurrentUserId"
   },
   {
+    "Code": "@state_id",
+    "Name": "state_id",
+    "ParameterType": "Integer"
+  },
+  {
     "Code": "@appeal_content",
     "Name": "appeal_content"
   },
   {
-    "Code": "@state_id",
-    "Name": "state_id",
-    "ParameterType": "Integer"
+    "Code": "@mail",
+    "Name": "mail"
   }
 ]

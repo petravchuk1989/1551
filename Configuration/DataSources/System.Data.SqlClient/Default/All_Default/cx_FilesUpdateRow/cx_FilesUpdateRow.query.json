@@ -11,15 +11,15 @@
       "ParameterType": "Varbinary"
     },
     {
+      "Code": "@EventId",
+      "Name": "EventId",
+      "ParameterType": "Integer"
+    },
+    {
       "Code": "@id",
       "Name": "id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
-    },
-    {
-      "Code": "@EventId",
-      "Name": "EventId",
-      "ParameterType": "Integer"
     },
     {
       "Code": "@Name",

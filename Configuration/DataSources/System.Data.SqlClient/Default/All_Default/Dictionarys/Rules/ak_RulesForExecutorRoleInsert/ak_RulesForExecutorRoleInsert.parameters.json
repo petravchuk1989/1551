@@ -1,22 +1,7 @@
 [
   {
-    "Code": "@ExecutorRole_Id",
-    "Name": "ExecutorRole_Id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@priority",
-    "Name": "priority",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@main",
-    "Name": "main",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@ExecutorRoleLevel_Id",
-    "Name": "ExecutorRoleLevel_Id",
+    "Code": "@Rules_Id",
+    "Name": "Rules_Id",
     "ParameterType": "Integer"
   },
   {
@@ -25,8 +10,23 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@Rules_Id",
-    "Name": "Rules_Id",
+    "Code": "@main",
+    "Name": "main",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@priority",
+    "Name": "priority",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@ExecutorRoleLevel_Id",
+    "Name": "ExecutorRoleLevel_Id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@ExecutorRole_Id",
+    "Name": "ExecutorRole_Id",
     "ParameterType": "Integer"
   }
 ]

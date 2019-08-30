@@ -3,11 +3,11 @@
   "Code": "Form_Ass_Documents",
   "Name": "Документи доручень",
   "Details": [
-    "string:Details\\Detail_Ass_Doc_File.detail.json"
+    "json:Details\\Detail_Ass_Doc_File.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\Group_Ass_Doc.fieldgroup.json"
+      "json:FieldGroups\\Group_Ass_Doc.fieldgroup.json"
     ],
     "DefaultFields": [
       {

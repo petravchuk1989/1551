@@ -12,13 +12,13 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@organization_id",
-      "Name": "organization_id",
+      "Code": "@question_type_id",
+      "Name": "question_type_id",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@question_type_id",
-      "Name": "question_type_id",
+      "Code": "@organization_id",
+      "Name": "organization_id",
       "ParameterType": "Integer"
     }
   ]

@@ -3,11 +3,11 @@
   "Code": "EventClass_QuestionType_Form",
   "Name": "Форма : Класи заходів та тип питання",
   "Details": [
-    "string:Details\\Detail_EventClass_QuestionType.detail.json"
+    "json:Details\\Detail_EventClass_QuestionType.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\EventClass_QuestionType_Group.fieldgroup.json"
+      "json:FieldGroups\\EventClass_QuestionType_Group.fieldgroup.json"
     ],
     "DefaultFields": []
   }

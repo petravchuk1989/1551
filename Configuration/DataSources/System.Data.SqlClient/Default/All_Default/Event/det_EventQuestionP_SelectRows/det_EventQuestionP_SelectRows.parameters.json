@@ -1,8 +1,15 @@
 [
   {
-    "Code": "@question_type_id",
-    "Name": "question_type_id",
-    "ParameterType": "Integer"
+    "Code": "@pageLimitRows",
+    "Name": "pageLimitRows",
+    "ParameterType": "Integer",
+    "IsPageLimitRows": true
+  },
+  {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
   },
   {
     "Code": "@pageOffsetRows",
@@ -16,20 +23,13 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@pageLimitRows",
-    "Name": "pageLimitRows",
-    "ParameterType": "Integer",
-    "IsPageLimitRows": true
+    "Code": "@question_type_id",
+    "Name": "question_type_id",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@registration_date",
     "Name": "registration_date",
     "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@Id",
-    "Name": "Id",
-    "ParameterType": "Integer",
-    "IsPrimaryKey": true
   }
 ]

@@ -55,16 +55,16 @@
       "IsPrintable": false
     },
     {
+      "Code": "audio_on",
+      "Name": "Активне аудіо",
+      "Position": 11
+    },
+    {
       "Code": "active",
       "Name": "Активний",
       "Position": 11,
       "ViewState": "Hidden",
       "IsPrintable": false
-    },
-    {
-      "Code": "audio_on",
-      "Name": "Активне аудіо",
-      "Position": 11
     }
   ],
   "Parameters": [

@@ -3,11 +3,11 @@
   "Code": "Form_API_web_1551_ApplicantAddresses",
   "Name": "Form_API_web_1551_ApplicantAddresses",
   "Details": [
-    "string:Details\\QuestionFiles1.detail.json"
+    "json:Details\\QuestionFiles1.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\Group_API_web_1551_ApplicantAddresses.fieldgroup.json"
+      "json:FieldGroups\\Group_API_web_1551_ApplicantAddresses.fieldgroup.json"
     ],
     "DefaultFields": []
   }

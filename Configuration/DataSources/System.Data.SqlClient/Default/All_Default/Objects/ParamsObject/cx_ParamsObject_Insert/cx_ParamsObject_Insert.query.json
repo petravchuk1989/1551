@@ -6,10 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@value",
-      "Name": "value"
-    },
-    {
       "Code": "@Id",
       "Name": "Id",
       "ParameterType": "Integer",
@@ -24,6 +20,10 @@
       "Code": "@params_id",
       "Name": "params_id",
       "ParameterType": "Integer"
+    },
+    {
+      "Code": "@value",
+      "Name": "value"
     }
   ]
 }

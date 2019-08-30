@@ -1,12 +1,7 @@
 [
   {
-    "Code": "@region",
-    "Name": "region"
-  },
-  {
-    "Code": "@addresstype_id",
-    "Name": "addresstype_id",
-    "ParameterType": "Integer"
+    "Code": "@cityname",
+    "Name": "cityname"
   },
   {
     "Code": "@street_id",
@@ -14,20 +9,17 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@flat",
-    "Name": "flat"
+    "Code": "@applicant_id",
+    "Name": "applicant_id",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@cityname",
-    "Name": "cityname"
+    "Code": "@region",
+    "Name": "region"
   },
   {
-    "Code": "@building",
-    "Name": "building"
-  },
-  {
-    "Code": "@district",
-    "Name": "district"
+    "Code": "@country",
+    "Name": "country"
   },
   {
     "Code": "@index",
@@ -35,21 +27,29 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@street",
-    "Name": "street"
-  },
-  {
     "Code": "@building_id",
     "Name": "building_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@country",
-    "Name": "country"
+    "Code": "@addresstype_id",
+    "Name": "addresstype_id",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@applicant_id",
-    "Name": "applicant_id",
-    "ParameterType": "Integer"
+    "Code": "@flat",
+    "Name": "flat"
+  },
+  {
+    "Code": "@building",
+    "Name": "building"
+  },
+  {
+    "Code": "@street",
+    "Name": "street"
+  },
+  {
+    "Code": "@district",
+    "Name": "district"
   }
 ]
