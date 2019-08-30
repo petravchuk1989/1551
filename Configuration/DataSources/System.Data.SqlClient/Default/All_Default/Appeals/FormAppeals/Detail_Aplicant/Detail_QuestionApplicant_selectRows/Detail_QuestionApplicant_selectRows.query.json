@@ -67,9 +67,10 @@
   ],
   "Parameters": [
     {
-      "Code": "@applicant_id",
-      "Name": "applicant_id",
-      "ParameterType": "Integer"
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
     },
     {
       "Code": "@type",
@@ -82,10 +83,9 @@
       "IsPageOffsetRows": true
     },
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
-      "ParameterType": "Integer",
-      "IsPageLimitRows": true
+      "Code": "@applicant_id",
+      "Name": "applicant_id",
+      "ParameterType": "Integer"
     }
   ]
 }

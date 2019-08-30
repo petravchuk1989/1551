@@ -11,6 +11,10 @@
       "ParameterType": "Integer"
     },
     {
+      "Code": "@phone_number",
+      "Name": "phone_number"
+    },
+    {
       "Code": "@app_id",
       "Name": "app_id",
       "ParameterType": "Integer"
@@ -20,10 +24,6 @@
       "Name": "Id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
-    },
-    {
-      "Code": "@phone_number",
-      "Name": "phone_number"
     }
   ]
 }

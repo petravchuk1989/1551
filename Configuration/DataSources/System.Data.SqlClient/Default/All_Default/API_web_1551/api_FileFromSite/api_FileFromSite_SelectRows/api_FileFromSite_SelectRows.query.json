@@ -38,15 +38,15 @@
   ],
   "Parameters": [
     {
-      "Code": "@appeal_from_site_id",
-      "Name": "appeal_from_site_id",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@appeal_from_site_id",
+      "Name": "appeal_from_site_id",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@pageOffsetRows",

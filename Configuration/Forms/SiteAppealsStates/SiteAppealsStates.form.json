@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\SiteAppealsStates.fieldgroup.json"
+      "string:FieldGroups\\SiteAppealsStates.fieldgroup.json"
     ],
     "DefaultFields": []
   }

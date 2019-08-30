@@ -53,6 +53,12 @@
   ],
   "Parameters": [
     {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
@@ -62,12 +68,6 @@
       "Code": "@rule_id",
       "Name": "rule_id",
       "ParameterType": "Integer"
-    },
-    {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
     }
   ]
 }

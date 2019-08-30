@@ -24,10 +24,9 @@
   ],
   "Parameters": [
     {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
+      "Code": "@ass_id",
+      "Name": "ass_id",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@pageLimitRows",
@@ -41,9 +40,10 @@
       "ParameterType": "CurrentUserId"
     },
     {
-      "Code": "@ass_id",
-      "Name": "ass_id",
-      "ParameterType": "Integer"
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
     }
   ]
 }

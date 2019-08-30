@@ -44,6 +44,10 @@
   ],
   "Parameters": [
     {
+      "Code": "@TypeEvent",
+      "Name": "TypeEvent"
+    },
+    {
       "Code": "@user_id",
       "Name": "user_id",
       "ParameterType": "CurrentUserId"
@@ -51,10 +55,6 @@
     {
       "Code": "@OtKuda",
       "Name": "OtKuda"
-    },
-    {
-      "Code": "@TypeEvent",
-      "Name": "TypeEvent"
     },
     {
       "Code": "@organization_id",

@@ -61,18 +61,18 @@
       "IsPageLimitRows": true
     },
     {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
+      "Code": "@phone_number",
+      "Name": "phone_number"
     },
     {
       "Code": "@type",
       "Name": "type"
     },
     {
-      "Code": "@phone_number",
-      "Name": "phone_number"
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
     }
   ]
 }

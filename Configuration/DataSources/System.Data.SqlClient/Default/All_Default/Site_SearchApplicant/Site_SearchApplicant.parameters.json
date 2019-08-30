@@ -10,15 +10,15 @@
     "ParameterType": "Integer"
   },
   {
+    "Code": "@Flat",
+    "Name": "Flat",
+    "ParameterType": "Integer"
+  },
+  {
     "Code": "@pageOffsetRows",
     "Name": "pageOffsetRows",
     "ParameterType": "Integer",
     "IsPageOffsetRows": true
-  },
-  {
-    "Code": "@Flat",
-    "Name": "Flat",
-    "ParameterType": "Integer"
   },
   {
     "Code": "@pageLimitRows",

@@ -137,20 +137,20 @@
                     this.dateClosing__to = dateClosing.dateTo === '' ? null :  dateClosing.dateTo;
                     
                     if(  this.dateClosing__from === null && this.dateClosing__to === null ){
-                        this.dateExecutionData = [];
-                        this.operationVykonDate = 0;
+                        this.dateClosingData = [];
+                        this.operationCloseDate = 0;
                         
                     }else if(  this.dateClosing__from !== null && this.dateClosing__to === null ){
-                        this.dateExecutionData = [this.dateClosing__from];
-                        this.operationVykonDate = 1;
+                        this.dateClosingData = [this.dateClosing__from];
+                        this.operationCloseDate = 1;
                         
                     }else if(  this.dateClosing__from === null && this.dateClosing__to !== null ){
-                        this.dateExecutionData = [this.dateClosing__to];
-                        this.operationVykonDate = 2;
+                        this.dateClosingData = [this.dateClosing__to];
+                        this.operationCloseDate = 2;
                         
                     }else if(  this.dateClosing__from !== null && this.dateClosing__to !== null ){
-                        this.dateExecutionData = [ this.dateClosing__from, this.dateClosing__to];
-                        this.operationVykonDate = 3;
+                        this.dateClosingData = [ this.dateClosing__from, this.dateClosing__to];
+                        this.operationCloseDate = 3;
                     }
                 }
                 

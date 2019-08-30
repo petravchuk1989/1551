@@ -35,23 +35,6 @@
     init: function() {
         this.sub = this.messageService.subscribe('showWarning', this.showWarning, this);
         this.sub1 = this.messageService.subscribe('setData', this.setData, this );
-        this.sub2 = this.messageService.subscribe('GlobalFilterChanged', this.getFilterParams, this );
-    },
-    getFilterParams: function (message) {
-        let period = message.package.value.values.find(f => f.name === 'period').value;
-        if( period !== null ){
-            if( period.dateFrom !== '' && period.dateTo !== ''){
-                this.dateFrom =  period.dateFrom;
-                this.dateTo = period.dateTo;
-                let  datePrev = new Date(this.dateFrom);   
-                let  dateCurr = new Date(this.dateTo);               
-                this.previousYear = datePrev.getFullYear();
-                this.currentYear =  dateCurr.getFullYear();
-                this.previousYear = this.currentYear === this.previousYear ? this.currentYear - 1 : this.previousYear;
-                this.dateFromViewValues = this.changeDateTimeValues(this.dateFrom);
-                this.dateToViewValues = this.changeDateTimeValues(this.dateTo);
-            }
-        }
     },
     afterViewInit: function(data) {
         const reportTitle = document.getElementById('reportTitle');
@@ -71,10 +54,6 @@
             this.createTableExcel();
         });         
     },
-    setYears: function (message) {
-        this.previousYear = message.previousYear;
-        this.currentYear = message.currentYear;
-    },
     showWarning: function(message) {
         let CONTAINER = document.getElementById('container');
         
@@ -89,22 +68,29 @@
             let target = event.currentTarget;
             CONTAINER.removeChild(container.lastElementChild);
         });
+        
+       
     },
     setData: function(message){
         if( message.rep1_data){
             this.rep1_data =  message.rep1_data;
+            this.rep1_title =  message.rep1_title;
             this.counter += 1;
         }else if( message.rep2_data){
             this.rep2_data =  message.rep2_data;
+            this.rep2_title =  message.rep2_title;
             this.counter += 1;
         }else if( message.rep3_data){
             this.rep3_data =  message.rep3_data;
+            this.rep3_title =  message.rep3_title;
             this.counter += 1;
         }else if( message.rep4_data){
             this.rep4_data =  message.rep4_data;
+            this.rep4_title =  message.rep4_title;
             this.counter += 1;
         }else if( message.rep5_data){
             this.rep5_data =  message.rep5_data;
+            this.rep5_title =  message.rep5_title;
             this.counter += 1;
         }
         if( this.counter === 5 ){
@@ -113,7 +99,7 @@
             this.counter = 0;
         }
     },
-    createTableExcel: function(){
+createTableExcel: function(){
         this.showPagePreloader('Зачекайте, формується документ');
         const workbook = this.createExcel();
         const worksheet = workbook.addWorksheet('«Заявки2018', {
@@ -127,380 +113,213 @@
             top: 0.4, bottom: 0.4,
             header: 0.0, footer: 0.0
         };
-        let years = [ this.previousYear, this.currentYear];
-        let yearsTemp = [ this.previousYear, this.currentYear];
-        let tds = [];
         let mainHeaders = [];
         for(let i = 0; i <  this.dataArray.length; i++){
-            let data =  this.dataArray[i];   
-               
+            
+            let data =  this.dataArray[i];
+            this.indexArr = [];
+            let name = { name: 'orgName', index: 0 };
+            let counter = { name: 'questionQty', index: 1 };
+            let empty1 = { name: 'empty', index: 2 };
+            let name2 = { name: 'orgName', index: 3 };
+            let counter2 = { name: 'questionQty', index: 4 };
+            this.indexArr = [ name, counter, empty1, name2, counter2 ];
+        
+            let indexArr = this.indexArr;
+            let rows = [];
+            let captions = [];
+            let columnsHeader = [];
+            
+            
+            indexArr.forEach( el => {
+                if( el.name === 'orgName'){
+                    let obj =  {
+                        key: el.name,
+                        width: 44,
+                    };
+                    columnsHeader.push(obj);
+                    captions.push('Назва');
+                }else if(el.name === 'questionQty'){
+                    let obj =  { 
+                        key: el.name,
+                        width: 8
+                    };
+                    columnsHeader.push(obj);
+                    captions.push('Кiлькiсть');
+                }else if(el.name === 'empty'){
+                    let obj =  { 
+                        key: el.name,
+                        width: 8
+                    };
+                    columnsHeader.push(obj);
+                    captions.push(' ');
+                }
+            });
+            let columnText;
+            let columnCounter;
+            let captionName = 'Назва';
+            let captionCounter = 'Кiлькiсть';
+            let tds = [];
+            let tdsCounter = [];
             if(i === 0){
-                let viewValues = [];
-                let title = worksheet.getCell('A1');
-                title.value = 'Статистичний звіт за період з ' + this.dateToViewValues + ' по ' + this.dateFromViewValues;
-                title.font = { name: 'Times New Roman', family: 4, size: 12, underline: false, bold: true , italic: false};
-                title.alignment = { vertical: 'middle', horizontal: 'center', wrapText: false  };
-                worksheet.mergeCells('A1:N1'); 
-
-                let cellInfoCaption0 = worksheet.getCell('A3');
-                cellInfoCaption0.value = 'Кількість звернень:';
-                worksheet.mergeCells('A3:F3'); 
-                let cellInfoCaption1 = worksheet.getCell('G3');
-                cellInfoCaption1.value = 'Результати розгляду звернень:';
-                worksheet.mergeCells('G3:N3'); 
-                let subCaption1_0 = worksheet.getCell('A4');
-                subCaption1_0.value = 'усіх';
-                worksheet.mergeCells('A4:B4'); 
-                let subCaption1_1 = worksheet.getCell('C4');
-                subCaption1_1.value = 'що надійшли поштою (п. 1.1)*';
-                worksheet.mergeCells('C4:D4'); 
-                let subCaption1_2 = worksheet.getCell('E4');
-                subCaption1_2.value = 'на особистому прийомі (п. 1.2)*';
-                worksheet.mergeCells('E4:F4'); 
-                let subCaption2_0 = worksheet.getCell('G4');
-                subCaption2_0.value = 'вирішено позитивно (виконано) п. 9.1';
-                worksheet.mergeCells('G4:H4'); 
-                let subCaption2_1 = worksheet.getCell('I4');
-                subCaption2_1.value = 'відмолено у задоволенні (не виконано) п. 9.2';
-                worksheet.mergeCells('I4:J4'); 
-                let subCaption2_2 = worksheet.getCell('K4');
-                subCaption2_2.value = 'дано роз’яснення п. 9.3';
-                worksheet.mergeCells('K4:L4'); 
-                let subCaption2_3 = worksheet.getCell('M4');
-                subCaption2_3.value = 'інше п. 9.4 - 9.6';
-                worksheet.mergeCells('M4:N4'); 
-                let captionsArr = [ cellInfoCaption0, cellInfoCaption1,  subCaption1_0, subCaption1_1, subCaption1_2, subCaption2_0, subCaption2_1, subCaption2_2, subCaption2_3];              
-                captionsArr.forEach( td => {
-                    td.border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                    td.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                    td.font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                });
-                let years = [];
-                for (let i = 0; i < data[0].length / 2; i++) {
-                    let element = data[0];
-                    yearsTemp.forEach( year => years.push(year));
+                let cellInfoCaption0 = worksheet.getCell('A1');
+                cellInfoCaption0.value = this.rep1_title;
+                worksheet.mergeCells('A1:B1'); 
+                mainHeaders.push(1);
+                worksheet.getCell('A2').value = captionName;
+                worksheet.getCell('B2').value = captionCounter;
+                tds.push('A1');
+                tds.push('A2');
+                tds.push('B2');
+                for(let i = 3; i < (data.length + 3); i++ ){
+                    let value = data[i-3];
+                    columnText = worksheet.getCell('A'+i);
+                    columnCounter = worksheet.getCell('B'+i);
+                    columnText.value = value[0];
+                    columnCounter.value = value[1];
+                    tds.push('A'+i);
+                    tdsCounter.push('B'+i);
                 }
-                worksheet.getRow(5).values = years;
-                let rowValues = [];
-                data[0].forEach( el => rowValues.push(el));
-                worksheet.getRow(6).values = rowValues;
-                mainHeaders.push(3);
-                mainHeaders.push(4);
-                viewValues.push(5);
-                viewValues.push(6);
-                viewValues.forEach( number => {
-                    ['A'+number, 'B'+number, 'C'+number, 'D'+number, 'E'+number, 'F'+number, 'G'+number, 'H'+number, 'I'+number, 'J'+number, 'K'+number, 'L'+number, 'M'+number, 'N'+number ].map(key => {
-                        worksheet.getCell(key).border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                        worksheet.getCell(key).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                        worksheet.getCell(key).font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                    });
-                    worksheet.getRow(number).height = 50;
-                    worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: false , italic: false};
-                    worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                });                  
-
             }else if(i === 1){
-                let viewValues = [];
-                let subCaption3_0 = worksheet.getCell('A10');
-                subCaption3_0.value = 'Повторних (п. 2.2)';
-                worksheet.mergeCells('A10:B10'); 
-                let subCaption3_1 = worksheet.getCell('C10');
-                subCaption3_1.value = 'колективних (п. 5.2)';
-                worksheet.mergeCells('C10:D10'); 
-                let subCaption3_2 = worksheet.getCell('E10');
-                subCaption3_2.value = 'від учасників та інвалідів війни, учасників бойових дій (п. 7.1, 7.3, 7.4, 7.5)';
-                worksheet.mergeCells('E10:F10'); 
-                let subCaption3_3 = worksheet.getCell('G10');
-                subCaption3_3.value = 'від інвалідів I, II, III групи (п. 7.7, 7.8, 7.9)';
-                worksheet.mergeCells('G10:H10'); 
-                let subCaption3_4 = worksheet.getCell('I10');
-                subCaption3_4.value = 'від ветеранів праці (п. 7.6)';
-                worksheet.mergeCells('I10:J10'); 
-                let subCaption3_5 = worksheet.getCell('K10');
-                subCaption3_5.value = 'від дітей війни (п. 7.2)';
-                worksheet.mergeCells('K10:L10'); 
-                let subCaption3_6 = worksheet.getCell('M10');
-                subCaption3_6.value = 'від членів багатодітних сімей, одиноких матерів, матерів-героїнь (п. 7.11, 7.12, 7.13)';
-                worksheet.mergeCells('M10:N10'); 
-                let subCaption3_7 = worksheet.getCell('O10');
-                subCaption3_7.value = 'від учасників ліквідації аварії на ЧАЕС та осіб, що потерпіли від Чорнобильської катастрофи (п. 7.14, 7.15)';
-                worksheet.mergeCells('O10:P10'); 
-                let captionsArr = [ subCaption3_0, subCaption3_1,  subCaption3_2, subCaption3_3, subCaption3_4, subCaption3_5, subCaption3_6, subCaption3_7];               
-                captionsArr.forEach( td => {
-                    td.border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                    td.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                    td.font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                });
-                              
-                let years = [];
-                for (let i = 0; i < data[0].length / 2; i++) {
-                    let element = data[0];
-                    yearsTemp.forEach( year => years.push(year));
+                let cellInfoCaption1 = worksheet.getCell('D1');  
+                cellInfoCaption1.value = this.rep2_title;
+                worksheet.mergeCells('D1:E1');
+                tds.push('D1');
+                worksheet.getCell('D2').value = captionName;
+                worksheet.getCell('E2').value = captionCounter;
+                tds.push('D1');
+                tds.push('D2');
+                tds.push('E2');                
+                for(let i = 3; i < (data.length + 3); i++ ){
+                    let value = data[i-3];
+                    columnText = worksheet.getCell('D'+i);
+                    columnCounter = worksheet.getCell('E'+i);
+                    columnText.value = value[0];
+                    columnCounter.value = value[1];
+                    tds.push('D'+i);
+                    tdsCounter.push('E'+i);                    
                 }
-                worksheet.getRow(11).values = years;
-                let rowValues = [];
-                data[0].forEach( el => rowValues.push(el));
-                worksheet.getRow(12).values = rowValues;
-                mainHeaders.push(10);
-                viewValues.push(11);
-                viewValues.push(12);
-                viewValues.forEach( number => {
-                    ['A'+number, 'B'+number, 'C'+number, 'D'+number, 'E'+number, 'F'+number, 'G'+number, 'H'+number, 'I'+number, 'J'+number, 'K'+number, 'L'+number, 'M'+number, 'N'+number, 'O'+number, 'P'+number  ].map(key => {
-                        worksheet.getCell(key).border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                        worksheet.getCell(key).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                        worksheet.getCell(key).font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                    });
-                    worksheet.getRow(number).height = 50;
-                    worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: false , italic: false};
-                    worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                });                 
             }else if(i === 2){
-                let number = 20;
-                let viewValues = [];
-                mainHeaders.push(number);
-                mainHeaders.push(number+1);
-                let caption4 = worksheet.getCell('B'+number);
-                caption4.value = 'у тому числі питання:';
-                worksheet.mergeCells('B'+number+':O'+number);
-
-                let subCaption4_0 = worksheet.getCell('B'+(number+1));
-                subCaption4_0.value = 'Кількість питань,порушених у зверненнях громадян';
-                worksheet.mergeCells('B'+(number+1)+':C'+(number+1)); 
-                let subCaption4_1 = worksheet.getCell('D'+(number+1));
-                subCaption4_1.value = 'аграрної політики і земельних відносин';
-                worksheet.mergeCells('D'+(number+1)+':E'+(number+1)); 
-                let subCaption4_2 = worksheet.getCell('F'+(number+1));
-                subCaption4_2.value = 'транспорту і зв’язку';
-                worksheet.mergeCells('F'+(number+1)+':G'+(number+1)); 
-                let subCaption4_3 = worksheet.getCell('H'+(number+1));
-                subCaption4_3.value = 'фінансової, податкової,митної політики';
-                worksheet.mergeCells('H'+(number+1)+':I'+(number+1)); 
-                let subCaption4_4 = worksheet.getCell('J'+(number+1));
-                subCaption4_4.value = 'соціального захисту';
-                worksheet.mergeCells('J'+(number+1)+':K'+(number+1)); 
-                let subCaption4_5 = worksheet.getCell('L'+(number+1));
-                subCaption4_5.value = 'праціі заробітної плати, охорони праці, промислової безпеки';
-                worksheet.mergeCells('L'+(number+1)+':M'+(number+1)); 
-                let subCaption4_6 = worksheet.getCell('N'+(number+1));
-                subCaption4_6.value = 'охорони здоров’я';
-                worksheet.mergeCells('N'+(number+1)+':O'+(number+1)); 
-                let captionsArr = [caption4, subCaption4_0, subCaption4_1,  subCaption4_2, subCaption4_3, subCaption4_4, subCaption4_5, subCaption4_6];               
-                captionsArr.forEach( td => {
-                    td.border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                    td.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                    td.font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                });
-
-                let years = [''];
-                for (let i = 0; i < 7; i++) {
-                    let element = data[0];
-                    yearsTemp.forEach( year => years.push(year));
+                this.rowTable1 = (this.dataArray[0].length+3 + 1);
+                let cellInfoCaption2 = worksheet.getCell('A'+(this.rowTable1));
+                cellInfoCaption2.value = this.rep3_title;
+                worksheet.mergeCells('A'+(this.rowTable1)+':'+'B'+(this.rowTable1));
+                tds.push('A'+(this.rowTable1));
+                worksheet.getCell('A'+(this.rowTable1+1)).value = captionName;
+                worksheet.getCell('B'+(this.rowTable1+1)).value = captionCounter;
+                tds.push('A'+(this.rowTable1+1));
+                tds.push('B'+(this.rowTable1+1));
+                for(let i =  this.rowTable1 + 2; i < (data.length + this.rowTable1 + 2); i++ ){
+                    let value = data[i-(2 + this.rowTable1)];
+                    columnText = worksheet.getCell('A'+i);
+                    columnCounter = worksheet.getCell('B'+i);
+                    columnText.value = value[0];
+                    columnCounter.value = value[1];
+                    tds.push('A'+i);
+                    tdsCounter.push('B'+i);                    
                 }
-                worksheet.getRow(number+2).values = years;
-                for (let i = 0; i < data.length; i++) {
-                    rowNumber = number+3+i;
-                    let values = data[i];
-                    let rowValues = [];
-                    values.forEach( el => rowValues.push(el));
-                    worksheet.getRow(number+3+i).values = rowValues;
-                }
-                viewValues.push(number+2);
-                viewValues.push(number+3);
-                viewValues.push(number+4);
-                viewValues.push(number+5);
-                viewValues.push(number+6);
-                viewValues.push(number+7);
-                viewValues.forEach( number => {
-                    ['B'+number, 'C'+number, 'D'+number, 'E'+number, 'F'+number, 'G'+number, 'H'+number, 'I'+number, 'J'+number, 'K'+number, 'L'+number, 'M'+number, 'N'+number, 'O'+number  ].map(key => {
-                        worksheet.getCell(key).border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                        worksheet.getCell(key).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                        worksheet.getCell(key).font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                    });
-                    worksheet.getRow(number).height = 50;
-                    worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: false , italic: false};
-                    worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                }); 
-
-                ['A'+(number+3), 'A'+(number+4), 'A'+(number+5), 'A'+(number+6), 'A'+(number+7)].map(key => {
-                    worksheet.getRow(number).height = 70;
-                    worksheet.getCell(key).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                    worksheet.getCell(key).alignment = { vertical: 'middle', horizontal: 'left', wrapText: true  };
-                    worksheet.getCell(key).font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                });
             }else if(i === 3){
-                let number = 35;
-                let viewValues = [];
-                mainHeaders.push(number);
-                mainHeaders.push(number+1);
-                let caption4 = worksheet.getCell('B'+number);
-                caption4.value = 'у тому числі питання:';
-                worksheet.mergeCells('B'+number+':O'+number);
-
-                let subCaption4_0 = worksheet.getCell('B'+(number+1));
-                subCaption4_0.value = 'комунального господарства';
-                worksheet.mergeCells('B'+(number+1)+':C'+(number+1)); 
-                let subCaption4_1 = worksheet.getCell('D'+(number+1));
-                subCaption4_1.value = 'житлової політики';
-                worksheet.mergeCells('D'+(number+1)+':E'+(number+1)); 
-                let subCaption4_2 = worksheet.getCell('F'+(number+1));
-                subCaption4_2.value = 'екології та природних ресурсів';
-                worksheet.mergeCells('F'+(number+1)+':G'+(number+1)); 
-                let subCaption4_3 = worksheet.getCell('H'+(number+1));
-                subCaption4_3.value = 'забезпечення дотримання законності та охорони правопорядку, запобігання дискримінації';
-                worksheet.mergeCells('H'+(number+1)+':I'+(number+1)); 
-                let subCaption4_4 = worksheet.getCell('J'+(number+1));
-                subCaption4_4.value = 'сімейної та гендерної політики, захисту прав дітей';
-                worksheet.mergeCells('J'+(number+1)+':K'+(number+1)); 
-                let subCaption4_5 = worksheet.getCell('L'+(number+1));
-                subCaption4_5.value = 'праціі заробітної плати, охорони праці, промислової безпеки';
-                worksheet.mergeCells('L'+(number+1)+':M'+(number+1)); 
-                let subCaption4_6 = worksheet.getCell('N'+(number+1));
-                subCaption4_6.value = 'освіти, наукової, науково-технічної, інноваційної діяльності та інтелектуальної власності';
-                worksheet.mergeCells('N'+(number+1)+':O'+(number+1)); 
-                let captionsArr = [caption4, subCaption4_0, subCaption4_1,  subCaption4_2, subCaption4_3, subCaption4_4, subCaption4_5, subCaption4_6];               
-                captionsArr.forEach( td => {
-                    td.border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                    td.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                    td.font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                });
-
-                let years = [''];
-                for (let i = 0; i < 6; i++) {
-                    let element = data[0];
-                    yearsTemp.forEach( year => years.push(year));
+                this.rowTable2 = (this.dataArray[1].length+3 + 1);
+                let counter = this.rowTable1 >= this.rowTable2 ? this.rowTable1 : this.rowTable2;
+                mainHeaders.push(counter);
+                let cellInfoCaption3 = worksheet.getCell('D'+(counter));
+                cellInfoCaption3.value = this.rep4_title;
+                worksheet.mergeCells('D'+(counter)+':'+'E'+(counter)); 
+                tds.push('D'+counter);
+                worksheet.getCell('D'+(counter+1)).value = captionName;
+                worksheet.getCell('E'+(counter+1)).value = captionCounter;
+                tds.push('D'+(counter+1));
+                tds.push('E'+(counter+1));
+                for(let i =  counter + 2; i < (data.length + counter + 2); i++ ){
+                    let value = data[i-(2 + counter)];
+                    columnText = worksheet.getCell('D'+i);
+                    columnCounter = worksheet.getCell('E'+i);
+                    columnText.value = value[0];
+                    columnCounter.value = value[1];
+                    tds.push('D'+i);
+                    tdsCounter.push('E'+i);                   
                 }
-                worksheet.getRow(number+2).values = years;
-                for (let i = 0; i < data.length; i++) {
-                    rowNumber = number+3+i;
-                    let values = data[i];
-                    let rowValues = [];
-                    values.forEach( el => rowValues.push(el));
-                    worksheet.getRow(number+3+i).values = rowValues;
-                }
-                viewValues.push(number+2);
-                viewValues.push(number+3);
-                viewValues.push(number+4);
-                viewValues.push(number+5);
-                viewValues.push(number+6);
-                viewValues.push(number+7);
-                viewValues.forEach( number => {
-                    ['B'+number, 'C'+number, 'D'+number, 'E'+number, 'F'+number, 'G'+number, 'H'+number, 'I'+number, 'J'+number, 'K'+number, 'L'+number, 'M'+number, 'N'+number, 'O'+number  ].map(key => {
-                        worksheet.getCell(key).border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                        worksheet.getCell(key).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                        worksheet.getCell(key).font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                    });
-                    worksheet.getRow(number).height = 50;
-                    worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: false , italic: false};
-                    worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                }); 
-
-                ['A'+(number+3), 'A'+(number+4), 'A'+(number+5), 'A'+(number+6), 'A'+(number+7)].map(key => {
-                    worksheet.getRow(number).height = 70;
-                    worksheet.getCell(key).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                    worksheet.getCell(key).alignment = { vertical: 'middle', horizontal: 'left', wrapText: true  };
-                    worksheet.getCell(key).font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                });
             }else if(i === 4){
-                let number = 50;
-                let viewValues = [];
-                mainHeaders.push(number);
-                mainHeaders.push(number+1);
-                let caption4 = worksheet.getCell('B'+number);
-                caption4.value = 'у тому числі питання:';
-                worksheet.mergeCells('B'+number+':O'+number);
-
-                let subCaption4_0 = worksheet.getCell('B'+(number+1));
-                subCaption4_0.value = 'діяльність об’єднань громадян, релігії та міжконфесійних відносин';
-                worksheet.mergeCells('B'+(number+1)+':C'+(number+1)); 
-                let subCaption4_1 = worksheet.getCell('D'+(number+1));
-                subCaption4_1.value = 'діяльність центральних органів виконавчої влади';
-                worksheet.mergeCells('D'+(number+1)+':E'+(number+1)); 
-                let subCaption4_2 = worksheet.getCell('F'+(number+1));
-                subCaption4_2.value = 'діяльність місцевих органів виконавчої влади';
-                worksheet.mergeCells('F'+(number+1)+':G'+(number+1)); 
-                let subCaption4_3 = worksheet.getCell('H'+(number+1));
-                subCaption4_3.value = 'діяльність органів місцевого самоврядування';
-                worksheet.mergeCells('H'+(number+1)+':I'+(number+1)); 
-                let subCaption4_4 = worksheet.getCell('J'+(number+1));
-                subCaption4_4.value = 'державного будівництва, адміністративно-територіального устрою';
-                worksheet.mergeCells('J'+(number+1)+':K'+(number+1)); 
-                let subCaption4_5 = worksheet.getCell('L'+(number+1));
-                subCaption4_5.value = 'інші';
-                worksheet.mergeCells('L'+(number+1)+':M'+(number+1)); 
-                let subCaption4_6 = worksheet.getCell('N'+(number+1));
-                subCaption4_6.value = 'Штатна чисельність роботи підрозділу зі зверненнями громадян';
-                worksheet.mergeCells('N'+(number+1)+':O'+(number+1)); 
-                let captionsArr = [caption4, subCaption4_0, subCaption4_1,  subCaption4_2, subCaption4_3, subCaption4_4, subCaption4_5, subCaption4_6];               
-                captionsArr.forEach( td => {
-                    td.border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                    td.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                    td.font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                });
-
-                let years = [''];
-                for (let i = 0; i < 7; i++) {
-                    let element = data[0];
-                    yearsTemp.forEach( year => years.push(year));
+                let counter =  this.rowTable2 + this.rowTable1 - 1;
+                this.lastTableCounter =  counter;
+                mainHeaders.push(counter);
+                let cellInfoCaption3 = worksheet.getCell('A'+counter);
+                cellInfoCaption3.value = this.rep4_title;
+                worksheet.mergeCells('A'+counter+':'+'B'+counter);
+                tds.push('A'+counter);
+                worksheet.getCell('A'+(counter+1)).value = captionName;
+                worksheet.getCell('B'+(counter+1)).value = captionCounter;
+                tds.push('A'+(counter+1));
+                tds.push('B'+(counter+1));
+                for(let i =  counter + 2; i < (data.length + counter + 2); i++ ){
+                    let value = data[i-(2 + counter)];
+                    columnText = worksheet.getCell('A'+i);
+                    columnCounter = worksheet.getCell('B'+i);
+                    columnText.value = value[0];
+                    columnCounter.value = value[1];
+                    tds.push('A'+i);
+                    tdsCounter.push('B'+i);                     
                 }
-                worksheet.getRow(number+2).values = years;
-                for (let i = 0; i < data.length; i++) {
-                    rowNumber = number+3+i;
-                    let values = data[i];
-                    let rowValues = [];
-                    values.forEach( el => rowValues.push(el));
-                    worksheet.getRow(number+3+i).values = rowValues;
-                }
-                viewValues.push(number+2);
-                viewValues.push(number+3);
-                viewValues.push(number+4);
-                viewValues.push(number+5);
-                viewValues.push(number+6);
-                viewValues.push(number+7);
-                viewValues.forEach( number => {
-                    ['B'+number, 'C'+number, 'D'+number, 'E'+number, 'F'+number, 'G'+number, 'H'+number, 'I'+number, 'J'+number, 'K'+number, 'L'+number, 'M'+number, 'N'+number, 'O'+number  ].map(key => {
-                        worksheet.getCell(key).border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                        worksheet.getCell(key).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                        worksheet.getCell(key).font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                    });
-                    worksheet.getRow(number).height = 50;
-                    worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: false , italic: false};
-                    worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-                }); 
-
-                ['A'+(number+3), 'A'+(number+4), 'A'+(number+5), 'A'+(number+6), 'A'+(number+7)].map(key => {
-                    worksheet.getRow(number).height = 70;
-                    worksheet.getCell(key).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-                    worksheet.getCell(key).alignment = { vertical: 'middle', horizontal: 'left', wrapText: true  };
-                    worksheet.getCell(key).font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
-                });
             }
+            worksheet.columns = columnsHeader;
+
+            for(let  i = 0; i < tds.length; i++ ){
+                let td = tds[i];
+                worksheet.getCell(td).border = {
+                    top: {style:'thin'},
+                    left: {style:'thin'},
+                    bottom: {style:'thin'},
+                    right: {style:'thin'}
+                };
+                worksheet.getCell(td).alignment = { 
+                    vertical: 'middle',
+                    horizontal: 'left',
+                    wrapText: true 
+                };
+                worksheet.getCell(td).font = {
+                    name: 'Times New Roman',
+                    family: 4, size: 10,
+                    underline: false,
+                    bold: false ,
+                    italic: false
+                };
+            };
+            for(let  i = 0; i < tdsCounter.length; i++ ){
+                let td = tdsCounter[i];
+                worksheet.getCell(td).border = {
+                    top: {style:'thin'},
+                    left: {style:'thin'},
+                    bottom: {style:'thin'},
+                    right: {style:'thin'}
+                };
+                worksheet.getCell(td).alignment = { 
+                    vertical: 'middle',
+                    horizontal: 'center',
+                    wrapText: true 
+                };
+                worksheet.getCell(td).font = {
+                    name: 'Times New Roman',
+                    family: 4, size: 10,
+                    underline: false,
+                    bold: false ,
+                    italic: false
+                };
+            };
             mainHeaders.forEach( number => {
                 worksheet.getRow(number).height = 70;
                 worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
                 worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
+                worksheet.getRow(number+1).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
+                worksheet.getRow(number+1).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
             });
         }
-        worksheet.getRow(1).height = 70;
-        worksheet.getRow(21).height = 100;
-        worksheet.getRow(10).height = 150;
-        worksheet.getRow(36).height = 150;
-        worksheet.getRow(51).height = 150;
+        if(this.lastTableCounter){
+            
+            worksheet.getCell('D'+this.lastTableCounter+1).value = ' 123';
+            worksheet.getCell('E'+this.lastTableCounter+1).value = ' 213';
+        }
         this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
-    },
-    changeDateTimeValues: function(value){
-        let date = new Date(value);
-        let dd = date.getDate();
-        let MM = date.getMonth();
-        let yyyy = date.getFullYear();
-        let HH = date.getUTCHours()
-        let mm = date.getMinutes();
-        if( (dd.toString()).length === 1){  dd = '0' + dd; }
-        if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
-        if( (HH.toString()).length === 1){  HH = '0' + HH; }
-        if( (mm.toString()).length === 1){ mm = '0' + mm; }
-        let trueDate = dd+'.'+MM+'.' + yyyy;
-        return trueDate;
-    },         
+    },     
 	createElement: function(tag, props, ...children) {
         const element = document.createElement(tag);
         Object.keys(props).forEach( key => element[key] = props[key] );
@@ -513,7 +332,6 @@
     destroy: function(){
         this.sub.unsubscribe();
         this.sub1.unsubscribe();
-        this.sub2.unsubscribe();
     },
 };
 }());

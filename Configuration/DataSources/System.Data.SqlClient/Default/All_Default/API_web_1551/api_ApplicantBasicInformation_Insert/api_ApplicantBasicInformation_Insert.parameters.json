@@ -1,26 +1,11 @@
 [
   {
-    "Code": "@inn",
-    "Name": "inn",
-    "ParameterType": "Integer"
+    "Code": "@fathername",
+    "Name": "fathername"
   },
   {
-    "Code": "@applicantprivilage_id",
-    "Name": "applicantprivilage_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@birthdate",
-    "Name": "birthdate",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@surname",
-    "Name": "surname"
-  },
-  {
-    "Code": "@firstname",
-    "Name": "firstname"
+    "Code": "@sex",
+    "Name": "sex"
   },
   {
     "Code": "@socialstate_id",
@@ -28,11 +13,26 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@sex",
-    "Name": "sex"
+    "Code": "@inn",
+    "Name": "inn",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@fathername",
-    "Name": "fathername"
+    "Code": "@surname",
+    "Name": "surname"
+  },
+  {
+    "Code": "@birthdate",
+    "Name": "birthdate",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@applicantprivilage_id",
+    "Name": "applicantprivilage_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@firstname",
+    "Name": "firstname"
   }
 ]

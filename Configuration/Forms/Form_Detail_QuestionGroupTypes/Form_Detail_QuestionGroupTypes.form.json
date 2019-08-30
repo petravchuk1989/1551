@@ -6,7 +6,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Add_information.fieldgroup.json"
+      "string:FieldGroups\\Add_information.fieldgroup.json"
     ],
     "DefaultFields": [
       {

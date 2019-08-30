@@ -6,13 +6,8 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@org_id",
-      "Name": "org_id",
-      "ParameterType": "Integer"
-    },
-    {
-      "Code": "@conn_type_id",
-      "Name": "conn_type_id",
+      "Code": "@object_id",
+      "Name": "object_id",
       "ParameterType": "Integer"
     },
     {
@@ -22,8 +17,13 @@
       "IsPrimaryKey": true
     },
     {
-      "Code": "@object_id",
-      "Name": "object_id",
+      "Code": "@conn_type_id",
+      "Name": "conn_type_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@org_id",
+      "Name": "org_id",
       "ParameterType": "Integer"
     }
   ]

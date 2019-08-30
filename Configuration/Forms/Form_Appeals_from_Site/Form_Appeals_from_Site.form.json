@@ -3,18 +3,18 @@
   "Code": "Form_Appeals_from_Site",
   "Name": "Звернення з сайту",
   "Details": [
-    "json:Details\\Site_Appeal_Files.detail.json",
-    "json:Details\\Site_Applicant.detail.json",
-    "json:Details\\Detail_QuestionReestration_Site.detail.json"
+    "string:Details\\Site_Appeal_Files.detail.json",
+    "string:Details\\Detail_QuestionReestration_Site.detail.json",
+    "string:Details\\Site_Applicant.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Group_App_site.fieldgroup.json",
-      "json:FieldGroups\\Appeal.fieldgroup.json",
-      "json:FieldGroups\\Appeal_Question.fieldgroup.json",
-      "json:FieldGroups\\bad_Appeal.fieldgroup.json",
-      "json:FieldGroups\\Group2.fieldgroup.json",
-      "json:FieldGroups\\Group_PreviewApplicant.fieldgroup.json"
+      "string:FieldGroups\\Group_App_site.fieldgroup.json",
+      "string:FieldGroups\\Appeal.fieldgroup.json",
+      "string:FieldGroups\\Appeal_Question.fieldgroup.json",
+      "string:FieldGroups\\bad_Appeal.fieldgroup.json",
+      "string:FieldGroups\\Group2.fieldgroup.json",
+      "string:FieldGroups\\Group_PreviewApplicant.fieldgroup.json"
     ],
     "DefaultFields": [],
     "Script": "string:Form_Appeals_from_Site.form.js"

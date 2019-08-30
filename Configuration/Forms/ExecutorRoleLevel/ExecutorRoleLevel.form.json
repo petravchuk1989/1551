@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\ExecutorRoleLevel.fieldgroup.json"
+      "string:FieldGroups\\ExecutorRoleLevel.fieldgroup.json"
     ],
     "DefaultFields": []
   }

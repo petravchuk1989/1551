@@ -6,6 +6,12 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
+      "Code": "@AppealId",
+      "Name": "AppealId",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    },
+    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
@@ -16,12 +22,6 @@
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
       "IsPageOffsetRows": true
-    },
-    {
-      "Code": "@AppealId",
-      "Name": "AppealId",
-      "ParameterType": "Integer",
-      "IsPrimaryKey": true
     }
   ]
 }

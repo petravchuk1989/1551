@@ -32,6 +32,12 @@
   ],
   "Parameters": [
     {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
       "Code": "@question_id",
       "Name": "question_id",
       "ParameterType": "Integer"
@@ -41,12 +47,6 @@
       "Name": "Global_Org",
       "ParameterType": "Integer",
       "RightsFilterQueryCode": "glodal_Organizations"
-    },
-    {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
     },
     {
       "Code": "@pageLimitRows",

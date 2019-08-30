@@ -1,7 +1,7 @@
 {
     "ModelType": "Connection",
     "Code": "Default",
-    "Name": "Подключение по-умолчанию2",
+    "Name": "Подключение по-умолчанию",
     "ProviderCode": "System.Data.SqlClient",
-    "ConnectionString": "222"
+    "ConnectionString": "Alex"
 }

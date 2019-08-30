@@ -30,6 +30,7 @@ BEGIN
     				   --,[execution_date]= @execution_date  
     				   ,[edit_date]= getutcdate()
     				   ,[user_edit_id]= @user_edit_id
+    				   ,LogUpdated_Query = N'cx_Appeal_Questions_Update_ROW33'
     		WHERE Id= @assigment
     	
     		update dbo.AssignmentConsiderations

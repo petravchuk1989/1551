@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\QuestionType_Detail.fieldgroup.json"
+      "string:FieldGroups\\QuestionType_Detail.fieldgroup.json"
     ],
     "DefaultFields": [
       {
