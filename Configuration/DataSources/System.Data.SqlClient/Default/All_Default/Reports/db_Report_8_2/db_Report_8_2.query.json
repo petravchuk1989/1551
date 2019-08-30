@@ -26,6 +26,11 @@
   ],
   "Parameters": [
     {
+      "Code": "@dateFrom",
+      "Name": "dateFrom",
+      "ParameterType": "DateTime"
+    },
+    {
       "Code": "@typeId",
       "Name": "typeId",
       "ParameterType": "Integer"
@@ -33,11 +38,6 @@
     {
       "Code": "@dateTo",
       "Name": "dateTo",
-      "ParameterType": "DateTime"
-    },
-    {
-      "Code": "@dateFrom",
-      "Name": "dateFrom",
       "ParameterType": "DateTime"
     }
   ]

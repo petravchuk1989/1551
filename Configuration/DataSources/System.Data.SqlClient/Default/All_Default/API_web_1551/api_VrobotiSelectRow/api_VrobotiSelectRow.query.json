@@ -6,15 +6,15 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@ApplicantFromSiteId",
-      "Name": "ApplicantFromSiteId",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@ApplicantFromSiteId",
+      "Name": "ApplicantFromSiteId",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@pageOffsetRows",

@@ -1,13 +1,8 @@
 [
   {
-    "Code": "@Id",
-    "Name": "Id",
-    "ParameterType": "Integer",
-    "IsPrimaryKey": true
-  },
-  {
-    "Code": "@n_full_name",
-    "Name": "n_full_name"
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserFullName"
   },
   {
     "Code": "@n_sex",
@@ -15,9 +10,20 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@user_edit_id",
-    "Name": "user_edit_id",
-    "ParameterType": "CurrentUserFullName"
+    "Code": "@n_social_state_id",
+    "Name": "n_social_state_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@n_applicant_category_id",
+    "Name": "n_applicant_category_id",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@n_applicant_type_id",
@@ -25,22 +31,16 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@n_phone_number",
-    "Name": "n_phone_number"
+    "Code": "@n_full_name",
+    "Name": "n_full_name"
   },
   {
-    "Code": "@user_id",
-    "Name": "user_id",
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
     "ParameterType": "CurrentUserFullName"
   },
   {
-    "Code": "@n_social_state_id",
-    "Name": "n_social_state_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@n_applicant_category_id",
-    "Name": "n_applicant_category_id",
-    "ParameterType": "Integer"
+    "Code": "@n_phone_number",
+    "Name": "n_phone_number"
   }
 ]

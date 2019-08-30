@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Group_Obj_Organ.fieldgroup.json"
+      "string:FieldGroups\\Group_Obj_Organ.fieldgroup.json"
     ],
     "DefaultFields": [
       {

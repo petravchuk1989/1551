@@ -17,8 +17,9 @@ update #temp_OUT set history_id_old = (select top 1 Id from [dbo].[Question_Hist
 
 
 
-SELECT [Question_History].[Id]
-	  ,[Question_History].[Log_Date]
+SELECT 
+      [Question_History].[Id],
+	  [Question_History].[Log_Date]
       ,isnull(LastName, N'')+N' '+isnull([FirstName], N'')+N' '+isnull([Patronymic], N'') as [Log_User_FIO]
 	  ,case when [Question_History].[Log_Activity] = N'INSERT' then N'Створення'
 			when [Question_History].[Log_Activity] = N'UPDATE' then N'Редагування'

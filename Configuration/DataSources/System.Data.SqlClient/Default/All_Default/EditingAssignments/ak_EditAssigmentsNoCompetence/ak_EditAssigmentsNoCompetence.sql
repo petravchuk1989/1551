@@ -46,7 +46,8 @@
 	  [AssignmentResultsId]=@result_Id,
 	  [AssignmentResolutionsId]=@resolution_Id,
 	  [edit_date]=GETUTCDATE(),
-      [user_edit_id]=@user_id
+      [user_edit_id]=@user_id,
+      [LogUpdated_Query] = N'ak_EditAssigmentsNoCompetence_ROW50'
   where Id=@Id
 
   update [AssignmentConsiderations]

@@ -36,6 +36,7 @@ begin
 	 update Assignments 
 	 set assignment_state_id = 3 --OnCheck
 		,user_edit_id = @user_id
+		,[LogUpdated_Query] = N'ak_CloseEvent_ROW39'
 		,edit_date = GETUTCDATE()
 		,AssignmentResultsId = 4 -- Done
 		,AssignmentResolutionsId = null	 where Id in (select Id from Assignments 

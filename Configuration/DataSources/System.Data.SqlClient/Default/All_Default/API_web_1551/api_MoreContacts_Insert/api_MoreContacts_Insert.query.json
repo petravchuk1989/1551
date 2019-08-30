@@ -6,17 +6,17 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
+      "Code": "@applicant_id",
+      "Name": "applicant_id",
+      "ParameterType": "Integer"
+    },
+    {
       "Code": "@mail",
       "Name": "mail"
     },
     {
       "Code": "@phonenumber",
       "Name": "phonenumber"
-    },
-    {
-      "Code": "@applicant_id",
-      "Name": "applicant_id",
-      "ParameterType": "Integer"
     },
     {
       "Code": "@сontacttype_id",

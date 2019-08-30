@@ -1,7 +1,7 @@
 [
   {
-    "Code": "@grade",
-    "Name": "grade",
+    "Code": "@Id",
+    "Name": "Id",
     "ParameterType": "Integer"
   },
   {
@@ -10,32 +10,32 @@
     "ParameterType": "Integer"
   },
   {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
     "Code": "@rework_counter",
     "Name": "rework_counter",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@user_id",
-    "Name": "user_id",
-    "ParameterType": "CurrentUserId"
+    "Code": "@grade",
+    "Name": "grade",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@control_comment",
     "Name": "control_comment"
   },
   {
-    "Code": "@Id",
-    "Name": "Id",
+    "Code": "@organization_id",
+    "Name": "organization_id",
     "ParameterType": "Integer"
   },
   {
     "Code": "@control_result_id",
     "Name": "control_result_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@organization_id",
-    "Name": "organization_id",
     "ParameterType": "Integer"
   }
 ]

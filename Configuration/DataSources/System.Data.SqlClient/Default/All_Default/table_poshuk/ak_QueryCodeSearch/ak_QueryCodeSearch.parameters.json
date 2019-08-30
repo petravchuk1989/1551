@@ -1,33 +1,7 @@
 [
   {
-    "Code": "@pageOffsetRows",
-    "Name": "pageOffsetRows",
-    "ParameterType": "Integer",
-    "IsPageOffsetRows": true
-  },
-  {
-    "Code": "@state_changed_date_done_from",
-    "Name": "state_changed_date_done_from",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@state_changed_date_done_to",
-    "Name": "state_changed_date_done_to",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@assigm_executor_organization",
-    "Name": "assigm_executor_organization",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@registration_date_from",
-    "Name": "registration_date_from",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@transfer_date_from",
-    "Name": "transfer_date_from",
+    "Code": "@registration_date_to",
+    "Name": "registration_date_to",
     "ParameterType": "DateTime"
   },
   {
@@ -37,8 +11,18 @@
     "IsPageLimitRows": true
   },
   {
-    "Code": "@state_changed_date_to",
-    "Name": "state_changed_date_to",
+    "Code": "@assigm_executor_organization",
+    "Name": "assigm_executor_organization",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@execution_term_from",
+    "Name": "execution_term_from",
     "ParameterType": "DateTime"
   },
   {
@@ -47,13 +31,17 @@
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@execution_term_from",
-    "Name": "execution_term_from",
+    "Code": "@param1",
+    "Name": "param1"
+  },
+  {
+    "Code": "@state_changed_date_done_from",
+    "Name": "state_changed_date_done_from",
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@state_changed_date_from",
-    "Name": "state_changed_date_from",
+    "Code": "@registration_date_from",
+    "Name": "registration_date_from",
     "ParameterType": "DateTime"
   },
   {
@@ -62,17 +50,29 @@
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@user_id",
-    "Name": "user_id",
-    "ParameterType": "CurrentUserId"
+    "Code": "@pageOffsetRows",
+    "Name": "pageOffsetRows",
+    "ParameterType": "Integer",
+    "IsPageOffsetRows": true
   },
   {
-    "Code": "@registration_date_to",
-    "Name": "registration_date_to",
+    "Code": "@state_changed_date_to",
+    "Name": "state_changed_date_to",
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@param1",
-    "Name": "param1"
+    "Code": "@state_changed_date_done_to",
+    "Name": "state_changed_date_done_to",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@transfer_date_from",
+    "Name": "transfer_date_from",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@state_changed_date_from",
+    "Name": "state_changed_date_from",
+    "ParameterType": "DateTime"
   }
 ]

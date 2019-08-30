@@ -1,33 +1,18 @@
 [
   {
-    "Code": "@Attention_term_hours",
-    "Name": "Attention_term_hours",
+    "Code": "@active",
+    "Name": "active",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@execution_term",
+    "Name": "execution_term",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@question_type_id",
-    "Name": "question_type_id",
+    "Code": "@parent_organization_is",
+    "Name": "parent_organization_is",
     "ParameterType": "Integer"
-  },
-  {
-    "Code": "@blag",
-    "Name": "blag",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@Organization_is",
-    "Name": "Organization_is",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@zhkg",
-    "Name": "zhkg",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@zhytraion",
-    "Name": "zhytraion",
-    "ParameterType": "Boolean"
   },
   {
     "Code": "@Id",
@@ -36,9 +21,48 @@
     "IsPrimaryKey": true
   },
   {
+    "Code": "@index",
+    "Name": "index"
+  },
+  {
     "Code": "@Object_is",
     "Name": "Object_is",
     "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@rule_id",
+    "Name": "rule_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@emergency",
+    "Name": "emergency",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@blag",
+    "Name": "blag",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@zhytraion",
+    "Name": "zhytraion",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@Organization_is",
+    "Name": "Organization_is",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@Attention_term_hours",
+    "Name": "Attention_term_hours",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@question_type_id",
+    "Name": "question_type_id",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@user_edit_id",
@@ -50,36 +74,12 @@
     "Name": "comments"
   },
   {
-    "Code": "@execution_term",
-    "Name": "execution_term",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@index",
-    "Name": "index"
-  },
-  {
-    "Code": "@emergency",
-    "Name": "emergency",
-    "ParameterType": "Boolean"
-  },
-  {
     "Code": "@name",
     "Name": "name"
   },
   {
-    "Code": "@parent_organization_is",
-    "Name": "parent_organization_is",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@rule_id",
-    "Name": "rule_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@active",
-    "Name": "active",
+    "Code": "@zhkg",
+    "Name": "zhkg",
     "ParameterType": "Boolean"
   }
 ]

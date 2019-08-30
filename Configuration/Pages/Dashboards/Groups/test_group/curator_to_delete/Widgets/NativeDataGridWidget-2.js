@@ -213,6 +213,7 @@
         let column_adress = { name: 'adress', index: 4 };
         this.indexArr = [ column_registration_number, column_zayavnyk, column_QuestionType, column_vykonavets, column_adress];
         
+        
         const workbook = this.createExcel();
         const worksheet = workbook.addWorksheet('«Заявки2018', {
             pageSetup:{
@@ -329,7 +330,7 @@
             }
             worksheet.addRow(row);
         });
-        
+        // rows styles
         for(let  i = 0; i < rows.length + 1; i++ ){
             let number = i + 5 ;
             var row = worksheet.getRow(number);

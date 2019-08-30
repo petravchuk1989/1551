@@ -34,16 +34,16 @@
       "IsPageOffsetRows": true
     },
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
-      "ParameterType": "Integer",
-      "IsPageLimitRows": true
-    },
-    {
       "Code": "@Id",
       "Name": "Id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
     }
   ]
 }

@@ -26,7 +26,7 @@
                         height: 150,
                         columns: [
                             {
-                                caption: 'previousYear',
+                                caption: 'previoustYear',
                                 dataField: 'prevAll',
                                 alignment: 'center',
                                 
@@ -51,7 +51,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previousYear',
+                                caption: 'previoustYear',
                                 dataField: 'prevAgr',
                                 alignment: 'center',
                                 wordWrapEnabled: true,
@@ -75,7 +75,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previousYear',
+                                caption: 'previoustYear',
                                 dataField: 'prevTrans',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -97,7 +97,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previousYear',
+                                caption: 'previoustYear',
                                 dataField: 'prevFinance',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -119,7 +119,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previousYear',
+                                caption: 'previoustYear',
                                 dataField: 'prevSocial',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -141,7 +141,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previousYear',
+                                caption: 'previoustYear',
                                 dataField: 'prevWork',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -163,7 +163,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previousYear',
+                                caption: 'previoustYear',
                                 dataField: 'prevHealth',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -192,18 +192,17 @@
 		let date = new Date();
         let yyyy = date.getFullYear();
 	    this.currentYear = yyyy
-        this.previousYear = yyyy - 1;
+        this.previoustYear = yyyy - 1;
         this.sub =  this.messageService.subscribe( 'GlobalFilterChanged', this.getFilterParams, this );
         this.config.onContentReady = this.afterRenderTable.bind(this);
         this.dataGridInstance.onContentReady = this.onContentReady(); 
     },   
     afterLoadDataHandler: function(data) {
-        this.messageService.publish( {name: 'setData', rep3_data: data} );
         this.render(this.onContentReady());
     },
 	onContentReady: function(){
 		this.config.columns[1].columns.forEach( el => {
-			el.columns[0].caption = this.previousYear;
+			el.columns[0].caption = this.previoustYear;
 			el.columns[1].caption = this.currentYear;
 		});
 	},    
@@ -237,18 +236,20 @@
                 this.dateFrom =  period.dateFrom;
                 this.dateTo = period.dateTo;
                 
-        	    this.previousYear = this.changeDateTimeValues(this.dateFrom);
+        	    this.previoustYear = this.changeDateTimeValues(this.dateFrom);
         	    this.currentYear = this.changeDateTimeValues(this.dateTo);
         	    
-        	    if( this.previousYear === this.currentYear){
+        	    if( this.previoustYear === this.currentYear){
         	        
-        	        this.previousYear -= 1;
+        	        this.previoustYear -= 1;
                     this.config.query.parameterValues = [ 
                         {key: '@dateFrom' , value: this.dateFrom },  
                         {key: '@dateTo', value: this.dateTo },  
                     
                     ];
                     this.loadData(this.afterLoadDataHandler);
+        	    }else{
+        	       // alert('оберIть правильну дату');
         	    }
 	        }
 	    }

@@ -21,15 +21,15 @@
   ],
   "Parameters": [
     {
-      "Code": "@street",
-      "Name": "street",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@street",
+      "Name": "street",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@pageOffsetRows",

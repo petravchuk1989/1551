@@ -46,15 +46,15 @@
       "IsPageOffsetRows": true
     },
     {
+      "Code": "@event_id",
+      "Name": "event_id",
+      "ParameterType": "Integer"
+    },
+    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
-    },
-    {
-      "Code": "@event_id",
-      "Name": "event_id",
-      "ParameterType": "Integer"
     }
   ]
 }

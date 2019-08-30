@@ -1,25 +1,12 @@
 [
   {
-    "Code": "@phone_for_information",
-    "Name": "phone_for_information"
+    "Code": "@planned_end_date",
+    "Name": "planned_end_date",
+    "ParameterType": "DateTime"
   },
   {
-    "Code": "@claim_type",
-    "Name": "claim_type"
-  },
-  {
-    "Code": "@audio_on",
-    "Name": "audio_on",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@say_organization_id",
-    "Name": "say_organization_id",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@fact_end_date",
-    "Name": "fact_end_date",
+    "Code": "@start_date",
+    "Name": "start_date",
     "ParameterType": "DateTime"
   },
   {
@@ -27,33 +14,9 @@
     "Name": "claim_state"
   },
   {
-    "Code": "@audio_start_date",
-    "Name": "audio_start_date",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@standart_audio",
-    "Name": "standart_audio",
+    "Code": "@say_organization_id",
+    "Name": "say_organization_id",
     "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@planned_end_date",
-    "Name": "planned_end_date",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@say_plan_end_date",
-    "Name": "say_plan_end_date",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@audio_end_date",
-    "Name": "audio_end_date",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@comment_executor",
-    "Name": "comment_executor"
   },
   {
     "Code": "@say_phone_for_information",
@@ -61,17 +24,13 @@
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@global",
-    "Name": "global",
-    "ParameterType": "Boolean"
+    "Code": "@claim_number",
+    "Name": "claim_number"
   },
   {
-    "Code": "@claim_content",
-    "Name": "claim_content"
-  },
-  {
-    "Code": "@executor",
-    "Name": "executor"
+    "Code": "@audio_end_date",
+    "Name": "audio_end_date",
+    "ParameterType": "DateTime"
   },
   {
     "Code": "@main_object_id",
@@ -79,13 +38,13 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@say_liveAddress_id",
-    "Name": "say_liveAddress_id",
-    "ParameterType": "Boolean"
+    "Code": "@phone_for_information",
+    "Name": "phone_for_information"
   },
   {
-    "Code": "@claim_number",
-    "Name": "claim_number"
+    "Code": "@say_plan_end_date",
+    "Name": "say_plan_end_date",
+    "ParameterType": "Boolean"
   },
   {
     "Code": "@Id",
@@ -94,8 +53,49 @@
     "IsPrimaryKey": true
   },
   {
-    "Code": "@start_date",
-    "Name": "start_date",
+    "Code": "@global",
+    "Name": "global",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@standart_audio",
+    "Name": "standart_audio",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@claim_content",
+    "Name": "claim_content"
+  },
+  {
+    "Code": "@say_liveAddress_id",
+    "Name": "say_liveAddress_id",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@audio_on",
+    "Name": "audio_on",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@claim_type",
+    "Name": "claim_type"
+  },
+  {
+    "Code": "@comment_executor",
+    "Name": "comment_executor"
+  },
+  {
+    "Code": "@fact_end_date",
+    "Name": "fact_end_date",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@executor",
+    "Name": "executor"
+  },
+  {
+    "Code": "@audio_start_date",
+    "Name": "audio_start_date",
     "ParameterType": "DateTime"
   }
 ]
