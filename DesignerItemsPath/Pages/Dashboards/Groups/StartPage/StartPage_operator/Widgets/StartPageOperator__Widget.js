@@ -1,19 +1,45 @@
 (function () {
   return {
-    // title: '',
-    // hint: '',
-    // formatTitle: function() {},
     customConfig:
+                `               
+                    <div id='container'></div>  
                 `
-              <style>
-                  
-              </style>
-                
-              <div id='container'></div>  
-                
-                `
-  ,
-  afterViewInit: function() {
+    ,
+    init: function() {
+        let executeQuery = {
+            queryCode: 'GetReceiptSources',
+            limit: -1,
+            parameterValues: []
+            };
+        this.queryExecutor(executeQuery, this.load, this);
+        this.showPreloader = false;
+    },
+    showTypesList: function(data) {
+        const CONTAINER = document.getElementById('container');
+        const modalBtnTrue =  this.createElement('button', { id:'modalBtnTrue', className: 'btn', innerText: 'Закрити'});
+        const modalBtnWrapper =  this.createElement('div', { id:'modalBtnWrapper' }, modalBtnTrue);
+        const listItems =  this.createElement('div', { id:'listItems' });
+        data.rows.forEach( el => {
+            let listItem = this.createElement('div', { className: 'listItem', innerText: el.values[1], type: el.values[0]  });
+            listItems.appendChild( listItem );
+
+            listItem.addEventListener( 'click', event => {
+                let target = event.currentTarget;
+                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone=0000000000&type="+target.type);
+            });
+        });
+
+        const listTitle  =  this.createElement('div', { id:'listTitle', innerText: 'Виберіть тип звернення:' } );
+        const listWrapper =  this.createElement('div', { id:'listWrapper' }, listTitle, listItems );
+        const modalWindow = this.createElement('div', { id:'modalWindow', className: 'modalWindow'}, listWrapper, modalBtnWrapper); 
+        const modalWindowWrapper = this.createElement('div', { id:'modalWindowWrapper', className: 'modalWindowWrapper'}, modalWindow); 
+        CONTAINER.appendChild(modalWindowWrapper);
+        modalBtnTrue.addEventListener( 'click', event => {
+            let target = event.currentTarget;
+            CONTAINER.removeChild(container.lastElementChild);
+        });
+    },
+    load: function(data) {
       const CONTAINER = document.getElementById('container');
       let title = this.createElement('div', { className: 'header-label', innerText: 'КБУ "Контактний центр міста Києва 1551"'});
 
@@ -74,14 +100,14 @@
       let groupLetter__borderRight = this.createElement('div', { className: "border-right"});
       let groupLetter = this.createElement('div', { className: "group", tabindex: '0' }, groupLetter__icon, groupLetter__description, groupLetter__borderBottom, groupLetter__borderRight );
       groupLetter.addEventListener('click',  event => { 
-          /* window.open(location.origin + localStorage.getItem('VirtualPath')+'/dashboard/page/.......................'); */
+          this.showTypesList(data);
       });
       
       let groupsWrapper = this.createElement('div', { className: 'group-btns' }, groupRegByPhone, groupViewAppeals, groupRegAppeals, groupSearchTable, groupCall, groupLetter );
       CONTAINER.appendChild(title);
       CONTAINER.appendChild(groupsWrapper);
-  },
-  createElement: function(tag, props, ...children) {
+    },
+    createElement: function(tag, props, ...children) {
       const element = document.createElement(tag);
       Object.keys(props).forEach( key => element[key] = props[key] );
       if(children.length > 0){
@@ -89,8 +115,8 @@
               element.appendChild(child);
           });
       } return element;
-  },
-  showModalWindow: function(message) {
+    },
+    showModalWindow: function(message) {
       let CONTAINER = document.getElementById('container');
       
       const modalBtnClose =  this.createElement('button', { id:'modalBtnClose', className: 'btn', innerText: 'Закрити'});
@@ -112,6 +138,6 @@
           let target = event.currentTarget;
           CONTAINER.removeChild(container.lastElementChild);
       });
-  }, 
+    }, 
 };
 }());

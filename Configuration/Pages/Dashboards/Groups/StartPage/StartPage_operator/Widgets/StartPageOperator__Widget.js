@@ -5,7 +5,41 @@
                     <div id='container'></div>  
                 `
     ,
-    afterViewInit: function() {
+    init: function() {
+        let executeQuery = {
+            queryCode: 'GetReceiptSources',
+            limit: -1,
+            parameterValues: []
+            };
+        this.queryExecutor(executeQuery, this.load, this);
+        this.showPreloader = false;
+    },
+    showTypesList: function(data) {
+        const CONTAINER = document.getElementById('container');
+        const modalBtnTrue =  this.createElement('button', { id:'modalBtnTrue', className: 'btn', innerText: 'Закрити'});
+        const modalBtnWrapper =  this.createElement('div', { id:'modalBtnWrapper' }, modalBtnTrue);
+        const listItems =  this.createElement('div', { id:'listItems' });
+        data.rows.forEach( el => {
+            let listItem = this.createElement('div', { className: 'listItem', innerText: el.values[1], type: el.values[0]  });
+            listItems.appendChild( listItem );
+
+            listItem.addEventListener( 'click', event => {
+                let target = event.currentTarget;
+                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone=0000000000&type="+target.type);
+            });
+        });
+
+        const listTitle  =  this.createElement('div', { id:'listTitle', innerText: 'Виберіть тип звернення:' } );
+        const listWrapper =  this.createElement('div', { id:'listWrapper' }, listTitle, listItems );
+        const modalWindow = this.createElement('div', { id:'modalWindow', className: 'modalWindow'}, listWrapper, modalBtnWrapper); 
+        const modalWindowWrapper = this.createElement('div', { id:'modalWindowWrapper', className: 'modalWindowWrapper'}, modalWindow); 
+        CONTAINER.appendChild(modalWindowWrapper);
+        modalBtnTrue.addEventListener( 'click', event => {
+            let target = event.currentTarget;
+            CONTAINER.removeChild(container.lastElementChild);
+        });
+    },
+    load: function(data) {
       const CONTAINER = document.getElementById('container');
       let title = this.createElement('div', { className: 'header-label', innerText: 'КБУ "Контактний центр міста Києва 1551"'});
 
@@ -26,7 +60,7 @@
       let groupViewAppeals__borderRight = this.createElement('div', { className: "border-right"});
       let groupViewAppeals = this.createElement('div', { className: "group", tabindex: '0' }, groupViewAppeals__icon, groupViewAppeals__description, groupViewAppeals__borderBottom, groupViewAppeals__borderRight );
       groupViewAppeals.addEventListener('click',  event => { 
-          window.open(location.origin + localStorage.getItem('VirtualPath')+'/dashboard/page/Appeals_from_Site');
+          window.open(location.origin + localStorage.getItem('VirtualPath')+'/sections/Appeals');
       });
       
       let groupRegAppeals__icon = this.createElement('div', { className: "icon letterIcon material-icons",  innerText: 'desktop_windows' });
@@ -36,7 +70,7 @@
       let groupRegAppeals__borderRight = this.createElement('div', { className: "border-right"});
       let groupRegAppeals = this.createElement('div', { className: "group", tabindex: '0' }, groupRegAppeals__icon, groupRegAppeals__description, groupRegAppeals__borderBottom, groupRegAppeals__borderRight );
       groupRegAppeals.addEventListener('click',  event => { 
-          window.open(location.origin + localStorage.getItem('VirtualPath')+'/dashboard/page/referrals_from_the_site');
+          window.open(location.origin + localStorage.getItem('VirtualPath')+'/sections/Appeals_from_Site');
       });
 
       let groupSearchTable__icon = this.createElement('div', { className: "icon letterIcon material-icons",  innerText: 'find_in_page' });
@@ -66,7 +100,7 @@
       let groupLetter__borderRight = this.createElement('div', { className: "border-right"});
       let groupLetter = this.createElement('div', { className: "group", tabindex: '0' }, groupLetter__icon, groupLetter__description, groupLetter__borderBottom, groupLetter__borderRight );
       groupLetter.addEventListener('click',  event => { 
-          /* window.open(location.origin + localStorage.getItem('VirtualPath')+'/dashboard/page/.......................'); */
+          this.showTypesList(data);
       });
       
       let groupsWrapper = this.createElement('div', { className: 'group-btns' }, groupRegByPhone, groupViewAppeals, groupRegAppeals, groupSearchTable, groupCall, groupLetter );
