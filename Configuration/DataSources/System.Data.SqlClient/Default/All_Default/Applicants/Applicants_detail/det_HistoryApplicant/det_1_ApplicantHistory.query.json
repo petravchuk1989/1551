@@ -1,0 +1,55 @@
+{
+    "ModelType": "Query",
+    "Code": "det_1_ApplicantHistory",
+    "Name": "det_1_ApplicantHistory",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Columns": [
+      {
+        "Code": "when_changed",
+        "Name": "Дата операції",
+        "Position": 1,
+        "IsPrintable": false
+      },
+      {
+        "Code": "editor",
+        "Name": "Виконав",
+        "Position": 2,
+        "IsPrintable": false
+      },
+      {
+        "Code": "operation",
+        "Name": "Опис",
+        "Position": 3,
+        "IsPrintable": false
+      },
+      {
+        "Code": "Id",
+        "Name": "Id",
+        "Position": 4,
+        "IsPrintable": false,
+        "IsPrimaryKey": true,
+        "ViewState": "Hidden"
+      }
+    ],
+    "Parameters": [
+      {
+        "Code": "@pageOffsetRows",
+        "Name": "pageOffsetRows",
+        "ParameterType": "Integer",
+        "IsPageOffsetRows": true
+      },
+      {
+        "Code": "@pageLimitRows",
+        "Name": "pageLimitRows",
+        "ParameterType": "Integer",
+        "IsPageLimitRows": true
+      },
+      {
+        "Code": "@applicant_id",
+        "Name": "applicant_id",
+        "ParameterType": "Integer",
+        "IsPrimaryKey": false
+      }
+    ]
+  }
