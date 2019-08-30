@@ -1,22 +1,17 @@
 [
   {
-    "Code": "@object_name",
-    "Name": "object_name"
+    "Code": "@street_id",
+    "Name": "street_id",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@Id",
-    "Name": "Id",
-    "ParameterType": "Integer",
-    "IsPrimaryKey": true
+    "Code": "@district_id",
+    "Name": "district_id",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@builbing_id",
     "Name": "builbing_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@street_id",
-    "Name": "street_id",
     "ParameterType": "Integer"
   },
   {
@@ -25,13 +20,18 @@
     "ParameterType": "Integer"
   },
   {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
     "Code": "@is_active",
     "Name": "is_active",
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@district_id",
-    "Name": "district_id",
-    "ParameterType": "Integer"
+    "Code": "@object_name",
+    "Name": "object_name"
   }
 ]

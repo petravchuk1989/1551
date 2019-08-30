@@ -6,13 +6,13 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@Enter_number",
-      "Name": "Enter_number"
-    },
-    {
       "Code": "@AppealId",
       "Name": "AppealId",
       "ParameterType": "Integer"
+    },
+    {
+      "Code": "@Enter_number",
+      "Name": "Enter_number"
     }
   ]
 }

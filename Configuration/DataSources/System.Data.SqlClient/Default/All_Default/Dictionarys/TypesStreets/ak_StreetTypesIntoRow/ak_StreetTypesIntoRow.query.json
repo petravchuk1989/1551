@@ -6,12 +6,12 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@shortname",
-      "Name": "shortname"
-    },
-    {
       "Code": "@name",
       "Name": "name"
+    },
+    {
+      "Code": "@shortname",
+      "Name": "shortname"
     }
   ]
 }

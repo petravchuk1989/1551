@@ -1,34 +1,12 @@
 [
   {
-    "Code": "@registration_date_to",
-    "Name": "registration_date_to",
-    "ParameterType": "DateTime"
-  },
-  {
     "Code": "@transfer_date_from",
     "Name": "transfer_date_from",
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@user_id",
-    "Name": "user_id",
-    "ParameterType": "CurrentUserId"
-  },
-  {
-    "Code": "@state_changed_date_done_to",
-    "Name": "state_changed_date_done_to",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@pageOffsetRows",
-    "Name": "pageOffsetRows",
-    "ParameterType": "Integer",
-    "IsPageOffsetRows": true
-  },
-  {
-    "Code": "@registration_date_from",
-    "Name": "registration_date_from",
-    "ParameterType": "DateTime"
+    "Code": "@param1",
+    "Name": "param1"
   },
   {
     "Code": "@pageLimitRows",
@@ -37,12 +15,13 @@
     "IsPageLimitRows": true
   },
   {
-    "Code": "@param1",
-    "Name": "param1"
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
   },
   {
-    "Code": "@execution_term_from",
-    "Name": "execution_term_from",
+    "Code": "@registration_date_to",
+    "Name": "registration_date_to",
     "ParameterType": "DateTime"
   },
   {
@@ -51,18 +30,18 @@
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@state_changed_date_to",
-    "Name": "state_changed_date_to",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@transfer_date_to",
-    "Name": "transfer_date_to",
-    "ParameterType": "DateTime"
-  },
-  {
     "Code": "@state_changed_date_done_from",
     "Name": "state_changed_date_done_from",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@state_changed_date_done_to",
+    "Name": "state_changed_date_done_to",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@execution_term_from",
+    "Name": "execution_term_from",
     "ParameterType": "DateTime"
   },
   {
@@ -74,5 +53,26 @@
     "Code": "@execution_term_to",
     "Name": "execution_term_to",
     "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@registration_date_from",
+    "Name": "registration_date_from",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@transfer_date_to",
+    "Name": "transfer_date_to",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@state_changed_date_to",
+    "Name": "state_changed_date_to",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@pageOffsetRows",
+    "Name": "pageOffsetRows",
+    "ParameterType": "Integer",
+    "IsPageOffsetRows": true
   }
 ]

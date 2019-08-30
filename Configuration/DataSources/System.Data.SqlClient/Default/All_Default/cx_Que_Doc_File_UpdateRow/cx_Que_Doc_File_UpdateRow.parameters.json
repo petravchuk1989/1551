@@ -1,16 +1,13 @@
 [
   {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
     "Code": "@File",
     "Name": "File"
-  },
-  {
-    "Code": "@edit_user_id",
-    "Name": "edit_user_id",
-    "ParameterType": "CurrentUserId"
-  },
-  {
-    "Code": "@Name",
-    "Name": "Name"
   },
   {
     "Code": "@question_doc_id",
@@ -18,9 +15,12 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@Id",
-    "Name": "Id",
-    "ParameterType": "Integer",
-    "IsPrimaryKey": true
+    "Code": "@Name",
+    "Name": "Name"
+  },
+  {
+    "Code": "@edit_user_id",
+    "Name": "edit_user_id",
+    "ParameterType": "CurrentUserId"
   }
 ]

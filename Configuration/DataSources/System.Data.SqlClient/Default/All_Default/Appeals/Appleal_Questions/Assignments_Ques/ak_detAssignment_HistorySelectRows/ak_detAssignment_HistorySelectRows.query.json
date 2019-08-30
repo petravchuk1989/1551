@@ -72,12 +72,6 @@
   ],
   "Parameters": [
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
-      "ParameterType": "Integer",
-      "IsPageLimitRows": true
-    },
-    {
       "Code": "@assignment_id",
       "Name": "assignment_id",
       "ParameterType": "Integer"
@@ -87,6 +81,12 @@
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
       "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
     }
   ]
 }

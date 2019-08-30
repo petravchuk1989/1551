@@ -6,12 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@Id",
-      "Name": "Id",
-      "ParameterType": "Integer",
-      "IsPrimaryKey": true
-    },
-    {
       "Code": "@position_id",
       "Name": "position_id",
       "ParameterType": "Integer"
@@ -20,6 +14,12 @@
       "Code": "@organization_id",
       "Name": "organization_id",
       "ParameterType": "Integer"
+    },
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
     }
   ]
 }

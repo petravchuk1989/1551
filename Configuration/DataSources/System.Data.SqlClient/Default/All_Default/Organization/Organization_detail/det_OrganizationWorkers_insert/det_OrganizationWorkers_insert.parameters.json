@@ -1,14 +1,5 @@
 [
   {
-    "Code": "@roles_id",
-    "Name": "roles_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@position",
-    "Name": "position"
-  },
-  {
     "Code": "@phone_number",
     "Name": "phone_number"
   },
@@ -17,12 +8,8 @@
     "Name": "name"
   },
   {
-    "Code": "@worker_user_id",
-    "Name": "worker_user_id"
-  },
-  {
-    "Code": "@organization_id",
-    "Name": "organization_id",
+    "Code": "@roles_id",
+    "Name": "roles_id",
     "ParameterType": "Integer"
   },
   {
@@ -34,5 +21,18 @@
     "Code": "@active",
     "Name": "active",
     "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@organization_id",
+    "Name": "organization_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@worker_user_id",
+    "Name": "worker_user_id"
+  },
+  {
+    "Code": "@position",
+    "Name": "position"
   }
 ]

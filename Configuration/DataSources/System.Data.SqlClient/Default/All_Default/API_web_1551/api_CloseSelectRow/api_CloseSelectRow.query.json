@@ -6,10 +6,10 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
       "ParameterType": "Integer",
-      "IsPageOffsetRows": true
+      "IsPageLimitRows": true
     },
     {
       "Code": "@ApplicantFromSiteId",
@@ -18,10 +18,10 @@
       "IsPrimaryKey": true
     },
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
       "ParameterType": "Integer",
-      "IsPageLimitRows": true
+      "IsPageOffsetRows": true
     }
   ]
 }

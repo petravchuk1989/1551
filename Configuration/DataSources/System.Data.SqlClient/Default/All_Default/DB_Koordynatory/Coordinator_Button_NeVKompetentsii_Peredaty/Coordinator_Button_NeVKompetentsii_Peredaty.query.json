@@ -6,9 +6,9 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@user_edit_id",
-      "Name": "user_edit_id",
-      "ParameterType": "CurrentUserId"
+      "Code": "@executor_organization_id",
+      "Name": "executor_organization_id",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@Id",
@@ -17,9 +17,9 @@
       "IsPrimaryKey": true
     },
     {
-      "Code": "@executor_organization_id",
-      "Name": "executor_organization_id",
-      "ParameterType": "Integer"
+      "Code": "@user_edit_id",
+      "Name": "user_edit_id",
+      "ParameterType": "CurrentUserId"
     }
   ]
 }

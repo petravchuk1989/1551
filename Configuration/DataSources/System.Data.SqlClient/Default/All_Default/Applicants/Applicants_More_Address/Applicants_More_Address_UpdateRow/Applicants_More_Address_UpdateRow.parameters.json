@@ -1,7 +1,7 @@
 [
   {
-    "Code": "@main",
-    "Name": "main",
+    "Code": "@active",
+    "Name": "active",
     "ParameterType": "Boolean"
   },
   {
@@ -10,21 +10,8 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@applicant_id",
-    "Name": "applicant_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@house_block",
-    "Name": "house_block"
-  },
-  {
-    "Code": "@flat",
-    "Name": "flat"
-  },
-  {
-    "Code": "@active",
-    "Name": "active",
+    "Code": "@main",
+    "Name": "main",
     "ParameterType": "Boolean"
   },
   {
@@ -33,9 +20,22 @@
     "ParameterType": "Integer"
   },
   {
+    "Code": "@flat",
+    "Name": "flat"
+  },
+  {
     "Code": "@Id",
     "Name": "Id",
     "ParameterType": "Integer",
     "IsPrimaryKey": true
+  },
+  {
+    "Code": "@house_block",
+    "Name": "house_block"
+  },
+  {
+    "Code": "@applicant_id",
+    "Name": "applicant_id",
+    "ParameterType": "Integer"
   }
 ]

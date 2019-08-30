@@ -10,13 +10,13 @@
       "Name": "navigation"
     },
     {
-      "Code": "@column",
-      "Name": "column"
-    },
-    {
       "Code": "@user_id",
       "Name": "user_id",
       "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@column",
+      "Name": "column"
     },
     {
       "Code": "@organization_id",

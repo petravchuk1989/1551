@@ -26,13 +26,13 @@
   ],
   "Parameters": [
     {
-      "Code": "@questionId",
-      "Name": "questionId",
+      "Code": "@zayiavnykId",
+      "Name": "zayiavnykId",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@zayiavnykId",
-      "Name": "zayiavnykId",
+      "Code": "@questionId",
+      "Name": "questionId",
       "ParameterType": "Integer"
     }
   ]

@@ -36,10 +36,9 @@
   ],
   "Parameters": [
     {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
+      "Code": "@history_id",
+      "Name": "history_id",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@pageLimitRows",
@@ -48,9 +47,10 @@
       "IsPageLimitRows": true
     },
     {
-      "Code": "@history_id",
-      "Name": "history_id",
-      "ParameterType": "Integer"
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
     }
   ]
 }

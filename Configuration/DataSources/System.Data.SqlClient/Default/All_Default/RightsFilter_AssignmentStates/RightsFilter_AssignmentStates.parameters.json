@@ -11,11 +11,6 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@programuser_id",
-    "Name": "programuser_id",
-    "ParameterType": "CurrentUserId"
-  },
-  {
     "Code": "@pageLimitRows",
     "Name": "pageLimitRows",
     "ParameterType": "Integer",
@@ -25,5 +20,10 @@
     "Code": "@AssignmentId",
     "Name": "AssignmentId",
     "ParameterType": "Integer"
+  },
+  {
+    "Code": "@programuser_id",
+    "Name": "programuser_id",
+    "ParameterType": "CurrentUserId"
   }
 ]

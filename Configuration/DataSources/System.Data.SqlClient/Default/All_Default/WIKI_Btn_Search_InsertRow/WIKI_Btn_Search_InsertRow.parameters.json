@@ -1,11 +1,12 @@
 [
   {
-    "Code": "@Applicant_Phone",
-    "Name": "Applicant_Phone"
-  },
-  {
     "Code": "@AppealId",
     "Name": "AppealId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Applicant_Building",
+    "Name": "Applicant_Building",
     "ParameterType": "Integer"
   },
   {
@@ -14,13 +15,12 @@
     "ParameterType": "CurrentUserId"
   },
   {
-    "Code": "@Applicant_Building",
-    "Name": "Applicant_Building",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@applicant_id",
     "Name": "applicant_id",
     "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Applicant_Phone",
+    "Name": "Applicant_Phone"
   }
 ]

@@ -1,24 +1,16 @@
 [
   {
-    "Code": "@phone_number",
-    "Name": "phone_number"
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
   },
   {
-    "Code": "@city_receipt",
-    "Name": "city_receipt"
+    "Code": "@sender_post_adrress",
+    "Name": "sender_post_adrress"
   },
   {
     "Code": "@sender_name",
     "Name": "sender_name"
-  },
-  {
-    "Code": "@enter_number",
-    "Name": "enter_number"
-  },
-  {
-    "Code": "@start_date",
-    "Name": "start_date",
-    "ParameterType": "DateTime"
   },
   {
     "Code": "@submission_date",
@@ -26,9 +18,21 @@
     "ParameterType": "DateTime"
   },
   {
+    "Code": "@city_receipt",
+    "Name": "city_receipt"
+  },
+  {
+    "Code": "@phone_number",
+    "Name": "phone_number"
+  },
+  {
     "Code": "@end_date",
     "Name": "end_date",
     "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@article",
+    "Name": "article"
   },
   {
     "Code": "@mail",
@@ -46,17 +50,14 @@
     "IsPrimaryKey": true
   },
   {
-    "Code": "@article",
-    "Name": "article"
-  },
-  {
-    "Code": "@user_id",
-    "Name": "user_id",
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
     "ParameterType": "CurrentUserId"
   },
   {
-    "Code": "@sender_post_adrress",
-    "Name": "sender_post_adrress"
+    "Code": "@start_date",
+    "Name": "start_date",
+    "ParameterType": "DateTime"
   },
   {
     "Code": "@receipt_source_id",
@@ -64,8 +65,7 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@user_edit_id",
-    "Name": "user_edit_id",
-    "ParameterType": "CurrentUserId"
+    "Code": "@enter_number",
+    "Name": "enter_number"
   }
 ]

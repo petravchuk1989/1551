@@ -5,48 +5,9 @@
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@Standart_audio",
-    "Name": "Standart_audio",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@audio_on",
-    "Name": "audio_on",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@say_phone_for_information",
-    "Name": "say_phone_for_information",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@audio_end_date",
-    "Name": "audio_end_date",
+    "Code": "@audio_start_date",
+    "Name": "audio_start_date",
     "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@say_organization_id",
-    "Name": "say_organization_id",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@user_id",
-    "Name": "user_id",
-    "ParameterType": "CurrentUserId"
-  },
-  {
-    "Code": "@gorodok_id",
-    "Name": "gorodok_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@say_liveAddress_id",
-    "Name": "say_liveAddress_id",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@coment_executor",
-    "Name": "coment_executor"
   },
   {
     "Code": "@area",
@@ -54,8 +15,28 @@
     "ParameterType": "Integer"
   },
   {
+    "Code": "@audio_end_date",
+    "Name": "audio_end_date",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@say_plan_end_date",
+    "Name": "say_plan_end_date",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@audio_on",
+    "Name": "audio_on",
+    "ParameterType": "Boolean"
+  },
+  {
     "Code": "@executor_id",
     "Name": "executor_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@question_type_id",
+    "Name": "question_type_id",
     "ParameterType": "Integer"
   },
   {
@@ -64,18 +45,47 @@
     "ParameterType": "DateTime"
   },
   {
-    "Code": "@phone_for_information",
-    "Name": "phone_for_information"
+    "Code": "@coment_executor",
+    "Name": "coment_executor"
   },
   {
-    "Code": "@real_end_date",
-    "Name": "real_end_date",
-    "ParameterType": "DateTime"
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@Standart_audio",
+    "Name": "Standart_audio",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@gorodok_id",
+    "Name": "gorodok_id",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@object_id",
     "Name": "object_id",
     "ParameterType": "Integer"
+  },
+  {
+    "Code": "@say_liveAddress_id",
+    "Name": "say_liveAddress_id",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@say_phone_for_information",
+    "Name": "say_phone_for_information",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@phone_for_information",
+    "Name": "phone_for_information"
+  },
+  {
+    "Code": "@say_organization_id",
+    "Name": "say_organization_id",
+    "ParameterType": "Boolean"
   },
   {
     "Code": "@Id",
@@ -84,22 +94,12 @@
     "IsPrimaryKey": true
   },
   {
-    "Code": "@say_plan_end_date",
-    "Name": "say_plan_end_date",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@question_type_id",
-    "Name": "question_type_id",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@comment",
     "Name": "comment"
   },
   {
-    "Code": "@audio_start_date",
-    "Name": "audio_start_date",
+    "Code": "@real_end_date",
+    "Name": "real_end_date",
     "ParameterType": "DateTime"
   }
 ]

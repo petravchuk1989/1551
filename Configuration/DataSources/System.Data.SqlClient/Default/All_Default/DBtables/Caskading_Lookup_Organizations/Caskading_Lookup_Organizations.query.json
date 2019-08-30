@@ -20,15 +20,15 @@
   ],
   "Parameters": [
     {
-      "Code": "@organizationId",
-      "Name": "organizationId",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@organizationId",
+      "Name": "organizationId",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@pageOffsetRows",

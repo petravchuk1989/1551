@@ -6,11 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@position_id",
-      "Name": "position_id",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
@@ -21,6 +16,11 @@
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
       "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@position_id",
+      "Name": "position_id",
+      "ParameterType": "Integer"
     }
   ]
 }

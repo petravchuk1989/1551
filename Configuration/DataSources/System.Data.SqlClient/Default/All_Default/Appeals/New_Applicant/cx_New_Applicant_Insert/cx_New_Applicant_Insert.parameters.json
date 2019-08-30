@@ -1,64 +1,8 @@
 [
   {
-    "Code": "@appeals",
-    "Name": "appeals",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@types_id",
-    "Name": "types_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@active",
-    "Name": "active",
-    "ParameterType": "Boolean"
-  },
-  {
-    "Code": "@entrance",
-    "Name": "entrance",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@mail",
-    "Name": "mail",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@age",
-    "Name": "age",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@user_id",
-    "Name": "user_id",
-    "ParameterType": "CurrentUserFullName"
-  },
-  {
     "Code": "@birth_date",
     "Name": "birth_date",
     "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@sex",
-    "Name": "sex"
-  },
-  {
-    "Code": "@user_edit_id",
-    "Name": "user_edit_id",
-    "ParameterType": "CurrentUserFullName"
-  },
-  {
-    "Code": "@full_name",
-    "Name": "full_name"
-  },
-  {
-    "Code": "@comment",
-    "Name": "comment"
-  },
-  {
-    "Code": "@phone_number",
-    "Name": "phone_number"
   },
   {
     "Code": "@main",
@@ -66,13 +10,13 @@
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@house_block",
-    "Name": "house_block",
+    "Code": "@mail",
+    "Name": "mail",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@states_id",
-    "Name": "states_id",
+    "Code": "@phone_type_id",
+    "Name": "phone_type_id",
     "ParameterType": "Integer"
   },
   {
@@ -82,13 +26,51 @@
     "IsPrimaryKey": true
   },
   {
+    "Code": "@full_name",
+    "Name": "full_name"
+  },
+  {
+    "Code": "@age",
+    "Name": "age",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@flat",
+    "Name": "flat"
+  },
+  {
+    "Code": "@active",
+    "Name": "active",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@types_id",
+    "Name": "types_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserFullName"
+  },
+  {
     "Code": "@building_id",
     "Name": "building_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@phone_type_id",
-    "Name": "phone_type_id",
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserFullName"
+  },
+  {
+    "Code": "@entrance",
+    "Name": "entrance",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@appeals",
+    "Name": "appeals",
     "ParameterType": "Integer"
   },
   {
@@ -97,7 +79,25 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@flat",
-    "Name": "flat"
+    "Code": "@comment",
+    "Name": "comment"
+  },
+  {
+    "Code": "@sex",
+    "Name": "sex"
+  },
+  {
+    "Code": "@house_block",
+    "Name": "house_block",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@phone_number",
+    "Name": "phone_number"
+  },
+  {
+    "Code": "@states_id",
+    "Name": "states_id",
+    "ParameterType": "Integer"
   }
 ]

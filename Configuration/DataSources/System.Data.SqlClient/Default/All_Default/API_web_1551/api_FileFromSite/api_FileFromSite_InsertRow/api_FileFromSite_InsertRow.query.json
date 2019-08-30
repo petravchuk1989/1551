@@ -6,8 +6,8 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@file",
-      "Name": "file"
+      "Code": "@name",
+      "Name": "name"
     },
     {
       "Code": "@appeal_from_site_id",
@@ -15,8 +15,8 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@name",
-      "Name": "name"
+      "Code": "@file",
+      "Name": "file"
     }
   ]
 }

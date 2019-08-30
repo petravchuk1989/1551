@@ -1,21 +1,8 @@
 [
   {
-    "Code": "@address",
-    "Name": "address"
-  },
-  {
-    "Code": "@organization_id",
-    "Name": "organization_id",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@role_id",
     "Name": "role_id",
     "ParameterType": "Integer"
-  },
-  {
-    "Code": "@position",
-    "Name": "position"
   },
   {
     "Code": "@is_main",
@@ -23,16 +10,12 @@
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@name",
-    "Name": "name"
+    "Code": "@programuser_id",
+    "Name": "programuser_id"
   },
   {
-    "Code": "@phone_number",
-    "Name": "phone_number"
-  },
-  {
-    "Code": "@position_code",
-    "Name": "position_code"
+    "Code": "@position",
+    "Name": "position"
   },
   {
     "Code": "@active",
@@ -40,9 +23,21 @@
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@parent_id",
-    "Name": "parent_id",
-    "ParameterType": "Integer"
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@name",
+    "Name": "name"
+  },
+  {
+    "Code": "@position_code",
+    "Name": "position_code"
+  },
+  {
+    "Code": "@address",
+    "Name": "address"
   },
   {
     "Code": "@Id",
@@ -51,12 +46,17 @@
     "IsPrimaryKey": true
   },
   {
-    "Code": "@programuser_id",
-    "Name": "programuser_id"
+    "Code": "@organization_id",
+    "Name": "organization_id",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@user_id",
-    "Name": "user_id",
-    "ParameterType": "CurrentUserId"
+    "Code": "@phone_number",
+    "Name": "phone_number"
+  },
+  {
+    "Code": "@parent_id",
+    "Name": "parent_id",
+    "ParameterType": "Integer"
   }
 ]

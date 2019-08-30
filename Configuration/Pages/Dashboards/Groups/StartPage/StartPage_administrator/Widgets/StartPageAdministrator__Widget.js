@@ -6,7 +6,6 @@
     customConfig:
                 `
                     <style>
-                    
                         .header-label {
                             text-align: center;
                             color: #131313;
@@ -76,7 +75,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#f44336;"> settings </i>
                         </div>
-                        <div class="description"> Налаштування </div>
+                        <div class="description">Налаштування</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>
@@ -85,7 +84,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#f44336;"> view_module </i>
                         </div>
-                        <div class="description"> Календар </div>
+                        <div class="description">Календар</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>
@@ -94,7 +93,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#ff7961;"> view_list </i>
                         </div>
-                        <div class="description">  Секції </div>
+                        <div class="description">Секції</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>
@@ -103,7 +102,7 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#ff7961;"> list </i>
                         </div>
-                        <div class="description">  Стандартні звіти </div>
+                        <div class="description">Стандартні звіти</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
                       </div>
@@ -112,22 +111,10 @@
                         <div class="icon">
                           <i class="material-icons elementIcon" style="color:#ff7961;"> build </i>
                         </div>
-                        <div class="description">  Конструктор звітів </div>
+                        <div class="description">Конструктор звітів</div>
                         <div class="border-bottom"></div>
                         <div class="border-right"></div>
-                      </div>
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
+                      </div>                      
                       
                       <!--
                       <div class="group" tabindex="0" onclick="javascript:window.location='`+location.origin + localStorage.getItem('VirtualPath')+ `/sections/CreateAppeal/add?phone=0000000000&type=2'">
@@ -172,7 +159,7 @@
     ,
     // onclick="javascript:window.location='`+location.origin + localStorage.getItem('VirtualPath')+ `/sections/CreateAppeal/add'"
     init: function() {
-      
+      debugger;
     },
     initValue: function(){
         
@@ -180,19 +167,19 @@
     load: function(data) {
     },
     afterViewInit:function(){
-    //       let btn = document.getElementById('btn1');
-    //   let number = () => {
-    //         // let r = [{ code: "Phone", value: document.getElementById('phone_value2').value}];
-    //         let r = document.getElementById('phone_value2').value;
-    //             let r1 = JSON.stringify(r);
-    //             let r2 = encodeURI(r1);
-    //             // console.log(r);
-    //             // console.log(r1);
-    //             // console.log(r2);
-    //         // window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone="+r"+"&type=1");
-    //         window.open(location.origin + localStorage.getItem('VirtualPath') + "/data/dataSource")
-    //     };
-        // btn.addEventListener( "click", number )
+      // let btn = document.getElementById('btn1');
+      // let number = () => {
+      //       // let r = [{ code: "Phone", value: document.getElementById('phone_value2').value}];
+      //     let r = document.getElementById('phone_value2').value;
+      //         let r1 = JSON.stringify(r);
+      //         let r2 = encodeURI(r1);
+      //         // console.log(r);
+      //         // console.log(r1);
+      //         // console.log(r2);
+      //     // window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone="+r"+"&type=1");
+      //     window.open(location.origin + localStorage.getItem('VirtualPath') + "/data/dataSource")
+      // };
+      // btn.addEventListener( "click", number )
     }
 }
 

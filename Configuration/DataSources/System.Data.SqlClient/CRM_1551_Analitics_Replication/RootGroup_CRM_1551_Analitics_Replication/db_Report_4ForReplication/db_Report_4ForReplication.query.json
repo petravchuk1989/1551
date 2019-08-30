@@ -11,6 +11,11 @@
       "ParameterType": "DateTime"
     },
     {
+      "Code": "@dateFrom",
+      "Name": "dateFrom",
+      "ParameterType": "DateTime"
+    },
+    {
       "Code": "@org",
       "Name": "org",
       "ParameterType": "Integer"
@@ -19,11 +24,6 @@
       "Code": "@question_type_id",
       "Name": "question_type_id",
       "ParameterType": "Integer"
-    },
-    {
-      "Code": "@dateFrom",
-      "Name": "dateFrom",
-      "ParameterType": "DateTime"
     }
   ]
 }

@@ -44,25 +44,25 @@
       "IsPrintable": false
     },
     {
+      "Code": "execution_date",
+      "Name": "Дата контролю",
+      "Position": 8,
+      "IsPrintable": false
+    },
+    {
       "Code": "ed",
       "Name": "Перегляд",
       "Position": 8,
       "ReferenceKeyCode": "Id",
       "ReferenceSectionCode": "Assignments"
-    },
-    {
-      "Code": "execution_date",
-      "Name": "Дата контролю",
-      "Position": 8,
-      "IsPrintable": false
     }
   ],
   "Parameters": [
     {
-      "Code": "@question",
-      "Name": "question",
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
       "ParameterType": "Integer",
-      "IsPrimaryKey": true
+      "IsPageLimitRows": true
     },
     {
       "Code": "@pageOffsetRows",
@@ -71,10 +71,10 @@
       "IsPageOffsetRows": true
     },
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
+      "Code": "@question",
+      "Name": "question",
       "ParameterType": "Integer",
-      "IsPageLimitRows": true
+      "IsPrimaryKey": true
     }
   ]
 }

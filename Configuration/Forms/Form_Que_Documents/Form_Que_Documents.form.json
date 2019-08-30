@@ -3,11 +3,11 @@
   "Code": "Form_Que_Documents",
   "Name": "Документи питання",
   "Details": [
-    "string:Details\\Detail_Que_Doc_File.detail.json"
+    "json:Details\\Detail_Que_Doc_File.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "string:FieldGroups\\Group_Que_Doc.fieldgroup.json"
+      "json:FieldGroups\\Group_Que_Doc.fieldgroup.json"
     ],
     "DefaultFields": [
       {

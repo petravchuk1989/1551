@@ -6,9 +6,9 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@question_type_id",
-      "Name": "question_type_id",
-      "ParameterType": "Integer"
+      "Code": "@dateFrom",
+      "Name": "dateFrom",
+      "ParameterType": "DateTime"
     },
     {
       "Code": "@org",
@@ -16,14 +16,14 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@dateFrom",
-      "Name": "dateFrom",
-      "ParameterType": "DateTime"
-    },
-    {
       "Code": "@dateTo",
       "Name": "dateTo",
       "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@question_type_id",
+      "Name": "question_type_id",
+      "ParameterType": "Integer"
     }
   ]
 }

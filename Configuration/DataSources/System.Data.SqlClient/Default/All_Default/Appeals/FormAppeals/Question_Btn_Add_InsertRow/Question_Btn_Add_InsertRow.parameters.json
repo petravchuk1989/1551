@@ -1,12 +1,7 @@
 [
   {
-    "Code": "@Question_EventId",
-    "Name": "Question_EventId",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@AppealId",
-    "Name": "AppealId",
+    "Code": "@Question_Organization",
+    "Name": "Question_Organization",
     "ParameterType": "Integer"
   },
   {
@@ -15,12 +10,31 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@Applicant_Building",
-    "Name": "Applicant_Building"
+    "Code": "@Question_Content",
+    "Name": "Question_Content"
+  },
+  {
+    "Code": "@Question_EventId",
+    "Name": "Question_EventId",
+    "ParameterType": "Integer"
   },
   {
     "Code": "@Question_TypeId",
     "Name": "Question_TypeId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@flat",
+    "Name": "flat"
+  },
+  {
+    "Code": "@AppealId",
+    "Name": "AppealId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Question_OrganizationId",
+    "Name": "Question_OrganizationId",
     "ParameterType": "Integer"
   },
   {
@@ -33,13 +47,13 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@Question_OrganizationId",
-    "Name": "Question_OrganizationId",
+    "Code": "@Question_Building",
+    "Name": "Question_Building",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@Question_Content",
-    "Name": "Question_Content"
+    "Code": "@AppealNumber",
+    "Name": "AppealNumber"
   },
   {
     "Code": "@CreatedUser",
@@ -47,8 +61,8 @@
     "ParameterType": "CurrentUserId"
   },
   {
-    "Code": "@flat",
-    "Name": "flat"
+    "Code": "@Applicant_Building",
+    "Name": "Applicant_Building"
   },
   {
     "Code": "@Question_ControlDate",
@@ -58,20 +72,6 @@
   {
     "Code": "@Applicant_Email",
     "Name": "Applicant_Email"
-  },
-  {
-    "Code": "@AppealNumber",
-    "Name": "AppealNumber"
-  },
-  {
-    "Code": "@Question_Building",
-    "Name": "Question_Building",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@Question_Organization",
-    "Name": "Question_Organization",
-    "ParameterType": "Integer"
   },
   {
     "Code": "@entrance",

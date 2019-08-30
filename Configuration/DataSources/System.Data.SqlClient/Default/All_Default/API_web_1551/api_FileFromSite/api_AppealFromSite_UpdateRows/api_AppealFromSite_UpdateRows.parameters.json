@@ -1,20 +1,15 @@
 [
   {
-    "Code": "@pageLimitRows",
-    "Name": "pageLimitRows",
-    "ParameterType": "Integer",
-    "IsPageLimitRows": true
-  },
-  {
     "Code": "@AppealFromSiteId",
     "Name": "AppealFromSiteId",
     "ParameterType": "Integer",
     "IsPrimaryKey": true
   },
   {
-    "Code": "@WorkDirectionTypeId",
-    "Name": "WorkDirectionTypeId",
-    "ParameterType": "Integer"
+    "Code": "@pageLimitRows",
+    "Name": "pageLimitRows",
+    "ParameterType": "Integer",
+    "IsPageLimitRows": true
   },
   {
     "Code": "@ObjectId",
@@ -30,5 +25,10 @@
   {
     "Code": "@Content",
     "Name": "Content"
+  },
+  {
+    "Code": "@WorkDirectionTypeId",
+    "Name": "WorkDirectionTypeId",
+    "ParameterType": "Integer"
   }
 ]

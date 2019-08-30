@@ -6,16 +6,6 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@build_id",
-      "Name": "build_id",
-      "ParameterType": "Integer"
-    },
-    {
-      "Code": "@executor_id",
-      "Name": "executor_id",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@Id",
       "Name": "Id",
       "ParameterType": "Integer",
@@ -24,6 +14,16 @@
     {
       "Code": "@executor_role_id",
       "Name": "executor_role_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@build_id",
+      "Name": "build_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@executor_id",
+      "Name": "executor_id",
       "ParameterType": "Integer"
     }
   ]

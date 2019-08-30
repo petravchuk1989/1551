@@ -56,8 +56,8 @@
   ],
   "Parameters": [
     {
-      "Code": "@type_id",
-      "Name": "type_id",
+      "Code": "@main_position_id",
+      "Name": "main_position_id",
       "ParameterType": "Integer"
     },
     {
@@ -71,8 +71,8 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@main_position_id",
-      "Name": "main_position_id",
+      "Code": "@type_id",
+      "Name": "type_id",
       "ParameterType": "Integer"
     }
   ]

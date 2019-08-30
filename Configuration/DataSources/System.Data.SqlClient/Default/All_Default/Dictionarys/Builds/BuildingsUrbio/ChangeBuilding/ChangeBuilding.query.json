@@ -14,13 +14,13 @@
   ],
   "Parameters": [
     {
-      "Code": "@building",
-      "Name": "building",
+      "Code": "@Id",
+      "Name": "Id",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@Id",
-      "Name": "Id",
+      "Code": "@building",
+      "Name": "building",
       "ParameterType": "Integer"
     }
   ]

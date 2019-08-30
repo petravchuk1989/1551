@@ -30,9 +30,9 @@
   ],
   "Parameters": [
     {
-      "Code": "@questionGroup",
-      "Name": "questionGroup",
-      "ParameterType": "Integer"
+      "Code": "@dateFrom",
+      "Name": "dateFrom",
+      "ParameterType": "DateTime"
     },
     {
       "Code": "@questionType",
@@ -40,13 +40,13 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@dateTo",
-      "Name": "dateTo",
-      "ParameterType": "DateTime"
+      "Code": "@questionGroup",
+      "Name": "questionGroup",
+      "ParameterType": "Integer"
     },
     {
-      "Code": "@dateFrom",
-      "Name": "dateFrom",
+      "Code": "@dateTo",
+      "Name": "dateTo",
       "ParameterType": "DateTime"
     }
   ]

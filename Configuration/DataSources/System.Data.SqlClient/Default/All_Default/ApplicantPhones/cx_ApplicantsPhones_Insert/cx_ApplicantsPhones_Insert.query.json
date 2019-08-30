@@ -6,9 +6,8 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@applicant_id",
-      "Name": "applicant_id",
-      "ParameterType": "Integer"
+      "Code": "@phone_number",
+      "Name": "phone_number"
     },
     {
       "Code": "@Id",
@@ -17,8 +16,9 @@
       "IsPrimaryKey": true
     },
     {
-      "Code": "@phone_number",
-      "Name": "phone_number"
+      "Code": "@applicant_id",
+      "Name": "applicant_id",
+      "ParameterType": "Integer"
     },
     {
       "Code": "@phone_type_id",
