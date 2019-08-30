@@ -4,14 +4,14 @@
   "Name": "Довідник: Вулиці",
   "IsPrintable": false,
   "Details": [
-    "json:Details\\UrbioStreet.detail.json",
-    "json:Details\\StreetBuildings.detail.json",
-    "json:Details\\StreetHistory.detail.json",
-    "json:Details\\StreetObjects.detail.json"
+    "string:Details\\StreetObjects.detail.json",
+    "string:Details\\UrbioStreet.detail.json",
+    "string:Details\\StreetBuildings.detail.json",
+    "string:Details\\StreetHistory.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Group_dictionary_Streets.fieldgroup.json"
+      "string:FieldGroups\\Group_dictionary_Streets.fieldgroup.json"
     ],
     "DefaultFields": [],
     "Script": "string:Form_dictionary_Streets.form.js"

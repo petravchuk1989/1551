@@ -1,18 +1,23 @@
 [
   {
+    "Code": "@street_id",
+    "Name": "Вулиця",
+    "ParameterType": "Integer"
+  },
+  {
     "Code": "@Id",
     "Name": "Id",
     "ParameterType": "Integer",
     "IsPrimaryKey": true
   },
   {
-    "Code": "@index",
-    "Name": "Почтовий індекс"
+    "Code": "@district_id",
+    "Name": "Район",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@street_id",
-    "Name": "Вулиця",
-    "ParameterType": "Integer"
+    "Code": "@index",
+    "Name": "Почтовий індекс"
   },
   {
     "Code": "@name",
@@ -23,17 +28,12 @@
     "Name": "Літера"
   },
   {
-    "Code": "@bsecondname",
-    "Name": "Корпус"
-  },
-  {
     "Code": "@number",
     "Name": "Номер",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@district_id",
-    "Name": "Район",
-    "ParameterType": "Integer"
+    "Code": "@bsecondname",
+    "Name": "Корпус"
   }
 ]

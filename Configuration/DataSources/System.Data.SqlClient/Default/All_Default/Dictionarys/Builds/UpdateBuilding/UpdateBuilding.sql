@@ -23,4 +23,5 @@ set name = (select
 		left join StreetTypes as st on st.Id = s.street_type_id
 	where b.Id = @Id ),
 	[is_active] = @isActive
+where [Objects].builbing_id = @Id
 	

@@ -3,12 +3,12 @@
   "Code": "Positions",
   "Name": "Посади",
   "Details": [
-    "json:Details\\OrganizationIn.detail.json",
-    "json:Details\\helper.detail.json"
+    "string:Details\\helper.detail.json",
+    "string:Details\\OrganizationIn.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\all.fieldgroup.json"
+      "string:FieldGroups\\all.fieldgroup.json"
     ],
     "DefaultFields": [
       {

@@ -22,7 +22,6 @@
                 ]
             };
             this.queryExecutor(executeQuery, this.load, this);
-            this.showPreloader = false; 
         }
     },
     load: function(data) {
@@ -79,11 +78,10 @@
                 parameterValues: []
             };
             this.queryExecutor(executeQuery);
-            this.showPreloader = false; 
         });
         
         this.yearCalendar.forEach( month => {
-            let dayBox;
+            var dayBox;
             let monday = this.createElement('div', {  className: 'calenDay', innerText: 'ПН'});
             let tuesday = this.createElement('div', {  className: 'calenDay', innerText: 'ВТ'});
             let wednesday = this.createElement('div', {  className: 'calenDay', innerText: 'СР'});
@@ -114,43 +112,42 @@
                     monthBox.appendChild(dayBox);
                 }
             }
-            let title ;
             switch(month.month) {
               case 1: 
-                title = 'Січень' 
+                var title = 'Січень' 
                 break
               case 2: 
-                title = 'Лютий' 
+                var title = 'Лютий' 
                 break
               case 3: 
-                title = 'Березень' 
+                var title = 'Березень' 
                 break
               case 4: 
-                title = 'Квітень' 
+                var title = 'Квітень' 
                 break
               case 5: 
-                title = 'Травень' 
+                var title = 'Травень' 
                 break
               case 6: 
-                title = 'Червень' 
+                var title = 'Червень' 
                 break
               case 7: 
-                title = 'Липень' 
+                var title = 'Липень' 
                 break
               case 8: 
-                title = 'Серпень' 
+                var title = 'Серпень' 
                 break
               case 9: 
-                title = 'Вересень' 
+                var title = 'Вересень' 
                 break
               case 10: 
-                title = 'Жовтень' 
+                var title = 'Жовтень' 
                 break
               case 11: 
-                title = 'Листопад' 
+                var title = 'Листопад' 
                 break
               case 12: 
-                title = 'Грудень' 
+                var title = 'Грудень' 
                 break
             }
             let monthTitle = this.createElement('div', {  className: 'monthTitle', innerText: title});
@@ -158,7 +155,7 @@
             yearContainer.appendChild(monthWrapper);
         });
         
-        let days = document.querySelectorAll('.day');
+        var days = document.querySelectorAll('.day');
         days = Array.from(days);
         days.forEach(  day => {
             day.addEventListener( 'dblclick',  event => {
@@ -170,7 +167,6 @@
                     parameterValues: [ { key: '@Id', value: target.dayId} ]
                 };
                 this.queryExecutor(executeQuery);
-                this.showPreloader = false;
                 if( target.isWork === true  ){
                     target.isWork = false;
                     target.style.backgroundColor = '#f4b084';
@@ -186,12 +182,12 @@
         data.rows.forEach( day => {
             dateCode = data.columns.findIndex(el => el.code.toLowerCase() === 'date' );
             isWorkCode = data.columns.findIndex(el => el.code.toLowerCase() === 'is_work' );
-            let fullDay = new Date( day.values[dateCode] );
-            let year = fullDay.getFullYear();
-            let month = fullDay.getMonth();
-            let date = fullDay.getDate();
+            var fullDay = new Date( day.values[dateCode] );
+            var year = fullDay.getFullYear();
+            var month = fullDay.getMonth();
+            var date = fullDay.getDate();
             month = month + 1;
-            let cellDay = document.getElementById('day_'+year+'_'+month+'_'+date+'');
+            var cellDay = document.getElementById('day_'+year+'_'+month+'_'+date+'');
             if( day.values[isWorkCode] === false ){
                 cellDay.isWork = false;
                 cellDay.style.backgroundColor = '#f4b084';

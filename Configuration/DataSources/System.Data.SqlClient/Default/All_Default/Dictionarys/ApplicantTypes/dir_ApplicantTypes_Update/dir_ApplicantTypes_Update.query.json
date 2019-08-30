@@ -6,18 +6,18 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@Id",
-      "Name": "Id",
-      "ParameterType": "Integer",
-      "IsPrimaryKey": true
+      "Code": "@message",
+      "Name": "message"
     },
     {
       "Code": "@name",
       "Name": "name"
     },
     {
-      "Code": "@message",
-      "Name": "message"
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "ModelType": "Query",
-  "Code": "ListQuestionTypesForConstructor",
-  "Name": "ListQuestionTypesForConstructor",
+  "Code": "ys_List_QuestionTypes2_SelectRows|ForReplication",
+  "Name": "ys_List_QuestionTypes2_SelectRows",
   "ConnectionCode": "CRM_1551_Analitics_Replication",
   "IsUsedForRightsFilter": false,
   "Columns": [
@@ -16,13 +16,12 @@
       "Name": "Name",
       "Position": 1,
       "IsPrintable": false
-    }
-  ],
-  "Parameters": [
+    },
     {
-      "Code": "@GroupQuestionId",
-      "Name": "GroupQuestionId",
-      "ParameterType": "Integer"
+      "Code": "ParentId",
+      "Name": "ParentId",
+      "Position": 2,
+      "IsPrintable": false
     }
   ]
 }

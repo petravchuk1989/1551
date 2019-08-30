@@ -1,16 +1,7 @@
 [
   {
-    "Code": "@control_date",
-    "Name": "control_date",
-    "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@question_content",
-    "Name": "question_content"
-  },
-  {
-    "Code": "@organization_id",
-    "Name": "organization_id",
+    "Code": "@perfom_id",
+    "Name": "perfom_id",
     "ParameterType": "Integer"
   },
   {
@@ -18,28 +9,32 @@
     "Name": "answer_post"
   },
   {
-    "Code": "@answer_type_id",
-    "Name": "answer_type_id",
+    "Code": "@question_content",
+    "Name": "question_content"
+  },
+  {
+    "Code": "@object_id",
+    "Name": "object_id",
     "ParameterType": "Integer"
   },
   {
-    "Code": "@perfom_id",
-    "Name": "perfom_id",
+    "Code": "@organization_id",
+    "Name": "organization_id",
     "ParameterType": "Integer"
-  },
-  {
-    "Code": "@user_edit_id",
-    "Name": "user_edit_id",
-    "ParameterType": "CurrentUserId"
   },
   {
     "Code": "@answer_mail",
     "Name": "answer_mail"
   },
   {
-    "Code": "@question_type_id",
-    "Name": "question_type_id",
+    "Code": "@answer_type_id",
+    "Name": "answer_type_id",
     "ParameterType": "Integer"
+  },
+  {
+    "Code": "@control_date",
+    "Name": "control_date",
+    "ParameterType": "DateTime"
   },
   {
     "Code": "@Id",
@@ -48,12 +43,17 @@
     "IsPrimaryKey": true
   },
   {
-    "Code": "@answer_phone",
-    "Name": "answer_phone"
+    "Code": "@question_type_id",
+    "Name": "question_type_id",
+    "ParameterType": "Integer"
   },
   {
-    "Code": "@object_id",
-    "Name": "object_id",
-    "ParameterType": "Integer"
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@answer_phone",
+    "Name": "answer_phone"
   }
 ]

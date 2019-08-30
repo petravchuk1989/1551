@@ -5,13 +5,14 @@
     "ParameterType": "Integer"
   },
   {
-    "Code": "@applicant_id",
-    "Name": "applicant_id",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@phone_number",
     "Name": "phone_number"
+  },
+  {
+    "Code": "@pageLimitRows",
+    "Name": "pageLimitRows",
+    "ParameterType": "Integer",
+    "IsPageLimitRows": true
   },
   {
     "Code": "@type",
@@ -24,9 +25,8 @@
     "IsPageOffsetRows": true
   },
   {
-    "Code": "@pageLimitRows",
-    "Name": "pageLimitRows",
-    "ParameterType": "Integer",
-    "IsPageLimitRows": true
+    "Code": "@applicant_id",
+    "Name": "applicant_id",
+    "ParameterType": "Integer"
   }
 ]

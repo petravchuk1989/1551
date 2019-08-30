@@ -1,5 +1,14 @@
 [
   {
+    "Code": "@navigation",
+    "Name": "navigation"
+  },
+  {
+    "Code": "@organization_id",
+    "Name": "organization_id",
+    "ParameterType": "Integer"
+  },
+  {
     "Code": "@user_id",
     "Name": "user_id",
     "ParameterType": "CurrentUserId"
@@ -9,16 +18,7 @@
     "Name": "organizationName"
   },
   {
-    "Code": "@navigation",
-    "Name": "navigation"
-  },
-  {
     "Code": "@column",
     "Name": "column"
-  },
-  {
-    "Code": "@organization_id",
-    "Name": "organization_id",
-    "ParameterType": "Integer"
   }
 ]

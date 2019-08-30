@@ -16,13 +16,13 @@
       "ParameterType": "DateTime"
     },
     {
-      "Code": "@questionGroup",
-      "Name": "questionGroup",
+      "Code": "@questionType",
+      "Name": "questionType",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@questionType",
-      "Name": "questionType",
+      "Code": "@questionGroup",
+      "Name": "questionGroup",
       "ParameterType": "Integer"
     }
   ]
