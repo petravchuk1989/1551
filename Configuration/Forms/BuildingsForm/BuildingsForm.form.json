@@ -4,9 +4,9 @@
   "Name": "Довідник: Будинки",
   "Details": [
     "string:Details\\BuildingQuestion.detail.json",
-    "string:Details\\BuildingsHistory.detail.json",
     "string:Details\\BuildingsUrbio.detail.json",
-    "string:Details\\BuildingApplicants.detail.json"
+    "string:Details\\BuildingApplicants.detail.json",
+    "string:Details\\BuildingHistory.detail.json"
   ],
   "Config": {
     "FieldGroups": [

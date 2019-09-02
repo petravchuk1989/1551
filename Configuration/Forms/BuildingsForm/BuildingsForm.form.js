@@ -50,7 +50,7 @@
                               };
                           };
                     }); 
-            }.bind(this);
+            }.bind(this));
     
     
         this.form.onControlValueChanged('change_building', this.onBuildingChanged);

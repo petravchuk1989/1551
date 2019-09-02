@@ -7,6 +7,8 @@ INSERT INTO [dbo].[Objects]
            ,[name]
            ,[builbing_id]
            ,is_active
+           ,[user_id]
+           ,edit_date
 		   )
 		output inserted.Id into @output(Id)
      VALUES
@@ -16,6 +18,8 @@ INSERT INTO [dbo].[Objects]
            ,@object_name
            ,@builbing_id
            ,1
+           ,@user_id
+           ,getutcdate()
 		   )
 
 	declare @obj_id int;
