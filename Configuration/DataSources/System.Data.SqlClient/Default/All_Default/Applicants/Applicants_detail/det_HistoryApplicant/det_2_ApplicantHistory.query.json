@@ -1,24 +1,24 @@
 {
     "ModelType": "Query",
-    "Code": "det_1_ApplicantHistory",
-    "Name": "det_1_ApplicantHistory",
+    "Code": "det_2_ApplicantHistory",
+    "Name": "det_2_ApplicantHistory",
     "ConnectionCode": "Default",
     "IsUsedForRightsFilter": false,
     "Columns": [
       {
-        "Code": "field",
+        "Code": "history_type_name",
         "Name": "Назва",
         "Position": 1,
         "IsPrintable": false
       },
       {
-        "Code": "before",
+        "Code": "history_value_old",
         "Name": "Було",
         "Position": 2,
         "IsPrintable": false
       },
       {
-        "Code": "after",
+        "Code": "history_value_new",
         "Name": "Стало",
         "Position": 3,
         "IsPrintable": false
@@ -38,8 +38,8 @@
         "IsPageLimitRows": true
       },
       {
-        "Code": "@applicant_id",
-        "Name": "applicant_id",
+        "Code": "@history_id",
+        "Name": "history_id",
         "ParameterType": "Integer",
         "IsPrimaryKey": false
       }

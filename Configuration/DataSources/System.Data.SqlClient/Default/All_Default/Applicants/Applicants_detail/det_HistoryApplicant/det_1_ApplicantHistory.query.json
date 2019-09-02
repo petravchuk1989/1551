@@ -6,19 +6,19 @@
     "IsUsedForRightsFilter": false,
     "Columns": [
       {
-        "Code": "when_changed",
+        "Code": "operation_date",
         "Name": "Дата операції",
         "Position": 1,
         "IsPrintable": false
       },
       {
-        "Code": "editor",
+        "Code": "user_id",
         "Name": "Виконав",
         "Position": 2,
         "IsPrintable": false
       },
       {
-        "Code": "operation",
+        "Code": "operation_name",
         "Name": "Опис",
         "Position": 3,
         "IsPrintable": false
