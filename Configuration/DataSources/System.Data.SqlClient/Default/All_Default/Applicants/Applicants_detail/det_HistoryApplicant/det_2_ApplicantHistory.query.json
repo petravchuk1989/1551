@@ -6,21 +6,28 @@
     "IsUsedForRightsFilter": false,
     "Columns": [
       {
+        "Code": "history_id",
+        "Name": "history_id",
+        "Position": 1,
+        "IsPrintable": false,
+        "ViewState": "Hidden"
+      },
+      {
         "Code": "history_type_name",
         "Name": "Назва",
-        "Position": 1,
+        "Position": 2,
         "IsPrintable": false
       },
       {
         "Code": "history_value_old",
         "Name": "Було",
-        "Position": 2,
+        "Position": 3,
         "IsPrintable": false
       },
       {
         "Code": "history_value_new",
         "Name": "Стало",
-        "Position": 3,
+        "Position": 4,
         "IsPrintable": false
       }
     ],

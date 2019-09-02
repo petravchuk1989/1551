@@ -6,31 +6,32 @@
     "IsUsedForRightsFilter": false,
     "Columns": [
       {
+        "Code": "Id",
+        "Name": "Id",
+        "Position": 1,
+        "IsPrintable": false,
+        "IsPrimaryKey": true,
+        "ViewState": "Hidden"
+      },
+      {
         "Code": "operation_date",
         "Name": "Дата операції",
-        "Position": 1,
+        "Position": 2,
         "IsPrintable": false
       },
       {
         "Code": "user_id",
         "Name": "Виконав",
-        "Position": 2,
+        "Position": 3,
         "IsPrintable": false
       },
       {
         "Code": "operation_name",
         "Name": "Опис",
-        "Position": 3,
-        "IsPrintable": false
-      },
-      {
-        "Code": "Id",
-        "Name": "Id",
         "Position": 4,
-        "IsPrintable": false,
-        "IsPrimaryKey": true,
-        "ViewState": "Hidden"
+        "IsPrintable": false
       }
+      
     ],
     "Parameters": [
       {
