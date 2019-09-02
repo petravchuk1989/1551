@@ -159,7 +159,6 @@
     ,
     // onclick="javascript:window.location='`+location.origin + localStorage.getItem('VirtualPath')+ `/sections/CreateAppeal/add'"
     init: function() {
-      debugger;
     },
     initValue: function(){
         

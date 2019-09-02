@@ -706,7 +706,6 @@
     },
     setNewData: function(data){
         this.data = data;
-        debugger;
         console.log(this.data);
         this.sendMesOnBtnClick('clickOnСoordinator_table', 'none', 'none');
         this.messageService.publish( { name: 'showPagePreloader'}); 

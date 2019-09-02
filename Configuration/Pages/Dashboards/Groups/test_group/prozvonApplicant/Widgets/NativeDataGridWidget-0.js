@@ -340,7 +340,6 @@
     openModalCloserForm: function(){
         let rowsMessage = [];
         let selectedRows = this.dataGridInstance.instance.getSelectedRowsData();
-        debugger;
         selectedRows.forEach( row => {
             let obj = {
                 id: row.Id,
