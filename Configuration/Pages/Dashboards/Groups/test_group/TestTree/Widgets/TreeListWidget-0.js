@@ -60,7 +60,6 @@
             showInfo: false
         },
         onSelectionChanged: function(e) {
-            debugger;
         }
     },
     init: function() {
