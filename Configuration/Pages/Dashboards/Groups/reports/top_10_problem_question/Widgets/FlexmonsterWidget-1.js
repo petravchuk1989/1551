@@ -447,7 +447,6 @@
             let qustTitle = worksheet.getCell('B4');
             numberTitle.alignment = { textRotation: 0, vertical: 'middle', horizontal: 'center', wrapText: true };
             qustTitle.alignment = { textRotation: 0, vertical: 'middle', horizontal: 'center', wrapText: true };
-            debugger;
             this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
         }    
     
