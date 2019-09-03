@@ -86,14 +86,14 @@ left join Questions q on q.appeal_id = a.Id
 left join Assignments ass on ass.question_id = q.Id
 left join Organizations o on o.Id = ass.executor_organization_id
 where q.registration_date between @dateFrom and @dateTo
-and o.Id in (select orgId from #temp_OUT)
-and (ass.close_date is null and q.control_date < CURRENT_TIMESTAMP)
-group by o.Id, o.short_name
+ and o.Id in (select orgId from #temp_OUT)
+ and (select top 1 state_change_date 
+ from Assignment_History 
+ where assignment_id = ass.Id
+ and assignment_state_id = 3 order by Id desc) > q.control_date
+ group by o.Id, o.short_name
 ) z on z.Id = #temp_OUT.orgId
--- and (select top 1 state_change_date 
--- from Assignment_History 
--- where assignment_id = ass.Id
--- and assignment_state_id = 3)
+
 
 ------------------------------------
 
