@@ -1,6 +1,6 @@
 {
   "ModelType": "Detail",
-  "Code": "det_1_BuildingHistory",
+  "Code": "BuildingHistory",
   "Name": "Історія змін",
   "SelectRowsQueryCode": "det_1_BuildingHistory",
   "SectionCode": "",

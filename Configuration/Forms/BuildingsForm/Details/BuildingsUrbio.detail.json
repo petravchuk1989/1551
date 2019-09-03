@@ -4,7 +4,7 @@
   "Name": "Будинок в Urbio",
   "SelectRowsQueryCode": "SelectAllBuildingsUrbio",
   "SectionCode": "",
-  "Position": 3,
+  "Position": 1,
   "IsExpand": true,
   "QueryParameters": [
     {
