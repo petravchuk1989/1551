@@ -72,7 +72,6 @@
         if(data.rows[0]){
             this.organizationId = (data.rows[0].values[indexOfTypeId]);
             this.distribute = (data.rows[0].values[indexOfTypeDistribute]);
-            debugger;
             this.messageService.publish({name: 'messageWithOrganizationId', value: this.organizationId, distribute:  this.distribute});
             document.getElementById('organizationName').value = (data.rows[0].values[indexOfTypeId]);
             document.getElementById('organizationName').innerText = (data.rows[0].values[indexOfTypeName]);
