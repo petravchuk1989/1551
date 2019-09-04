@@ -33,5 +33,10 @@
     "Code": "@district_id",
     "Name": "district_id",
     "ParameterType": "Integer"
+  },
+  {
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserId"
   }
 ]

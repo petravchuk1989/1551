@@ -7,7 +7,9 @@
     "string:Details\\Detail_Object_ConnectOrg.detail.json",
     "string:Details\\Detail_Objects_Params.detail.json",
     "string:Details\\Detail_Object_in_mainObject.detail.json",
-    "string:Details\\Detail_Question_by_Object.detail.json"
+    "string:Details\\Detail_Question_by_Object.detail.json",
+    "string:Details\\Detail_ObjectHistory.detail.json",
+    "string:Details\\Detail_ObjectHistory_details.detail.json"
   ],
   "Config": {
     "FieldGroups": [

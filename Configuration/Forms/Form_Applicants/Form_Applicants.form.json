@@ -4,10 +4,12 @@
   "Name": "Картка заявника",
   "IsPrintable": false,
   "Details": [
-    "string:Details\\Phone.detail.json",
-    "string:Details\\Questions.detail.json",
     "string:Details\\Consultation.detail.json",
-    "string:Details\\ApplicantAdress.detail.json"
+    "string:Details\\Questions.detail.json",
+    "string:Details\\ApplicantAdress.detail.json",
+    "string:Details\\Phone.detail.json",
+    "string:Details\\ApplicantHistory.detail.json",
+    "string:Details\\ApplicantHistory_details.detail.json"
   ],
   "Config": {
     "FieldGroups": [
