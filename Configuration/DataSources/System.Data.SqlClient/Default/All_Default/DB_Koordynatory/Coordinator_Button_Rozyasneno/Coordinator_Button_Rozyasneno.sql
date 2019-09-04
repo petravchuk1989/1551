@@ -25,7 +25,7 @@
       SET
       assignment_resolution_id = 6
       ,control_result_id = 7
-      ,control_type_id = 1
+      ,control_type_id = 2
       ,control_date = GETUTCDATE()
       ,edit_date = GETUTCDATE()
       ,user_edit_id = N'''+ @user + N'''
