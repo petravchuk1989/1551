@@ -4,7 +4,7 @@
     config: {
 
         query: {
-            code: 'db_report_5_2',
+            code: 'db_Report_5_2',
             parameterValues: [],
             filterColumns: [],
             sortColumns: [],
