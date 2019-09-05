@@ -249,7 +249,7 @@
                     default:
                         if (this.resultId != '' && this.resultId != undefined) {
                             let executeQuery = {
-                                queryCode: 'Prozvon_Close',
+                                queryCode: 'Prozvon_Close_Filter',
                                 limit: -1,
                                 parameterValues: [
                                     { key: '@Id', value: row.id },
