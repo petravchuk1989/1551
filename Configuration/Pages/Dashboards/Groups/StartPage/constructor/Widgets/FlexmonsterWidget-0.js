@@ -2,6 +2,7 @@
   return {
     config: {
         toolbar: true,
+        height: 700
     },
     init: function() {
         document.getElementById('summary__table').style.display = 'none';
@@ -24,7 +25,7 @@
         this.getChunkedValues(query, this.setData, this);
     },
     setData: function(values) {
-        
+
         indexRegistration_date = values[0].findIndex(el => el.code.toLowerCase() === 'registration_date' );
         indexVykon_date = values[0].findIndex(el => el.code.toLowerCase() === 'vykon_date' );
         indexClose_date = values[0].findIndex(el => el.code.toLowerCase() === 'close_date' );
@@ -41,6 +42,7 @@
         indexGroupOrganisations = values[0].findIndex(el => el.code.toLowerCase() === 'grouporganisations' );
         indexGroupQuestionTypes = values[0].findIndex(el => el.code.toLowerCase() === 'groupquestiontypes' );
         indexReceiptSources = values[0].findIndex(el => el.code.toLowerCase() === 'receiptsources' );
+        indexQuestionTypeName = values[0].findIndex(el => el.code.toLowerCase() === 'questiontypename' );
         
         const columns = values.shift();
         const reportData = values.map((row, index) => ({ 
@@ -60,6 +62,7 @@
             "Група органiзацiй": values[index][indexGroupOrganisations],
             "Група типiв питань": values[index][indexGroupQuestionTypes],
             "Джерело надходження": values[index][indexReceiptSources],
+            "Тип питання": values[index][indexQuestionTypeName],
         }));
         const report = {
             dataSource: {
@@ -136,20 +139,20 @@
                     this.dateClosing__to = dateClosing.dateTo === '' ? null :  dateClosing.dateTo;
                     
                     if(  this.dateClosing__from === null && this.dateClosing__to === null ){
-                        this.dateExecutionData = [];
-                        this.operationVykonDate = 0;
+                        this.dateClosingData = [];
+                        this.operationCloseDate = 0;
                         
                     }else if(  this.dateClosing__from !== null && this.dateClosing__to === null ){
-                        this.dateExecutionData = [this.dateClosing__from];
-                        this.operationVykonDate = 1;
+                        this.dateClosingData = [this.dateClosing__from];
+                        this.operationCloseDate = 1;
                         
                     }else if(  this.dateClosing__from === null && this.dateClosing__to !== null ){
-                        this.dateExecutionData = [this.dateClosing__to];
-                        this.operationVykonDate = 2;
+                        this.dateClosingData = [this.dateClosing__to];
+                        this.operationCloseDate = 2;
                         
                     }else if(  this.dateClosing__from !== null && this.dateClosing__to !== null ){
-                        this.dateExecutionData = [ this.dateClosing__from, this.dateClosing__to];
-                        this.operationVykonDate = 3;
+                        this.dateClosingData = [ this.dateClosing__from, this.dateClosing__to];
+                        this.operationCloseDate = 3;
                     }
                 }
                 
