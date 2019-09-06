@@ -2,7 +2,6 @@
   return {
     config: {
         toolbar: true,
-        height: 700
     },
     init: function() {
         document.getElementById('summary__table').style.display = 'none';
