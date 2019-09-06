@@ -37,8 +37,8 @@
               }
             ],
             "id": "Container-1",
-            "height": "120px",
-            "minHeight": "120px",
+            "height": "130px",
+            "minHeight": "130px",
             "minWidth": "calc(100% - 10px)",
             "backgroundColor": "white"
           },
