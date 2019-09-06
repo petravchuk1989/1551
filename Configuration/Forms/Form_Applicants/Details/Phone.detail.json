@@ -4,7 +4,7 @@
   "Name": "Заявники за телефоном",
   "SelectRowsQueryCode": "det_PhoneApplication",
   "SectionCode": "",
-  "Position": 1,
+  "Position": 2,
   "QueryParameters": [
     {
       "FormFieldName": "phone_number_norm",

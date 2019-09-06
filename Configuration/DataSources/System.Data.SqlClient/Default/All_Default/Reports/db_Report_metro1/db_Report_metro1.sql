@@ -19,7 +19,7 @@ join ReceiptSources rs on s.Id = rs.Id
 join Appeals a on a.receipt_source_id = rs.Id 
 join Questions q on q.appeal_id = a.Id 
 join [Objects] o on o.Id = q.[object_id]
-where rs.Id = 1 and o.name = 'Об`єкт Метрополітену'
+where rs.Id = 1 and o.Id = 125342
 and q.registration_date between @dateFrom and @dateTo
 group by s.Id )
 end
@@ -31,7 +31,7 @@ join ReceiptSources rs on s.Id = rs.Id
 join Appeals a on a.receipt_source_id = rs.Id 
 join Questions q on q.appeal_id = a.Id 
 join [Objects] o on o.Id = q.[object_id]
-where rs.Id = 2 and o.name = 'Об`єкт Метрополітену'
+where rs.Id = 2 and o.Id = 125342
 and q.registration_date between @dateFrom and @dateTo
 group by s.Id )
 end
@@ -43,7 +43,7 @@ join ReceiptSources rs on s.Id = rs.Id
 join Appeals a on a.receipt_source_id = rs.Id 
 join Questions q on q.appeal_id = a.Id 
 join [Objects] o on o.Id = q.[object_id]
-where rs.Id = 3 and o.name = 'Об`єкт Метрополітену'
+where rs.Id = 3 and o.Id = 125342
 and q.registration_date between @dateFrom and @dateTo
 group by s.Id )
 end

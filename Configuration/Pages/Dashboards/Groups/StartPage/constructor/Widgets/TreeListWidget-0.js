@@ -70,7 +70,7 @@
     init: function() {
         
         this.treeListInstance.height = window.innerHeight - 200 + '';
-        document.getElementById('question_clissificator').style.display = 'none';
+        document.getElementById('question_classificatory').style.display = 'none';
         this.sub = this.messageService.subscribe('showTable', this.showTable, this);
         
         let self = this;
@@ -97,9 +97,9 @@
     },    
     showTable: function(message){
         if( message.value === 'group' ){
-            document.getElementById('question_clissificator').style.display = 'none';
+            document.getElementById('question_classificatory').style.display = 'none';
         }else if( message.value === 'default'){
-            document.getElementById('question_clissificator').style.display = 'block';
+            document.getElementById('question_classificatory').style.display = 'block';
         }
     },
     destroy: function(){
