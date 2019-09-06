@@ -25,7 +25,7 @@
     set
      assignment_resolution_id = 4
     ,control_result_id = NULL
-    ,control_type_id = 1
+    ,control_type_id = 2
     ,edit_date = GETUTCDATE()
     ,user_edit_id = N'''+ @user + N'''
   where assignment_consideration_іd in (SELECT current_assignment_consideration_id FROM dbo.Assignments WHERE Id IN ('+@Ids+N') )
