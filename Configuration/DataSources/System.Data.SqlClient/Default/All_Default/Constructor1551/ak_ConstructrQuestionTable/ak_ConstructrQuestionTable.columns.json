@@ -127,5 +127,11 @@
     "IsPrintable": false,
     "SqlName": "[QueTypes].[Id]",
     "FilterParameterCode": "@QuestionTypeId"
+  },
+  {
+    "Code": "QuestionTypeName",
+    "Name": "QuestionTypeName",
+    "Position":20,
+    "IsPrintable": false
   }
 ]

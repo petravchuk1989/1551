@@ -107,7 +107,8 @@ end
 		where [QGroupIncludeQTypes].[type_question_id]=[QueTypes].Id
 					for xml path('')), 1,1,N'') as [GroupQuestionTypes],
   [ReceiptSources].name [ReceiptSources],
-  [QueTypes].[Id] as [QuestionTypeId]
+  [QueTypes].[Id] as [QuestionTypeId],
+  QueTypes.[name] as [QuestionTypeName]
 
   from [Questions] as [Que]
   left join [QuestionTypes] as [QueTypes] on [Que].question_type_id=[QueTypes].Id
@@ -158,4 +159,3 @@ end
   --[QueTypes].[Id] as [QuestionTypeId]
   --[Vykon].Log_Date Vykon_date,
   --[Closed].Log_Date Close_date,
-

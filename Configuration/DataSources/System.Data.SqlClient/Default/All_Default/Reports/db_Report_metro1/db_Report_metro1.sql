@@ -4,8 +4,8 @@ declare @site_q int;
 declare @ugl_q int;
 declare @result table (source nvarchar(200), val int);
 
--- declare @dateFrom datetime = '2019-06-01 00:00:00';
--- declare @dateTo datetime = current_timestamp;
+ --declare @dateFrom datetime = '2019-06-01 00:00:00';
+ --declare @dateTo datetime = current_timestamp;
 
 insert into @sources (Id, source)
 select Id, [name] from ReceiptSources
@@ -69,9 +69,12 @@ end
 
 select ROW_NUMBER() OVER(ORDER BY z.val asc) AS Id, * 
 from (           
-select 'Надано консультація' [source] , '         ' val
+select 'Отримано дзвінків на лінію з питань метрополітену' [source] , '         ' val
 UNION ALL
-select * from @result ) z
-where 
-#filter_columns#
-#sort_columns#
+select 'Надано усних консультацій' [source] , '         ' val
+UNION ALL
+select case 
+when [source] = 'Сайт/моб. додаток' then 'Зареєстровано звернень через сайт/мобільний додаток'
+when [source] = 'УГЛ' then 'Зареєстровано звернень через УГЛ' 
+when [source] = 'Дзвінок в 1551' then 'Зареєстровано звернень через дзвінок 1551' end, val
+from @result ) z
