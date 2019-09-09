@@ -4,35 +4,93 @@
   --declare @control_result_id int = 5;
   --declare @control_comment nvarchar(300)=N'qweqq';
 
-  
+
 --якщо дане доручення закрите то нічого не робити - return
 IF  (SELECT assignment_state_id FROM [Assignments] WHERE Id = @Id) = 5
 BEGIN
 	RETURN
 END
 
-  declare @out table(Id int)
-  DECLARE @result_of_checking INT
+-- вичесляем новый статус
+DECLARE @state_id INT=	(SELECT DISTINCT [new_assignment_state_id] FROM [TransitionAssignmentStates]
+							WHERE [new_assignment_result_id] = @control_result_id AND isnull([new_assignment_resolution_id],0) = isnull(@assignment_resolution_id,0))
 
+-- находим вопрос данного обращения
+DECLARE @question_id INT = (  SELECT question_id FROM [Assignments] WHERE [Id] = @Id);
+-- таблица для хранения йд ассегмента, счетчика на доопрацювання, и актуальный сонсидерейшн
+DECLARE @assigments_table TABLE (Id INT, rework_counter INT, curent_consid_id INT);
+
+DECLARE @out table(Id int)
+DECLARE @result_of_checking INT -- возвращаемый параметр из процедуры проверки переходов 
+
+-- если это не "Недозвон" то отправляем на проверку через таблицу:
 -- проверка через таблицу трансмишн, если "0" то return
-exec [dbo].[pr_check_right_choice_result_resolution_notStatus] @Id, @control_result_id, @assignment_resolution_id, @result_of_checking OUTPUT
-IF @result_of_checking = 0
+IF @control_result_id<>13
 BEGIN
-	RETURN;
+	exec [dbo].[pr_check_right_choice_result_resolution_notStatus] @Id, @control_result_id, @assignment_resolution_id, @result_of_checking OUTPUT
+	IF @result_of_checking = 0
+	BEGIN
+
+		if @control_result_id = 4 and @assignment_resolution_id = 9
+		BEGIN
+			UPDATE [CRM_1551_Analitics].[dbo].[Assignments]
+				SET  [assignment_state_id]=@state_id
+					,[AssignmentResultsId]=@control_result_id
+					,[AssignmentResolutionsId]=@assignment_resolution_id
+					,[user_edit_id]=@user_id
+					,[edit_date]=GETUTCDATE()
+					,[close_date]= GETUTCDATE()
+					,LogUpdated_Query = N'Prozvon_Close_ROW43'											
+				WHERE [Assignments].Id IN (SELECT Id FROM @assigments_table)
+
+			UPDATE [CRM_1551_Analitics].[dbo].[AssignmentConsiderations]
+				SET	   [assignment_result_id] = @control_result_id
+					,[assignment_resolution_id]=@assignment_resolution_id
+					,[edit_date]=GETUTCDATE()
+					,[user_edit_id]=@user_id
+				WHERE Id IN (SELECT curent_consid_id FROM @assigments_table)
+
+
+				if not EXISTS ( select 1 from AssignmentRevisions where assignment_consideration_іd in (SELECT curent_consid_id FROM @assigments_table) )
+				BEGIN
+					INSERT INTO [dbo].[AssignmentRevisions]
+						([assignment_consideration_іd]
+						,[control_type_id]
+						,[assignment_resolution_id]
+						,[control_result_id]
+						,[control_comment]
+						,[control_date]
+						,[user_id]
+						,[grade]
+						,[edit_date]
+						,[user_edit_id])
+					VALUES
+						((SELECT TOP 1 curent_consid_id FROM @assigments_table)
+						, 2
+						, @assignment_resolution_id
+						, @control_result_id
+						, @control_comment
+						, (select consideration_date from AssignmentConsiderations where Id = (SELECT TOP 1	curent_consid_id FROM @assigments_table))
+						, @user_id
+						, @grade
+						, GETUTCDATE()
+						, @user_id)
+				END
+				ELSE
+				BEGIN
+					UPDATE [dbo].[AssignmentRevisions]
+					SET  [assignment_resolution_id]= @assignment_resolution_id
+						,[control_result_id]=@control_result_id
+						,[control_comment]=@control_comment
+						,[grade]=@grade
+						,[edit_date]=GETUTCDATE()
+						,[user_edit_id]=@user_id
+					WHERE [assignment_consideration_іd] IN (SELECT curent_consid_id FROM @assigments_table)
+				END
+		END
+		RETURN;
+	END
 END
-
-		declare @state_id int=
-		(select distinct [new_assignment_state_id] from [TransitionAssignmentStates] 
-		where [new_assignment_result_id] = @control_result_id
-		and isnull([new_assignment_resolution_id],0) = isnull(@assignment_resolution_id,0))
-
-
-		--- находим вопрос данного обращения
-		declare @question_id int = (  select question_id from [Assignments] where [Id] = @Id);
-	
-		--- переход на таблички, создание 
-		DECLARE @assigments_table TABLE (Id INT,rework_counter INT,	curent_consid_id INT);
-		declare @assigments_consideration_table table (Id int); -- Id записи из таблицы AssignmentConsiderations
 
 		if @control_result_id = 5 or @control_result_id = 12 --На доопрацювання та фактично
 			begin
@@ -145,10 +203,8 @@ END
 									from @assigments_table as ast
 									where [AssignmentConsiderations].Id in (SELECT curent_consid_id FROM @assigments_table)
 							end
-
 						end
 
-					-----
 					if @control_result_id = 4-- виконано
 					begin
 
