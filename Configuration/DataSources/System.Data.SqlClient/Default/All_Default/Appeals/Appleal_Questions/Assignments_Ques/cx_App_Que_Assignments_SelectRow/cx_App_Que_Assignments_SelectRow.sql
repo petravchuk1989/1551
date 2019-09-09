@@ -59,7 +59,10 @@ SELECT distinct top 1
 	  ,(select count( assg.main_executor)
 			 from  [Assignments] assg 
 			 where assg.question_id = Assignments.question_id and assg.main_executor = 1 and assg.close_date is null) as is_aktiv_true
-	  ,assRev.control_comment
+--	  ,assRev.control_comment
+	  , ( SELECT TOP 1 	control_comment FROM AssignmentRevisions AS ar
+				JOIN AssignmentConsiderations AS ac ON ac.Id = ar.assignment_consideration_іd
+					WHERE ac.assignment_id = @Id ORDER BY ar.id DESC ) as control_comment
 -- 	  ,isnull(assRev.rework_counter,0) as rework_counter
 	  ,(select count(id) from AssignmentRevisions where assignment_consideration_іd in
 	    (select Id from AssignmentConsiderations where assignment_id= @Id) and control_result_id = 5 )  as rework_counter
