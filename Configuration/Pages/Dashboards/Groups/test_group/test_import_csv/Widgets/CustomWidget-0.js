@@ -52,7 +52,8 @@
                         this.showModalWindow(responseModal, responseNotification, CONTAINER);                        
                     }
                 });
-                xhr.open("POST", "http://localhost:46054/api/section/demo/import/csv");
+                let url = window.location.origin + '/api/section/demo/import/csv';
+                xhr.open("POST", url );
                 let token = localStorage.getItem('X-Auth-Token');
                 xhr.setRequestHeader("Authorization", 'Bearer ' + token );
                 xhr.send(data);
