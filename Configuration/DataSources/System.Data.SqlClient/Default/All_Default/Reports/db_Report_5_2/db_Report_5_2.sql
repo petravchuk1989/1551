@@ -1,6 +1,6 @@
--- declare @dateFrom datetime = '2019-01-01 00:00:00';
--- declare @dateTo datetime = current_timestamp;
--- declare @pos int = 28;
+--  declare @dateFrom datetime = '2019-01-01 00:00:00';
+--  declare @dateTo datetime = current_timestamp;
+--  declare @pos int = 8;
 
 --declare @positions_t table (Id int, pos nvarchar(200))
 
@@ -58,6 +58,30 @@ FETCH NEXT FROM @CURSOR INTO @OrganizationsRowId
 END
 CLOSE @CURSOR
 
+
+if object_id('tempdb..#temp_OUT2') is not null drop table #temp_OUT2
+create table #temp_OUT2(
+Id int identity(1,1),
+ParentId    int,
+orgId     int,
+orgName  nvarchar(max),
+[Level] int
+)
+
+;WITH  OrganizationsH (ParentId, Id, [Name], level) AS
+		  (
+		      SELECT parent_organization_id as ParentId, Id, short_name as [Name], 0
+		      FROM [dbo].[Organizations]
+		      WHERE #filter_columns#
+		      UNION ALL
+		    SELECT o.parent_organization_id as ParentId, o.Id, o.short_name as [Name], level + 1
+		      FROM [dbo].Organizations o 
+		      JOIN OrganizationsH h ON o.parent_organization_id = h.Id
+		  )
+		 insert into #temp_OUT2 (ParentId, orgId, orgName, [Level])
+		  SELECT ParentId, Id, [Name], level
+		  FROM OrganizationsH
+
 -----------------------------------
 if object_id('tempdb..#temp_OUT_ForDelete') is not null drop table #temp_OUT_ForDelete
 create table #temp_OUT_ForDelete(
@@ -100,18 +124,30 @@ from #temp_OUT
 where GroupOrgId != orgId
 */
 
+-- select * from #temp_OUT2
+
 	insert into #temp_OUT_Child (GroupOrgId, GroupOrgName, orgId, orgName, Kolvo)
 	select GroupOrgId, GroupOrgName, orgId, orgName, Kolvo
 	from #temp_OUT
-	where #filter_columns# 
+	where orgId in (select orgId from #temp_OUT2)
 
 if (select COUNT(1) from #temp_OUT) != (select COUNT(1) from #temp_OUT_Child)
 begin
 	delete from #temp_OUT where orgId in (select orgId from #temp_OUT_Child)
 	
-	insert into #temp_OUT (GroupOrgId, GrouporgName, orgId, orgName, Kolvo)
-	select orgId, orgName, orgId, orgName, Kolvo
-	from #temp_OUT_Child
+	--insert into #temp_OUT (GroupOrgId, GrouporgName, orgId, orgName, Kolvo)
+	--select orgId, orgName, orgId, orgName, Kolvo
+	--from #temp_OUT_Child
+
+	insert into #temp_OUT (GroupOrgId, GrouporgName, orgId, orgName)
+	select top 1 orgId, orgName, orgId, orgName
+	from #temp_OUT2 where [Level] = 0 
+
+
+	update #temp_OUT set Kolvo = (select SUM(Kolvo) from #temp_OUT_Child)
+	where orgId in (select top 1 orgId
+					from #temp_OUT2 where [Level] = 0)
+
 end
 
 select GroupOrgId as orgId, GrouporgName as orgName, SUM(Kolvo) as questionQty 

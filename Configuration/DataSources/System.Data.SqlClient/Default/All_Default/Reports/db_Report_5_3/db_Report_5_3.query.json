@@ -11,7 +11,7 @@
       "Position": 0,
       "ViewState": "Hidden",
       "IsPrintable": false,
-      "SqlName": "orgId",
+      "SqlName": "Id",
       "FilterParameterCode": "@orgId"
     },
     {
