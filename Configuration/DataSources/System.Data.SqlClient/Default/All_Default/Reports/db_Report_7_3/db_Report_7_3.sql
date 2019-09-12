@@ -1,8 +1,3 @@
-/*
-declare @dateFrom datetime = '2019-07-01'
-declare @dateTo datetime = getdate()
-*/
-
 declare @tab_All table (source nvarchar(200)COLLATE Ukrainian_CI_AS, prev_val int, cur_val int);
 declare @tab_Agr table (source nvarchar(200)COLLATE Ukrainian_CI_AS, prev_val int, cur_val int);
 declare @tab_Trans table (source nvarchar(200)COLLATE Ukrainian_CI_AS, prev_val int, cur_val int);
@@ -16,11 +11,13 @@ declare @tab_Health table (source nvarchar(200)COLLATE Ukrainian_CI_AS, prev_val
 
 IF OBJECT_ID('tempdb..#sources') IS NOT NULL DROP TABLE #sources
 CREATE TABLE #sources (
+    row# nvarchar(3) null,
     source_name VARCHAR(MAX) COLLATE Ukrainian_CI_AS
 );
 begin
-insert into #sources
-select name from ReceiptSources
+insert into #sources (source_name)
+select [name] 
+from ReceiptSources
 where Id not in (4,5,6,7)
 Union 
 select  'КБУ'
@@ -403,7 +400,21 @@ declare @result table (source nvarchar(200), prevAll nvarchar(10), curAll nvarch
 			join @tab_Health t_heal on t_heal.source = s.source_name
  
 end
-     select case when [source] = 'КБУ' then 'Питання, що надійшли до КБУ «Контактний центр міста Києва»'
+
+begin
+
+update #sources
+set row# = case [source_name]
+                  when 'КБУ' then '1.'
+                  when 'Дзвінок в 1551' then '1.1'
+				  when 'Сайт/моб. додаток' then '1.2'
+				  when 'УГЛ' then '1.3'
+                  when 'Телеефір' then '1.4'
+end
+end
+
+     select s.row#,
+	 case when [source] = 'КБУ' then 'Питання, що надійшли до КБУ «Контактний центр міста Києва»'
 	 when [source] = 'Дзвінок в 1551' then 'з них, через гарячу лінію 1551'
 	 when [source] = 'Сайт/моб. додаток' then 'з них, через офіційний веб-портал та додатки для мобільних пристроїв'
 	 when [source] = 'УГЛ' then 'з них, через ДУ «Урядовий контактний центр»'
@@ -416,5 +427,6 @@ end
 	 IIF(prevSocial = '0', '-', prevSocial) prevSocial, IIF(curSocial = '0', '-', curSocial) curSocial,
 	 IIF(prevWork = '0', '-', prevWork) prevWork, IIF(curWork = '0', '-', curWork) curWork,
 	 IIF(prevHealth = '0', '-', prevHealth) prevHealth, IIF(curHealth = '0', '-', curHealth) curHealth
-	 from @result	 
-	 order by curAll desc
+	 from @result r
+	 join #sources s on r.source = s.source_name	 
+	 order by row#

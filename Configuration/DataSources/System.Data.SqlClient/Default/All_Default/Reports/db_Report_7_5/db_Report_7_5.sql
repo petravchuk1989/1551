@@ -11,10 +11,11 @@ declare @tab_Employees table (sourse nvarchar(200) COLLATE Ukrainian_CI_AS, prev
 
 IF OBJECT_ID('tempdb..#sources') IS NOT NULL DROP TABLE #sources
 CREATE TABLE #sources (
+    row# nvarchar(3) null,
     source_name VARCHAR(MAX) COLLATE Ukrainian_CI_AS
 );
 begin
-insert into #sources
+insert into #sources (source_name)
 select name from ReceiptSources
 where Id not in (4,5,6,7)
 Union 
@@ -271,7 +272,20 @@ declare @result table (source nvarchar(200),
             join @tab_Employees t_empl on t_empl.sourse = s.source_name
 
 end
-     select case when [source] = 'КБУ' then 'Питання, що надійшли до КБУ «Контактний центр міста Києва»'
+
+begin
+update #sources
+set row# = case [source_name]
+                  when 'КБУ' then '1.'
+                  when 'Дзвінок в 1551' then '1.1'
+				  when 'Сайт/моб. додаток' then '1.2'
+				  when 'УГЛ' then '1.3'
+                  when 'Телеефір' then '1.4'
+end
+end
+
+     select 
+	 s.row#, case when [source] = 'КБУ' then 'Питання, що надійшли до КБУ «Контактний центр міста Києва»'
 	 when [source] = 'Дзвінок в 1551' then 'з них, через гарячу лінію 1551'
 	 when [source] = 'Сайт/моб. додаток' then 'з них, через офіційний веб-портал та додатки для мобільних пристроїв'
 	 when [source] = 'УГЛ' then 'з них, через ДУ «Урядовий контактний центр»'
@@ -284,5 +298,6 @@ end
 	 IIF(prevStCon = '0', '-', prevStCon) prevStateConstruction, IIF(curStCon = '0', '-', curStCon) curStateConstruction,
 	 IIF(prevOth = '0', '-', prevOth) prevOther, IIF(curOth = '0', '-', curOth) curOther,
 	 IIF(prevEmployees = '0', '-', prevEmployees) prevEmployees, IIF(curEmployees = '0', '-', curEmployees) curEmployees
-	 from @result	 
-	 order by curOth desc
+	 from @result r
+	 join #sources s on r.source = s.source_name	 
+	 order by row#
