@@ -5,15 +5,16 @@ declare @tab_Law table (source nvarchar(200) COLLATE Ukrainian_CI_AS, prev_val i
 declare @tab_Fam table (source nvarchar(200) COLLATE Ukrainian_CI_AS, prev_val int, cur_val int);
 declare @tab_Sin table (source nvarchar(200) COLLATE Ukrainian_CI_AS, prev_val int, cur_val int);
 
---declare @dateFrom date = '2019-05-05';
---declare @dateTo date = cast(current_timestamp as date);
+-- declare @dateFrom date = '2019-05-05';
+-- declare @dateTo date = cast(current_timestamp as date);
 
 IF OBJECT_ID('tempdb..#sources') IS NOT NULL DROP TABLE #sources
 CREATE TABLE #sources (
+    row# nvarchar(3) null,
     source_name VARCHAR(MAX) COLLATE Ukrainian_CI_AS
 );
 begin
-insert into #sources
+insert into #sources (source_name)
 select name from ReceiptSources
 where Id not in (4,5,6,7)
 Union 
@@ -346,7 +347,20 @@ declare @result table (source nvarchar(200),
 			join @tab_Sin t_sin on t_sin.source = s.source_name
  
 end
-     select case when [source] = 'КБУ' then 'Питання, що надійшли до КБУ «Контактний центр міста Києва»'
+
+begin
+update #sources
+set row# = case [source_name]
+                  when 'КБУ' then '1.'
+                  when 'Дзвінок в 1551' then '1.1'
+				  when 'Сайт/моб. додаток' then '1.2'
+				  when 'УГЛ' then '1.3'
+                  when 'Телеефір' then '1.4'
+end
+end
+ 
+     select
+	 s.row#, case when [source] = 'КБУ' then 'Питання, що надійшли до КБУ «Контактний центр міста Києва»'
 	 when [source] = 'Дзвінок в 1551' then 'з них, через гарячу лінію 1551'
 	 when [source] = 'Сайт/моб. додаток' then 'з них, через офіційний веб-портал та додатки для мобільних пристроїв'
 	 when [source] = 'УГЛ' then 'з них, через ДУ «Урядовий контактний центр»'
@@ -358,5 +372,6 @@ end
 	 IIF(prevLaw = '0', '-', prevLaw) prevLaw, IIF(curLaw = '0', '-', curLaw) curLaw,
 	 IIF(prevFamily = '0', '-', prevFamily) prevFamily, IIF(curFamily = '0', '-', curFamily) curFamily,
 	 IIF(prevSince = '0', '-', prevSince) prevHealth, IIF(curSince = '0', '-', curSince) curSince
-	 from @result	 
-	 order by curCommunal desc
+	 from @result r
+	 join #sources s on r.source = s.source_name	 
+	 order by row#
