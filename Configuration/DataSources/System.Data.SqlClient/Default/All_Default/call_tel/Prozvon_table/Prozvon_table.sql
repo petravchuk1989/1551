@@ -1,5 +1,5 @@
- --declare @filter nvarchar(3000)=N'1=1'; --question_type in (50)
- --declare @sort nvarchar(3000)=N'1=1';
+--  declare @filter nvarchar(3000)=N'question_list_state in (1)'; --question_type in (50)
+--  declare @sort nvarchar(3000)=N'1=1';
 
  declare @sort1 nvarchar(3000)=case when @sort=N'1=1' then N'QuestionType' else @sort end;
 
@@ -115,9 +115,9 @@ end
   ,[AssignmentRevisions].[edit_date]
   ,[AssignmentRevisions].[control_comment]
 
-,[Streets].Id building_street
+  ,[Streets].Id building_street
   ,[Buildings].[Id] building_number
- , [Appeals].receipt_source_id receipt_source
+  ,[Appeals].receipt_source_id receipt_source
   from [Assignments]  with (nolock)
   left join [AssignmentStates] with (nolock) on [Assignments].assignment_state_id=[AssignmentStates].Id
   left join [AssignmentResults] with (nolock) on [Assignments].AssignmentResultsId=[AssignmentResults].Id
@@ -142,7 +142,7 @@ end
   left join [StreetTypes] [StreetTypes2] with (nolock) on [Streets2].street_type_id=[StreetTypes2].Id
   left join [Organizations] with (nolock) on [Assignments].executor_organization_id=[Organizations].Id
   left join [ReceiptSources] with (nolock) on [Appeals].receipt_source_id=[ReceiptSources].Id
-  left join [QuestionTypeInRating] with (nolock) on [QuestionTypes].question_type_id=[QuestionTypes].Id
+  left join [QuestionTypeInRating] with (nolock) on [QuestionTypes].question_type_id=[QuestionTypeInRating].QuestionType_id
   left join [Rating] with (nolock) on [QuestionTypeInRating].Rating_id=[Rating].Id
   left join [AssignmentRevisions] with (nolock) on [AssignmentConsiderations].Id=[AssignmentRevisions].assignment_consideration_іd 
   where [AssignmentStates].code=N''OnCheck'' and [AssignmentResults].code=N''Done'' and
