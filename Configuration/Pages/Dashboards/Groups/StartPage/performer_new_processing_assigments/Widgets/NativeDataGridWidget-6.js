@@ -92,9 +92,8 @@
         onRowClick: function(data) {},
         selectionChanged: function(data) {}
     },
-    sub: [],
-    containerForChackedBox: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         document.getElementById('table10_Plan_Programs').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnTable2', this.changeOnTable, this);
         

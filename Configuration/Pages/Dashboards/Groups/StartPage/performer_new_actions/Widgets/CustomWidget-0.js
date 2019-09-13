@@ -8,7 +8,7 @@
                     <div id = 'container'></div>
                 `
     ,
-    init: function() {
+    init: function() { 
         this.messageService.publish( { name: 'showPagePreloader'  } );
         const header1 = document.getElementById('header1');
         header1.firstElementChild.style.overflow = 'visible';

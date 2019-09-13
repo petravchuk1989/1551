@@ -5,10 +5,6 @@
     formatTitle: function() {},
     customConfig:
                 `
-                
-                <style>
-               
-                </style>
                     <div id = 'container'></div>
                 `
     ,
@@ -22,9 +18,10 @@
         this.sub = this.messageService.subscribe('reloadMainTable', this.reloadMainTable, this);
         this.column = [];
         this.navigator = [];
-        const header = document.getElementById('header1');
-        header.firstElementChild.style.overflow = 'visible';
-        header.firstElementChild.firstElementChild.firstElementChild.style.overflow = 'visible';
+        const header1 = document.getElementById('header1');
+        header1.parentElement.style.flexFlow = "column nowrap";
+        header1.firstElementChild.style.overflow = 'visible';
+        header1.firstElementChild.firstElementChild.firstElementChild.style.overflow = 'visible';
         
         var status = 'new';
         var location = undefined;

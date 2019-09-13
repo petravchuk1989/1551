@@ -37,8 +37,8 @@
               }
             ],
             "id": "Container-1",
-            "height": "170px",
-            "minHeight": "170px",
+            "height": "130px",
+            "minHeight": "130px",
             "minWidth": "100px",
             "backgroundColor": "white"
           }
@@ -51,8 +51,8 @@
         "containerId": "header1"
       },
       {
-        "width": "calc(100% - 100px)",
-        "margin": "50px 5px 10px 0",
+        "width": "calc(100% - 10px)",
+        "margin": "0 5px 10px 0",
         "flexWrap": "wrap",
         "flexDirection": "column",
         "order": 1,
@@ -62,7 +62,7 @@
         "children": [
           {
             "width": "auto",
-            "margin": "0 5px 10px",
+            "margin": "0 5px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,
@@ -85,7 +85,7 @@
           },
           {
             "width": "auto",
-            "margin": "0 5px 10px",
+            "margin": "0 5px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,
@@ -108,7 +108,7 @@
           },
           {
             "width": "auto",
-            "margin": "0 5px 10px",
+            "margin": "0 5px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,
@@ -131,7 +131,7 @@
           },
           {
             "width": "auto",
-            "margin": "0 5px 10px",
+            "margin": "0 5px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,
@@ -154,7 +154,7 @@
           },
           {
             "width": "auto",
-            "margin": "0 5px 10px",
+            "margin": "0 5px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,
@@ -177,7 +177,7 @@
           },
           {
             "width": "auto",
-            "margin": "0 5px 10px",
+            "margin": "0 5px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,
@@ -200,7 +200,7 @@
           },
           {
             "width": "calc(100% - 10px)",
-            "margin": "0 5px 10px",
+            "margin": "0 5px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,
@@ -223,7 +223,7 @@
           },
           {
             "width": "auto",
-            "margin": "0 5px 10px",
+            "margin": "0 5px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,

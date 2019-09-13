@@ -50,7 +50,7 @@
             showInfo: true,
         },
         paging: {
-            pageSize: 10
+            pageSize: 5
         },        
         scrolling: {
             mode: 'standart',
@@ -83,9 +83,8 @@
         showColumnFixing: true,
         groupingAutoExpandAll: null,
     },
-    sub: [],
-    containerForChackedBox: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         document.getElementById('table9_dooproc').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnTable2', this.changeOnTable, this);
         
