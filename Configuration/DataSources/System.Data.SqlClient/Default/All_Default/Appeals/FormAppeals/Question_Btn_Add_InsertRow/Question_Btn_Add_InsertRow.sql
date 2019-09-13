@@ -1,3 +1,11 @@
+-- заглушка от дурака :) (повторное нажатие на кнопку зберегти питання) что бы нелетели полу пустые запросы
+if (@Question_TypeId is null or @Question_TypeId = '') OR
+    (@Question_Content is null or @Question_Content = '') 
+    -- and     (@Question_OrganizationId is null or @Question_OrganizationId = '')
+    BEGIN
+      RETURN
+    end
+
   declare @output table (Id int);
   declare @output2 table (Id int);
   declare @app_id int;

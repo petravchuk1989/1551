@@ -31,6 +31,11 @@ BEGIN
 	IF @result_of_checking = 0
 	BEGIN
 
+		INSERT INTO @assigments_table(Id,rework_counter, curent_consid_id)
+		SELECT Id, NULL, current_assignment_consideration_id
+		FROM [Assignments]
+		WHERE Id = @Id 	AND [Assignments].assignment_state_id<>5
+
 		if @control_result_id = 4 and @assignment_resolution_id = 9
 		BEGIN
 			UPDATE [CRM_1551_Analitics].[dbo].[Assignments]

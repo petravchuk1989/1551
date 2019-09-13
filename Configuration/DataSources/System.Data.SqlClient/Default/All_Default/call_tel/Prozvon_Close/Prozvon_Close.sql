@@ -60,13 +60,16 @@ END
 						if @control_result_id <> 4
 						begin
 							update [dbo].[AssignmentRevisions]
-							set [assignment_resolution_id]= isnull(@assignment_resolution_id, assignment_resolution_id)
+							set 
+							--  [assignment_resolution_id]= isnull(@assignment_resolution_id, assignment_resolution_id)
+							 [assignment_resolution_id]= @assignment_resolution_id
 							,[control_result_id]= ( case when ast.rework_counter < 2 then 5
 														when ast.rework_counter >= 2 then 12
-														when ast.rework_counter is null then @control_result_id
+														-- when ast.rework_counter is null then @control_result_id
+														else @control_result_id
 														end )
 							,[control_comment]=isnull(@control_comment, control_comment)
-							,[grade]=@grade
+							-- ,[grade]=@grade
 							,[edit_date]=GETUTCDATE()
 							,[user_edit_id]=@user_id
 							,[missed_call_counter]=(case when @control_result_id=13 and [missed_call_counter] is null then 1 
@@ -83,7 +86,8 @@ END
 							set  [assignment_state_id]=@state_id
 								,[AssignmentResultsId]=( case when ast.rework_counter < 2 then 5
 																when ast.rework_counter >= 2 then 12
-																when ast.rework_counter is null then @control_result_id
+																-- when ast.rework_counter is null then @control_result_id
+																else @control_result_id
 																end )
 								,[AssignmentResolutionsId]=@assignment_resolution_id
 								,[user_edit_id]=@user_id
@@ -137,7 +141,8 @@ END
 								update [dbo].[AssignmentConsiderations]
 								set [assignment_result_id] = ( case when ast.rework_counter < 2 then 5
 																when ast.rework_counter >= 2 then 12
-																when ast.rework_counter is null then @control_result_id
+																-- when ast.rework_counter is null then @control_result_id
+																else  @control_result_id
 																end )
 									,[assignment_resolution_id]=@assignment_resolution_id
 									,[edit_date]=GETUTCDATE()

@@ -50,6 +50,7 @@ begin
 			,assignment_result_id = 4 -- Done
 			,assignment_resolution_id = 4
 			,short_answer =  @coment_executor
+			,consideration_date = getutcdate()
 		WHERE Id IN (SELECT consideration_id FROM @table_id)
 
 	DECLARE @temp_id INT
@@ -79,8 +80,6 @@ begin
 				,[control_type_id]
 				,[assignment_resolution_id]
 				,[control_result_id]
-				,[control_comment]
-				--,[control_date]
 				,[user_id]
 				,[edit_date]
 				,[user_edit_id])
@@ -89,7 +88,6 @@ begin
 						, 2
 						, 4
 						, NULL
-						, @coment_executor
 						, @user_id
 						, GETUTCDATE()
 						, @user_id )
