@@ -1,3 +1,4 @@
+--comment test
 /*
 
  declare @user_id nvarchar(300)=N'd0da1bfc-438a-45ec-bc75-f1c8d05f0d9a';
