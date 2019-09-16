@@ -6,116 +6,95 @@ begin
 end
 else
 begin  
-  UPDATE [dbo].[Events]
-      SET   
-            [real_end_date]= @real_end_date
-		   ,[active]= N'false'
-           ,[user_id]= @user_id
-           ,[executor_comment]=@coment_executor
-		WHERE Id = @Id
-	--select 'Update is good'
+	DECLARE @table_id TABLE (id INT IDENTITY(1,1),	question_id INT,assignment_id INT,	consideration_id INT)
 
-	update Questions
-		set question_state_id = 5
-		,[edit_date] = GETUTCDATE()
-        ,[user_edit_id] = @user_id
-	where Id in (
-				select  q.Id
-				FROM [Events] as e
-    				left join EventQuestionsTypes as eqt on eqt.event_id = e.Id 
-    				left join [EventObjects] as eo on eo.event_id = e.Id
-    				left join Questions as q on q.question_type_id = eqt.question_type_id and q.[object_id] = eo.[object_id]
-    				left join Assignments on Assignments.Id = q.last_assignment_for_execution_id
-    				left join Organizations on Organizations.Id = Assignments.executor_organization_id
-				where e.Id = @Id
-				and q.answer_form_id = 2
-				and q.registration_date >= e.registration_date
-				and eqt.[is_hard_connection] = 1
-	)
-	 
-	 update Assignments 
-	 set assignment_state_id = 3 --OnCheck
-		,user_edit_id = @user_id
-		,[LogUpdated_Query] = N'ak_CloseEvent_ROW39'
-		,edit_date = GETUTCDATE()
-		,AssignmentResultsId = 4 -- Done
-		,AssignmentResolutionsId = null	 where Id in (select Id from Assignments 
-				where question_id in (select  q.Id
-										FROM [Events] as e
-    										left join EventQuestionsTypes as eqt on eqt.event_id = e.Id 
-    										left join [EventObjects] as eo on eo.event_id = e.Id
-    										left join Questions as q on q.question_type_id = eqt.question_type_id and q.[object_id] = eo.[object_id]
-    										left join Assignments on Assignments.Id = q.last_assignment_for_execution_id
-    										left join Organizations on Organizations.Id = Assignments.executor_organization_id
-										where e.Id = @Id
-										and q.answer_form_id = 2
-										and q.registration_date >= e.registration_date
-										and eqt.[is_hard_connection] = 1)
-					and assignment_state_id <> 5 and assignment_type_id = 1
-				)
+	INSERT INTO @table_id( question_id, assignment_id, consideration_id)
+	SELECT
+		q.Id
+		, Assignments.Id
+		, Assignments.current_assignment_consideration_id
+	FROM [Events] AS e
+		LEFT JOIN EventQuestionsTypes AS eqt ON eqt.event_id = e.Id
+		LEFT JOIN [EventObjects] AS eo ON eo.event_id = e.Id
+		LEFT JOIN Questions AS q ON q.question_type_id = eqt.question_type_id AND q.[object_id] = eo.[object_id]
+		LEFT JOIN Assignments ON Assignments.Id = q.last_assignment_for_execution_id
+		LEFT JOIN Organizations ON Organizations.Id = Assignments.executor_organization_id
+	WHERE e.Id = @Id
+		AND q.registration_date >= e.registration_date
+		AND eqt.[is_hard_connection] = 1
+		AND Assignments.main_executor = 1
+		AND Assignments.assignment_state_id <> 5
+
+	UPDATE [dbo].[Events]
+		SET   
+			[real_end_date]= @real_end_date
+			,[active]= N'false'
+			,[user_id]= @user_id
+			,[executor_comment]=@coment_executor
+			WHERE Id = @Id
+
+	UPDATE Assignments 
+		SET assignment_state_id = 3 --OnCheck
+			,user_edit_id = @user_id
+			,[LogUpdated_Query] = N'ak_CloseEvent_ROW39'
+			,edit_date = GETUTCDATE()
+			,state_change_date = GETUTCDATE()
+			,AssignmentResultsId = 4 -- Done
+			,AssignmentResolutionsId = 4	 
+		WHERE Id IN (SELECT assignment_id FROM @table_id)
 
 
-	update AssignmentConsiderations
-	 set user_edit_id = @user_id
-		,edit_date = GETUTCDATE()
-		,assignment_result_id = 4 -- Done
-		,assignment_resolution_id = null
-		,short_answer =  @coment_executor
-	 where Id in (select current_assignment_consideration_id from Assignments 
-				where question_id in (select  q.Id
-										FROM [Events] as e
-    										left join EventQuestionsTypes as eqt on eqt.event_id = e.Id 
-    										left join [EventObjects] as eo on eo.event_id = e.Id
-    										left join Questions as q on q.question_type_id = eqt.question_type_id and q.[object_id] = eo.[object_id]
-    										left join Assignments on Assignments.Id = q.last_assignment_for_execution_id
-    										left join Organizations on Organizations.Id = Assignments.executor_organization_id
-										where e.Id = @Id
-										and q.answer_form_id = 2
-										and q.registration_date >= e.registration_date
-										and eqt.[is_hard_connection] = 1)
-					and assignment_state_id <> 5 and assignment_type_id = 1
-				)
+	UPDATE AssignmentConsiderations
+		SET user_edit_id = @user_id
+			,edit_date = GETUTCDATE()
+			,assignment_result_id = 4 -- Done
+			,assignment_resolution_id = 4
+			,short_answer =  @coment_executor
+			,consideration_date = getutcdate()
+		WHERE Id IN (SELECT consideration_id FROM @table_id)
+
+	DECLARE @temp_id INT
+	DECLARE @cons_id INT
+
+	DECLARE cursor_in_up_Revision CURSOR 
+	FOR
+		SELECT Id, consideration_id	FROM @table_id
+	OPEN cursor_in_up_Revision
+	FETCH next FROM cursor_in_up_Revision  INTO @temp_id,  @cons_id
+	WHILE @@fetch_status = 0
+		BEGIN
+			IF EXISTS (SELECT 1	FROM AssignmentRevisions ar	WHERE ar.assignment_consideration_іd = @cons_id )
+			BEGIN
+				UPDATE AssignmentRevisions
+						SET control_type_id = 2
+						,assignment_resolution_id = 4
+						,control_result_id = NULL
+						,user_edit_id = @user_id
+						,edit_date = GETUTCDATE()
+				WHERE assignment_consideration_іd = @cons_id
+			END 
+			ELSE
+			BEGIN
+				INSERT INTO AssignmentRevisions
+				([assignment_consideration_іd]
+				,[control_type_id]
+				,[assignment_resolution_id]
+				,[control_result_id]
+				,[user_id]
+				,[edit_date]
+				,[user_edit_id])
+				VALUES
+				(@cons_id
+						, 2
+						, 4
+						, NULL
+						, @user_id
+						, GETUTCDATE()
+						, @user_id )
+			END
+		FETCH next FROM cursor_in_up_Revision  INTO @temp_id, @cons_id
+	END
+	CLOSE cursor_in_up_Revision
+	DEALLOCATE cursor_in_up_Revision
 	
 end
-
-
-
-/*
-update [CRM_1551_Analitics].[dbo].[Events]
-  set [active]=N'false'
-  where id=@Id
-  
-  UPDATE [dbo].[Events]
-      SET   
-            -- [name]= @event_name
-        --   ,[event_type_id]= @event_type_id
-        --   ,[question_type_id]= @question_type_id удалена по заявке CRM1551-276
-        --   ,[gorodok_id]= @gorodok_id
-        --   ,[start_date]= @start_date
-           ,[plan_end_date]= @plan_end_date
-           ,[real_end_date]= @real_end_date
-           --,[active]= @active
-           ,[comment]= @comment
-           ,[area]  = @area
-        --   ,[user_id]= @user_id
-           ,[audio_start_date]= @audio_start_date
-           ,[audio_end_date]= @audio_end_date
-           ,[Standart_audio]= @Standart_audio
-           ,[say_liveAddress_id]= @say_liveAddress_id
-           ,[say_organization_id]  = @say_organization_id
-           ,[say_phone_for_information] = @say_phone_for_information
-           ,[phone_for_information] = @phone_for_information
-           ,[say_plan_end_date]= @say_plan_end_date
-           ,[audio_on] = @audio_on
-           ,[executor_comment]=@coment_executor
-           --,[File] = @file
-		WHERE Id = @Id
-
-update EventObjects set object_id = @object_id
-	where event_id = @Id
-	
-update [dbo].[EventOrganizers]
-       set  [organization_id] = @executor_id
-where event_id = @Id
-
-*/

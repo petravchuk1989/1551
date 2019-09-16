@@ -76,5 +76,11 @@
     "Name": "curSince",
     "Position": 12,
     "IsPrintable": false
+  },
+  {
+    "Code": "row#",
+    "Name": "row#",
+    "Position": -1,
+    "IsPrintable": false
   }
 ]

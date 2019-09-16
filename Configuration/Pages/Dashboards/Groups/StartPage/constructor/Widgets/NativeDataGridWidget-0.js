@@ -39,7 +39,7 @@
         this.loadData(this.afterLoadDataHandler);
     },
     createTableButton: function(e) {
-        var toolbarItems = e.toolbarOptions.items;
+        let toolbarItems = e.toolbarOptions.items;
         
         toolbarItems.push({
             widget: "dxButton", 

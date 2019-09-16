@@ -88,5 +88,11 @@
     "Name": "curEmployees",
     "Position": 14,
     "IsPrintable": false
+  },
+  {
+    "Code": "row#",
+    "Name": "row#",
+    "Position": -1,
+    "IsPrintable": false
   }
 ]

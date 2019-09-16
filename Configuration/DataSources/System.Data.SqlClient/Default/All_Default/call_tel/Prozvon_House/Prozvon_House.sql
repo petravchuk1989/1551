@@ -1,10 +1,10 @@
  
 
- /*
- declare @filter nvarchar(3000)=N'1=1';
- declare @sort nvarchar(3000)=N'full_name';
-declare @buildId int =708;
-*/
+ 
+ --declare @filter nvarchar(3000)=N'1=1';
+ --declare @sort nvarchar(3000)=N'full_name';
+ --declare @buildId int =708;
+
  declare @sort1 nvarchar(3000)=case when @sort=N'1=1' then N'QuestionType' else @sort end;
  
 
@@ -14,7 +14,7 @@ declare @buildId int =708;
 
  select Id, registration_number, QuestionType, full_name, phone_number, DistrictName District,
  house, place_problem, vykon, zmist, comment, [history], ApplicantsId, BuildingId, [Organizations_Id],
- cc_nedozvon, AssignmentStates_code, states, entrance, [edit_date], [control_comment]
+ cc_nedozvon, AssignmentStates_code, states, result, result_id, entrance, [edit_date], [control_comment]
  
  from
  (
@@ -53,6 +53,8 @@ declare @buildId int =708;
   ,[AssignmentStates].name states
   ,[AssignmentRevisions].[edit_date]
   ,[AssignmentRevisions].[control_comment]
+  ,[AssignmentResults].[name] as result
+  ,[Assignments].AssignmentResultsId as result_id
   from [Assignments]
   left join [AssignmentStates] on [Assignments].assignment_state_id=[AssignmentStates].Id
   left join [AssignmentResults] on [Assignments].AssignmentResultsId=[AssignmentResults].Id

@@ -25,14 +25,16 @@
 
             listItem.addEventListener( 'click', event => {
                 let target = event.currentTarget;
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone=0000000000&type="+target.type);
+                let phoneNumber = document.getElementById('listPhoneNumberInput').value;
+                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone="+phoneNumber+"&type="+target.type);
             });
         });
-
         const listTitle  =  this.createElement('div', { id:'listTitle', innerText: 'Виберіть тип звернення:' } );
-        const listWrapper =  this.createElement('div', { id:'listWrapper' }, listTitle, listItems );
+        const listPhoneNumberInput =  this.createElement('input', { id:'listPhoneNumberInput', placeholder: 'Введiть номер телефону' } );
+        const listWrapper =  this.createElement('div', { id:'listWrapper' }, listTitle, listPhoneNumberInput, listItems );
         const modalWindow = this.createElement('div', { id:'modalWindow', className: 'modalWindow'}, listWrapper, modalBtnWrapper); 
         const modalWindowWrapper = this.createElement('div', { id:'modalWindowWrapper', className: 'modalWindowWrapper'}, modalWindow); 
+
         CONTAINER.appendChild(modalWindowWrapper);
         modalBtnTrue.addEventListener( 'click', event => {
             let target = event.currentTarget;

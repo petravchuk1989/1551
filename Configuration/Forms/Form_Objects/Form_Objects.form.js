@@ -1,12 +1,23 @@
 (function () {
   return {
+    Detail_History: function(column, row, value, event, indexOfColumnId) {
+        const parameters = [
+                            { key: '@history_id', value: row.values[0]}
+                           ];
+        this.details.loadData('ObjectHistory_details', parameters);
+        this.details.setVisibility('ObjectHistory_details', true);       
+    },
+    
+    date_in_form: '',
+    previous_result: '',
+
     init:function(){
         this.form.disableControl('full_name');
         this.form.disableControl('district_id');
         // this.form.disableControl('is_active');
-        
-        
-        
+        this.details.setVisibility('ObjectHistory_details', false);
+        this.details.onCellClick('ObjectHistory', this.Detail_History.bind(this));
+               
         let type = this.form.getControlValue('obj_type_id');
         console.log(type);
         if(type != null){

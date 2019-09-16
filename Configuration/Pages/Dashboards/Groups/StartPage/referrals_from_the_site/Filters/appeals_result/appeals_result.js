@@ -4,7 +4,7 @@
     keyValue: 'Id',
     displayValue: 'name',
     baseQueryOptions: {
-        queryCode: 'list_AppealsFromSite_Results ',
+        queryCode: 'list_AppealsFromSite_Results',
         filterColumns: null,
         limit: -1,
         parameterValues: [],

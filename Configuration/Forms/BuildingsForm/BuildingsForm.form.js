@@ -1,6 +1,18 @@
 (function () {
   return {
+    
+    Detail_History: function(column, row, value, event, indexOfColumnId) {
+        const parameters = [
+                            { key: '@history_id', value: row.values[0]}
+                           ];
+        this.details.loadData('BuildingHistory_details', parameters);
+        this.details.setVisibility('BuildingHistory_details', true);
+        
+    },
     init: function(event) {
+        this.details.setVisibility('BuildingHistory_details', false);
+        this.details.onCellClick('BuildingHistory', this.Detail_History.bind(this)); 
+
         this.form.disableControl('street_id');
         this.form.disableControl('number');
         document.getElementById('change_but').disabled = true;
@@ -50,7 +62,7 @@
                               };
                           };
                     }); 
-            }.bind(this);
+            }.bind(this));
     
     
         this.form.onControlValueChanged('change_building', this.onBuildingChanged);

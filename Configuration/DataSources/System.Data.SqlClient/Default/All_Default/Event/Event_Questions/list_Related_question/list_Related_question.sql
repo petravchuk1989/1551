@@ -17,6 +17,8 @@ select
 	where e.Id = @Id
 	and q.registration_date >= e.registration_date
 	and eqt.[is_hard_connection] = 1
+	AND Assignments.main_executor = 1
+	AND Assignments.assignment_state_id <> 5
     and 
         #filter_columns#
         #sort_columns#

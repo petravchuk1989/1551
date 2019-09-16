@@ -35,5 +35,10 @@
   {
     "Code": "@bsecondname",
     "Name": "Корпус"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
   }
 ]

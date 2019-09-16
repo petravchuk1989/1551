@@ -9,4 +9,4 @@ SELECT
 	 where [Buildings].is_active = 1 and
 	 #filter_columns#
      #sort_columns#
- --offset @pageOffsetRows rows fetch next @pageLimitRows rows only
+ offset @pageOffsetRows rows fetch next @pageLimitRows rows only

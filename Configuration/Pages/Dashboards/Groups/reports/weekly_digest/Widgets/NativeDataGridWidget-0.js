@@ -3,7 +3,7 @@
     title: '',    
     config: {
         query: {
-            code: 'db_report_5_1',
+            code: 'db_Report_5_1',
             parameterValues: [],
             filterColumns: [],
             sortColumns: [],
