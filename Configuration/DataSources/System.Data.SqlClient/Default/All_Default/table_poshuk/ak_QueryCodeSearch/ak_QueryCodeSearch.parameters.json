@@ -69,10 +69,5 @@
     "Code": "@transfer_date_from",
     "Name": "transfer_date_from",
     "ParameterType": "DateTime"
-  },
-  {
-    "Code": "@state_changed_date_from",
-    "Name": "state_changed_date_from",
-    "ParameterType": "DateTime"
   }
 ]
