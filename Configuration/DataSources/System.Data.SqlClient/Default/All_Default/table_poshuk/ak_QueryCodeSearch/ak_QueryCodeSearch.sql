@@ -1,10 +1,12 @@
 
-/*
+/* 
  declare @user_id nvarchar(300)=N'd0da1bfc-438a-45ec-bc75-f1c8d05f0d9a';
  --d0da1bfc-438a-45ec-bc75-f1c8d05f0d9a
  --aa4c1f84-df33-452c-88e7-5a58dfd0b2d3
 
-  declare @param1 nvarchar(max)=N'zayavnyk_applicant_type in (1, 2) and question_registration_number like ''%питання%'' and question_object in (1)'--N'zayavnyk_full_name like ''%Волосянко Надя Богданівна%'''
+ declare @zayavnyk_phone_number nvarchar(max)=N'abc';
+
+  declare @param1 nvarchar(max)=N'zayavnyk_phone_number like ''%0000012%'''--N'zayavnyk_full_name like ''%Волосянко Надя Богданівна%'''
  declare @pageOffsetRows int =0;
  declare @pageLimitRows int =10;
 
@@ -23,8 +25,8 @@
   declare @execution_term_from datetime;--='2019-07-21 21:00:00.000';
  declare @execution_term_to datetime;--='2019-07-21 21:00:00.000';
 
+ 
  */
-
 
 
 
@@ -257,6 +259,13 @@ declare @n int=1;
 
  -- select @param_new
 
+ declare @param_new2 nvarchar(max)=
+ case when @zayavnyk_phone_number is not null
+ then @param_new+N' and reverse(zayavnyk_phone_number) like '+N'''%'+REVERSE(@zayavnyk_phone_number)+N''''
+ else @param_new
+ end 
+
+ --select @param_new2
   -------
 
 
@@ -507,7 +516,7 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   right join [AssignmentConsDocFiles] with (nolock) on [AssignmentConsDocuments].Id=[AssignmentConsDocFiles].assignment_cons_doc_id
   where [AssignmentConsDocuments].[doc_type_id] in (3,4) or [AssignmentConsDocuments].Id is not null) files_check on [AssignmentConsiderations].Id=files_check.assignment_сons_id
   ) a
-  where '+@param_new+ N'  and '+@organizations+N' 
+  where '+@param_new2+ N'  and '+@organizations+N' 
 
 '
  -- and #filter_columns#
