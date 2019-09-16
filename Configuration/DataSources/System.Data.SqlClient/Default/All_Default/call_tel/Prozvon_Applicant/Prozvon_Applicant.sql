@@ -1,17 +1,14 @@
- 
-
- /*
-  declare @filter nvarchar(3000)=N'1=1';
-  declare @ApplicantsId int =123;
-  declare @sort nvarchar(3000)=N'full_name desc';
-  */
+--   declare @filter nvarchar(3000)=N'1=1';
+--   declare @ApplicantsId int = 1494216;
+--   declare @sort nvarchar(3000)=N'full_name desc';
+  
  declare @sort1 nvarchar(3000)=case when @sort=N'1=1' then N'QuestionType' else @sort end;
 
  declare @qcode nvarchar(max)=N'
 
  select Id, registration_number, QuestionType, full_name, phone_number, DistrictName District,
  house, place_problem, vykon, zmist, comment, [history], ApplicantsId, BuildingId, [Organizations_Id],
- cc_nedozvon, entrance, [edit_date], [control_comment], [AssignmentStates]
+ cc_nedozvon, entrance, [edit_date], [control_comment], [AssignmentStates], result_id, result
  
  from
  (
@@ -49,7 +46,8 @@
   ,[AssignmentRevisions].[edit_date]
   ,[AssignmentRevisions].[control_comment]
   ,[AssignmentStates].[name] [AssignmentStates]
-  
+  ,[Assignments].AssignmentResultsId result_id
+  ,[AssignmentResults].[name] result
   from [CRM_1551_Analitics].[dbo].[Assignments]
   left join [CRM_1551_Analitics].[dbo].[AssignmentStates] on [Assignments].assignment_state_id=[AssignmentStates].Id
   left join [CRM_1551_Analitics].[dbo].[AssignmentResults] on [Assignments].AssignmentResultsId=[AssignmentResults].Id
