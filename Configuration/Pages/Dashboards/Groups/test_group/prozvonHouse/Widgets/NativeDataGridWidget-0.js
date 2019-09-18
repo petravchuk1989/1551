@@ -157,7 +157,7 @@
             let cond2 = this.data[dataIndex][18];
 
             if(cond1 === 'На перевірці'  ){
-                if( cond2 === 'Не в компетенції' || cond2 === 'Виконано' || cond2 === 'Роз`яснено' ){
+                if( cond2 === 'Не в компетенції'  || cond2 === 'Роз`яснено' ){
                     spanCircle.classList.add('yellow');
                 }else{
                     spanCircle.classList.add('onCheck');
