@@ -132,10 +132,11 @@
         this.stateChangedDateDoneTo = null;
         this.executionTermFrom = null;
         this.executionTermTo = null;
+        this.applicantPhoneNumber = null;
         
         this.filtersValuesMacros = [];
         let filters = message.package.value.values;
-        this.filtersLangth = filters.length;
+        this.filtersLength = filters.length;
         this.filtersWithOutValues = 0;
         
         filters.forEach( elem => {
@@ -231,7 +232,13 @@
                         }
                     }
                 }else if( typeof(data) === "string"){
-                    this.createObjMacros( elem.name, 'like', elem.value, elem.placeholder, elem.value.viewValue );
+                    if(elem.name === 'zayavnyk_phone_number'){
+                        this.applicantPhoneNumber = elem.value;
+                        this.createObjMacros( elem.name, 'like', elem.value, elem.placeholder, elem.value.viewValue );
+                    }else{
+                        this.createObjMacros( elem.name, 'like', elem.value, elem.placeholder, elem.value.viewValue );
+                    }
+
                 }
             }else if(elem.active === false){
                 this.filtersWithOutValues += 1;
@@ -243,7 +250,7 @@
         function checkDateTo(val){
             return val ? val.dateTo : null;
         };
-        this.filtersWithOutValues === this.filtersLangth ?  this.isSelected = false   : this.isSelected = true; 
+        this.filtersWithOutValues === this.filtersLength ?  this.isSelected = false   : this.isSelected = true; 
     },
     createObjMacros: function(name, operation, value, placeholder, viewValue){
         let obj = {
@@ -258,7 +265,7 @@
     findAllCheckedFilter: function(){
         this.isSelected === true ? document.getElementById('poshuk_table_main').style.display = 'block' : document.getElementById('poshuk_table_main').style.display = 'none' ;
         let filters = this.filtersValuesMacros;
-        if( filters.length > 0 ){
+        if( filters.length > 0 || this.applicantPhoneNumber !== null ){
             
             this.textFilterMacros = [];
             filters.forEach( el => {
@@ -282,6 +289,7 @@
                 {  key: '@state_changed_date_done_to', value: this.stateChangedDateDoneTo },
                 {  key: '@execution_term_from', value: this.executionTermFrom }, 
                 {  key: '@execution_term_to', value: this.executionTermTo },
+                {  key: '@zayavnyk_phone_number', value: this.applicantPhoneNumber },
                 
             ];
             this.loadData(this.afterLoadDataHandler);
@@ -299,23 +307,25 @@
     },
 
     createFilterMacros: function(code, operation, value){
-        if( operation !== '>=' && operation !== '<=' ){
-            let textMacros = '';
-            if( operation == 'like' ){
-                textMacros = ""+code+" "+operation+" '%"+value+"%' and";
-            }else if(  operation == '==='){
-                textMacros = ""+value+" and";
-            }else if(  operation == '=='){
-                textMacros = ""+code+" "+'='+" "+value+" and";
-            }else if(  operation == '+""+'){
-                textMacros = ""+code+" in  (N'"+value+"' and";
-            }else if(  operation == 'in'){
-                textMacros = ""+code+" in ("+value+") and";
-            }else if(  operation == '='){
-                textMacros = ""+code+" "+operation+" N'"+value+"' and";
+        if(code !==  'zayavnyk_phone_number' ){
+            if( operation !== '>=' && operation !== '<=' ){
+                let textMacros = '';
+                if( operation == 'like' ){
+                    textMacros = ""+code+" "+operation+" '%"+value+"%' and";
+                }else if(  operation == '==='){
+                    textMacros = ""+value+" and";
+                }else if(  operation == '=='){
+                    textMacros = ""+code+" "+'='+" "+value+" and";
+                }else if(  operation == '+""+'){
+                    textMacros = ""+code+" in  (N'"+value+"' and";
+                }else if(  operation == 'in'){
+                    textMacros = ""+code+" in ("+value+") and";
+                }else if(  operation == '='){
+                    textMacros = ""+code+" "+operation+" N'"+value+"' and";
+                }
+                this.textFilterMacros.push(textMacros);
             }
-            this.textFilterMacros.push(textMacros);
-        }
+        }   
     },
     setFilterColumns: function(code, operation, value) {
         const filter = {
@@ -445,6 +455,7 @@
                 {  key: '@state_changed_date_done_to', value: this.stateChangedDateDoneTo },
                 {  key: '@execution_term_from', value: this.executionTermFrom }, 
                 {  key: '@execution_term_to', value: this.executionTermTo },
+                {  key: '@zayavnyk_phone_number', value: this.applicantPhoneNumber },
                 { key: '@pageOffsetRows', value: 0},
                 { key: '@pageLimitRows', value: 10}
                 ]
@@ -829,6 +840,7 @@
         }    
     },
     changeDateTimeValues: function(value){
+        let trueDate = ' ';
         if( value !== null){
             let date = new Date(value);
             let dd = date.getDate();
@@ -840,9 +852,7 @@
             if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
             if( (HH.toString()).length === 1){  HH = '0' + HH; }
             if( (mm.toString()).length === 1){ mm = '0' + mm; }
-            let trueDate = dd+'.'+MM+'.' + yyyy;
-        }else{
-            let trueDate = ' ';
+            trueDate = dd+'.'+MM+'.' + yyyy;
         }
         return trueDate;
     },
