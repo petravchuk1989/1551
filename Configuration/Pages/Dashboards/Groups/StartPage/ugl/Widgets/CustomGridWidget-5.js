@@ -34,25 +34,18 @@
         this.showPreloader = false;
     },
     afterViewInit: function(){
-        const container = document.getElementById('container');
-        
-        const filtersContainerDepart =  this.createElement('div', { id: 'filtersContainerDepart', className: "filtersContainer"});
-        const filtersContainerDistrict =  this.createElement('div', { id: 'filtersContainerDistrict', className: "filtersContainer"});
-        
+        const container = document.getElementById('container');        
         const tabsWrapper = this.createElement('div', { id: 'tabsWrapper', className: 'tabsWrapper'});
         const filtersWrapper = this.createElement('div', { id: 'filtersWrapper', className: 'filtersWrapper'});
         const filtersInfo = this.createElement('div', { id: 'filtersInfo', className: 'filtersInfo'});
         const tableContainer = this.createElement('div', { id: 'tableContainer', className: 'tableContainer'});
         const tableWrapper = this.createElement('div', { id: 'tableWrapper', className: 'tableWrapper'}, tableContainer);
         
-        filtersInfo.appendChild(filtersContainerDistrict);
-        filtersInfo.appendChild(filtersContainerDepart);
         container.appendChild(tabsWrapper);
         filtersWrapper.appendChild(filtersInfo);
         container.appendChild(filtersWrapper);
         container.appendChild(tableWrapper);
         this.createTabs();
-        // this.createFilterAddBox();
         this.createSearchInput(filtersWrapper);
     },
     createSearchInput: function(filtersWrapper){
