@@ -99,7 +99,6 @@
         
         this.config.onCellPrepared = this.onCellPrepared.bind(this);
         
-        
         this.dataGridInstance.onCellClick.subscribe( function(e) {
             if(e.column){
                 if(e.column.dataField == "registration_number" && e.row != undefined){
@@ -134,7 +133,6 @@
                                                   {  key: '@sort', value: this.sort } ];
             this.loadData(this.afterLoadDataHandler);
         }
-        
         this.config.onContentReady = this.afterRenderTable.bind(this);
     },
     onCellPrepared: function(options){
@@ -143,36 +141,37 @@
                 options.cellElement.classList.add('stateResult');
             }
         }
-        this.setStyles();
     },
-    setStyles: function(){
-        
+    afterRenderTable: function(){
         let stateResult = document.querySelectorAll('.stateResult');
-        stateResult.forEach( el =>{
+        for (let i = 0; i < stateResult.length; i++) {
+            
+            let el = stateResult[i];
+            let number = el.parentElement.children[2].innerText;
+            let dataIndex = this.numbers.findIndex( num => num === number  );
             let spanCircle = this.createElement( 'span', { classList: 'material-icons', innerText: 'lens'});
             el.style.textAlign = 'center';
             spanCircle.style.width = '100%';
-            switch(el.innerText){
-                case 'Зареєстровано':
-                    spanCircle.classList.add('registrated');
-                break;
-                case 'В роботі':
-                    spanCircle.classList.add('inWork');
-                break;
-                case 'На перевірці':
+            if( el.childNodes.length < 2 ){  el.appendChild(spanCircle); }
+            let cond1 = this.data[dataIndex][17];
+            let cond2 = this.data[dataIndex][18];
+
+            if(cond1 === 'На перевірці'  ){
+                if( cond2 === 'Не в компетенції' || cond2 === 'Виконано' || cond2 === 'Роз`яснено' ){
+                    spanCircle.classList.add('yellow');
+                }else{
                     spanCircle.classList.add('onCheck');
-                break;
-                case 'Закрито':
-                    spanCircle.classList.add('closed');
-                break;
-                case 'Не виконано':
-                    spanCircle.classList.add('notDone');
-                break;
+                }
+            }else if(cond1 === 'Зареєстровано'){
+                spanCircle.classList.add('registrated');
+            }else if(cond1 === 'В роботі'){
+                spanCircle.classList.add('inWork');
+            }else if(cond1 === 'Закрито'){
+                spanCircle.classList.add('closed');
+            }else if(cond1 === 'Не виконано'){
+                spanCircle.classList.add('notDone');
             }
-            if( el.childNodes.length < 2 ){
-                el.appendChild(spanCircle);
-            }
-        });
+        }
     },
     showUser: function(data){
         indexPhoneNumber = data.columns.findIndex(el => el.code.toLowerCase() === 'phonenumber' );
@@ -309,14 +308,11 @@
         this.loadData(this.afterLoadDataHandler);
     },
     afterLoadDataHandler: function(data) {
+        this.numbers = [];
+        this.data = data;
+        console.log(data);
+        data.forEach( data => this.numbers.push(data[1]));
         this.render();
-    },
-    afterRenderTable: function(){
-        let elements = document.querySelectorAll('.dx-datagrid-export-button');
-        elements.forEach( function(element){
-            let spanElement = this.createElement('span', { className: 'dx-button-text', innerText: 'Excel'});
-            element.firstElementChild.appendChild(spanElement);
-        }.bind(this));
     },
     createDGButtons: function(e) {
             let toolbarItems = e.toolbarOptions.items;
