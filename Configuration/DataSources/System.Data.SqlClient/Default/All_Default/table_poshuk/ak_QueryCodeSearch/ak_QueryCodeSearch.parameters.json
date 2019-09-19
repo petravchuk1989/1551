@@ -78,5 +78,15 @@
   {
     "Code": "@zayavnyk_phone_number",
     "Name": "zayavnyk_phone_number"
+  },
+  {
+    "Code": "@control_date_from",
+    "Name": "control_date_from",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@control_date_to",
+    "Name": "control_date_to",
+    "ParameterType": "DateTime"
   }
 ]
