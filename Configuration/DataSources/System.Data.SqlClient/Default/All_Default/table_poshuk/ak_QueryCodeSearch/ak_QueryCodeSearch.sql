@@ -524,5 +524,6 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
  --offset ' + (select ltrim(@pageOffsetRows))+N' rows fetch next '+ (select ltrim(@pageLimitRows))+N' rows only
  
  --select @query
+ --comment
   exec(@query)
 
