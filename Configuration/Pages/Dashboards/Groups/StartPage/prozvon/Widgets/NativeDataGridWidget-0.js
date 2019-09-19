@@ -35,7 +35,7 @@
                 caption: 'БУДИНОК ТА КВАРТИРА'
             }, {
                 dataField: 'entrance',
-                caption: 'П'
+                caption: 'П',
             }, {
                 dataField: 'place_problem',
                 caption: 'МІСЦЕ ПРОБЛЕМИ'
@@ -49,6 +49,7 @@
         columnMinWidth: 50,
         keyExpr: 'rn',
         columnAutoWidth: true,
+        allowColumnReordering: true,
         pager: {
             showPageSizeSelector: true,
             allowedPageSizes: [10, 50, 100],
@@ -141,7 +142,6 @@
         this.config.onContentReady = this.afterRenderTable.bind(this);
     },
     onOptionChanged: function(args) {
-        let sortingArr = this.sortingArr;
         let columnCode;
         if( args.fullName != undefined){
             switch(args.fullName){
@@ -182,21 +182,22 @@
             
             if(columnCode != undefined ){
                 if(columnCode != 'dataSource'){
-                    let infoColumn = { fullName: columnCode, value: args.value };
-                    if( sortingArr.length === 0  ){
-                        sortingArr.push(infoColumn);
+                    let infoColumn = { name: columnCode, value: args.value };
+                    if( this.sortingArr.length === 0  ){
+                        this.sortingArr.push(infoColumn);
                     }else{
-                        index = sortingArr.findIndex(x => x.fullName === columnCode);
+                        index = this.sortingArr.findIndex(x => x.name === columnCode);
                         if( index === -1 ){
-                            sortingArr.push(infoColumn);
+                            this.sortingArr.push(infoColumn);
                         }else{
-                            sortingArr.splice(index, 1); 
-                            sortingArr.push(infoColumn);
+                            this.sortingArr.splice(index, 1); 
+                            this.sortingArr.push(infoColumn);
                         }
                     }
-                    this.messageService.publish({ name: 'sortingArr', arr: this.sortingArr });
+                    // this.messageService.publish({ name: 'sortingArr', arr: this.sortingArr });
                 }
             }
+
         }
     },    
     showUser: function(data){
@@ -207,7 +208,6 @@
         let rowsMessage = [];
         let selectedRows = [];
         selectedRows = this.dataGridInstance.instance.getSelectedRowsData();
-        console.log(selectedRows);
         selectedRows.forEach( row => {
             let obj = {
                 id: row.Id,
@@ -282,47 +282,16 @@
         this.render();
     },
     afterRenderTable: function(){
-        let elements = document.querySelectorAll('.dx-datagrid-export-button');
-        elements = Array.from(elements);
-        elements.forEach( function(element){
-            let spanElement = this.createElement('span', { className: 'dx-button-text', innerText: 'Excel'});
-            element.firstElementChild.appendChild(spanElement);
-        }.bind(this));
+        this.sortingArr.forEach(  el => {
+            let index = this.config.columns.findIndex( column => column.dataField === el.name );
+            this.config.columns[index].sortOrder = el.value;
+        });
     },
     setFiltersValue:function(message) {
 
         this.filtersValues = [];
         this.filtersValuesMacros = [];
         let filters = message.package.value.values;
-        // elem.forEach( elem => {
-        //     if(elem.active === true){
-        //         let data = elem.value;
-        //         if(typeof(data) === "boolean"){
-        //             this.createObjMacros( elem.name, '=', 'true', elem.placeholder);
-        //         }else if( typeof(data) === "object"){
-        //             if(data.value){
-        //                 if(typeof(data.value) === 'number' ){
-        //                     numberSendValue = data.value;
-        //                     numberSendViewValue = data.viewValue;
-        //                     this.createObjMacros( elem.name, 'in', numberSendValue, elem.placeholder, numberSendViewValue); 
-        //                 }else if(typeof(data.value) === 'string' ){
-        //                     stringSendValue = data.value;
-        //                     stringSendViewValue = data.viewValue;
-        //                     this.createObjMacros( elem.name, 'in', stringSendValue, elem.placeholder, stringSendViewValue); 
-        //                 }
-        //             }else{
-        //                 if(data.dateFrom != '' ){
-        //                     this.createObjMacros('cast('+elem.name+' as datetime)', '>=', checkDateFrom(elem.value), elem.placeholder, elem.value.viewValue);
-        //                 }
-        //                 if(data.dateTo != '' ){
-        //                     this.createObjMacros('cast('+elem.name+' as datetime)', '<=', checkDateTo(elem.value), elem.placeholder, elem.value.viewValue);
-        //                 }
-        //             }
-        //         }else if( typeof(data) === "string"){
-        //             this.createObjMacros( elem.name, 'like', elem.value, elem.placeholder, elem.value.viewValue );
-        //         }
-        //     }
-        // });
         filters.forEach( elem => {
             if(elem.active === true){
                 let data = elem.value;
@@ -438,8 +407,6 @@
             viewValue: viewValue
         }
         this.filtersValuesMacros.push(obj);
-        
-        console.log(this.filtersValuesMacros);
     },
     createFilterMacros: function(code, operation, currentDate){
         let textMacros = '';
@@ -540,14 +507,17 @@
         });
         this.loadData(this.afterLoadDataHandler);
     },
-    filtersValuesMacros: [],
-    textFilterMacros: '',
     reloadMainTable: function(message){
+        debugger;
+        // this.sortingArr.forEach(  el => {
+        //     let index = this.config.columns.findIndex( column => column.dataField === el.name );
+        //     this.config.columns[index].sortOrder = el.value;
+        // });
         this.dataGridInstance.instance.deselectAll();
         this.sort = message.sortingString;
         this.config.query.parameterValues = [
             { key: '@filter', value: this.macrosValue },
-            { key: '@sort', value:  this.sort }
+            { key: '@sort', value:  '1=1'  } 
         ];
         this.loadData(this.afterLoadDataHandler);
     },
