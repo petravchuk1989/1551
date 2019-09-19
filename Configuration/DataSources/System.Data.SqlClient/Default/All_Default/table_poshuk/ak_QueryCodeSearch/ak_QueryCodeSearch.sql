@@ -510,6 +510,7 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   where '+@param_new+ N'  and '+@organizations+N' 
 
 '
+-------
  -- and #filter_columns#
  -- #sort_columns#
  --offset ' + (select ltrim(@pageOffsetRows))+N' rows fetch next '+ (select ltrim(@pageLimitRows))+N' rows only
