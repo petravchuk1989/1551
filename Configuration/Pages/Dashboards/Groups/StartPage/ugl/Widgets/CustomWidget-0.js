@@ -23,6 +23,7 @@
         this.column = [];
         this.navigator = [];
         const header = document.getElementById('header1');
+        header1.parentElement.style.flexFlow = "column nowrap";
         header.firstElementChild.style.overflow = 'visible';
         header.firstElementChild.firstElementChild.firstElementChild.style.overflow = 'visible';
         let executeQueryTable = {

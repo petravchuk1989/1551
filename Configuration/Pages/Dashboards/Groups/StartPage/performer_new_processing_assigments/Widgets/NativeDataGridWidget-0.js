@@ -102,10 +102,6 @@
         showHeaderFilter: false,
         showColumnChooser: false,
         showColumnFixing: true,
-        
-        height: function() {
-            return window.innerHeight / 1.65;
-        }
     },
     init: function() {
         this.dataGridInstance.height = window.innerHeight - 300;
@@ -121,7 +117,7 @@
                 window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
             }
         });
-        // this.config.onContentReady = this.afterRenderTable.bind(this);
+        this.config.onContentReady = this.afterRenderTable.bind(this);
     },
     exportToExcel: function(){
         let exportQuery = {

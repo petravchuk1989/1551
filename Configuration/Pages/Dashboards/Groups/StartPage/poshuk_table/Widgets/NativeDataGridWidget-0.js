@@ -38,6 +38,7 @@
                 format: 'dd.MM.yyy HH.mm'
             }
         ],
+        focusedRowEnabled: true,
         allowColumnResizing: true,
         columnResizingMode: "widget",
         columnMinWidth: 50,
@@ -57,6 +58,7 @@
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
+        keyExpr: 'Id',
         height: function() {
             return window.innerHeight / 1.4;
         }

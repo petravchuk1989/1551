@@ -84,13 +84,6 @@
         showColumnChooser: false,
         showColumnFixing: true,
         groupingAutoExpandAll: null,
-        onRowUpdating: function(data) {},
-        onRowExpanding: function(data) {},
-        onRowInserting: function(data) {},
-        onRowRemoving: function(data) {},
-        onCellClick: function(data) {},
-        onRowClick: function(data) {},
-        selectionChanged: function(data) {}
     },
     init: function() {
         this.dataGridInstance.height = window.innerHeight - 300;

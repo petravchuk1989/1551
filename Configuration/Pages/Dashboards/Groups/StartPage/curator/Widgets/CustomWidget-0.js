@@ -259,6 +259,7 @@
         filter_closer_district = Array.from(filter_closer_district);
         filter_closer_district.forEach( function(el){
             el.addEventListener( 'click', function(event){
+                this.sendMesOnBtnClick('clickOnСoordinator_table', 'none', 'none');
                 let target = event.currentTarget;
                 let executeQueryDeleteFilter = {
                     queryCode: 'cc_FilterDelete',
@@ -339,6 +340,7 @@
         filter_closer_depart = Array.from(filter_closer_depart);
         filter_closer_depart.forEach( function(el){
             el.addEventListener( 'click', function(event){
+                this.sendMesOnBtnClick('clickOnСoordinator_table', 'none', 'none');
                 let target = event.currentTarget;
                 let executeQueryDeleteFilter = {
                     queryCode: 'cc_FilterDelete',
@@ -820,7 +822,7 @@
                 header.classList.remove('hover'); 
                 header.classList.remove('check'); 
             }
-            this.hideAllItems(1)
+            this.hideAllItems(1);
             this.sendMesOnBtnClick('clickOnСoordinator_table', 'none', 'none');
         }else{
             target.classList.add('hover');

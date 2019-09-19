@@ -50,7 +50,7 @@
             showInfo: true,
         },
         paging: {
-            pageSize: 5
+            pageSize: 10
         },        
         scrolling: {
             mode: 'standart',

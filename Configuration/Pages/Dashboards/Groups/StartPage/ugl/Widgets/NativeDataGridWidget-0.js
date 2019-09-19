@@ -87,7 +87,6 @@
         selection: {
             mode: "multiple"
         },
-        height: 500,
         keyExpr: 'Id',
         showBorders: false,
         showColumnLines: false,
@@ -106,8 +105,8 @@
         showColumnFixing: true,
         groupingAutoExpandAll: null,
     },
-    sub: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 305;
         this.showPreloader = false;
         document.getElementById('table5__NeVKompetentsii').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnСoordinator_table', this.changeOnTable, this);
