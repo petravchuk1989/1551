@@ -1,4 +1,5 @@
 
+
   --declare @Attention_term_hours nvarchar(200)=N'12(123)';
 
   declare @Attention_term_hours1 int =
@@ -54,55 +55,99 @@ UPDATE [dbo].[QuestionTypes]
            ,[Organization_is]=@Organization_is
 WHERE Id = @Id
 
- if not exists(select Id
-  from [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
-  where [QuestionType_id]=@Id)
-  begin
-insert into [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
-  ([QuestionType_id]
-      ,[Rating_id])
+-- if not exists(select Id
+--  from [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+--  where [QuestionType_id]=@Id)
+--  begin
+--insert into [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+--  ([QuestionType_id]
+--      ,[Rating_id])
 
-  select @Id, case when @blag is not null then @blag
-  when @zhytraion is not null then @zhytraion
-  when @zhkg is not null then @zhkg
-  end
-  end
+--  select @Id, case when @blag is not null then @blag
+--  when @zhytraion is not null then @zhytraion
+--  when @zhkg is not null then @zhkg
+--  end
+--  end
 
 
-if @zhkg=1
-		begin
+--if @zhkg=1
+--		begin
 
-	update [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
-  set [Rating_id]=1
-  where [QuestionType_id]=@Id
+--	update [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+--  set [Rating_id]=1
+--  where [QuestionType_id]=@Id
 
-  end
+--  end
 
-  if @blag=1
-  begin
+--  if @blag=1
+--  begin
   
-  update [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
-  set [Rating_id]=2
-  where [QuestionType_id]=@Id
+--  update [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+--  set [Rating_id]=2
+--  where [QuestionType_id]=@Id
 
-  end
+--  end
 
-  if @zhytraion=1
+--  if @zhytraion=1
 
-  begin
+--  begin
 
-  update [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
-  set [Rating_id]=3
-  where [QuestionType_id]=@Id
+--  update [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+--  set [Rating_id]=3
+--  where [QuestionType_id]=@Id
 
-  end
+--  end
 
-  if (@blag=0 and @zhytraion=0 and @zhkg=0)
-  begin
-  delete 
-  from [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
-  where [QuestionType_id]=@Id
-  end
+--  if (@blag=0 and @zhytraion=0 and @zhkg=0)
+--  begin
+--  delete 
+--  from [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+--  where [QuestionType_id]=@Id
+--  end
+
+delete
+  from [QuestionTypeInRating]
+  where Id in
+  (
+  select Id
+  from [QuestionTypeInRating]
+  where [QuestionType_id]=@id
+  and Rating_id in
+  (
+  select case when @zhkg=0 then 1 end
+  union
+  select case when @blag=0 then 2 end
+  union
+  select case when @zhytraion=0 then 3 end
+  )
+  )
+
+
+  -- при добавлении в таблицу
+  
+  insert into [QuestionTypeInRating]
+  (
+       [Rating_id]
+      ,[QuestionType_id]
+  )
+  
+  select t, id
+  from 
+  (
+  select case when @zhkg=1 then 1 else null end t, @id id
+  union all
+  select case when @blag=1 then 2 else null end t, @id id
+  union all
+  select case when @zhytraion=1 then 3 else null end t, @id id
+  ) q
+  where t is not null
+  except
+  select [Rating_id], [QuestionType_id]
+  from [QuestionTypeInRating]
+  where [QuestionType_id]=@id
+
+
+
 
 declare @step nvarchar(50)=N'update_question_type';
   exec [dbo].[ak_UpdateOrganizationsQuestionsTypeAndParent] @step, @Id
