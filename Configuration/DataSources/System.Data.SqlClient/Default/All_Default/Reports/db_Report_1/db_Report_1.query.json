@@ -8,43 +8,51 @@
     {
       "Code": "Id",
       "Name": "Id",
-      "Position": 0,
+      "Position": -1,
       "IsPrintable": false
     },
     {
-      "Code": "Operator",
+      "Code": "operId",
+      "Name": "operId",
+      "Position": 0,
+      "IsPrintable": false,
+      "SqlName": "o.Id",
+      "FilterParameterCode": "@operId"
+    },
+    {
+      "Code": "oper",
       "Name": "Operator",
       "Position": 1,
       "IsPrintable": false,
-      "SqlName": "u.UserId",
-      "FilterParameterCode": "@Operator"
+      "SqlName": "full_name",
+      "FilterParameterCode": "@oper"
     },
     {
-      "Code": "AppealCount",
-      "Name": "AppealCount",
+      "Code": "questionQ",
+      "Name": "QuestionsCount",
       "Position": 2,
       "IsPrintable": false
     },
     {
-      "Code": "QuestionCount",
-      "Name": "QuestionCount",
+      "Code": "assignmentQ",
+      "Name": "AssignmentsCount",
       "Position": 3,
       "IsPrintable": false
     },
     {
-      "Code": "DoneAssignments",
+      "Code": "doneQ",
       "Name": "DoneAssignments",
       "Position": 4,
       "IsPrintable": false
     },
     {
-      "Code": "reWorkAssignments",
+      "Code": "reworkQ",
       "Name": "reWorkAssignments",
       "Position": 5,
       "IsPrintable": false
     },
     {
-      "Code": "notAnswerAssignments",
+      "Code": "notCallQ",
       "Name": "notAnswerAssignments",
       "Position": 6,
       "IsPrintable": false
