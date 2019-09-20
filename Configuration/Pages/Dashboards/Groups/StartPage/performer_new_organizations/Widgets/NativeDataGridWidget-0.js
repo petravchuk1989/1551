@@ -91,11 +91,11 @@
     sub: [],
     sub1: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;   
         document.getElementById('searchTable').style.display = 'none';
         this.sub = this.messageService.subscribe('resultSearch', this.changeOnTable, this);
         this.sub1 = this.messageService.subscribe('clearInput', this.hideAllTable, this);
         this.sub2 = this.messageService.subscribe('clickOnСoordinator_table', this.hideSearchTable, this);
-        // document.getElementById('allTables').style.display = 'none';
         this.config.masterDetail.template = this.createMasterDetail.bind(this);    
     },
     createMasterDetail: function(container, options) {
