@@ -88,10 +88,8 @@
         showColumnFixing: true,
         groupingAutoExpandAll: null,
     },
-    sub: [],
-    sub1: [],
-    containerForChackedBox: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         document.getElementById('table4__arrived').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnTable2', this.changeOnTable, this);
         this.sub1 = this.messageService.subscribe('messageWithOrganizationId', this.orgIdDistribute, this);

@@ -5,10 +5,6 @@
     formatTitle: function() {},
     customConfig:
                 `
-                
-                <style>
-               
-                </style>
                     <div id = 'container'></div>
                 `
     ,
@@ -22,9 +18,10 @@
         this.sub = this.messageService.subscribe('reloadMainTable', this.reloadMainTable, this);
         this.column = [];
         this.navigator = [];
-        const header = document.getElementById('header1');
-        header.firstElementChild.style.overflow = 'visible';
-        header.firstElementChild.firstElementChild.firstElementChild.style.overflow = 'visible';
+        const header1 = document.getElementById('header1');
+        header1.parentElement.style.flexFlow = "column nowrap";
+        header1.firstElementChild.style.overflow = 'visible';
+        header1.firstElementChild.firstElementChild.firstElementChild.style.overflow = 'visible';
         
         var status = 'new';
         var location = undefined;
@@ -262,6 +259,7 @@
         filter_closer_district = Array.from(filter_closer_district);
         filter_closer_district.forEach( function(el){
             el.addEventListener( 'click', function(event){
+                this.sendMesOnBtnClick('clickOnСoordinator_table', 'none', 'none');
                 let target = event.currentTarget;
                 let executeQueryDeleteFilter = {
                     queryCode: 'cc_FilterDelete',
@@ -342,6 +340,7 @@
         filter_closer_depart = Array.from(filter_closer_depart);
         filter_closer_depart.forEach( function(el){
             el.addEventListener( 'click', function(event){
+                this.sendMesOnBtnClick('clickOnСoordinator_table', 'none', 'none');
                 let target = event.currentTarget;
                 let executeQueryDeleteFilter = {
                     queryCode: 'cc_FilterDelete',
@@ -823,7 +822,7 @@
                 header.classList.remove('hover'); 
                 header.classList.remove('check'); 
             }
-            this.hideAllItems(1)
+            this.hideAllItems(1);
             this.sendMesOnBtnClick('clickOnСoordinator_table', 'none', 'none');
         }else{
             target.classList.add('hover');

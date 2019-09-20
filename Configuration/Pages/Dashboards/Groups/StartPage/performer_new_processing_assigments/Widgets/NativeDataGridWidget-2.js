@@ -97,10 +97,8 @@
         showColumnFixing: true,
         groupingAutoExpandAll: null,       
     },
-    childs: [],
-    OrganizationId: [],
-    elements: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         this.changedRows = [];
         document.getElementById('table5__NeVKompetentcii').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnTable2', this.changeOnTable, this);
@@ -126,7 +124,6 @@
             this.config.query.parameterValues = [{ key: '@organization_id',  value: message.orgId},
                                                  { key: '@organizationName', value: message.orgName},
                                                  { key: '@navigation', value: message.navigation}];
-            // this.loadData(this.afterLoadDataHandler);
             
             let executeQuery = {
                 queryCode: 'Lookup_NeVKompetencii_PidOrganization',

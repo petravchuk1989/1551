@@ -96,6 +96,7 @@
     },
     sub: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 305;
         this.showPreloader = false;
         document.getElementById('table7__dooproc').style.display = 'none';
         this.config.masterDetail.template = this.createMasterDetail.bind(this);    

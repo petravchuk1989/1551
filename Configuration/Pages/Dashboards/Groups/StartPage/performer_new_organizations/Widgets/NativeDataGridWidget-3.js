@@ -84,6 +84,7 @@
     },
     sub: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         document.getElementById('table6__ProstrocheniUvagaVRoboti').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnTable2', this.changeOnTable, this);
         
