@@ -98,6 +98,7 @@
     OrganizationId: [],
     elements: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         this.changedRows = [];
         document.getElementById('table5__NeVKompetentcii').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnTable2', this.changeOnTable, this);

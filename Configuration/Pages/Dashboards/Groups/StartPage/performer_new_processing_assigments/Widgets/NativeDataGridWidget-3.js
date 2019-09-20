@@ -82,12 +82,9 @@
         showColumnChooser: false,
         showColumnFixing: true,
         groupingAutoExpandAll: null,
-        height: function() {
-            return window.innerHeight / 1.65;
-        }
     },
-    sub: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         document.getElementById('table6__ProstrocheniUvagaVRoboti').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnTable2', this.changeOnTable, this);
         
