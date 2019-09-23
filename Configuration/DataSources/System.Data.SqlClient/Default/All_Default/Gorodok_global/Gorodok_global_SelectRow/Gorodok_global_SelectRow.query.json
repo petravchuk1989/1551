@@ -1,15 +1,13 @@
 {
-  "ModelType": "Query",
-  "Code": "cx_Events_SelectRow",
-  "Name": "cx_Events_SelectRow",
-  "ConnectionCode": "Default",
-  "IsUsedForRightsFilter": false,
-  "Parameters": [
-    {
-      "Code": "@Id",
-      "Name": "Id",
-      "ParameterType": "Integer",
-      "IsPrimaryKey": true
-    }
-  ]
+    "ModelType": "Query",
+    "Code": "Gorodok_global_SelectRow",
+    "Name": "Gorodok_global_SelectRow",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Parameters": [{
+        "Code": "@Id",
+        "Name": "Id",
+        "ParameterType": "Integer",
+        "IsPrimaryKey": true
+    }]
 }

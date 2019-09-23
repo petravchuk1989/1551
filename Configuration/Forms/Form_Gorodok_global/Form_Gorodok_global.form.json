@@ -1,0 +1,12 @@
+{
+    "ModelType": "Form",
+    "Code": "Form_Gorodok_global",
+    "Name": "Заявка ГородОк (глобальна)",
+    "Details": [],
+    "Config": {
+        "FieldGroups": [
+            "string:FieldGroups\\Inform_claim.fieldgroup.json"
+        ],
+        "Script": "string:Form_Gorodok_global.form.js"
+    }
+}

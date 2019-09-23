@@ -20,12 +20,6 @@
             "FilterParameterCode": "@Name"
         },
         {
-            "Code": "event_class_name",
-            "Name": "Клас заходу",
-            "Position": 6,
-            "IsPrintable": false
-        },
-        {
             "Code": "object_name",
             "Name": "Об'єкт",
             "Position": 7,
