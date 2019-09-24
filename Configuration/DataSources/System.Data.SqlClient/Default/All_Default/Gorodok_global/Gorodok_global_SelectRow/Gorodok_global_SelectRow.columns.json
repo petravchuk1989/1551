@@ -52,5 +52,11 @@
         "Name": "content",
         "Position": 19,
         "IsPrintable": false
+    },
+    {
+        "Code": "status",
+        "Name": "status",
+        "Position": 20,
+        "IsPrintable": false
     }
 ]

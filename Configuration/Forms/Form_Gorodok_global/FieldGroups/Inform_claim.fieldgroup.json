@@ -4,17 +4,26 @@
     "Position": 1,
     "Fields": [{
             "Code": "Id",
-            "Name": "Номер заходу",
+            "Name": "Номер",
             "FieldType": "number",
-            "Width": "20%"
+            "Width": "15%",
+            "Position": 1
         },
         {
             "Code": "event_type_name",
-            "Name": "Клас Заходу",
+            "Name": "Клас",
             "FieldType": "text",
             "IsRequired": true,
-            "Position": 4,
-            "Width": "80%"
+            "Position": 2,
+            "Width": "70%"
+        },
+        {
+            "Code": "status",
+            "Name": "Стан",
+            "FieldType": "text",
+            "IsRequired": true,
+            "Position": 3,
+            "Width": "15%"
         },
         {
             "Code": "object_name",
@@ -71,15 +80,8 @@
             "Icon": "speaker_notes"
         },
         {
-            "Code": "active",
-            "Name": "Активний",
-            "FieldType": "checkbox",
-            "Position": 13,
-            "Width": "100%"
-        },
-        {
             "Code": "active_button",
-            "Name": "Закрити захід",
+            "Name": "Закрити пов\'язані питання",
             "FieldType": "button",
             "Position": 16
         }

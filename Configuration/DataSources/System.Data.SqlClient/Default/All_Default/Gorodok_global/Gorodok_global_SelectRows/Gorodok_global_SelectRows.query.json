@@ -42,9 +42,15 @@
             "IsPrintable": false
         },
         {
+            "Code": "status",
+            "Name": "Стан",
+            "Position": 10,
+            "IsPrintable": false
+        },
+        {
             "Code": "real_end_date",
             "Name": "Факт.завершення",
-            "Position": 10,
+            "Position": 11,
             "IsPrintable": false
         }
     ],
