@@ -139,7 +139,6 @@
         this.config.query.parameterValues = [ { key: '@filter', value: this.macrosValue },
                                               { key: '@sort', value: this.sort  }];
         this.loadData(this.afterLoadDataHandler);
-        this.config.onContentReady = this.afterRenderTable.bind(this);
     },
     onOptionChanged: function(args) {
         let columnCode;
@@ -194,7 +193,7 @@
                             this.sortingArr.push(infoColumn);
                         }
                     }
-                    // this.messageService.publish({ name: 'sortingArr', arr: this.sortingArr });
+                    this.messageService.publish({ name: 'sortingArr', arr: this.sortingArr });
                 }
             }
 
@@ -280,12 +279,6 @@
     },       
     afterLoadDataHandler: function(data) {
         this.render();
-    },
-    afterRenderTable: function(){
-        this.sortingArr.forEach(  el => {
-            let index = this.config.columns.findIndex( column => column.dataField === el.name );
-            this.config.columns[index].sortOrder = el.value;
-        });
     },
     setFiltersValue:function(message) {
 
@@ -508,16 +501,11 @@
         this.loadData(this.afterLoadDataHandler);
     },
     reloadMainTable: function(message){
-        debugger;
-        // this.sortingArr.forEach(  el => {
-        //     let index = this.config.columns.findIndex( column => column.dataField === el.name );
-        //     this.config.columns[index].sortOrder = el.value;
-        // });
         this.dataGridInstance.instance.deselectAll();
         this.sort = message.sortingString;
         this.config.query.parameterValues = [
             { key: '@filter', value: this.macrosValue },
-            { key: '@sort', value:  '1=1'  } 
+            { key: '@sort', value:  this.sort  } 
         ];
         this.loadData(this.afterLoadDataHandler);
     },

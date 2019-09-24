@@ -114,7 +114,7 @@
         this.dataGridInstance.onCellClick.subscribe( function(e) {
             if(e.column){
                 if(e.column.dataField == "question_registration_number" && e.row != undefined){
-                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key.Id+"");
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.data.Id+"");
                 }
             }
         }.bind(this));
