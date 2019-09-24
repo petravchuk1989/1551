@@ -1,10 +1,10 @@
 {
     "ModelType": "Detail",
-    "Code": "P_Question",
-    "Name": "Потенційні питання",
-    "SelectRowsQueryCode": "det_EventQuestionP_SelectRows",
+    "Code": "Detail_Event_Questions_Gl",
+    "Name": "Пов'язані питання",
+    "SelectRowsQueryCode": "list_Related_question_gl",
     "SectionCode": "",
-    "Position": 3,
+    "Position": 2,
     "IsExpand": true,
     "QueryParameters": [{
         "FormFieldName": "Id",

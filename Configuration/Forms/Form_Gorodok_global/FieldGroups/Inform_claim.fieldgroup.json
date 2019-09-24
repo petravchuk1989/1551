@@ -14,7 +14,7 @@
             "FieldType": "text",
             "IsRequired": true,
             "Position": 4,
-            "Width": "30%"
+            "Width": "80%"
         },
         {
             "Code": "object_name",
@@ -22,17 +22,18 @@
             "FieldType": "text",
             "IsRequired": true,
             "Position": 6,
-            "Width": "70%"
+            "Width": "100%"
         },
         {
             "Code": "executor_name",
             "Name": "Відповідальний за усунення",
             "FieldType": "text",
             "IsRequired": true,
-            "Position": 7
+            "Position": 7,
+            "Width": "100%"
         },
         {
-            "Code": "executor_comment",
+            "Code": "content",
             "Name": "Зміст",
             "FieldType": "textarea",
             "Position": 8,
@@ -62,7 +63,7 @@
             "Width": "33%"
         },
         {
-            "Code": "coment_executor",
+            "Code": "executor_comment",
             "Name": "Коментар відповідального",
             "FieldType": "textarea",
             "Position": 12,

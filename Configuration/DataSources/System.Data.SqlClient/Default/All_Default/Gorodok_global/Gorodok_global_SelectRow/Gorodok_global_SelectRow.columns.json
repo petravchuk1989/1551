@@ -46,5 +46,11 @@
         "Name": "real_end_date",
         "Position": 13,
         "IsPrintable": false
+    },
+    {
+        "Code": "content",
+        "Name": "content",
+        "Position": 19,
+        "IsPrintable": false
     }
 ]

@@ -2,7 +2,12 @@
     "ModelType": "Form",
     "Code": "Form_Gorodok_global",
     "Name": "Заявка ГородОк (глобальна)",
-    "Details": [],
+    "Details": [
+        "string:Details\\Detail_Event_Questions_Gl.detail.json",
+        "string:Details\\Detail_Events_Objects_Gl.detail.json",
+        "string:Details\\P_Question_Gl.detail.json",
+        "string:Details\\Detail_EventQuestionsTypes_Gl.detail.json"
+    ],
     "Config": {
         "FieldGroups": [
             "string:FieldGroups\\Inform_claim.fieldgroup.json"
