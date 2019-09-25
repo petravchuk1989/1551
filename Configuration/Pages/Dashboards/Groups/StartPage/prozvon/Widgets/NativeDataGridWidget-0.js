@@ -85,6 +85,25 @@
         toolbarItems.push({
             widget: "dxButton", 
             options: { 
+                icon: "refresh",
+                type: "default",
+                text: "Очистити сортування",
+                onClick: function(e) {
+                    e.event.stopImmediatePropagation();
+                    this.sortingArr = [];
+                    this.config.query.parameterValues = [
+                        { key: '@filter', value: this.macrosValue },
+                        { key: '@sort', value:  '1=1'  } 
+                    ];
+                    this.loadData(this.afterLoadDataHandler);
+                }.bind(this)
+            },
+            location: "before"
+        });
+
+        toolbarItems.push({
+            widget: "dxButton", 
+            options: { 
                 icon: "close",
                 type: "default",
                 text: "Закрити",
@@ -139,6 +158,7 @@
         this.config.query.parameterValues = [ { key: '@filter', value: this.macrosValue },
                                               { key: '@sort', value: this.sort  }];
         this.loadData(this.afterLoadDataHandler);
+
     },
     onOptionChanged: function(args) {
         let columnCode;

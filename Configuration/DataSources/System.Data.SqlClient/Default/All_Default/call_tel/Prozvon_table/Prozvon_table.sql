@@ -152,6 +152,12 @@ end
   --,[AssignmentRevisions].[control_comment] control_comment_sort
   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AssignmentRevisions].[control_comment],N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') control_comment_sort
 
+
+  ,isnull([AssignmentRevisions].[missed_call_counter], 0) cc_nedozvon_sort
+  ,[ApplicantPhones].phone_number phone_number_sort
+  ,[Questions].registration_number registration_number_sort
+  ,[LiveAddress].entrance entrance_sort
+
   from [Assignments]  with (nolock)
   left join [AssignmentStates] with (nolock) on [Assignments].assignment_state_id=[AssignmentStates].Id
   left join [AssignmentResults] with (nolock) on [Assignments].AssignmentResultsId=[AssignmentResults].Id
