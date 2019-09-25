@@ -47,11 +47,11 @@
           "Name": "dateTo",
           "ParameterType": "DateTime"
         },
-        {
-          "Code": "@user_id",
-          "Name": "user_id",
-          "ParameterType": "CurrentUserId"
-        },
+        // {
+        //   "Code": "@user_id",
+        //   "Name": "user_id",
+        //   "ParameterType": "CurrentUserId"
+        // },
         {
           "Code": "@is_worked",
           "Name": "is_worked",
