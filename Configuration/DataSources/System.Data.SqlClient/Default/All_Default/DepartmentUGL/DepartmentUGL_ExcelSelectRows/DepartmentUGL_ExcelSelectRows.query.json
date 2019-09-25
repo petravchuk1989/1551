@@ -6,32 +6,38 @@
     "IsUsedForRightsFilter": false,
     "Columns": [
       {
-        "Code": "Вихідний номер УГЛ",
+        "Code": "EnterNumber",
         "Name": "Вихідний номер УГЛ",
         "Position": 1,
         "IsPrintable": false
       },
       {
-        "Code": "Дата реєстрації",
+        "Code": "RegistrationDate",
         "Name": "Дата реєстрації",
         "Position": 2,
         "IsPrintable": false
       },
       {
-        "Code": "Заявник",
+        "Code": "Applicant",
         "Name": "Заявник",
         "Position": 3,
         "IsPrintable": false
       },
       {
-        "Code": "Адреса",
+        "Code": "Address",
         "Name": "Адреса",
         "Position": 4,
         "IsPrintable": false
       },
       {
-        "Code": "Зміст",
+        "Code": "Content",
         "Name": "Зміст",
+        "Position": 5,
+        "IsPrintable": false
+      },
+      {
+        "Code": "QuestionNumber",
+        "Name": "Номер питання",
         "Position": 5,
         "IsPrintable": false
       }
@@ -46,11 +52,6 @@
           "Code": "@dateTo",
           "Name": "dateTo",
           "ParameterType": "DateTime"
-        },
-        {
-          "Code": "@user_id",
-          "Name": "user_id",
-          "ParameterType": "CurrentUserId"
         },
         {
           "Code": "@is_worked",

@@ -1,0 +1,109 @@
+[
+    {
+      "Code": "@Source",
+      "Name": "Source_Джерело"
+    },
+    {
+      "Code": "@Priority",
+      "Name": "Priority_Пріоритет"
+    },
+    {
+      "Code": "@AppealN",
+      "Name": "AppealN_Нзверення"
+    },
+    {
+      "Code": "@Status",
+      "Name": "Status_Статус"
+    },
+    {
+      "Code": "@Created",
+      "Name": "Created_Створено",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@Artists",
+      "Name": "Artists_Виконавці"
+    },
+    {
+      "Code": "@Question",
+      "Name": "Question_Питання"
+    },
+    {
+      "Code": "@TerritorialUnit",
+      "Name": "TerritorialUnit_ТериторОдин"
+    },
+    {
+      "Code": "@Changed",
+      "Name": "Changed_Змінено"
+    },
+    {
+      "Code": "@Submitted",
+      "Name": "Submitted_Відправлено",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@OnSpecialCondition",
+      "Name": "OnSpecialCondition_ЗаОсобУмов"
+    },
+    {
+      "Code": "@Applicant",
+      "Name": "Applicant"
+    },
+    {
+      "Code": "@ContactPerson",
+      "Name": "ContactPerson"
+    },
+    {
+      "Code": "@Substatus",
+      "Name": "Substatus_підстатус"
+    },
+    {
+      "Code": "@Author",
+      "Name": "Author_автор"
+    },
+    {
+      "Code": "@Closed",
+      "Name": "Closed_закрыто"
+    },
+    {
+      "Code": "@SolveTo",
+      "Name": "SolveTo_ВирішитиДо",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@ResponseDate",
+      "Name": "ResponseDate_ДатаВідповіді",
+      "ParameterType": "DateTime",
+      "IsPrimaryKey": true
+    },
+    {
+      "Code": "@AnswerProvided",
+      "Name": "AnswerProvided_ВідповідьНадано"
+    },
+    {
+      "Code": "@ReferenceNumber",
+      "Name": "ReferenceNumber_ВихіднийНомер"
+    },
+    {
+      "Code": "@NeedsCall",
+      "Name": "NeedsCall_ПотребуєДзвінка"
+    },
+    {
+      "Code": "@FeedbackResult",
+      "Name": "FeedbackResult_РезультатЗворотЗв"
+    },
+    {
+      "Code": "@PlannedFeedbackDate",
+      "Name": "PlannedFeedbackDate_ПлановаДатаЗвЗв",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@Feedback",
+      "Name": "Feedback"
+    },
+    {
+      "Code": "@Accepted",
+      "Name": "Accepted_прийнято",
+      "ParameterType": "DateTime"
+    }
+  ]
