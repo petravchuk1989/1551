@@ -1,8 +1,8 @@
 {
     "ModelType": "Detail",
-    "Code": "P_Question",
-    "Name": "Потенційні питання",
-    "SelectRowsQueryCode": "det_EventQuestionP_SelectRows",
+    "Code": "Detail_Events_Objects_Gl",
+    "Name": "Пов'язані об'єкти",
+    "SelectRowsQueryCode": "cx_Event_Objects_Gl",
     "SectionCode": "",
     "Position": 3,
     "IsExpand": true,
