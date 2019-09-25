@@ -947,8 +947,8 @@ BEGIN
 		end
 		
 		
-	--Результат: 12 Фактично,   резолюція - 7 Спростовано куратором
-	if @result_id = 12 and @resolution_id = 7
+	--Результат: 12 Фактично,   резолюція - 7 Спростовано куратором 8-Виконання не підтверджено завником
+	if @result_id = 12 and (@resolution_id = 7 or @resolution_id = 8)
 	begin
 		UPDATE [dbo].[AssignmentRevisions]
 			   SET [assignment_resolution_id] = @resolution_id
@@ -957,6 +957,7 @@ BEGIN
 				  ,[user_edit_id] = @user_edit_id
 				  ,control_date = getutcdate()
 				  ,control_result_id = @result_id
+				  --,rework_counter = @rework_counter + 1
 			 WHERE [assignment_consideration_іd] = @ass_cons_id
 
 		update Assignments 
