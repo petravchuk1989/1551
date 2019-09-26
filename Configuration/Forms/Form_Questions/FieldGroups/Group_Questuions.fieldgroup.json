@@ -103,7 +103,8 @@
             "Code": "address_problem",
             "Name": "Адреса проблеми",
             "FieldType": "text",
-            "Position": 9
+            "Position": 9,
+            "Width": "100%"
         },
         {
             "Maxlength": 3000,
