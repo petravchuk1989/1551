@@ -9,8 +9,8 @@
       "FieldType": "text",
       "IsRequired": true,
       "Position": 1,
-      "Width": "",
-      "Icon": "account_circle"
+      "Icon": "account_circle",
+      "Width": "100%"
     },
     {
       "Code": "phone_number",
@@ -26,7 +26,8 @@
       "Name": "E-mail",
       "FieldType": "text",
       "Position": 7,
-      "Icon": "mail_outline"
+      "Icon": "mail_outline",
+      "Width": "100%"
     },
     {
       "Code": "Id",
