@@ -132,6 +132,7 @@
                                                   {  key: '@sort', value: '1=1' } ];
             this.loadData(this.afterLoadDataHandler);
         }
+        this.config.onContentReady = this.afterRenderTable.bind(this);
     },
     onOptionChanged: function(args) {
         var sortingArr = this.sortingArr;
@@ -239,42 +240,43 @@
         });
     },
     onCellPrepared: function(options){
-        
         if( options.rowType === 'data'){
-            if( options.column.dataField  == 'AssignmentStates'){
+            if( options.column.dataField  === 'AssignmentStates'){
                 options.cellElement.classList.add('stateResult');
             }
         }
-        this.setStyles();
     },
-    setStyles: function(){
+    afterRenderTable: function(){
         
-        var stateResult = document.querySelectorAll('.stateResult');
-        stateResult.forEach( el =>{
+        let stateResult = document.querySelectorAll('.stateResult');
+        for (let i = 0; i < stateResult.length; i++) {
+            
+            let el = stateResult[i];
+            let number = el.parentElement.children[2].innerText;
+            let dataIndex = this.numbers.findIndex( num => num === number  );
             let spanCircle = this.createElement( 'span', { classList: 'material-icons', innerText: 'lens'});
             el.style.textAlign = 'center';
             spanCircle.style.width = '100%';
-            switch(el.innerText){
-                case 'Зареєстровано':
-                    spanCircle.classList.add('registrated');
-                break;
-                case 'В роботі':
-                    spanCircle.classList.add('inWork');
-                break;
-                case 'На перевірці':
+            if( el.childNodes.length < 2 ){  el.appendChild(spanCircle); }
+            let cond1 = this.data[dataIndex][19];
+            let cond2 = this.data[dataIndex][21];
+
+            if(cond1 === 'На перевірці'){
+                if( cond2 === 'Не в компетенції' || cond2 === 'Роз`яснено' ){
                     spanCircle.classList.add('onCheck');
-                break;
-                case 'Закрито':
-                    spanCircle.classList.add('closed');
-                break;
-                case 'Не виконано':
-                    spanCircle.classList.add('notDone');
-                break;
+                }else{
+                    spanCircle.classList.add('yellow');
+                }
+            }else if(cond1 === 'Зареєстровано'){
+                spanCircle.classList.add('registrated');
+            }else if(cond1 === 'В роботі'){
+                spanCircle.classList.add('inWork');
+            }else if(cond1 === 'Закрито'){
+                spanCircle.classList.add('closed');
+            }else if(cond1 === 'Не виконано'){
+                spanCircle.classList.add('notDone');
             }
-            if( el.childNodes.length < 2 ){
-                el.appendChild(spanCircle);
-            }
-        });
+        }
     },    
     changeDateTimeValues: function(value){
         
@@ -282,7 +284,6 @@
         let dd = date.getDate();
         let MM = date.getMonth();
         let yyyy = date.getFullYear();
-        // let HH = date.getUTCHours()
         let HH = date.getHours();
         let mm = date.getMinutes();
         if( (dd.toString()).length === 1){  dd = '0' + dd; }
@@ -301,15 +302,10 @@
         this.loadData(this.afterLoadDataHandler);
     },
     afterLoadDataHandler: function(data) {
+        this.numbers = [];
+        this.data = data;
+        data.forEach( data => this.numbers.push(data[1]));
         this.render();
-        this.createCustomn();
-    },
-    createCustomn: function(){
-        let elements = document.querySelectorAll('.dx-datagrid-export-button');
-        elements.forEach( function(element){
-            let spanElement = this.createElement('span', { className: 'dx-button-text', innerText: 'Excel'});
-            element.firstElementChild.appendChild(spanElement);
-        }.bind(this));
     },
     createDGButtons: function(e) {
         var toolbarItems = e.toolbarOptions.items;

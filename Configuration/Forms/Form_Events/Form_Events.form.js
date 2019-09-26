@@ -77,7 +77,7 @@
             //добавление кнопки на закрытие начало
             document.getElementById('active_button').addEventListener("click", function(event) {
 
-                debugger;
+                // debugger;
                 event.stopImmediatePropagation();
                 const Question_Close_callback = (response) => {
                     if (!response) {

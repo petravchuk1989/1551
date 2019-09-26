@@ -14,16 +14,28 @@ SELECT distinct [QuestionTypes].[Id]
       ,QuestionTypes.[user_id]
       ,QuestionTypes.[edit_date]
       ,QuestionTypes.[user_edit_id]
-	  ,case when [Rating].id=1 then [Rating].id end zhkg
-	  ,case when [Rating].id=2 then [Rating].id end blag
-	  ,case when [Rating].id=3 then [Rating].id end zhytraion
+	  --,case when [Rating].id=1 then [Rating].id end zhkg
+	  --,case when [Rating].id=2 then [Rating].id end blag
+	  --,case when [Rating].id=3 then [Rating].id end zhytraion
+	  ,[Rating].zhkg
+	  ,[Rating].blag
+	  ,[Rating].zhytraion
 	  ,[QuestionTypes].Object_is
 	  ,[QuestionTypes].Organization_is
 	  ,ltrim(Rules.Id)+N'-'+Rules.name RuleName
 	  ,[QuestionTypes].[parent_organization_is]
   FROM [dbo].[QuestionTypes]
-  left join [QuestionTypeInRating] on [QuestionTypes].Id=[QuestionTypeInRating].QuestionType_id
+  --left join [QuestionTypeInRating] on [QuestionTypes].Id=[QuestionTypeInRating].QuestionType_id
   left join Rules on Rules.Id = QuestionTypes.rule_id
   left join [QuestionTypes] as parent_type on parent_type.Id = [QuestionTypes].question_type_id
-  left join [Rating] on [QuestionTypeInRating].Rating_id=[Rating].id
+  left join 
+  (select [QuestionType_id], [1] zhkg, [2] blag, [3] zhytraion
+  from 
+  (select Id, [QuestionType_id], [Rating_id] from [QuestionTypeInRating]
+  where [QuestionType_id]=@id) t
+  pivot
+  (
+  sum(Id) for [Rating_id] in ([1], [2], [3])
+  ) pvt) [Rating] on [QuestionTypes].Id=[Rating].QuestionType_id
+  --left join [Rating] on [QuestionTypeInRating].Rating_id=[Rating].id
   where QuestionTypes.Id = @id
