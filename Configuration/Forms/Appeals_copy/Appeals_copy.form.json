@@ -1,0 +1,20 @@
+{
+  "ModelType": "Form",
+  "Code": "Appeals_copy",
+  "Name": "Картка_оператора_copy",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\Group_Appeal_copy.fieldgroup.json",
+      "string:FieldGroups\\Group_Aplicant_copy.fieldgroup.json",
+      "string:FieldGroups\\Group_CreateQuestion_copy.fieldgroup.json",
+      "string:FieldGroups\\Group_Preview_Question_copy.fieldgroup.json",
+      "string:FieldGroups\\Group_Events_copy.fieldgroup.json",
+      "string:FieldGroups\\Group_GorodokClaims_copy.fieldgroup.json",
+      "string:FieldGroups\\Group_WIKI_copy.fieldgroup.json",
+      "string:FieldGroups\\Group_Work_with_a_question_copy.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:Appeals_copy.form.js"
+  }
+}
