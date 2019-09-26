@@ -1,11 +1,11 @@
 {
-  "Code": "Group_Appeal_copy",
+  "Code": "UGL_Group_Appeal",
   "Name": "Загальна інформація",
   "Position": 1,
   "IsExpanded": false,
   "Fields": [
     {
-      "Code": "Id",
+      "Code": "AppealId",
       "Name": "Идентифікатор дзвінка",
       "FieldType": "number",
       "Position": 1,

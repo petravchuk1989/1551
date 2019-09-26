@@ -1,5 +1,5 @@
 {
-  "Code": "Group_CreateQuestion_copy",
+  "Code": "UGL_Group_CreateQuestion",
   "Name": "Реєстрація питання",
   "Position": 3,
   "IsWithClosing": true,
