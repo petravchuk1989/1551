@@ -7,6 +7,7 @@
                 `
                 <style>
                     #btnsWrapper{
+                        margin-top: 20px;
                         display: flex;
                         justify-content: space-around;
                     }
@@ -82,7 +83,12 @@
              }
         });   
         btnShowTable.addEventListener( 'click', event => {
-            this.messageService.publish( { name: 'showTable'});
+            let executeQuery = {
+                queryCode: 'DepartmentUGL_ExcelButton3',
+                limit: -1,
+                parameterValues: []
+            };
+            this.queryExecutor(executeQuery, this.sendMessageToTable, this);
         });
         
         btnImportFile.addEventListener( 'click', event => {
@@ -139,6 +145,9 @@
             let fileLabel__triangle  = this.createElement('div', {className: 'triangle fileLabel__triangle' });
             fileLabel.appendChild(fileLabel__triangle);
         });
+    },
+    sendMessageToTable: function(){
+        this.messageService.publish( { name: 'showTable'});
     },
     showModalWindow: function (responseModal, responseNotification, CONTAINER) {
         const modalBtnTrue =  this.createElement('button', { id:'modalBtnTrue', className: 'btn', innerText: 'Сховати'});
