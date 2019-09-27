@@ -102,7 +102,8 @@
       "Name": "Нотатки",
       "FieldType": "textarea",
       "Position": 13,
-      "Rows": 4
+      "Rows": 4,
+      "Width": "100%"
     }
   ]
 }
