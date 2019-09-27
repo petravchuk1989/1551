@@ -1,23 +1,19 @@
 {
-  "ModelType": "Query",
-  "Code": "UpdateEventClass",
-  "Name": "UpdateEventClass",
-  "ConnectionCode": "Default",
-  "IsUsedForRightsFilter": false,
-  "Columns": [
-    {
-      "Code": "Id",
-      "Name": "id",
-      "Position": 0,
-      "IsPrimaryKey": true,
-      "ViewState": "Hidden",
-      "IsPrintable": false
-    }
-  ],
-  "Parameters": [
-    {
-      "Code": "@name",
-      "Name": "name"
-    }
-  ]
+    "ModelType": "Query",
+    "Code": "UpdateEventClass",
+    "Name": "UpdateEventClass",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Columns": [],
+    "Parameters": [{
+            "Code": "@name",
+            "Name": "name"
+        },
+        {
+            "Code": "@Id",
+            "Name": "Id",
+            "ParameterType": "Integer",
+            "isPrimaryKey": true
+        }
+    ]
 }
