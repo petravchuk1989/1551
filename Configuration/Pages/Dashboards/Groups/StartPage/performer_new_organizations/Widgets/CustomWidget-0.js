@@ -9,8 +9,10 @@
                 `
     ,
     init: function() {
+
         this.messageService.publish( { name: 'showPagePreloader'  } );
         const header1 = document.getElementById('header1');
+        header1.parentElement.style.flexFlow = "column nowrap";
         header1.firstElementChild.style.overflow = 'visible';
         header1.firstElementChild.firstElementChild.firstElementChild.style.overflow = 'visible';
         
@@ -379,7 +381,6 @@
         headers.forEach( function(el){
             el.addEventListener( 'click', function(event){
                 let target = event.currentTarget;
-                // this.target = target;
                 let navigator = 'Усі';
                 let column = target.innerText;
                 this.showTable(target, column, navigator,  undefined,'headers');

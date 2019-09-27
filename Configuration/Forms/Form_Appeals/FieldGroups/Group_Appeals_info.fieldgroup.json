@@ -6,19 +6,22 @@
     {
       "Code": "registration_number",
       "Name": "Реєстраційний номер звернення",
-      "FieldType": "text"
+      "FieldType": "text",
+      "Width": "50%"
     },
     {
       "Code": "phone_number",
       "Name": "Номер телефону",
       "FieldType": "text",
-      "Position": 1
+      "Position": 1,
+      "Width": "50%"
     },
     {
       "Code": "receipt_date",
       "Name": "Дата та час реєстрації",
       "FieldType": "date-time",
-      "Position": 2
+      "Position": 2,
+      "Width": "50%"
     },
     {
       "Code": "receipt_source_id",
@@ -28,7 +31,8 @@
       "QueryCode": "dir_ReceiptSources_SelectRows",
       "KeyColumnCode": "Id",
       "DisplayColumnCode": "name",
-      "QueryParameters": []
+      "QueryParameters": [],
+      "Width": "50%"
     }
   ]
 }

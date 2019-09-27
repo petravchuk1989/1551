@@ -93,6 +93,7 @@
     sub: [],
     sub1: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 270; 
         document.getElementById('table_events').style.display = 'none';
         this.sub = this.messageService.subscribe('showEventTable', this.changeOnTable, this);
         this.sub1 = this.messageService.subscribe('search', this.searchRelust, this);
