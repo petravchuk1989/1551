@@ -27,7 +27,7 @@
 
  
  */
-
+ 
 
 
  declare @registration_date_fromP nvarchar(200)=
@@ -341,6 +341,8 @@ for xml path ('')),1,2,N''))+N')'
   --select @param2, @organizations
   --SELECT RTRIM(CAST(DATEDIFF(MS, @start_time, GETDATE()) AS CHAR(10))) AS 'TimeTaken'
   
+ -- select @param_new2;
+
 declare @query nvarchar(max)=N'
 select --top 5000
    [Id]
@@ -519,6 +521,7 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   where '+@param_new2+ N'  and '+@organizations+N' 
 
 '
+-------
  -- and #filter_columns#
  -- #sort_columns#
  --offset ' + (select ltrim(@pageOffsetRows))+N' rows fetch next '+ (select ltrim(@pageLimitRows))+N' rows only
