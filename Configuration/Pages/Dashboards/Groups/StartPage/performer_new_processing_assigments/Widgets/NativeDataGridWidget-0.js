@@ -25,14 +25,14 @@
             }, {
                 dataField: 'zayavnyk',
                 caption: 'Заявник',
+            }, {
+                dataField: 'adress',
+                caption: 'Місце проблеми',
             },  {
                 dataField: 'control_date',
                 caption: 'Дата контролю',
                 dataType: "datetime",
                 format: "dd.MM.yyyy HH:mm"    
-            }, {
-                dataField: 'adress',
-                caption: 'Місце проблеми',
             },  {
                 dataField: 'transfer_to_organization_id',
                 caption: 'Виконавець',
