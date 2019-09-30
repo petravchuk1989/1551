@@ -17,6 +17,7 @@ begin
 		LEFT JOIN EventQuestionsTypes AS eqt ON eqt.event_id = e.Id
 		LEFT JOIN [EventObjects] AS eo ON eo.event_id = e.Id
 		LEFT JOIN Questions AS q ON q.question_type_id = eqt.question_type_id AND q.[object_id] = eo.[object_id]
+		JOIN (select * from  Appeals where Appeals.receipt_source_id IN(1,8)) as ap on ap.Id = q.appeal_id
 		LEFT JOIN Assignments ON Assignments.Id = q.last_assignment_for_execution_id
 		LEFT JOIN Organizations ON Organizations.Id = Assignments.executor_organization_id
 	WHERE e.Id = @Id

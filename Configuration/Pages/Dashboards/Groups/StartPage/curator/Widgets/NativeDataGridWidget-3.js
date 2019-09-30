@@ -99,16 +99,10 @@
         showColumnChooser: false,
         showColumnFixing: true,
         groupingAutoExpandAll: null,
-        onRowUpdating: function(data) {},
-        onRowExpanding: function(data) {},
-        onRowInserting: function(data) {},
-        onRowRemoving: function(data) {},
-        onCellClick: function(data) {},
-        onRowClick: function(data) {},
-        selectionChanged: function(data) {}
     },
     sub: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 305;
         this.showPreloader = false;
         document.getElementById('table8_prosctoch').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnСoordinator_table', this.changeOnTable, this);

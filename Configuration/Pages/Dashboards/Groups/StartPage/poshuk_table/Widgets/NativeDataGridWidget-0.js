@@ -38,6 +38,7 @@
                 format: 'dd.MM.yyy HH.mm'
             }
         ],
+        focusedRowEnabled: true,
         allowColumnResizing: true,
         columnResizingMode: "widget",
         columnMinWidth: 50,
@@ -57,6 +58,7 @@
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
+        keyExpr: 'Id',
         height: function() {
             return window.innerHeight / 1.4;
         }
@@ -114,7 +116,7 @@
         this.dataGridInstance.onCellClick.subscribe( function(e) {
             if(e.column){
                 if(e.column.dataField == "question_registration_number" && e.row != undefined){
-                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key.Id+"");
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.data.Id+"");
                 }
             }
         }.bind(this));

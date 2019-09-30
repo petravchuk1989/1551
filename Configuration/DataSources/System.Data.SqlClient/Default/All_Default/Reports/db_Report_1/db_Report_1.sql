@@ -1,45 +1,65 @@
-select ROW_NUMBER() OVER(ORDER BY u.FirstName DESC) as Id,
-u.LastName + isnull(' ' + u.FirstName, N'') + isnull(' ' + u.Patronymic,N'') 
-			 as Operator
-			,isnull(apQ.appealsQ,0) as AppealCount
-			,ISNULL(qQ.questionsQ,0) as QuestionCount
-			,isnull(dQ.DoneAssignments,0) as DoneAssignments
-			,isnull(twQ.reWorkAssignments,0) as reWorkAssignments
-			,isnull(nQ.notAnswerAssignments,0) as notAnswerAssignments
-from CRM_1551_System.[dbo].[User] u
--- получить звернення где эдитор наш юзер 
-left join (select COUNT(a.Id) as appealsQ, u.UserId 
-from Appeals a 
-join CRM_1551_System.[dbo].[User] u on a.user_edit_id = u.UserId
-where a.start_date between @dateFrom and @dateTo 
-group by u.UserId) apQ on apQ.UserId = u.UserId
--- получить питання где эдитор наш юзер 
-left join (select COUNT(q.Id) as questionsQ, u.UserId 
-from Questions q
-join CRM_1551_System.[dbo].[User] u on q.user_edit_id = u.UserId
-where q.registration_date between @dateFrom and @dateTo 
-group by u.UserId) qQ on qQ.UserId = u.UserId
--- получить доручення где эдитор наш юзер и результат = Виконано
-left join (select COUNT(a.Id) as DoneAssignments, u.UserId
-from Assignments a
-join CRM_1551_System.[dbo].[User] u on a.user_edit_id = u.UserId
-where AssignmentResultsId = 4 and a.registration_date between @dateFrom and @dateTo
-group by u.UserId) dQ on dQ.UserId = u.UserId
--- получить доручення где эдитор наш юзер и результат = На доопрацювання
-left join (select COUNT(a.Id) as reWorkAssignments, u.UserId
-from Assignments a
-join CRM_1551_System.[dbo].[User] u on a.user_edit_id = u.UserId
-where AssignmentResultsId = 5 and a.registration_date between @dateFrom and @dateTo
-group by u.UserId) twQ on twQ.UserId = u.UserId
--- получить доручення где эдитор наш юзер и результат = Недозвон
-left join (select sum(ar.missed_call_counter) as notAnswerAssignments, u.UserId
-from AssignmentConsiderations ac
-join AssignmentRevisions ar on ar.assignment_consideration_іd = ac.Id
-join CRM_1551_System.[dbo].[User] u on ar.user_edit_id = u.UserId
-where ac.create_date between @dateFrom and @dateTo
-group by u.UserId
-) nQ on nQ.UserId = u.UserId
-where 
-#filter_columns#
-group by u.LastName, u.FirstName, u.Patronymic, qQ.questionsQ, apQ.appealsQ, dQ.DoneAssignments,
-         twQ.reWorkAssignments, nQ.notAnswerAssignments 
+declare @opers table (Id nvarchar(300), full_name nvarchar(300)); 
+declare @questions_value table(qty int, oper_id nvarchar(300) );
+declare @assignments_value table(qty int, oper_id nvarchar(300) );
+declare @assignments_done table(qty int, oper_id nvarchar(300) );
+declare @assignments_rework table(qty int, oper_id nvarchar(300) );
+declare @assignments_notCall table(qty int, oper_id nvarchar(300) );
+
+--declare @dateFrom datetime = '2019-08-01 00:00:00';
+--declare @dateTo datetime = current_timestamp;
+
+insert into @opers(Id, full_name)
+select UserId, LastName + isnull(' ' + FirstName, N'') + isnull(' ' + Patronymic,N'')
+from CRM_1551_System.[dbo].[User]
+
+-- получить количество по Questions
+insert into @questions_value (qty, oper_id)
+select count(Id), Log_User
+from Question_History qh
+where Log_Date between @dateFrom and @dateTo 
+group by Log_User
+-- получить количество по Assignments
+insert into @assignments_value (qty, oper_id)
+select count(Id), Log_User 
+from Assignment_History 
+where Log_Date between @dateFrom and @dateTo     
+group by Log_User
+-- получить количество по Assignments где результат "Виконано"
+insert into @assignments_done (qty, oper_id)
+select count(Id), Log_User 
+from Assignment_History 
+where Log_Date between @dateFrom and @dateTo 
+and AssignmentResultsId = 4    
+group by Log_User
+-- получить количество по Assignments где результат "На доопрацювання"
+insert into @assignments_rework (qty, oper_id)
+select count(Id), Log_User 
+from Assignment_History 
+where Log_Date between @dateFrom and @dateTo 
+and AssignmentResultsId = 5    
+group by Log_User
+-- получить количество по Assignments где результат "Недозвон"
+insert into @assignments_notCall (qty, oper_id)
+select count(Id), Log_User 
+from Assignment_History 
+where Log_Date between @dateFrom and @dateTo 
+and AssignmentResultsId = 13    
+group by Log_User
+
+ select ROW_NUMBER() OVER(ORDER BY qv.qty DESC) as Id,
+            o.Id as operId,
+            full_name as oper, 
+	        isnull(qv.qty, 0) as questionQ,
+			isnull(av.qty, 0) as assignmentQ,
+			isnull(ad.qty, 0) as doneQ,
+			isnull(ar.qty, 0) as reworkQ,
+			isnull(anc.qty, 0) as notCallQ
+	 from @opers o
+	 left join @questions_value qv on qv.oper_id = o.Id 
+	 left join @assignments_value av on av.oper_id = o.Id
+	 left join @assignments_done ad on ad.oper_id = o.Id
+	 left join @assignments_rework ar on ar.oper_id = o.Id
+	 left join @assignments_notCall anc on anc.oper_id = o.Id
+
+	 where #filter_columns#
+	 order by (qv.qty + av.qty) desc

@@ -4,9 +4,10 @@
  --d0da1bfc-438a-45ec-bc75-f1c8d05f0d9a
  --aa4c1f84-df33-452c-88e7-5a58dfd0b2d3
 
- declare @zayavnyk_phone_number nvarchar(max);--=N'abc';
 
-  declare @param1 nvarchar(max)=N'1=1'--N'zayavnyk_full_name like ''%Волосянко Надя Богданівна%'''
+ declare @zayavnyk_phone_number nvarchar(max);
+
+  declare @param1 nvarchar(max)=N'question_registration_number like ''%9-2709, 9-1151, 9-977, 9-1865, 9-5410/3%'''--N'zayavnyk_full_name like ''%Волосянко Надя Богданівна%'''
  declare @pageOffsetRows int =0;
  declare @pageLimitRows int =10;
 
@@ -257,7 +258,7 @@ declare @n int=1;
   -CHARINDEX('question_registration_number like ''%', @param2, 1)
   -len('question_registration_number like ''%'))+N'%''',
   
-  N'question_registration_number in (N'''+
+  N'appeals_registration_number in (N'''+
   REPLACE(
   right(left(@param2, CHARINDEX('%''', @param2, CHARINDEX('question_registration_number like ''%', @param2, 1))-1), 
   CHARINDEX('%''', @param2, CHARINDEX('question_registration_number like ''%', @param2, 1))
@@ -403,8 +404,10 @@ select --top 5000
   ,[execution_term] 
   ,[appeals_enter_number]
   ,[control_comment]
+
   ,[ConsDocumentContent]
   ,[control_date]
+
  from
  (
   select [Assignments].Id,
@@ -495,8 +498,10 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
  , [Organizations2].Id Organizations2_Id
  , [AssignmentConsiderations].short_answer [control_comment]
  --[AssignmentRevisions].[control_comment]
+
  ,files_check.[content] ConsDocumentContent
  ,[AssignmentRevisions].control_date
+
   from 
 
   [Assignments] with (nolock)
@@ -537,10 +542,12 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   where '+@param_new2+ N'  and '+@organizations+N' 
 
 '
+-------
  -- and #filter_columns#
  -- #sort_columns#
  --offset ' + (select ltrim(@pageOffsetRows))+N' rows fetch next '+ (select ltrim(@pageLimitRows))+N' rows only
  
  --select @query
+ --comment
   exec(@query)
 
