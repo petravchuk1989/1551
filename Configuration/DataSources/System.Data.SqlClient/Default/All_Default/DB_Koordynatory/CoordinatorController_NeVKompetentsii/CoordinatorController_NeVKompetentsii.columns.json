@@ -71,5 +71,10 @@
     "Code": "transfer_to_organization_name",
     "Name": "transfer_to_organization_name",
     "Position": 13
+  },
+  {
+    "Code": "control_date",
+    "Name": "control_date",
+    "Position": 14
   }
 ]
