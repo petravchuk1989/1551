@@ -24,7 +24,7 @@
                     column: "qty",
                     summaryType: "sum",
                     customizeText: function(data) {
-                        return "Сума: " +data.value ;
+                        return "Всього: " +data.value ;
                     }
                 }
             ]
