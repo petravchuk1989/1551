@@ -240,5 +240,10 @@
     "Code": "ConsDocumentContent",
     "Name": "ConsDocumentContent",
     "Position": 41
+  },
+  {
+    "Code": "control_date",
+    "Name": "control_date",
+    "Position": 41
   }
 ]

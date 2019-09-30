@@ -404,6 +404,7 @@ select --top 5000
   ,[appeals_enter_number]
   ,[control_comment]
   ,[ConsDocumentContent]
+  ,[control_date]
  from
  (
   select [Assignments].Id,
