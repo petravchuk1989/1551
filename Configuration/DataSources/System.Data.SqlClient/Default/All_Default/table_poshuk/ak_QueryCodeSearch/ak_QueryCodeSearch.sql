@@ -4,6 +4,7 @@
  --d0da1bfc-438a-45ec-bc75-f1c8d05f0d9a
  --aa4c1f84-df33-452c-88e7-5a58dfd0b2d3
 
+
  declare @zayavnyk_phone_number nvarchar(max);
 
   declare @param1 nvarchar(max)=N'question_registration_number like ''%9-2709, 9-1151, 9-977, 9-1865, 9-5410/3%'''--N'zayavnyk_full_name like ''%Волосянко Надя Богданівна%'''
@@ -25,9 +26,10 @@
   declare @execution_term_from datetime;--='2019-07-21 21:00:00.000';
  declare @execution_term_to datetime;--='2019-07-21 21:00:00.000';
 
+ declare @control_date_from datetime;--='2019-07-21 21:00:00.000';
+declare @control_date_to datetime;--='2019-07-21 21:00:00.000';
  */
- 
- 
+
 
 
  declare @registration_date_fromP nvarchar(200)=
@@ -86,6 +88,16 @@
  then N' and convert(date, execution_term)<= '''+format(convert(date, dateadd(hh, 5, @execution_term_to)), 'yyyy-MM-dd')+N''''
  else N'' end;
 
+ declare @control_date_fromP nvarchar(200)=
+ case when @control_date_from is not null 
+ then N' and control_date>= '''+format(convert(datetime2, @control_date_from), 'yyyy-MM-dd HH:mm:00')+N'.000'''
+ else N'' end;
+
+ declare @control_date_toP nvarchar(200)=
+ case when @control_date_to is not null 
+ then N' and control_date<= '''+format(convert(datetime2, @control_date_to), 'yyyy-MM-dd HH:mm:59')+N'.999'''
+ else N'' end;
+
  --- убрать
 
  --select @execution_term_fromP, @execution_term_toP 
@@ -94,7 +106,8 @@
  declare @param4 nvarchar(max)=@registration_date_fromP+@registration_date_toP+@transfer_date_fromP+@transfer_date_toP
  +@state_changed_date_fromP+@state_changed_date_toP
  +@state_changed_date_done_fromP+@state_changed_date_done_toP
- +@execution_term_fromP+@execution_term_toP;
+ +@execution_term_fromP+@execution_term_toP
+ +@control_date_fromP+@control_date_toP
 
 
   declare @organizations nvarchar(max);
@@ -391,7 +404,10 @@ select --top 5000
   ,[execution_term] 
   ,[appeals_enter_number]
   ,[control_comment]
-  ,appeals_registration_number
+
+  ,[ConsDocumentContent]
+  ,[control_date]
+
  from
  (
   select [Assignments].Id,
@@ -469,7 +485,7 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   ,[Workers3].name [assigm_user_checked_name]
   ,[Workers3].Id [assigm_user_checked]
 
-  ,[Appeals].registration_date  as  [registration_date] -- good
+  ,[Assignments].registration_date  as  [registration_date] -- good
   ,[AssignmentConsiderations].transfer_date [transfer_date] -- good
   ,case when [Assignments].assignment_state_id=3
   then [Assignments].state_change_date end [state_changed_date] -- good
@@ -482,7 +498,10 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
  , [Organizations2].Id Organizations2_Id
  , [AssignmentConsiderations].short_answer [control_comment]
  --[AssignmentRevisions].[control_comment]
- , [Appeals].[registration_number] appeals_registration_number
+
+ ,files_check.[content] ConsDocumentContent
+ ,[AssignmentRevisions].control_date
+
   from 
 
   [Assignments] with (nolock)
@@ -515,7 +534,7 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   left join [QuestionTypeInRating] with (nolock) on [QuestionTypeInRating].QuestionType_id=[QuestionTypes].Id
   left join [Rating] with (nolock) on [QuestionTypeInRating].Rating_id=[Rating].Id
   inner join [Organizations] [Organizations10] with (nolock) on [Assignments].[executor_organization_id]=[Organizations10].id
-  left join (select distinct [AssignmentConsDocuments].assignment_сons_id
+  left join (select distinct [AssignmentConsDocuments].assignment_сons_id, [content]
   from [AssignmentConsDocuments] with (nolock)
   right join [AssignmentConsDocFiles] with (nolock) on [AssignmentConsDocuments].Id=[AssignmentConsDocFiles].assignment_cons_doc_id
   where [AssignmentConsDocuments].[doc_type_id] in (3,4) or [AssignmentConsDocuments].Id is not null) files_check on [AssignmentConsiderations].Id=files_check.assignment_сons_id

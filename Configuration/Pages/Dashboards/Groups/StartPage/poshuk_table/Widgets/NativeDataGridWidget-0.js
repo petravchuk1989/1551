@@ -134,6 +134,8 @@
         this.stateChangedDateDoneTo = null;
         this.executionTermFrom = null;
         this.executionTermTo = null;
+        this.controlDateFrom = null;
+        this.controlDateTo = null;
         this.applicantPhoneNumber = null;
         
         this.filtersValuesMacros = [];
@@ -210,6 +212,10 @@
                                     this.executionTermFrom = checkDateFrom(elem.value);
                                     break;
                                         
+                                case 'control_date':
+                                    this.controlDateFrom = checkDateFrom(elem.value);
+                                    break;
+                                        
                             }
                         }
                         if(data.dateTo != '' ){
@@ -229,6 +235,9 @@
                                     break;
                                 case 'execution_term':
                                     this.executionTermTo = checkDateTo(elem.value);
+                                    break;
+                                case 'control_date':
+                                    this.controlDateTo = checkDateTo(elem.value);
                                     break;
                             }
                         }
@@ -291,6 +300,8 @@
                 {  key: '@state_changed_date_done_to', value: this.stateChangedDateDoneTo },
                 {  key: '@execution_term_from', value: this.executionTermFrom }, 
                 {  key: '@execution_term_to', value: this.executionTermTo },
+                {  key: '@control_date_from', value: this.controlDateFrom }, 
+                {  key: '@control_date_to', value: this.controlDateTo },
                 {  key: '@zayavnyk_phone_number', value: this.applicantPhoneNumber },
                 
             ];
@@ -440,7 +451,7 @@
         this.messageService.publish(msg);
     },
     exportToExcel: function(){
-        let value =  this.macrosValue   ? this.macrosValue :  '1=1';
+        let value =  this.macrosValue ? this.macrosValue :  '1=1';
         
         let exportQuery = {
             queryCode: 'ak_QueryCodeSearch',
@@ -458,6 +469,8 @@
                 {  key: '@execution_term_from', value: this.executionTermFrom }, 
                 {  key: '@execution_term_to', value: this.executionTermTo },
                 {  key: '@zayavnyk_phone_number', value: this.applicantPhoneNumber },
+                {  key: '@control_date_from', value: this.controlDateFrom }, 
+                {  key: '@control_date_to', value: this.controlDateTo },
                 { key: '@pageOffsetRows', value: 0},
                 { key: '@pageLimitRows', value: 10}
                 ]
@@ -496,9 +509,9 @@
             cellPeriod.value = 'Період вводу з (включно) : дата з ' +this.changeDateTimeValues(this.registrationDateFrom)+ ' дата по ' +this.changeDateTimeValues(this.registrationDateTo)+ ' (Розширений пошук).';
             let cellNumber = worksheet.getCell('A4');
             cellNumber.value = 'Реєстраційний № РДА …';
-            worksheet.mergeCells('A1:F1'); //вставить другой конец колонок
-            worksheet.mergeCells('A2:F2'); //вставить другой конец колонок
-            worksheet.mergeCells('A3:F3'); //вставить другой конец колонок
+            worksheet.mergeCells('A1:F1'); 
+            worksheet.mergeCells('A2:F2'); 
+            worksheet.mergeCells('A3:F3');
             
             worksheet.getRow(1).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
             worksheet.getRow(1).alignment = { vertical: 'middle', horizontal: 'center' };
