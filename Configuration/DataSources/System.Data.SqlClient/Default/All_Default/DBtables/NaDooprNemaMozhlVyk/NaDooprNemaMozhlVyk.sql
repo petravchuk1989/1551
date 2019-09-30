@@ -1,8 +1,8 @@
 /* 
  declare @user_id nvarchar(300)=N'02ece542-2d75-479d-adad-fd333d09604d';
- declare @organization_id int =2006;
- declare @navigation nvarchar(400)=N'Пріоритетне';
- declare @column nvarchar(400)=N'План/Програма';
+ declare @organization_id int =2298;
+ declare @navigation nvarchar(400)=N'Усі';
+ declare @column nvarchar(400)=N'На доопрацюванні';
 */
  declare @comment_naDoopr nvarchar(6)=(select case when @column=N'На доопрацюванні' then N' ' else N'--' end);
  declare @comment_planProg nvarchar(6)=(select case when @column=N'План/Програма' then N' ' else N'--' end);
@@ -90,7 +90,16 @@ else N''Інші доручення''
 end navigation
 
  ,[Applicants].Id zayavnykId, [Questions].Id QuestionId, [Organizations].short_name vykonavets, [Assignments].[registration_date],
- [AssignmentRevisions].[control_comment] comment, 
+
+-- [AssignmentRevisions].[control_comment] short_answer, 
+
+ ( SELECT TOP 1 	control_comment 
+FROM AssignmentRevisions AS ar
+JOIN AssignmentConsiderations AS ac ON ac.Id = ar.assignment_consideration_іd
+WHERE ac.assignment_id = [Assignments].Id 
+ORDER BY ar.id DESC ) as short_answer,
+
+
  convert(datetime, [Questions].[control_date]) control_date
   , [Applicants].[ApplicantAdress] zayavnyk_adress, [Questions].question_content zayavnyk_zmist
     , [AssignmentRevisions].[rework_counter]
@@ -118,6 +127,9 @@ left join [Applicants] with (nolock) on [Appeals].applicant_id=[Applicants].Id
 left join [StreetTypes] with (nolock) on [Streets].street_type_id=[StreetTypes].Id
 left join [Districts] with (nolock) on [Buildings].district_id=[Districts].Id
 left join [AssignmentRevisions] with (nolock) on [AssignmentConsiderations].Id=[AssignmentRevisions].assignment_consideration_іd
+--left join [AssignmentConsiderations] [AssignmentConsiderations2] on [Assignments].Id=[AssignmentConsiderations2].assignment_id
+--left join [AssignmentRevisions] [AssignmentRevisions2] on [AssignmentConsiderations2].Id=[AssignmentRevisions2].assignment_consideration_іd
+
 
 left join (select [building_id], [executor_id]
   from [ExecutorInRoleForObject] with (nolock)
@@ -145,9 +157,16 @@ select 1 Id, N''УГЛ'' name union all select 2 Id, N''Електронні д�
 
 
 select /*ROW_NUMBER() over(order by registration_number)*/ main.Id, registration_number, QuestionType, zayavnyk, adress, control_date, zayavnykId,
-zayavnyk_adress, zayavnyk_zmist, comment, rework_counter, balans_name
+zayavnyk_adress, zayavnyk_zmist, short_answer, rework_counter, balans_name
  from main where --navigation, registration_number, from main
   navigation in ('+@Ids+N')
  order by case when rework_counter=2 then 1 else 2 end, Id'
 
  exec(@qcode)
+
+ /*
+select ar.*
+  FROM [CRM_1551_Analitics].[dbo].[AssignmentConsiderations] ac
+  inner join AssignmentRevisions ar on ac.Id=ar.assignment_consideration_іd
+  where ac.assignment_id=2811173
+ */
