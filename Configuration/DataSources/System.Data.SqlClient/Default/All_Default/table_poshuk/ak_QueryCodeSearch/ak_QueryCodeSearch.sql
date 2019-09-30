@@ -89,12 +89,12 @@ declare @control_date_to datetime;--='2019-07-21 21:00:00.000';
 
  declare @control_date_fromP nvarchar(200)=
  case when @control_date_from is not null 
- then N' and control_date>= '''+format(convert(datetime2, @registration_date_from), 'yyyy-MM-dd HH:mm:00')+N'.000'''
+ then N' and control_date>= '''+format(convert(datetime2, @control_date_from), 'yyyy-MM-dd HH:mm:00')+N'.000'''
  else N'' end;
 
  declare @control_date_toP nvarchar(200)=
  case when @control_date_to is not null 
- then N' and control_date<= '''+format(convert(datetime2, @registration_date_to), 'yyyy-MM-dd HH:mm:59')+N'.999'''
+ then N' and control_date<= '''+format(convert(datetime2, @control_date_to), 'yyyy-MM-dd HH:mm:59')+N'.999'''
  else N'' end;
 
  --- убрать
