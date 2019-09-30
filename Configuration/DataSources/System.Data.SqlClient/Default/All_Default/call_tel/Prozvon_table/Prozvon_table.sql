@@ -1,7 +1,10 @@
---  declare @filter nvarchar(3000)=N'question_list_state in (1)'; --question_type in (50)
---  declare @sort nvarchar(3000)=N'1=1';
+  --declare @filter nvarchar(3000)=N'1=1'; --question_type in (50)
+  --declare @sort nvarchar(3000)=N'QuestionType asc, District desc';
 
- declare @sort1 nvarchar(3000)=case when @sort=N'1=1' then N'QuestionType' else @sort end;
+ declare @sort1 nvarchar(3000)=case when @sort=N'1=1' then N'QuestionType_sort' 
+ else replace(replace(@sort, N' asc', N'_sort asc'), N' desc', N'_sort desc') end;
+
+ --select @sort1
 
  --select CHARINDEX(N'question_type in (', @filter, 0), -- с какого по номеру символа начинается
  --len(N'question_type in ('), --длинна того что начинается
@@ -118,6 +121,43 @@ end
   ,[Streets].Id building_street
   ,[Buildings].[Id] building_number
   ,[Appeals].receipt_source_id receipt_source
+
+  --- добавление сортировки
+  --,ltrim([QuestionTypes].name) QuestionType_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ltrim([QuestionTypes].name),N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') QuestionType_sort
+  --,[Applicants].full_name full_name_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Applicants].full_name,N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') full_name_sort
+  --,[Districts].Name District_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Districts].Name,N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') District_sort
+  --,isnull([StreetTypes].shortname+N'' '',N'''')+
+  --isnull([Streets].name+N'', '',N'''')+
+  --isnull([Buildings].name, N'''')+
+  --isnull(N'' кв. ''+[LiveAddress].flat,N'''') house_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(isnull([StreetTypes].shortname+N'' '',N'''')+
+  isnull([Streets].name+N'', '',N'''')+
+  isnull([Buildings].name, N'''')+
+  isnull(N'' кв. ''+[LiveAddress].flat,N''''),N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') house_sort
+  --,isnull([StreetTypes2].shortname+N'' '',N'''')+
+  --isnull([Streets2].name+N'', '',N'''')+
+  --isnull([Buildings2].name, N'''') place_problem_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(isnull([StreetTypes2].shortname+N'' '',N'''')+
+  isnull([Streets2].name+N'', '',N'''')+
+  isnull([Buildings2].name, N''''),N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') place_problem_sort
+  --,[Organizations].short_name vykon_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Organizations].short_name,N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') vykon_sort
+  --,[Questions].question_content zmist_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Questions].question_content,N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') zmist_sort
+  --,[AssignmentConsiderations].short_answer comment_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AssignmentConsiderations].short_answer,N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') comment_sort
+  --,[AssignmentRevisions].[control_comment] control_comment_sort
+  ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AssignmentRevisions].[control_comment],N''щ'', N''ща''), N''ь'', ''щб''),N''я'',N''яа''),N''є'',N''яб''),N''і'',N''яв''),N''ї'',N''яг''),N''ґ'',N''яд'') control_comment_sort
+
+
+  ,isnull([AssignmentRevisions].[missed_call_counter], 0) cc_nedozvon_sort
+  ,[ApplicantPhones].phone_number phone_number_sort
+  ,[Questions].registration_number registration_number_sort
+  ,[LiveAddress].entrance entrance_sort
+
   from [Assignments]  with (nolock)
   left join [AssignmentStates] with (nolock) on [Assignments].assignment_state_id=[AssignmentStates].Id
   left join [AssignmentResults] with (nolock) on [Assignments].AssignmentResultsId=[AssignmentResults].Id
