@@ -5,7 +5,7 @@ declare @assignments_done table(qty int, oper_id nvarchar(300) );
 declare @assignments_rework table(qty int, oper_id nvarchar(300) );
 declare @assignments_notCall table(qty int, oper_id nvarchar(300) );
 
---declare @dateFrom datetime = '2019-08-01 00:00:00';
+--declare @dateFrom datetime = '2019-10-02 00:00:00';
 --declare @dateTo datetime = current_timestamp;
 
 insert into @opers(Id, full_name)
@@ -14,16 +14,16 @@ from CRM_1551_System.[dbo].[User]
 
 -- получить количество по Questions
 insert into @questions_value (qty, oper_id)
-select count(Id), Log_User
-from Question_History qh
-where Log_Date between @dateFrom and @dateTo 
-group by Log_User
+select count(Id), user_edit_id
+from Questions q
+where edit_date between @dateFrom and @dateTo 
+group by user_edit_id
 -- получить количество по Assignments
 insert into @assignments_value (qty, oper_id)
-select count(Id), Log_User 
-from Assignment_History 
-where Log_Date between @dateFrom and @dateTo     
-group by Log_User
+select count(Id), user_edit_id 
+from Assignments 
+where edit_date between @dateFrom and @dateTo     
+group by user_edit_id
 -- получить количество по Assignments где результат "Виконано"
 insert into @assignments_done (qty, oper_id)
 select count(Id), Log_User 
