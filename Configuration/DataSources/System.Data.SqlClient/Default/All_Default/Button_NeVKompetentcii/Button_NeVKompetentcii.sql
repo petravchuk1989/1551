@@ -288,106 +288,124 @@ begin
 
 						if 	(select count(1) from Assignments with (nolock) where question_id = (select question_id from Assignments with (nolock) where Id = @Id)
 								 and executor_organization_id = @executor_organization_id) = 0
-						begin
+						begin -- кк
 
-						
+							declare @oldAss_questionId int = (select ass.question_id from Assignments as ass where ass.id = @Id)
 
+								declare @tested_transfer int
+								declare @ass_id_for_main int
+								exec [dbo].Check_transfer_organizations @Id, @executor_organization_id, @tested_transfer output, @ass_id_for_main output
 
-declare @oldAss_questionId int = (select ass.question_id
-								  from Assignments as ass where ass.id = @Id)
+								if @tested_transfer = 0
+									begin
+											-- создаем новое Assignments и AssignmentConsiderations
+											INSERT INTO [dbo].[Assignments]
+												 ([question_id]
+												 ,[assignment_type_id]
+												 ,[registration_date]
+												 ,[assignment_state_id]
+												 ,[state_change_date]
+												 ,[organization_id]
+												 ,[executor_organization_id]
+												 ,[main_executor]
+												 ,[execution_date]
+												 ,[user_id]
+												 ,[edit_date]
+												 ,[user_edit_id]
+												 ,AssignmentResultsId
+												 ,AssignmentResolutionsId
+												 ,LogUpdated_Query)
+												output inserted.Id into @output([Id])
+												select ass.question_id
+												  ,ass.assignment_type_id
+												  ,GETUTCDATE()
+												  ,1	--Зареєстровано
+												  ,GETUTCDATE()
+												  --,(select first_executor_organization_id from AssignmentConsiderations where Id=@current_consid)
+												  ,@executor_organization_id
+												  ,@executor_organization_id
+												--   ,1 --main
+												  ,main_executor
+												  ,ass.execution_date
+												  ,@user_edit_id
+												  ,GETUTCDATE()
+												  ,@user_edit_id
+												  ,1	--Очікує прийому в роботу
+												  ,null
+												  ,N'Button_NeVKompetentcii__Row335'
+												from Assignments as ass where ass.id = @Id
 
-								-- создаем новое Assignments и AssignmentConsiderations
-										INSERT INTO [dbo].[Assignments]
-											 ([question_id]
-											 ,[assignment_type_id]
-											 ,[registration_date]
-											 ,[assignment_state_id]
-											 ,[state_change_date]
-											 ,[organization_id]
-											 ,[executor_organization_id]
-											 ,[main_executor]
-											 ,[execution_date]
-											 ,[user_id]
-											 ,[edit_date]
-											 ,[user_edit_id]
-											 ,AssignmentResultsId
-											 ,AssignmentResolutionsId
-											 ,LogUpdated_Query)
-											output inserted.Id into @output([Id])
-											select ass.question_id
-											  ,ass.assignment_type_id
-											  ,GETUTCDATE()
-											  ,1	--Зареєстровано
-											  ,GETUTCDATE()
-											  --,(select first_executor_organization_id from AssignmentConsiderations where Id=@current_consid)
-											  ,@executor_organization_id
-											  ,@executor_organization_id
-											--   ,1 --main
-											  ,main_executor
-											  ,ass.execution_date
-											  ,@user_edit_id
-											  ,GETUTCDATE()
-											  ,@user_edit_id
-											  ,1	--Очікує прийому в роботу
-											  ,null
-											  ,N'Button_NeVKompetentcii_Row306'
-											from Assignments as ass where ass.id = @Id
+											set @ass_id = (select top 1 [Id] from @output);
 
-										set @ass_id = (select top 1 [Id] from @output);
-
-										insert into dbo.AssignmentConsiderations
-										(		[assignment_id]
-											   ,[consideration_date]
-											   ,[assignment_result_id]
-											   ,[assignment_resolution_id]
-											   ,[user_id]
-											   ,[edit_date]
-											   ,[user_edit_id]
-											   ,turn_organization_id
-											   ,[first_executor_organization_id]
-											   ,[create_date]
-											   ,[short_answer])
-										output inserted.Id into @output_con([Id])
-										 select @ass_id
-											   ,getutcdate()
-											   ,1	--Очікує прийому в роботу
-											   ,null
-											   ,@user_edit_id
-											   ,getutcdate()
-											   ,@user_edit_id
-											   ,null
-											--   ,first_executor_organization_id
-											   ,@executor_organization_id
-											   ,getutcdate()
-											   ,null
-											
-
+											insert into dbo.AssignmentConsiderations
+											(		[assignment_id]
+												   ,[consideration_date]
+												   ,[assignment_result_id]
+												   ,[assignment_resolution_id]
+												   ,[user_id]
+												   ,[edit_date]
+												   ,[user_edit_id]
+												   ,turn_organization_id
+												   ,[first_executor_organization_id]
+												--    ,[short_answer]
+												   ,create_date)
+											output inserted.Id into @output_con([Id])
+											 select @ass_id
+												   ,getutcdate()
+												   ,1	--Очікує прийому в роботу
+												   ,null
+												   ,@user_edit_id
+												   ,getutcdate()
+												   ,@user_edit_id
+												   ,null
+												--   ,first_executor_organization_id
+												   ,@executor_organization_id
+												--    ,@short_answer
+												   ,getutcdate()
+												from AssignmentConsiderations where Id = (select current_assignment_consideration_id from Assignments where Id = @Id)
 		
-									-- надо поставить проверку если это главное доручення то меняем в Вопросе last_assignment_for_execution_id
-									--if (select main_executor from Assignments with (nolock) where Id = @Id) = 1
-									--begin
-									--	update Questions set 
-									--		last_assignment_for_execution_id = @ass_id,
-									--		edit_date = GETUTCDATE(),
-									--		user_edit_id = @user_edit_id
-									-- where last_assignment_for_execution_id = @Id
-									--end
+											--  проверка если это главное доручення то меняем в Вопросе last_assignment_for_execution_id
+											if (select main_executor from Assignments where Id = @Id) = 1
+											begin
+												update Questions set 
+													last_assignment_for_execution_id = @ass_id,
+													edit_date = GETUTCDATE(),
+													user_edit_id = @user_edit_id
+											where last_assignment_for_execution_id = @Id
+											end
 
+											set @new_con = ( select top(1) Id from @output_con)
+											update [Assignments] set main_executor = 0,
+																	[LogUpdated_Query] = N'Button_NeVKompetentcii__Row379' 
+											where Id = @Id
+											update [Assignments] set current_assignment_consideration_id = @new_con,
+																	[LogUpdated_Query]= N'Button_NeVKompetentcii__Row382' 
+											where Id = @ass_id
+										end
+										else -- if @tested_transfer = 1
+										begin
+											UPDATE [Assignments] SET 
+												main_executor = 1,
+												[LogUpdated_Query] = N'Button_NeVKompetentcii__Row389',
+												edit_date = getutcdate(),
+												user_edit_id = @user_edit_id 
+											WHERE Id = @ass_id_for_main
 
-									update dbo.Questions set last_assignment_for_execution_id = @ass_id,
-															 edit_date = GETUTCDATE(),
-															 user_edit_id = @user_edit_id
-									 where Id = @oldAss_questionId
+											UPDATE Questions 
+												set last_assignment_for_execution_id = @ass_id_for_main,
+													edit_date = GETUTCDATE(),
+													user_edit_id = @user_edit_id
+												where Id = @question_id
 
+											UPDATE Assignments 	SET 
+													 main_executor = 0
+													,edit_date = GETUTCDATE()
+													,user_edit_id = @user_edit_id
+													,[LogUpdated_Query] = N'Button_NeVKompetentcii__Row404'
+													WHERE id = @Id
 
-									set @new_con = ( select top(1) Id from @output_con)
-									update [Assignments] set main_executor = 0,[LogUpdated_Query] = N'Button_NeVKompetentcii__Row347' where Id = @Id
-									update [Assignments] set current_assignment_consideration_id = @new_con where Id = @ass_id
-          
-									select  @ass_id as Id
-									-- 		execute define_status_Question @question_id
-									-- exec pr_chech_in_status_assignment @Id, @result_id, @resolution_id
-						end
+										end
+						end  -- кк
 						else
 						begin	
 				-- 		update [Assignments] set main_executor = 0,[LogUpdated_Query] = N'Button_NeVKompetentcii__Row356' where Id = @Id
