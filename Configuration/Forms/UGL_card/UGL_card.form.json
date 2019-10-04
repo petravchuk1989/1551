@@ -1,0 +1,32 @@
+{
+  "ModelType": "Form",
+  "Code": "UGL_card",
+  "Name": "Картка UGL",
+  "Details": [
+    "string:Details\\Detail_UGL_QuestionReestration.detail.json",
+    "string:Details\\Detail_UGL_Consultation.detail.json",
+    "string:Details\\Detail_UGL_GorodokClaim.detail.json",
+    "string:Details\\Detail_UGL_QuestionBuildingAplicant.detail.json",
+    "string:Details\\Detail_UGL_QuestionApplicant.detail.json",
+    "string:Details\\Detail_UGL_QuestionObjectAplicant.detail.json",
+    "string:Details\\Detail_UGL_Aplicant.detail.json",
+    "string:Details\\Detail_UGL_Event.detail.json",
+    "string:Details\\Detail_UGL_QuestionNumberAppeal.detail.json",
+    "string:Details\\Detail_UGL_QuestionPhone.detail.json",
+    "string:Details\\Detail_UGL_ConsultationAplicant.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\UGL_Group_Appeal.fieldgroup.json",
+      "string:FieldGroups\\UGL_Group_Aplicant.fieldgroup.json",
+      "string:FieldGroups\\UGL_Group_CreateQuestion.fieldgroup.json",
+      "string:FieldGroups\\UGL_Group_Preview_Question.fieldgroup.json",
+      "string:FieldGroups\\UGL_Group_Events.fieldgroup.json",
+      "string:FieldGroups\\UGL_Group_GorodokClaims.fieldgroup.json",
+      "string:FieldGroups\\UGL_Group_WIKI.fieldgroup.json",
+      "string:FieldGroups\\UGL_Group_Work_with_a_question.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:UGL_card.form.js"
+  }
+}
