@@ -15,35 +15,27 @@ declare @is_main_exec bit
 
 
 --при виборі одного й того самого виконався стан проставляти на зареєстровано
-if @executor_organization_id=(select [executor_organization_id]
-  from [Assignments]
-  where Id=@Id)
+if @executor_organization_id=(select [executor_organization_id]   from [Assignments]  where Id=@Id)
 begin
-
-
-
-update Assignments
-set [assignment_state_id]=1
-			,edit_date = GETUTCDATE()
-			,user_edit_id = @user_edit_id
-			,[LogUpdated_Query] = N'Button_NeVKompetentcii_Row22'
-where Id=@Id
+	update Assignments
+	set [assignment_state_id]=1
+		,edit_date = GETUTCDATE()
+		,user_edit_id = @user_edit_id
+		,[LogUpdated_Query] = N'Button_NeVKompetentcii_Row22'
+	where Id=@Id
 end
-
---
 
 if @executor_organization_id is not null
 begin
 
 
-	select @ass_state_id  = assignment_state_id
-	, @result_id = AssignmentResultsId
-	, @resolution_id = AssignmentResolutionsId
-	, @current_consid = current_assignment_consideration_id
-	,@question_id = question_id 
+	select 
+			  @ass_state_id  = assignment_state_id
+			, @result_id = AssignmentResultsId
+			, @resolution_id = AssignmentResolutionsId
+			, @current_consid = current_assignment_consideration_id
+			, @question_id = question_id 
 	from Assignments where Id = @Id
-
-	
 
      -- 3 Не в компетенції	NotInTheCompetence 
 	-- 14 Повернуто в батьківську організацію	ReturnedToParentOrganization
@@ -56,8 +48,6 @@ begin
 	BEGIN
 		if (select first_executor_organization_id from AssignmentConsiderations where Id = @current_consid) = @executor_organization_id
 		begin
-
-
 
 						set @new_res  = 6 -- 6 Повернуто виконавцю	ReturnedToTheArtist
 						set @new_resol = 3 -- 3 Перенаправлено за належністю	RedirectedByAffiliation
@@ -115,18 +105,12 @@ begin
 							set @new_con = (select top (1) Id from @output_con)
 							update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id
 
-
-
 			end
-			else
-				-- 1 Очікує прийому в роботу	WaitingForWork
-				-- 3 Перенаправлено за належністю	RedirectedByAffiliation
-				-- if @result_id = 1 and @resolution_id = 3
+			ELSE
 			begin
 
 				set @new_res  = 1 -- 1 Очікує прийому в роботу	WaitingForWork
 				set @new_resol  = 3 -- 3 Перенаправлено за належністю	RedirectedByAffiliation
-
 
 				update Assignments 
 						set 
@@ -147,7 +131,6 @@ begin
 						,edit_date = GETUTCDATE()
 						,user_edit_id = @user_edit_id
 					 where Id = @current_consid 
-
 
 				delete from @output_con;
 
@@ -175,10 +158,8 @@ begin
 						   ,getutcdate()
 						from AssignmentConsiderations where Id = @current_consid
 
-		
 				set @new_con = ( select top(1) Id from @output_con)
 				update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id -- @ass_id
-
 
 			end
 	END
@@ -244,16 +225,17 @@ begin
 
 		end
 		else
-		begin
+		begin -- 3\3
 			set @new_res  = 3 -- 3 Не в компетенції	NotInTheCompetence
 			set @new_resol = 3 -- 3 Перенаправлено за належністю	RedirectedByAffiliation
 
+			declare @Err_1 int
+			BEGIN TRANSACTION
 
 			--закрываем старое  Assignments и AssignmentConsiderations и AssignmentRevisions
 	 					update Assignments 
 								set 
-								 /*main_executor = 0
-								,*/close_date = getutcdate()
+								 close_date = getutcdate()
 								,AssignmentResultsId = @new_res
 								,AssignmentResolutionsId = @new_resol
 								,edit_date = GETUTCDATE()
@@ -274,8 +256,6 @@ begin
 						update AssignmentRevisions 
 								set [assignment_resolution_id] = @new_resol
 									,organization_id = @executor_organization_id
-								-- 	,[control_comment] = @control_comment
-								-- 	,[rework_counter] = @rework_counter_count
 									,[edit_date] = getutcdate()
 									,[user_edit_id] = @user_edit_id
 									,control_result_id = @new_resol
@@ -284,14 +264,10 @@ begin
 						delete from @output;
 						delete from @output_con;
 
-
-
-						if 	(select count(1) from Assignments with (nolock) where question_id = (select question_id from Assignments with (nolock) where Id = @Id)
-								 and executor_organization_id = @executor_organization_id) = 0
+						-- if 	(select count(1) from Assignments with (nolock) where question_id = (select question_id from Assignments with (nolock) where Id = @Id)
+								--  and executor_organization_id = @executor_organization_id) = 0
+						if not exists (select 1 from Assignments where question_id = @question_id and executor_organization_id = @executor_organization_id)
 						begin -- кк
-
-							declare @oldAss_questionId int = (select ass.question_id from Assignments as ass where ass.id = @Id)
-
 								declare @tested_transfer int
 								declare @ass_id_for_main int
 								exec [dbo].Check_transfer_organizations @Id, @executor_organization_id, @tested_transfer output, @ass_id_for_main output
@@ -321,11 +297,10 @@ begin
 												  ,GETUTCDATE()
 												  ,1	--Зареєстровано
 												  ,GETUTCDATE()
-												  --,(select first_executor_organization_id from AssignmentConsiderations where Id=@current_consid)
 												  ,@executor_organization_id
 												  ,@executor_organization_id
-												--   ,1 --main
-												  ,main_executor
+												  ,1 --main
+												--   ,main_executor
 												  ,ass.execution_date
 												  ,@user_edit_id
 												  ,GETUTCDATE()
@@ -347,10 +322,10 @@ begin
 												   ,[user_edit_id]
 												   ,turn_organization_id
 												   ,[first_executor_organization_id]
-												--    ,[short_answer]
 												   ,create_date)
 											output inserted.Id into @output_con([Id])
-											 select @ass_id
+											 values (
+												 	@ass_id
 												   ,getutcdate()
 												   ,1	--Очікує прийому в роботу
 												   ,null
@@ -358,28 +333,33 @@ begin
 												   ,getutcdate()
 												   ,@user_edit_id
 												   ,null
-												--   ,first_executor_organization_id
 												   ,@executor_organization_id
-												--    ,@short_answer
 												   ,getutcdate()
-												from AssignmentConsiderations where Id = (select current_assignment_consideration_id from Assignments where Id = @Id)
+												   )
 		
-											--  проверка если это главное доручення то меняем в Вопросе last_assignment_for_execution_id
-											if (select main_executor from Assignments where Id = @Id) = 1
-											begin
+											set @new_con = ( select top(1) Id from @output_con)
+
+											--  проверка если это главное доручення то меняем в Вопросе last_assignment_for_execution_id /убрал проверку
+											-- if (select main_executor from Assignments where Id = @Id) = 1
+											-- begin
 												update Questions set 
 													last_assignment_for_execution_id = @ass_id,
 													edit_date = GETUTCDATE(),
 													user_edit_id = @user_edit_id
-											where last_assignment_for_execution_id = @Id
-											end
+											-- where last_assignment_for_execution_id = @Id
+												where Id = @question_id
+											-- end
 
-											set @new_con = ( select top(1) Id from @output_con)
 											update [Assignments] set main_executor = 0,
-																	[LogUpdated_Query] = N'Button_NeVKompetentcii__Row379' 
-											where Id = @Id
+																	[LogUpdated_Query] = N'Button_NeVKompetentcii__Row379',
+																	edit_date = getutcdate(),
+																	user_edit_id = @user_edit_id 
+											where [question_id] = @question_id and Id <> @ass_id
+
 											update [Assignments] set current_assignment_consideration_id = @new_con,
-																	[LogUpdated_Query]= N'Button_NeVKompetentcii__Row382' 
+																	[LogUpdated_Query]= N'Button_NeVKompetentcii__Row382',
+																	edit_date = getutcdate(),
+																	user_edit_id = @user_edit_id  
 											where Id = @ass_id
 										end
 										else -- if @tested_transfer = 1
@@ -402,18 +382,20 @@ begin
 													,edit_date = GETUTCDATE()
 													,user_edit_id = @user_edit_id
 													,[LogUpdated_Query] = N'Button_NeVKompetentcii__Row404'
-													WHERE id = @Id
+													WHERE [question_id] = @question_id and Id <> @ass_id_for_main
 
 										end
+										set @Err_1 = @@ERROR
 						end  -- кк
 						else
 						begin	
-				-- 		update [Assignments] set main_executor = 0,[LogUpdated_Query] = N'Button_NeVKompetentcii__Row356' where Id = @Id
+							-- update [Assignments] set main_executor = 0,[LogUpdated_Query] = N'Button_NeVKompetentcii__Row356' where Id = @Id
 				            select @is_main_exec  = main_executor from Assignments where Id = @Id
 						
-						declare @New_Ass int = (select top 1 Id from Assignments with (nolock) where question_id = (select question_id from Assignments with (nolock) where Id = @Id) and executor_organization_id = @executor_organization_id)
+							-- declare @New_Ass int = (select top 1 Id from Assignments with (nolock) where question_id = (select question_id from Assignments with (nolock) where Id = @Id) and executor_organization_id = @executor_organization_id)
+							declare @New_Ass int = (select top 1 Id from Assignments with (nolock) where question_id = @question_id and executor_organization_id = @executor_organization_id)
 								
-								if 	(select count(1) from Assignments where question_id = (select question_id from Assignments where Id = @Id)
+								if 	(select count(1) from Assignments where question_id = @question_id --(select question_id from Assignments where Id = @Id)
 									and executor_organization_id = @executor_organization_id and AssignmentResultsId = 3 and AssignmentResolutionsId = 3) > 0
 								begin
 										update	[Assignments] 
@@ -480,7 +462,16 @@ begin
 											where question_id = @question_id and Id <> @New_Ass
 								
 								end	
-						end			
-		end	
+								SET @Err_1 = @@ERROR
+						end		
+						if  @Err_1 = 0
+						BEGIN	
+							COMMIT TRANSACTION
+						END
+						ELSE
+						BEGIN
+							ROLLBACK TRANSACTION
+						END	
+		end	 -- 3\3
 	END	
 end
