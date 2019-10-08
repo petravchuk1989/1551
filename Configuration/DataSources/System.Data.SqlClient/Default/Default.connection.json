@@ -4,5 +4,4 @@
     "Name": "Подключение по-умолчанию",
     "ProviderCode": "System.Data.SqlClient",
     "ConnectionString": "****777****"
-
 }
