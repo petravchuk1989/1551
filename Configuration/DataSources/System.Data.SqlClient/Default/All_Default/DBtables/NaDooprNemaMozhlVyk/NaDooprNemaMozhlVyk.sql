@@ -102,7 +102,10 @@ ORDER BY ar.id DESC ) as short_answer,
 
  convert(datetime, [Questions].[control_date]) control_date
   , [Applicants].[ApplicantAdress] zayavnyk_adress, [Questions].question_content zayavnyk_zmist
-    , [AssignmentRevisions].[rework_counter]
+    --, [AssignmentRevisions].[rework_counter]
+	,(select count(id) from AssignmentRevisions where assignment_consideration_іd in
+	    (select Id from AssignmentConsiderations where assignment_id= [Assignments].Id) and control_result_id = 5 )  as rework_counter
+
 	,[Organizations3].short_name balans_name
 from 
 [Assignments] with (nolock)

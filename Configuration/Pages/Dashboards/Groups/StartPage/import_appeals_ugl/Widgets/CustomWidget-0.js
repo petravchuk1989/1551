@@ -5,57 +5,6 @@
     formatTitle: function() {},
     customConfig:
                 `
-                <style>
-                    #btnsWrapper{
-                        margin-top: 20px;
-                        display: flex;
-                        justify-content: space-around;
-                    }
-                    .btn, #fileLabel{
-                        cursor: pointer;
-                        outline: none;
-                        color: white;
-                        padding: 5px 10px;
-                        width: 200px;
-                        display: flex;
-                        justify-content: center;
-                        height: 50px;
-                        border: none;
-                        align-items: center;
-                        text-align: center;
-                        position: relative;
-
-                    }
-                    input[type="file"] {
-                        display: none;
-                    }
-                    .triangle{
-                        width: 0;
-                        height: 0;
-                        border-style: solid;
-                        border-width: 25px 0 25px 21px;
-                        position: absolute;
-                        right: -21px;
-                    }
-                    .fileLabel__triangle{
-                        border-color: transparent transparent transparent #77e857;
-                    }
-                    .btnImportFile__triangle{
-                        border-color: transparent transparent transparent #58c339;
-                    }
-                    .showTable__triangle{
-                        border-color: transparent transparent transparent #3e9325;
-                    }
-                    #fileLabel{
-                        background-color: #77e857;
-                    }
-                    #btnImportFile{
-                        background-color: #58c339;
-                    }
-                    #btnShowTable{
-                        background-color: #3e9325;
-                    }
-                    </style>
                 <div id='container' ></div>
                 `
     ,
@@ -89,6 +38,7 @@
                 parameterValues: []
             };
             this.queryExecutor(executeQuery, this.sendMessageToTable, this);
+            this.showPreloader = false;
         });
         
         btnImportFile.addEventListener( 'click', event => {
@@ -125,7 +75,7 @@
                         this.showModalWindow(responseModal, responseNotification, CONTAINER);                        
                     }
                 });
-                let url = window.location.origin + '/api/section/demo/import/csv';
+                let url = window.location.origin + '/api/section/Appeals_UGL/import/csv';
                 xhr.open("POST", url );
                 let token = localStorage.getItem('X-Auth-Token');
                 xhr.setRequestHeader("Authorization", 'Bearer ' + token );
