@@ -8,209 +8,209 @@
         this.modal_phone_NEW = null; 
         
             const queryForGetValue22 = {
-                    queryCode: 'GetApplicantPhonesForApplicantId',
-                    parameterValues: [{ key: '@applicant_id', value: this.form.getControlValue('Applicant_Id')}]
-                };
+                queryCode: 'GetApplicantPhonesForApplicantId',
+                parameterValues: [{ key: '@applicant_id', value: this.form.getControlValue('Applicant_Id')}]
+            };
+            
+            this.queryExecutor.getValues(queryForGetValue22).subscribe(function (data){
                 
-                this.queryExecutor.getValues(queryForGetValue22).subscribe(function (data){
-                    
-                  this.kolvoPhonesForApplicant =  data.rows.length-1;
-                    
-                    if (data.rows.length > 0){
-                        // debugger;
-                        const fieldsForm = {
-                                        title: 'Телефони заявника',
-                                        acceptBtnText: 'save',
-                                        cancelBtnText: 'exit',
-                                        singleButton: false, 
-                                        fieldGroups: []
+                this.kolvoPhonesForApplicant =  data.rows.length-1;
+                
+                if (data.rows.length > 0){
+                    // debugger;
+                    const fieldsForm = {
+                        title: 'Телефони заявника',
+                        acceptBtnText: 'save',
+                        cancelBtnText: 'exit',
+                        singleButton: false, 
+                        fieldGroups: []
+                    };
+                                
+                    for (let j = 0; j < data.rows.length; j++ ){
+                        if(data.rows[j].values[5] == 1) {
+                            
+                            var p = {
+                                        code: 'GroupPhone'+j,
+                                        name: 'Створення телефону',
+                                        expand: true,
+                                        position: data.rows[j].values[0],
+                                        fields: []
                                     };
                                     
-                            for (let j = 0; j < data.rows.length; j++ ){
-                                            if(data.rows[j].values[5] == 1) {
-                                                
-                                                var p = {
-                                                            code: 'GroupPhone'+j,
-                                                            name: 'Створення телефону',
-                                                            expand: true,
-                                                            position: data.rows[j].values[0],
-                                                            fields: []
-                                                        };
-                                                        
-                                                fieldsForm.fieldGroups.push(p);
-                                               
-                                                 var c = fieldsForm.fieldGroups.length-1;
-                                                   var t = {
-                                                                code: data.rows[j].values[1],
-                                                                fullScreen: true,
-                                                                hidden: false,
-                                                                placeholder: data.rows[j].values[2],
-                                                                position: 1,
-                                                                required: false,
-                                                                value: data.rows[j].values[3],
-                                                                disabled: true,
-                                                                type: "text",
-                                                                icon: 'phone_forwarded',
-                                                                iconHint: 'Скопіювати з вхідного номера телефону',
-                                                                maxlength: 14,
-                                                                width: '50%'
-                                                            };
-                                                fieldsForm.fieldGroups[c].fields.push(t);
-                                                
-                                                  var t0_0 = {
-                                                                code: data.rows[j].values[1]+'_phoneType',
-                                                                fullScreen: true,
-                                                                hidden: false,
-                                                                placeholder: 'Тип',
-                                                                position: 2,
-                                                                required: false,
-                                                                value: "Мобільний",
-                                                                keyValue: 1,
-                                                                listKeyColumn: "Id",
-                                                                listDisplayColumn: "name",
-                                                                type: "select",
-                                                                queryListCode: "dir_PhoneTypes_SelectRows",
-                                                                width: '50%'
-                                                            };
-                                                fieldsForm.fieldGroups[c].fields.push(t0_0);
-                                                
-                                                 var t0_2 = {
-                                                                code: data.rows[j].values[1]+'_phoneIsMain',
-                                                                fullScreen: true,
-                                                                hidden: false,
-                                                                placeholder: 'Основний?',
-                                                                position: 3,
-                                                                required: false,
-                                                                value: false,
-                                                                type: "checkbox",
-                                                                width: '50%'
-                                                            };
-                                                
-                                                fieldsForm.fieldGroups[c].fields.push(t0_2);
-                                                
-                                                
-                                                   var t0_1 = {
-                                                                code: data.rows[j].values[1]+'_phoneDelete',
-                                                                fullScreen: true,
-                                                                hidden: false,
-                                                                placeholder: 'Додати',
-                                                                position: 4,
-                                                                icon: 'add',
-                                                                required: false,
-                                                                type: "button",
-                                                                width: '50%'
-                                                            };
-                                                
-                                                fieldsForm.fieldGroups[c].fields.push(t0_1);
-                                                
-                                            } else {
-                                                var p1 = {
-                                                            code: 'GroupPhone'+j,
-                                                            name: data.rows[j].values[2],
-                                                            expand: true,
-                                                            position: data.rows[j].values[0],
-                                                            fields: []
-                                                        };
-                                                        
-                                                fieldsForm.fieldGroups.push(p1);
-                                                
-                                               var c1 = fieldsForm.fieldGroups.length-1;
-                                                var t1_0 = {
-                                                                code: data.rows[j].values[1]+'_phoneNumber',
-                                                                fullScreen: true,
-                                                                hidden: false,
-                                                                placeholder: 'Номер телефону',
-                                                                position: 1,
-                                                                required: false,
-                                                                value: data.rows[j].values[3],
-                                                                type: "text",
-                                                                maxlength: 14,
-                                                                width: '50%'
-                                                            };
-                                                fieldsForm.fieldGroups[c1].fields.push(t1_0);
-                                                
-                                                var t1_1 = {
-                                                                code: data.rows[j].values[1]+'_phoneType',
-                                                                fullScreen: true,
-                                                                hidden: false,
-                                                                placeholder: 'Тип',
-                                                                position: 2,
-                                                                required: false,
-                                                                value: data.rows[j].values[7],
-                                                                keyValue: data.rows[j].values[6],
-                                                                listKeyColumn: "Id",
-                                                                listDisplayColumn: "name",
-                                                                type: "select",
-                                                                queryListCode: "dir_PhoneTypes_SelectRows",
-                                                                width: '50%'
-                                                            };
-                                                fieldsForm.fieldGroups[c1].fields.push(t1_1);
-                                                
-                                                var t1_2 = {
-                                                                code: data.rows[j].values[1]+'_phoneIsMain',
-                                                                fullScreen: true,
-                                                                hidden: false,
-                                                                placeholder: 'Основний?',
-                                                                position: 3,
-                                                                required: false,
-                                                                value: data.rows[j].values[4],
-                                                                type: "checkbox",
-                                                                width: '50%'
-                                                            };
-                                                
-                                                fieldsForm.fieldGroups[c1].fields.push(t1_2);
-                                                
-                                                if (data.rows[j].values[4]) {
-                                                    var t1_3_0 = {
-                                                                    code: 'phoneDelete_Disabled',
-                                                                    fullScreen: true,
-                                                                    hidden: false,
-                                                                    placeholder: 'Видалити',
-                                                                    position: 4,
-                                                                    required: false,
-                                                                    icon: 'delete',
-                                                                    type: "button",
-                                                                    width: '50%'
-                                                                };
-                                                    
-                                                    fieldsForm.fieldGroups[c1].fields.push(t1_3_0);
-                                                } else {
-                                                    var t1_3_1 = {
-                                                                    code: data.rows[j].values[1]+'_phoneDelete',
-                                                                    fullScreen: true,
-                                                                    hidden: false,
-                                                                    placeholder: 'Видалити',
-                                                                    position: 4,
-                                                                    required: false,
-                                                                    icon: 'delete',
-                                                                    type: "button",
-                                                                    width: '50%'
-                                                                };
-                                                    
-                                                    fieldsForm.fieldGroups[c1].fields.push(t1_3_1);
-                                                }
-                                                
-                                                var t1_4 = {
-                                                                code: data.rows[j].values[1]+'_phoneId',
-                                                                fullScreen: true,
-                                                                hidden: true,
-                                                                placeholder: 'Id',
-                                                                position: 5,
-                                                                value: data.rows[j].values[8],
-                                                                required: false,
-                                                                type: "text",
-                                                                width: '100%'
-                                                            };
-                                                
-                                                fieldsForm.fieldGroups[c1].fields.push(t1_4);
-                                            };
-                                    };
-
+                            fieldsForm.fieldGroups.push(p);
                             
-                        this.openModalForm(fieldsForm, this.onModal_Phone.bind(this), this.afterModal_Phone_FormOpen.bind(this));
+                                var c = fieldsForm.fieldGroups.length-1;
+                                var t = {
+                                            code: data.rows[j].values[1],
+                                            fullScreen: true,
+                                            hidden: false,
+                                            placeholder: data.rows[j].values[2],
+                                            position: 1,
+                                            required: false,
+                                            value: data.rows[j].values[3],
+                                            disabled: true,
+                                            type: "text",
+                                            icon: 'phone_forwarded',
+                                            iconHint: 'Скопіювати з вхідного номера телефону',
+                                            maxlength: 14,
+                                            width: '50%'
+                                        };
+                            fieldsForm.fieldGroups[c].fields.push(t);
+                            
+                                var t0_0 = {
+                                            code: data.rows[j].values[1]+'_phoneType',
+                                            fullScreen: true,
+                                            hidden: false,
+                                            placeholder: 'Тип',
+                                            position: 2,
+                                            required: false,
+                                            value: "Мобільний",
+                                            keyValue: 1,
+                                            listKeyColumn: "Id",
+                                            listDisplayColumn: "name",
+                                            type: "select",
+                                            queryListCode: "dir_PhoneTypes_SelectRows",
+                                            width: '50%'
+                                        };
+                            fieldsForm.fieldGroups[c].fields.push(t0_0);
+                            
+                                var t0_2 = {
+                                            code: data.rows[j].values[1]+'_phoneIsMain',
+                                            fullScreen: true,
+                                            hidden: false,
+                                            placeholder: 'Основний?',
+                                            position: 3,
+                                            required: false,
+                                            value: false,
+                                            type: "checkbox",
+                                            width: '50%'
+                                        };
+                            
+                            fieldsForm.fieldGroups[c].fields.push(t0_2);
+                            
+                            
+                                var t0_1 = {
+                                            code: data.rows[j].values[1]+'_phoneDelete',
+                                            fullScreen: true,
+                                            hidden: false,
+                                            placeholder: 'Додати',
+                                            position: 4,
+                                            icon: 'add',
+                                            required: false,
+                                            type: "button",
+                                            width: '50%'
+                                        };
+                            
+                            fieldsForm.fieldGroups[c].fields.push(t0_1);
+                            
+                        } else {
+                            var p1 = {
+                                        code: 'GroupPhone'+j,
+                                        name: data.rows[j].values[2],
+                                        expand: true,
+                                        position: data.rows[j].values[0],
+                                        fields: []
+                                    };
+                                    
+                            fieldsForm.fieldGroups.push(p1);
+                            
+                            var c1 = fieldsForm.fieldGroups.length-1;
+                            var t1_0 = {
+                                            code: data.rows[j].values[1]+'_phoneNumber',
+                                            fullScreen: true,
+                                            hidden: false,
+                                            placeholder: 'Номер телефону',
+                                            position: 1,
+                                            required: false,
+                                            value: data.rows[j].values[3],
+                                            type: "text",
+                                            maxlength: 14,
+                                            width: '50%'
+                                        };
+                            fieldsForm.fieldGroups[c1].fields.push(t1_0);
+                            
+                            var t1_1 = {
+                                            code: data.rows[j].values[1]+'_phoneType',
+                                            fullScreen: true,
+                                            hidden: false,
+                                            placeholder: 'Тип',
+                                            position: 2,
+                                            required: false,
+                                            value: data.rows[j].values[7],
+                                            keyValue: data.rows[j].values[6],
+                                            listKeyColumn: "Id",
+                                            listDisplayColumn: "name",
+                                            type: "select",
+                                            queryListCode: "dir_PhoneTypes_SelectRows",
+                                            width: '50%'
+                                        };
+                            fieldsForm.fieldGroups[c1].fields.push(t1_1);
+                            
+                            var t1_2 = {
+                                            code: data.rows[j].values[1]+'_phoneIsMain',
+                                            fullScreen: true,
+                                            hidden: false,
+                                            placeholder: 'Основний?',
+                                            position: 3,
+                                            required: false,
+                                            value: data.rows[j].values[4],
+                                            type: "checkbox",
+                                            width: '50%'
+                                        };
+                            
+                            fieldsForm.fieldGroups[c1].fields.push(t1_2);
+                            
+                            if (data.rows[j].values[4]) {
+                                var t1_3_0 = {
+                                                code: 'phoneDelete_Disabled',
+                                                fullScreen: true,
+                                                hidden: false,
+                                                placeholder: 'Видалити',
+                                                position: 4,
+                                                required: false,
+                                                icon: 'delete',
+                                                type: "button",
+                                                width: '50%'
+                                            };
+                                
+                                fieldsForm.fieldGroups[c1].fields.push(t1_3_0);
+                            } else {
+                                var t1_3_1 = {
+                                                code: data.rows[j].values[1]+'_phoneDelete',
+                                                fullScreen: true,
+                                                hidden: false,
+                                                placeholder: 'Видалити',
+                                                position: 4,
+                                                required: false,
+                                                icon: 'delete',
+                                                type: "button",
+                                                width: '50%'
+                                            };
+                                
+                                fieldsForm.fieldGroups[c1].fields.push(t1_3_1);
+                            }
+                            
+                            var t1_4 = {
+                                            code: data.rows[j].values[1]+'_phoneId',
+                                            fullScreen: true,
+                                            hidden: true,
+                                            placeholder: 'Id',
+                                            position: 5,
+                                            value: data.rows[j].values[8],
+                                            required: false,
+                                            type: "text",
+                                            width: '100%'
+                                        };
+                            
+                            fieldsForm.fieldGroups[c1].fields.push(t1_4);
+                        };
                     };
-                    
-                }.bind(this));
+
+                        
+                    this.openModalForm(fieldsForm, this.onModal_Phone.bind(this), this.afterModal_Phone_FormOpen.bind(this));
+                };
+                
+            }.bind(this));
     },
     onChangeCardPhone: function(value) {
          for (let u = 0; u < this.kolvoPhonesForApplicant; u++ ){
