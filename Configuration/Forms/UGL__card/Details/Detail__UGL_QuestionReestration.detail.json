@@ -1,6 +1,6 @@
 {
   "ModelType": "Detail",
-  "Code": "Detail_UGL_QuestionReestration",
+  "Code": "Detail__UGL_QuestionReestration",
   "Name": "Питання, зареєстровані під час розмови",
   "SelectRowsQueryCode": "Detail_QuestionReestration_selectRows",
   "SectionCode": "",

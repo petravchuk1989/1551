@@ -1,6 +1,6 @@
 {
   "ModelType": "Detail",
-  "Code": "Detail_UGL_QuestionObjectAplicant",
+  "Code": "Detail__UGL_QuestionObjectAplicant",
   "Name": "Питання за помешканням заявника",
   "SelectRowsQueryCode": "Detail_QuestionObjectAplicant_selectRows",
   "SectionCode": "",
