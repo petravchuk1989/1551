@@ -12,12 +12,12 @@
 	 [Organizations].[short_name] OrganizationsName
   from [dbo].[ExecutorInRoleForObject]
   left join [dbo].[ExecutorRole] on [ExecutorInRoleForObject].executor_role_id=[ExecutorRole].Id
-  left join [dbo].[Buildings] on [ExecutorInRoleForObject].building_id=Buildings.id or [ExecutorInRoleForObject].[object_id] = Buildings.id
+  left join [dbo].[Buildings] on [ExecutorInRoleForObject].[object_id] = Buildings.id
   left join [dbo].[Streets] on [Buildings].street_id=[Streets].id
   left join [dbo].[StreetTypes] on [Streets].street_type_id=[StreetTypes].Id
   left join [dbo].[Organizations] on [ExecutorInRoleForObject].executor_id=[Organizations].Id
   where [ExecutorInRoleForObject].executor_role_id = @executor_role_id
-    and ([ExecutorInRoleForObject].[building_id] is not null or [ExecutorInRoleForObject].[object_id] is not null)
+    and  [ExecutorInRoleForObject].[object_id] is not null
     and #filter_columns#
     #sort_columns#
     offset @pageOffsetRows rows fetch next @pageLimitRows rows only
