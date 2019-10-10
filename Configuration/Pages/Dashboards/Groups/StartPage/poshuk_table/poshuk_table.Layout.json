@@ -69,11 +69,34 @@
                   }
                 ],
                 "id": "Container-1",
-                "height": "calc(85% - 10px)",
-                "minHeight": "calc(85% - 10px)",
+                "height": "auto",
+                "minHeight": "auto",
                 "minWidth": "calc(100% - 10px)",
                 "backgroundColor": "white",
                 "containerId": "poshuk_table_main"
+              },
+              {
+                "width": "calc(100% - 10px)",
+                "margin": "0 5px",
+                "flexWrap": "wrap",
+                "flexDirection": "row",
+                "order": 1,
+                "flexGrow": 1,
+                "alignSelf": "flex-start",
+                "border": "none",
+                "children": [
+                  {
+                    "code": "counter_CustomWidget",
+                    "type": "CustomWidgetComponent",
+                    "name": "counter"
+                  }
+                ],
+                "id": "Container-1",
+                "height": "auto",
+                "minHeight": "10px",
+                "minWidth": "50px",
+                "backgroundColor": "white",
+                "containerId": "counter"
               },
               {
                 "width": "calc(100% - 10px)",
