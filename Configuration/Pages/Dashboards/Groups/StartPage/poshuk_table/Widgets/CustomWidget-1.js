@@ -32,14 +32,14 @@
     },
     setFiltersValue: function(message){
         var elem = message.package.value.values;
-        this.filtersLangth = elem.length;
+        this.filtersLength = elem.length;
         this.filtersWithOutValues = 0;
         elem.forEach( elem => {
             if(elem.active === false){
                 this.filtersWithOutValues = this.filtersWithOutValues  + 1 ;
             }
         });
-        this.filtersWithOutValues === this.filtersLangth ?  this.isSelected = false : this.isSelected = true; 
+        this.filtersWithOutValues === this.filtersLength ?  this.isSelected = false : this.isSelected = true; 
     },
     findAllCheckedFilter: function(){
         this.isSelected === true ? document.getElementById('notification').style.display = 'none' : document.getElementById('notification').style.display = 'block' ;
