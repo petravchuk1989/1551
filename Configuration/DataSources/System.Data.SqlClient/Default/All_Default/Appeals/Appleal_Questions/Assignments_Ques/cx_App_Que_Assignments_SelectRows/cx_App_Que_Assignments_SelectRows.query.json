@@ -46,7 +46,7 @@
     {
       "Code": "ed",
       "Name": "Перегляд",
-      "Position": 8,
+      "Position": 9,
       "ReferenceKeyCode": "Id",
       "ReferenceSectionCode": "Assignments"
     },

@@ -22,15 +22,21 @@
       "ReferenceSectionCode": "Questions"
     },
     {
+      "Code": "Джерело",
+      "Name": "Джерело",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
       "Code": "Дата реєстрації",
       "Name": "Дата реєстрації",
-      "Position": 3,
+      "Position": 4,
       "IsPrintable": false
     },
     {
       "Code": "Стан питання",
       "Name": "Стан питання",
-      "Position": 4,
+      "Position": 5,
       "ViewState": "Hidden",
       "IsPrintable": false
     },

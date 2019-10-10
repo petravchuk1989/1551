@@ -29,6 +29,11 @@
                 dataField: 'adress',
                 caption: 'Місце проблеми',
             },  {
+                dataField: 'control_date',
+                caption: 'Дата контролю',
+                dataType: "datetime",
+                format: "dd.MM.yyyy HH:mm"    
+            },  {
                 dataField: 'transfer_to_organization_id',
                 caption: 'Виконавець',
                 lookup: {
@@ -39,11 +44,6 @@
                     valueExpr: "ID",
                     displayExpr: "Name"
                 }
-            },  {
-                dataField: 'control_date',
-                caption: 'Дата контролю',
-                dataType: "datetime",
-                format: "dd.MM.yyyy HH:mm"
             }
         ],
         masterDetail: {
@@ -469,7 +469,7 @@
             } 
             this.elements.push(obj);
         }
-        this.config.columns[5].lookup.dataSource.store = this.elements;
+        this.config.columns[6].lookup.dataSource.store = this.elements;
         this.loadData(this.afterLoadDataHandler);
     },
     findAllSelectRowsToArrived: function(message){
