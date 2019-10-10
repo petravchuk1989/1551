@@ -3,7 +3,7 @@
   ,[ExecutorRole].name conn_type_name
   ,[Organizations].short_name
   from [dbo].[ExecutorInRoleForObject]
-  inner join [dbo].[Objects] on [ExecutorInRoleForObject].building_id=[Objects].[Id] or [ExecutorInRoleForObject].[object_id] =[Objects].[Id]
+  inner join [dbo].[Objects] on [ExecutorInRoleForObject].[object_id] =[Objects].[Id]
   left join [dbo].[ExecutorRole] on [ExecutorInRoleForObject].executor_role_id=[ExecutorRole].Id
   left join [dbo].[Organizations] on [ExecutorInRoleForObject].executor_id=[Organizations].Id
 

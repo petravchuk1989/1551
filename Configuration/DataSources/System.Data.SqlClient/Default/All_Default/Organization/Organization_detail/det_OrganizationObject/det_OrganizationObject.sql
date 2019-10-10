@@ -3,7 +3,7 @@
   select [ExecutorInRoleForObject].Id, [ExecutorRole].name ConnectionType, [ObjectTypes].name ObjectType,
   [Objects].name ObjectName
   from [CRM_1551_Analitics].[dbo].[ExecutorInRoleForObject]
-  left join [CRM_1551_Analitics].[dbo].[Buildings] on [ExecutorInRoleForObject].building_id=[Buildings].Id
+  left join [CRM_1551_Analitics].[dbo].[Buildings] on [ExecutorInRoleForObject].object_id=[Buildings].Id
   inner join [CRM_1551_Analitics].[dbo].[Objects] on [Buildings].Id=[Objects].builbing_id
   left join [CRM_1551_Analitics].[dbo].[ExecutorRole] on [ExecutorInRoleForObject].executor_role_id=[ExecutorRole].Id
   left join [CRM_1551_Analitics].[dbo].[ObjectTypes] on [Objects].object_type_id=[ObjectTypes].Id

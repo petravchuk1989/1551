@@ -135,7 +135,7 @@ WHERE isnull(eo.object_id, eo.building_id) IS NOT NULL
         INNER JOIN [CRM_1551_Analitics].[dbo].[EventObjects] ON [Events].Id=[EventObjects].event_id
         LEFT JOIN [CRM_1551_Analitics].[dbo].[Objects] ON [EventObjects].object_id=[Objects].Id
         LEFT JOIN [CRM_1551_Analitics].[dbo].[Buildings] ON [Buildings].Id=[Objects].builbing_id
-        LEFT JOIN [CRM_1551_Analitics].[dbo].[ExecutorInRoleForObject] ON [ExecutorInRoleForObject].building_id=[Buildings].Id
+        LEFT JOIN [CRM_1551_Analitics].[dbo].[ExecutorInRoleForObject] ON [ExecutorInRoleForObject].object_id=[Buildings].Id
         LEFT JOIN [Event_Class] ON [Events].event_class_id=[Event_Class].id
       WHERE [ExecutorInRoleForObject].[executor_role_id] IN (1, 68) /*балансоутримувач, генпідрядник*/
         AND [ExecutorInRoleForObject].executor_id IN (SELECT id
