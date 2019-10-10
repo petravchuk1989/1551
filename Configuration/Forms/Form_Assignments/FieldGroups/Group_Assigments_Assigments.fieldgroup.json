@@ -90,7 +90,8 @@
             "QueryCode": "cx_list_performers_name_only_parents",
             "KeyColumnCode": "Id",
             "DisplayColumnCode": "full_name",
-            "QueryParameters": []
+            "QueryParameters": [],
+            "Width": "100%"
         },
         {
             "Code": "control_comment",

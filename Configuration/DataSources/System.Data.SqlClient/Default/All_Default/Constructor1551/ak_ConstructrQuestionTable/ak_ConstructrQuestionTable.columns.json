@@ -133,5 +133,35 @@
     "Name": "QuestionTypeName",
     "Position":20,
     "IsPrintable": false
+  },
+  {
+    "Code": "stateRegistered",
+    "Name": "stateRegistered",
+    "Position":21,
+    "IsPrintable": false
+  },
+  {
+    "Code": "stateInWork",
+    "Name": "stateInWork",
+    "Position":22,
+    "IsPrintable": false
+  },
+  {
+    "Code": "stateOnCheck",
+    "Name": "stateOnCheck",
+    "Position":23,
+    "IsPrintable": false
+  },
+  {
+    "Code": "stateOnRefinement",
+    "Name": "stateOnRefinement",
+    "Position":24,
+    "IsPrintable": false
+  },
+  {
+    "Code": "stateClose",
+    "Name": "stateClose",
+    "Position":25,
+    "IsPrintable": false
   }
 ]

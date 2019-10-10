@@ -28,14 +28,14 @@
             }, {
                 dataField: 'adress',
                 caption: 'Місце проблеми',
-            }, {
-                dataField: 'vykonavets',
-                caption: 'Виконавець',
             },  {
                 dataField: 'control_date',
                 caption: 'Дата контролю',
                 dataType: "datetime",
                 format: "dd.MM.yyyy HH:mm"
+            }, {
+                dataField: 'vykonavets',
+                caption: 'Виконавець',
             }
 
         ],

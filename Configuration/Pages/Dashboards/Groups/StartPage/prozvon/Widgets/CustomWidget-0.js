@@ -191,7 +191,7 @@
             if (sortArr) {
                 let sortingString = '';
                 sortArr.forEach(el => {
-                    let string = el.fullName + ' ' + el.value + ', ';
+                    let string = el.name + ' ' + el.value + ', ';
                     sortingString = sortingString + string;
                 });
                 sendString = sortingString.slice(0, -2);

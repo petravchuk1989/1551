@@ -263,9 +263,9 @@
 
             if(cond1 === 'На перевірці'){
                 if( cond2 === 'Не в компетенції' || cond2 === 'Роз`яснено' ){
-                    spanCircle.classList.add('yellow');
-                }else{
                     spanCircle.classList.add('onCheck');
+                }else{
+                    spanCircle.classList.add('yellow');
                 }
             }else if(cond1 === 'Зареєстровано'){
                 spanCircle.classList.add('registrated');

@@ -47,7 +47,6 @@
         pager: {
             showPageSizeSelector: true,
             allowedPageSizes: [50, 100, 500],
-            showInfo: true,
         },
         paging: {
             pageSize: 50
@@ -59,9 +58,6 @@
         showColumnLines: false,
         showRowLines: true,
         keyExpr: 'Id',
-        height: function() {
-            return window.innerHeight / 1.4;
-        }
     },
     createButtons: function(e) {
         let toolbarItems = e.toolbarOptions.items;
@@ -106,6 +102,7 @@
     filtersValuesMacros: [],
     textFilterMacros: '',
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 230;
         document.getElementById('poshuk_table_main').style.display = 'none';
         
         this.sub = this.messageService.subscribe( 'GlobalFilterChanged', this.setFiltersValue, this );
@@ -116,7 +113,7 @@
         this.dataGridInstance.onCellClick.subscribe( function(e) {
             if(e.column){
                 if(e.column.dataField == "question_registration_number" && e.row != undefined){
-                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key.Id+"");
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.data.Id+"");
                 }
             }
         }.bind(this));
@@ -134,6 +131,8 @@
         this.stateChangedDateDoneTo = null;
         this.executionTermFrom = null;
         this.executionTermTo = null;
+        this.controlDateFrom = null;
+        this.controlDateTo = null;
         this.applicantPhoneNumber = null;
         
         this.filtersValuesMacros = [];
@@ -210,6 +209,10 @@
                                     this.executionTermFrom = checkDateFrom(elem.value);
                                     break;
                                         
+                                case 'control_date':
+                                    this.controlDateFrom = checkDateFrom(elem.value);
+                                    break;
+                                        
                             }
                         }
                         if(data.dateTo != '' ){
@@ -229,6 +232,9 @@
                                     break;
                                 case 'execution_term':
                                     this.executionTermTo = checkDateTo(elem.value);
+                                    break;
+                                case 'control_date':
+                                    this.controlDateTo = checkDateTo(elem.value);
                                     break;
                             }
                         }
@@ -291,6 +297,8 @@
                 {  key: '@state_changed_date_done_to', value: this.stateChangedDateDoneTo },
                 {  key: '@execution_term_from', value: this.executionTermFrom }, 
                 {  key: '@execution_term_to', value: this.executionTermTo },
+                {  key: '@control_date_from', value: this.controlDateFrom }, 
+                {  key: '@control_date_to', value: this.controlDateTo },
                 {  key: '@zayavnyk_phone_number', value: this.applicantPhoneNumber },
                 
             ];
@@ -421,6 +429,7 @@
     },
     afterLoadDataHandler: function(data) {
         this.render();
+        this.messageService.publish({ name: 'dataLength', value: data.length});
     },
     afterRenderTable: function(){
         let elements = document.querySelectorAll('.dx-datagrid-export-button');
@@ -440,7 +449,7 @@
         this.messageService.publish(msg);
     },
     exportToExcel: function(){
-        let value =  this.macrosValue   ? this.macrosValue :  '1=1';
+        let value =  this.macrosValue ? this.macrosValue :  '1=1';
         
         let exportQuery = {
             queryCode: 'ak_QueryCodeSearch',
@@ -458,6 +467,8 @@
                 {  key: '@execution_term_from', value: this.executionTermFrom }, 
                 {  key: '@execution_term_to', value: this.executionTermTo },
                 {  key: '@zayavnyk_phone_number', value: this.applicantPhoneNumber },
+                {  key: '@control_date_from', value: this.controlDateFrom }, 
+                {  key: '@control_date_to', value: this.controlDateTo },
                 { key: '@pageOffsetRows', value: 0},
                 { key: '@pageLimitRows', value: 10}
                 ]
@@ -465,6 +476,7 @@
         this.queryExecutor(exportQuery, this.myCreateExcel, this);
     },
     myCreateExcel: function(data){
+        console.log(data)
         if( data.rows.length > 0 ){    
             this.showPagePreloader('Зачекайте, формується документ');
             this.indexArr = [];
@@ -483,7 +495,7 @@
                 }
             });
             const workbook = this.createExcel();
-            const worksheet = workbook.addWorksheet('«Заявки2018', {
+            const worksheet = workbook.addWorksheet('«Заявки', {
                 pageSetup:{orientation: 'landscape', fitToPage: false, fitToWidth: true}
             });
             
@@ -496,9 +508,9 @@
             cellPeriod.value = 'Період вводу з (включно) : дата з ' +this.changeDateTimeValues(this.registrationDateFrom)+ ' дата по ' +this.changeDateTimeValues(this.registrationDateTo)+ ' (Розширений пошук).';
             let cellNumber = worksheet.getCell('A4');
             cellNumber.value = 'Реєстраційний № РДА …';
-            worksheet.mergeCells('A1:F1'); //вставить другой конец колонок
-            worksheet.mergeCells('A2:F2'); //вставить другой конец колонок
-            worksheet.mergeCells('A3:F3'); //вставить другой конец колонок
+            worksheet.mergeCells('A1:F1'); 
+            worksheet.mergeCells('A2:F2'); 
+            worksheet.mergeCells('A3:F3');
             
             worksheet.getRow(1).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
             worksheet.getRow(1).alignment = { vertical: 'middle', horizontal: 'center' };
@@ -587,7 +599,7 @@
                 
                 for( i = 0; i < indexArr.length; i ++){
                     let el = indexArr[i];
-                    
+
                     let cdValue = this.changeDateTimeValues(row.values[indexExecutionTerm])
                     let rdValue = this.changeDateTimeValues(row.values[indexRegistrationDate])
                     if( el.name === 'question_registration_number'  ){
@@ -690,6 +702,9 @@
                                 break
                             case 'control_comment':
                                 rowItem.control_comment = row.values[el.index];
+                                break
+                            case 'control_date':
+                                rowItem.control_date = this.changeDateTimeValues(row.values[el.index]);
                                 break
                         };
                         this.addetedIndexes.push(prop);
@@ -798,7 +813,10 @@
                             break   
                         case 'control_comment':
                             row.control_comment = el.control_comment;
-                            break   
+                            break  
+                        case 'control_date':
+                            row.control_date = el.control_date;
+                            break     
                             
                     };
                 }
@@ -838,7 +856,7 @@
             };
             worksheet.getRow(5).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
             worksheet.getRow(5).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-            this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+            this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
         }    
     },
     changeDateTimeValues: function(value){
@@ -850,9 +868,15 @@
             let yyyy = date.getFullYear();
             let HH = date.getUTCHours()
             let mm = date.getMinutes();
+<<<<<<< HEAD
             MM += 1 ;
             if( (dd.toString()).length === 1){  dd = '0' + dd; }
             if( (MM.toString()).length === 1){ MM = '0' + MM ; }
+=======
+            MM += 1;
+            if( (dd.toString()).length === 1){  dd = '0' + dd; }
+            if( (MM.toString()).length === 1){ MM = '0' + MM; }
+>>>>>>> 16d661f8f2186b9b9ff0daaa00cf6f9cb389c707
             if( (HH.toString()).length === 1){  HH = '0' + HH; }
             if( (mm.toString()).length === 1){ mm = '0' + mm; }
             trueDate = dd+'.'+MM+'.' + yyyy;
