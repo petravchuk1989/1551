@@ -78,7 +78,7 @@
             9: 'rgb(145, 232, 225)',
         }
         
-        var getUrlParams = window
+        let getUrlParams = window
                             .location
                                 .search
                                     .replace('?', '')
@@ -88,16 +88,11 @@
                                                       p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
                                                       return p;
                                                     }, {}
-                                                );
-        console.log(getUrlParams);                                                
+                                                );                                            
         this.sphereId = Number(getUrlParams.sphereId);
         this.sphereName = getUrlParams.name;
         this.dateFromViewValues = this.changeDateTimeValues(getUrlParams.dateFrom);
-        this.dateToViewValues = this.changeDateTimeValues(getUrlParams.dateTo);
-        console.log(this.sphereId);   
-        console.log(this.sphereName);   
-        console.log(this.dateFromViewValues);   
-        console.log(this.dateToViewValues);   
+        this.dateToViewValues = this.changeDateTimeValues(getUrlParams.dateTo);  
         dateFrom = getUrlParams.dateFrom;
         dateTo = getUrlParams.dateTo;
         this.dateFrom = new Date(dateFrom);
@@ -216,8 +211,9 @@
         let yyyy = date.getFullYear();
         let HH = date.getHours()
         let mm = date.getMinutes();
+        MM += 1 ;
         if( (dd.toString()).length === 1){  dd = '0' + dd; }
-        if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+        if( (MM.toString()).length === 1){ MM = '0' + MM ; }
         if( (HH.toString()).length === 1){  HH = '0' + HH; }
         if( (mm.toString()).length === 1){ mm = '0' + mm; }
         let trueDate = dd+'.'+MM+'.' + yyyy ;

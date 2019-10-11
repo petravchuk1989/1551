@@ -1,6 +1,6 @@
 {
   "ModelType": "Detail",
-  "Code": "Detail_UGL_Event",
+  "Code": "Detail__UGL_Event",
   "Name": "Заходи",
   "SelectRowsQueryCode": "Detail_Event_selectRows",
   "SectionCode": "",
