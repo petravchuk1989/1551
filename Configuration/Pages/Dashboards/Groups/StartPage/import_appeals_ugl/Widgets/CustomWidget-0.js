@@ -22,7 +22,7 @@
         let showTable__triangle  = this.createElement('div', {className: 'triangle showTable__triangle' });
         let btnShowTable = this.createElement('div', { className: 'btn', id: 'btnShowTable',  innerText: '3. Вiдобразити таблицю' },showTable__triangle);
 
-        let btnsWrapper = this.createElement('div', { id: 'btnsWrapper' }, fileInput, fileLabel, btnImportFile, btnShowTable);
+        let btnsWrapper = this.createElement('div', { id: 'btnsWrapper' }, fileInput, fileLabel, btnImportFile);
         CONTAINER.appendChild(btnsWrapper);
 
         fileInput.addEventListener('input', event => {
@@ -31,15 +31,9 @@
                 btnImportFile.disabled = false;
              }
         });   
-        btnShowTable.addEventListener( 'click', event => {
-            let executeQuery = {
-                queryCode: 'DepartmentUGL_ExcelButton3',
-                limit: -1,
-                parameterValues: []
-            };
-            this.queryExecutor(executeQuery, this.sendMessageToTable, this);
-            this.showPreloader = false;
-        });
+        // btnShowTable.addEventListener( 'click', event => {
+        //     
+        // });
         
         btnImportFile.addEventListener( 'click', event => {
             let fileInput = document.getElementById('fileInput');
@@ -97,7 +91,7 @@
         });
     },
     sendMessageToTable: function(){
-        this.messageService.publish( { name: 'showTable'});
+        
     },
     showModalWindow: function (responseModal, responseNotification, CONTAINER) {
         const modalBtnTrue =  this.createElement('button', { id:'modalBtnTrue', className: 'btn', innerText: 'Сховати'});
@@ -108,7 +102,22 @@
         const modalWindowWrapper = this.createElement('div', { id:'modalWindowWrapper', className: 'modalWindowWrapper'}, modalWindow); 
 
         modalBtnTrue.addEventListener( 'click', event => {
-            CONTAINER.removeChild(container.lastElementChild);
+            let target = event.currentTarget;
+            target.disabled = true;
+            target.style.backgroundColor = '#d7d2d1';
+            if(  responseNotification.success ){
+                let executeQuery = {
+                    queryCode: 'DepartmentUGL_ExcelButton3',
+                    limit: -1,
+                    parameterValues: []
+                };
+                this.queryExecutor(executeQuery, sendMessageToTable, this);
+                this.showPreloader = false;
+            }
+            function sendMessageToTable(){
+                this.messageService.publish( { name: 'showTable'});
+                CONTAINER.removeChild(container.lastElementChild);
+            }
         });
         for (key in responseNotification) {
             if( key === 'title'){ 
