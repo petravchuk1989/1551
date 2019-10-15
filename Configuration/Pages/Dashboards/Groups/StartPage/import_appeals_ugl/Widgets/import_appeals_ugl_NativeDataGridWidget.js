@@ -2,7 +2,7 @@
   return {
     config: {
         query: {
-            code: '',
+            code: 'DepartmentUGL_ExcelSelectRows',
             parameterValues: [],
             filterColumns: [],
             sortColumns: [],
@@ -30,12 +30,32 @@
                 caption: 'Номер питання',
             }
         ],
+        pager: {
+            showPageSizeSelector: true,
+            allowedPageSizes: [50, 100, 500],
+            showInfo: true,
+        },
+        paging: {
+            pageSize: 50
+        },
         keyExpr: 'Id'
     },
     init: function() {
-        this.sub = this.messageService.subscribe( 'GlobalFiltersChanged', this.getFiltersParams, this);
+        this.dataGridInstance.height = window.innerHeight - 200;
+
+        this.sub = this.messageService.subscribe( 'GlobalFilterChanged', this.getFiltersParams, this);
         this.sub1 = this.messageService.subscribe( 'ApplyGlobalFilters', this.applyChanges, this);
         this.sub2 = this.messageService.subscribe( 'showTable', this.showTable, this);
+
+        this.dataGridInstance.onCellClick.subscribe(e => {
+            if( e.column ){
+                if(e.column.dataField == "EnterNumber" && e.row != undefined){
+                    debugger;
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/edit/"+e.data.Id);
+                }
+            }
+        });
+
     },
     getFiltersParams: function(message){
         this.config.query.filterColumns = [];
@@ -44,16 +64,17 @@
         let users = message.package.value.values.find(f => f.name === 'users').value;
 
         if( period !== null ){
-            if( period.dateFrom !== '' && period.dateTo !== ''){
-
+            if( period.dateFrom !== '' &&  period.dateTo !== ''){
+                
                 this.dateFrom =  period.dateFrom;
                 this.dateTo = period.dateTo;
                 this.users = extractOrgValues(users);
                 this.processed = processed === null ? null : processed === '' ? null : processed.value;
+
                 this.config.query.parameterValues = [ 
                     {key: '@dateFrom' , value: this.dateFrom },  
                     {key: '@dateTo', value: this.dateTo },  
-                    {key: '@processed', value: this.processed } 
+                    {key: '@is_worked', value: this.processed } 
                 ];
                 if (this.users.length > 0) {
                     let filter = {
@@ -66,7 +87,7 @@
                     };
                     this.config.query.filterColumns.push(filter);
                 }
-                this.loadData(this.afterLoadDataHandler);
+                // this.loadData(this.afterLoadDataHandler);
             }
         }
 
@@ -84,7 +105,29 @@
             }
         }
     },
+	changeDateTimeValues: function(value){
+        
+        let date = new Date(value);
+        let dd = date.getDate();
+        let MM = date.getMonth();
+        let yyyy = date.getFullYear();
+        let HH = date.getUTCHours()
+        let mm = date.getMinutes();
+        if( (dd.toString()).length === 1){  dd = '0' + dd; }
+        if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+        if( (HH.toString()).length === 1){  HH = '0' + HH; }
+        if( (mm.toString()).length === 1){ mm = '0' + mm; }
+        let trueDate = dd+'.'+MM+'.' + yyyy;
+        return trueDate;
+    },    
     applyChanges: function(message) {
+        const msg = {
+            name: "SetFilterPanelState",
+            package: {
+                value: false
+            }
+        };
+        this.messageService.publish(msg);
         this.loadData(this.afterLoadDataHandler);
     },
     showTable: function(message) {

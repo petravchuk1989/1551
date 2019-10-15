@@ -4,7 +4,7 @@
     keyValue: 'Id',
     displayValue: 'Name',
     baseQueryOptions: {
-        queryCode: '',
+        queryCode: 'Filters_import_UGL',
         filterColumns: null,
         limit: -1,
         parameterValues: [],
@@ -21,6 +21,9 @@
     },
     onClearFilter: function() {
     },
+    initValue: function() {
+        this.setDefaultValue('first'); 
+    },  
     yourFunctionName: function(item) {
         let message = {
             name: '',
