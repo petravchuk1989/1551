@@ -868,15 +868,9 @@
             let yyyy = date.getFullYear();
             let HH = date.getUTCHours()
             let mm = date.getMinutes();
-<<<<<<< HEAD
             MM += 1 ;
             if( (dd.toString()).length === 1){  dd = '0' + dd; }
             if( (MM.toString()).length === 1){ MM = '0' + MM ; }
-=======
-            MM += 1;
-            if( (dd.toString()).length === 1){  dd = '0' + dd; }
-            if( (MM.toString()).length === 1){ MM = '0' + MM; }
->>>>>>> 16d661f8f2186b9b9ff0daaa00cf6f9cb389c707
             if( (HH.toString()).length === 1){  HH = '0' + HH; }
             if( (mm.toString()).length === 1){ mm = '0' + mm; }
             trueDate = dd+'.'+MM+'.' + yyyy;
