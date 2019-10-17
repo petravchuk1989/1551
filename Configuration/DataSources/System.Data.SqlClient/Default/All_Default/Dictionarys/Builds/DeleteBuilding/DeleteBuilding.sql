@@ -1,5 +1,5 @@
 delete from ExecutorInRoleForObject
-where building_id = @Id;
+where object_id = @Id;
 
 delete from LiveAddress
 where building_id = @Id;
