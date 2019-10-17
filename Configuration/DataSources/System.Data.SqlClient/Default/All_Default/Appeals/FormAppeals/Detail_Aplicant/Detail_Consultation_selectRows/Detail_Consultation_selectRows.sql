@@ -3,376 +3,444 @@
 -- declare @phone_number nvarchar(25) = N'0993896537'
 
 
-declare @LoadServerState int 
+DECLARE @LoadServerState INT
 
-set @LoadServerState = (
-                         SELECT TOP (1) [LoadServer].[StateId]
-                         FROM [dbo].[LoadServer]
-                         order by [LoadServer].[Id] desc
+SET @LoadServerState = (
+                         SELECT TOP (1)
+	[LoadServer].[StateId]
+FROM [dbo].[LoadServer]
+ORDER BY [LoadServer].[Id] DESC
                         )
 
 
 
 
-if(OBJECT_ID('tempdb..#tempTypeQuestion') is not null) begin drop table #tempTypeQuestion end
-create table #tempTypeQuestion (
-Id int identity(1,1),
-[Тип] nvarchar(100),
-[Зареєстровано] int,
-[В роботі] int,
-[Просрочено] int,
-[Виконано] int,
-[Доопрацювання] int
+IF(OBJECT_ID('tempdb..#tempTypeQuestion') IS NOT NULL) BEGIN
+	DROP TABLE #tempTypeQuestion
+END
+CREATE TABLE #tempTypeQuestion
+(
+	Id INT IDENTITY(1,1),
+	[Тип] NVARCHAR(100),
+	[Зареєстровано] INT,
+	[В роботі] INT,
+	[Просрочено] INT,
+	[Виконано] INT,
+	[Доопрацювання] INT
 )
 
 
 
-if @LoadServerState = 1
-begin
+IF @LoadServerState = 1
+BEGIN
 
-insert into #tempTypeQuestion ([Тип], [Зареєстровано], [В роботі], [Просрочено], [Виконано], [Доопрацювання])
-    select N'питання заявника' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
-    union all
-    select N'питання заявника (old)' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
-    union all
-    select N'консультації заявника' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
-    union all
-    select N'питання за помешканням заявника' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
-    union all
-    select N'питання з номеру телефону заявника' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
-    union all
-    select N'питання по будинку' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
-    union all
-    select N'заявки за Городком' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
+	INSERT INTO #tempTypeQuestion
+		([Тип], [Зареєстровано], [В роботі], [Просрочено], [Виконано], [Доопрацювання])
+								SELECT N'питання заявника' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+	UNION ALL
+		SELECT N'питання заявника (old)' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+	UNION ALL
+		SELECT N'консультації заявника' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+	UNION ALL
+		SELECT N'питання за помешканням заявника' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+	UNION ALL
+		SELECT N'питання з номеру телефону заявника' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+	UNION ALL
+		SELECT N'питання по будинку' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+	UNION ALL
+		SELECT N'заявки за Городком' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
 
 
 
 
-update #tempTypeQuestion set [Зареєстровано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [QuestionStates].[name] in (N'Зареєстровано')
+	UPDATE #tempTypeQuestion SET [Зареєстровано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [QuestionStates].[name] IN (N'Зареєстровано')
 												),
-							 [В роботі] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [QuestionStates].[name] in (N'В роботі', N'На перевірці')
+							 [В роботі] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [QuestionStates].[name] IN (N'В роботі', N'На перевірці')
 												),
-							 [Просрочено] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [Questions].[control_date] <= getutcdate()
-												and [QuestionStates].[name] not in (N'Закрито')
+							 [Просрочено] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [Questions].[control_date] <= getutcdate()
+		AND [QuestionStates].[name] NOT IN (N'Закрито')
 												),
-							 [Виконано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [QuestionStates].[name] in (N'Закрито')
+							 [Виконано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [QuestionStates].[name] IN (N'Закрито')
 												),
-							 [Доопрацювання] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [QuestionStates].[name] in (N'Не виконано')
+							 [Доопрацювання] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [QuestionStates].[name] IN (N'Не виконано')
 												)
-where [Тип] = N'питання заявника'
+WHERE [Тип] = N'питання заявника'
 
 
 
-update #tempTypeQuestion set [Зареєстровано] = (select count(1)
-												FROM [Consultations] 
-												left join [dbo].[Questions] on [Consultations].question_id  = [Questions].Id
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Consultations].appeal_id = @appeal_id and [Consultations].phone_number = @phone_number
+	UPDATE #tempTypeQuestion SET [Зареєстровано] = (SELECT count(1)
+	FROM [Consultations]  WITH (nolock)
+		LEFT JOIN [dbo].[Questions] WITH (nolock) ON [Consultations].question_id  = [Questions].Id
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Consultations].appeal_id = @appeal_id AND [Consultations].phone_number = @phone_number
 												)
-where [Тип] = N'консультації заявника'
+WHERE [Тип] = N'консультації заявника'
 
 
-update #tempTypeQuestion set [Зареєстровано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].phone_number in (select [ApplicantPhones].phone_number from [dbo].[ApplicantPhones] where [ApplicantPhones].phone_number = @phone_number)
-												and [QuestionStates].[name] in (N'Зареєстровано')
+	UPDATE #tempTypeQuestion SET [Зареєстровано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].phone_number IN (SELECT [ApplicantPhones].phone_number
+		FROM [dbo].[ApplicantPhones] WITH (nolock)
+		WHERE [ApplicantPhones].phone_number = @phone_number)
+		AND [QuestionStates].[name] IN (N'Зареєстровано')
 												),
-							 [В роботі] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].phone_number in (select [ApplicantPhones].phone_number from [dbo].[ApplicantPhones] where [ApplicantPhones].phone_number = @phone_number)
-												and [QuestionStates].[name] in (N'В роботі', N'На перевірці')
+							 [В роботі] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].phone_number IN (SELECT [ApplicantPhones].phone_number
+		FROM [dbo].[ApplicantPhones] WITH (nolock)
+		WHERE [ApplicantPhones].phone_number = @phone_number)
+		AND [QuestionStates].[name] IN (N'В роботі', N'На перевірці')
 												),
-							 [Просрочено] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].phone_number in (select [ApplicantPhones].phone_number from [dbo].[ApplicantPhones] where [ApplicantPhones].phone_number = @phone_number)
-												and [Questions].[control_date] <= getutcdate()
-												and [QuestionStates].[name] not in (N'Закрито')
+							 [Просрочено] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].phone_number IN (SELECT [ApplicantPhones].phone_number
+		FROM [dbo].[ApplicantPhones] WITH (nolock)
+		WHERE [ApplicantPhones].phone_number = @phone_number)
+		AND [Questions].[control_date] <= getutcdate()
+		AND [QuestionStates].[name] NOT IN (N'Закрито')
 												),
-							 [Виконано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].phone_number in (select [ApplicantPhones].phone_number from [dbo].[ApplicantPhones] where [ApplicantPhones].phone_number = @phone_number)
-												and [QuestionStates].[name] in (N'Закрито')
+							 [Виконано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].phone_number IN (SELECT [ApplicantPhones].phone_number
+		FROM [dbo].[ApplicantPhones] WITH (nolock)
+		WHERE [ApplicantPhones].phone_number = @phone_number)
+		AND [QuestionStates].[name] IN (N'Закрито')
 												),
-							 [Доопрацювання] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[ApplicantPhones] on [ApplicantPhones].applicant_id = [Applicants].id
-												where [Appeals].phone_number in (select [ApplicantPhones].phone_number from [dbo].[ApplicantPhones] where [ApplicantPhones].phone_number = @phone_number)
-												and [QuestionStates].[name] in (N'Не виконано')
+							 [Доопрацювання] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[ApplicantPhones] WITH (nolock) ON [ApplicantPhones].applicant_id = [Applicants].id
+	WHERE [Appeals].phone_number IN (SELECT [ApplicantPhones].phone_number
+		FROM [dbo].[ApplicantPhones] WITH (nolock)
+		WHERE [ApplicantPhones].phone_number = @phone_number)
+		AND [QuestionStates].[name] IN (N'Не виконано')
 												)
-where [Тип] = N'питання з номеру телефону заявника'
+WHERE [Тип] = N'питання з номеру телефону заявника'
 
 
-update #tempTypeQuestion set [Зареєстровано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where [Questions].[object_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [QuestionStates].[name] in (N'Зареєстровано')
+	UPDATE #tempTypeQuestion SET [Зареєстровано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE [Questions].[object_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [QuestionStates].[name] IN (N'Зареєстровано')
 												),
-							 [В роботі] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where [Questions].[object_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [QuestionStates].[name] in (N'В роботі', N'На перевірці')
+							 [В роботі] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE [Questions].[object_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [QuestionStates].[name] IN (N'В роботі', N'На перевірці')
 												),
-							 [Просрочено] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where [Questions].[object_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [Questions].[control_date] <= getutcdate()
-												and [QuestionStates].[name] not in (N'Закрито')
+							 [Просрочено] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE [Questions].[object_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [Questions].[control_date] <= getutcdate()
+		AND [QuestionStates].[name] NOT IN (N'Закрито')
 												),
-							 [Виконано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where [Questions].[object_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [QuestionStates].[name] in (N'Закрито')
+							 [Виконано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE [Questions].[object_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [QuestionStates].[name] IN (N'Закрито')
 												),
-							 [Доопрацювання] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where [Questions].[object_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [QuestionStates].[name] in (N'Не виконано')
+							 [Доопрацювання] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE [Questions].[object_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [QuestionStates].[name] IN (N'Не виконано')
 												)
-where [Тип] = N'питання по будинку'
+WHERE [Тип] = N'питання по будинку'
 
 
-update #tempTypeQuestion set [Зареєстровано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) in (select rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [QuestionStates].[name] in (N'Зареєстровано')
+	UPDATE #tempTypeQuestion SET [Зареєстровано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) IN (SELECT rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat)
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [QuestionStates].[name] IN (N'Зареєстровано')
 												),
-							 [В роботі] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) in (select rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [QuestionStates].[name] in (N'В роботі', N'На перевірці')
+							 [В роботі] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) IN (SELECT rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat)
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [QuestionStates].[name] IN (N'В роботі', N'На перевірці')
 												),
-							 [Просрочено] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) in (select rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [Questions].[control_date] <= getutcdate()
-												and [QuestionStates].[name] not in (N'Закрито')
+							 [Просрочено] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) IN (SELECT rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat)
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [Questions].[control_date] <= getutcdate()
+		AND [QuestionStates].[name] NOT IN (N'Закрито')
 												),
-							 [Виконано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) in (select rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [QuestionStates].[name] in (N'Закрито')
+							 [Виконано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) IN (SELECT rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat)
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [QuestionStates].[name] IN (N'Закрито')
 												),
-							 [Доопрацювання] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												left join [dbo].[LiveAddress] on [LiveAddress].applicant_id = [Applicants].Id
-												where rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) in (select rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) from [dbo].[LiveAddress] where [LiveAddress].applicant_id = @applicant_id)
-												and [QuestionStates].[name] in (N'Не виконано')
+							 [Доопрацювання] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+		LEFT JOIN [dbo].[LiveAddress] WITH (nolock) ON [LiveAddress].applicant_id = [Applicants].Id
+	WHERE rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat) IN (SELECT rtrim([LiveAddress].building_id)+N'/'+rtrim([LiveAddress].flat)
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE [LiveAddress].applicant_id = @applicant_id)
+		AND [QuestionStates].[name] IN (N'Не виконано')
 												)
-where [Тип] = N'питання за помешканням заявника'
+WHERE [Тип] = N'питання за помешканням заявника'
 
 
-update #tempTypeQuestion set [Зареєстровано] = (select count(1)
-												FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses]
-												  left join[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] on [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
-												  left join [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states on Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
-												where [Gorodok_1551_houses].[1551_houses_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where building_id is not null and [LiveAddress].applicant_id = @applicant_id)
-												and Claims_states.[1551_state] in (select [QuestionStates].Id from [QuestionStates] where [QuestionStates].[name] in (N'Зареєстровано'))
+	UPDATE #tempTypeQuestion SET [Зареєстровано] = (SELECT count(1)
+	FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] WITH (nolock)
+		LEFT JOIN[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] WITH (nolock) ON [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
+		LEFT JOIN [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states WITH (nolock) ON Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
+	WHERE [Gorodok_1551_houses].[1551_houses_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE building_id IS NOT NULL AND [LiveAddress].applicant_id = @applicant_id)
+		AND Claims_states.[1551_state] IN (SELECT [QuestionStates].Id
+		FROM [QuestionStates] WITH (nolock)
+		WHERE [QuestionStates].[name] IN (N'Зареєстровано'))
 												),
-							 [В роботі] = (select count(1)
-												FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses]
-												  left join[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] on [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
-												  left join [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states on Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
-												where [Gorodok_1551_houses].[1551_houses_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where building_id is not null and [LiveAddress].applicant_id = @applicant_id)
-												and Claims_states.[1551_state] in (select [QuestionStates].Id from [QuestionStates] where [QuestionStates].[name] in (N'В роботі', N'На перевірці'))
+							 [В роботі] = (SELECT count(1)
+	FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] WITH (nolock)
+		LEFT JOIN[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] WITH (nolock) ON [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
+		LEFT JOIN [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states WITH (nolock) ON Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
+	WHERE [Gorodok_1551_houses].[1551_houses_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE building_id IS NOT NULL AND [LiveAddress].applicant_id = @applicant_id)
+		AND Claims_states.[1551_state] IN (SELECT [QuestionStates].Id
+		FROM [QuestionStates] WITH (nolock)
+		WHERE [QuestionStates].[name] IN (N'В роботі', N'На перевірці'))
 												),
-							 [Просрочено] = (select count(1)
-												FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses]
-												  left join[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] on [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
-												  left join [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states on Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
-												where [Gorodok_1551_houses].[1551_houses_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where building_id is not null and [LiveAddress].applicant_id = @applicant_id)
-												and Claims_states.[1551_state] in (select [QuestionStates].Id from [QuestionStates] where [QuestionStates].[name] not in (N'Закрито'))
-												and [Lokal_copy_gorodok_claims].[plan_finish_date] <= getutcdate()
+							 [Просрочено] = (SELECT count(1)
+	FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] WITH (nolock)
+		LEFT JOIN[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] WITH (nolock) ON [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
+		LEFT JOIN [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states WITH (nolock) ON Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
+	WHERE [Gorodok_1551_houses].[1551_houses_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE building_id IS NOT NULL AND [LiveAddress].applicant_id = @applicant_id)
+		AND Claims_states.[1551_state] IN (SELECT [QuestionStates].Id
+		FROM [QuestionStates] WITH (nolock)
+		WHERE [QuestionStates].[name] NOT IN (N'Закрито'))
+		AND [Lokal_copy_gorodok_claims].[plan_finish_date] <= getutcdate()
 												),
-							 [Виконано] = (select count(1)
-												FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses]
-												  left join[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] on [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
-												  left join [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states on Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
-												where [Gorodok_1551_houses].[1551_houses_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where building_id is not null and [LiveAddress].applicant_id = @applicant_id)
-												and Claims_states.[1551_state] in (select [QuestionStates].Id from [QuestionStates] where [QuestionStates].[name] in (N'Закрито'))
+							 [Виконано] = (SELECT count(1)
+	FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] WITH (nolock)
+		LEFT JOIN[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] WITH (nolock) ON [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
+		LEFT JOIN [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states WITH (nolock) ON Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
+	WHERE [Gorodok_1551_houses].[1551_houses_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE building_id IS NOT NULL AND [LiveAddress].applicant_id = @applicant_id)
+		AND Claims_states.[1551_state] IN (SELECT [QuestionStates].Id
+		FROM [QuestionStates] WITH (nolock)
+		WHERE [QuestionStates].[name] IN (N'Закрито'))
 												)
-where [Тип] = N'заявки за Городком'
+WHERE [Тип] = N'заявки за Городком'
 
-end
-
-
-
-
-if @LoadServerState = 2
-begin
-
-insert into #tempTypeQuestion ([Тип], [Зареєстровано], [В роботі], [Просрочено], [Виконано], [Доопрацювання])
-    select N'питання заявника' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
-    union all
-    select N'питання заявника (old)' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
-    union all
-    select N'заявки за Городком' as [Тип], 0 as [З], 0 as [Р], 0 as [П], 0 as [В], 0 as [Д]
+END
 
 
 
 
-update #tempTypeQuestion set [Зареєстровано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [QuestionStates].[name] in (N'Зареєстровано')
+IF @LoadServerState = 2
+BEGIN
+
+	INSERT INTO #tempTypeQuestion
+		([Тип], [Зареєстровано], [В роботі], [Просрочено], [Виконано], [Доопрацювання])
+				SELECT N'питання заявника' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+	UNION ALL
+		SELECT N'питання заявника (old)' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+	UNION ALL
+		SELECT N'заявки за Городком' AS [Тип], 0 AS [З], 0 AS [Р], 0 AS [П], 0 AS [В], 0 AS [Д]
+
+
+
+
+	UPDATE #tempTypeQuestion SET [Зареєстровано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [QuestionStates].[name] IN (N'Зареєстровано')
 												),
-							 [В роботі] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [QuestionStates].[name] in (N'В роботі', N'На перевірці')
+							 [В роботі] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [QuestionStates].[name] IN (N'В роботі', N'На перевірці')
 												),
-							 [Просрочено] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [Questions].[control_date] <= getutcdate()
-												and [QuestionStates].[name] not in (N'Закрито')
+							 [Просрочено] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [Questions].[control_date] <= getutcdate()
+		AND [QuestionStates].[name] NOT IN (N'Закрито')
 												),
-							 [Виконано] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [QuestionStates].[name] in (N'Закрито')
+							 [Виконано] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [QuestionStates].[name] IN (N'Закрито')
 												),
-							 [Доопрацювання] = (select count(1)
-												FROM [dbo].[Questions]
-												left join [dbo].[Appeals] on [Appeals].Id = [Questions].appeal_id
-												left join [dbo].[Applicants] on [Applicants].Id = [Appeals].applicant_id
-												left join [dbo].[QuestionStates] on [QuestionStates].Id = [Questions].question_state_id
-												where [Appeals].applicant_id = @applicant_id
-												and [QuestionStates].[name] in (N'Не виконано')
+							 [Доопрацювання] = (SELECT count(1)
+	FROM [dbo].[Questions] WITH (nolock)
+		LEFT JOIN [dbo].[Appeals] WITH (nolock) ON [Appeals].Id = [Questions].appeal_id
+		LEFT JOIN [dbo].[Applicants] WITH (nolock) ON [Applicants].Id = [Appeals].applicant_id
+		LEFT JOIN [dbo].[QuestionStates] WITH (nolock) ON [QuestionStates].Id = [Questions].question_state_id
+	WHERE [Appeals].applicant_id = @applicant_id
+		AND [QuestionStates].[name] IN (N'Не виконано')
 												)
-where [Тип] = N'питання заявника'
+WHERE [Тип] = N'питання заявника'
 
 
 
-update #tempTypeQuestion set [Зареєстровано] = (select count(1)
-												FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses]
-												  left join[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] on [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
-												  left join [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states on Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
-												where [Gorodok_1551_houses].[1551_houses_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where building_id is not null and [LiveAddress].applicant_id = @applicant_id)
-												and Claims_states.[1551_state] in (select [QuestionStates].Id from [QuestionStates] where [QuestionStates].[name] in (N'Зареєстровано'))
+	UPDATE #tempTypeQuestion SET [Зареєстровано] = (SELECT count(1)
+	FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] WITH (nolock)
+		LEFT JOIN[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] WITH (nolock) ON [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
+		LEFT JOIN [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states WITH (nolock) ON Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
+	WHERE [Gorodok_1551_houses].[1551_houses_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE building_id IS NOT NULL AND [LiveAddress].applicant_id = @applicant_id)
+		AND Claims_states.[1551_state] IN (SELECT [QuestionStates].Id
+		FROM [QuestionStates] WITH (nolock)
+		WHERE [QuestionStates].[name] IN (N'Зареєстровано'))
 												),
-							 [В роботі] = (select count(1)
-												FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses]
-												  left join[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] on [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
-												  left join [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states on Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
-												where [Gorodok_1551_houses].[1551_houses_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where building_id is not null and [LiveAddress].applicant_id = @applicant_id)
-												and Claims_states.[1551_state] in (select [QuestionStates].Id from [QuestionStates] where [QuestionStates].[name] in (N'В роботі', N'На перевірці'))
+							 [В роботі] = (SELECT count(1)
+	FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] WITH (nolock)
+		LEFT JOIN[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] WITH (nolock) ON [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
+		LEFT JOIN [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states WITH (nolock) ON Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
+	WHERE [Gorodok_1551_houses].[1551_houses_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE building_id IS NOT NULL AND [LiveAddress].applicant_id = @applicant_id)
+		AND Claims_states.[1551_state] IN (SELECT [QuestionStates].Id
+		FROM [QuestionStates] WITH (nolock)
+		WHERE [QuestionStates].[name] IN (N'В роботі', N'На перевірці'))
 												),
-							 [Просрочено] = (select count(1)
-												FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses]
-												  left join[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] on [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
-												  left join [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states on Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
-												where [Gorodok_1551_houses].[1551_houses_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where building_id is not null and [LiveAddress].applicant_id = @applicant_id)
-												and Claims_states.[1551_state] in (select [QuestionStates].Id from [QuestionStates] where [QuestionStates].[name] not in (N'Закрито'))
-												and [Lokal_copy_gorodok_claims].[plan_finish_date] <= getutcdate()
+							 [Просрочено] = (SELECT count(1)
+	FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] WITH (nolock)
+		LEFT JOIN[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] WITH (nolock) ON [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
+		LEFT JOIN [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states WITH (nolock) ON Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
+	WHERE [Gorodok_1551_houses].[1551_houses_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE building_id IS NOT NULL AND [LiveAddress].applicant_id = @applicant_id)
+		AND Claims_states.[1551_state] IN (SELECT [QuestionStates].Id
+		FROM [QuestionStates] WITH (nolock)
+		WHERE [QuestionStates].[name] NOT IN (N'Закрито'))
+		AND [Lokal_copy_gorodok_claims].[plan_finish_date] <= getutcdate()
 												),
-							 [Виконано] = (select count(1)
-												FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses]
-												  left join[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] on [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
-												  left join [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states on Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
-												where [Gorodok_1551_houses].[1551_houses_id] in (select [LiveAddress].building_id from [dbo].[LiveAddress] where building_id is not null and [LiveAddress].applicant_id = @applicant_id)
-												and Claims_states.[1551_state] in (select [QuestionStates].Id from [QuestionStates] where [QuestionStates].[name] in (N'Закрито'))
+							 [Виконано] = (SELECT count(1)
+	FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] WITH (nolock)
+		LEFT JOIN[CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_claims] WITH (nolock) ON [Lokal_copy_gorodok_claims].[object_id] =  [Gorodok_1551_houses].gorodok_houses_id
+		LEFT JOIN [CRM_1551_GORODOK_Integrartion].[dbo].Claims_states WITH (nolock) ON Claims_states.[name] = [Lokal_copy_gorodok_claims].[status]
+	WHERE [Gorodok_1551_houses].[1551_houses_id] IN (SELECT [LiveAddress].building_id
+		FROM [dbo].[LiveAddress] WITH (nolock)
+		WHERE building_id IS NOT NULL AND [LiveAddress].applicant_id = @applicant_id)
+		AND Claims_states.[1551_state] IN (SELECT [QuestionStates].Id
+		FROM [QuestionStates] WITH (nolock)
+		WHERE [QuestionStates].[name] IN (N'Закрито'))
 												)
-where [Тип] = N'заявки за Городком'
+WHERE [Тип] = N'заявки за Городком'
 
-end
+END
 
 /*
 Id	name
@@ -383,9 +451,9 @@ Id	name
 5	Закрито
 */
 
-select * 
-from #tempTypeQuestion
-where
+SELECT *
+FROM #tempTypeQuestion
+WHERE
 	#filter_columns#
 --     #sort_columns#
 --offset @pageOffsetRows rows fetch next @pageLimitRows rows only
