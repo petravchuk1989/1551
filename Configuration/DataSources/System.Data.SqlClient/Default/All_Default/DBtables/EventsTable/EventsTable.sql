@@ -1,5 +1,5 @@
 
--- DECLARE @organization_id INT =2006;
+-- DECLARE @organization_id INT =2000;
 -- DECLARE @user_id NVARCHAR(300)=N'02ece542-2d75-479d-adad-fd333d09604d';
 -- DECLARE @OtKuda NVARCHAR(20)=N'Усі';
 -- DECLARE @TypeEvent NVARCHAR(20)=N'Прострочені';
@@ -10,9 +10,8 @@ DECLARE @ObjectInOrg TABLE ([object_id] INT)
 
 IF @TypeEvent=N'Усі'
 BEGIN
-  INSERT INTO @TypeEvent_table
-    (name)
-        SELECT N'В роботі'
+  INSERT INTO @TypeEvent_table(name)
+    SELECT N'В роботі'
   UNION ALL
     SELECT N'Не активні'
   UNION ALL
@@ -20,102 +19,79 @@ BEGIN
 END
 ELSE
 BEGIN
-  INSERT INTO @TypeEvent_table
-    (name)
-  SELECT @TypeEvent
+  INSERT INTO @TypeEvent_table(name)
+    SELECT @TypeEvent
 END
 
 
 IF @OtKuda=N'Усі'
 BEGIN
-  INSERT INTO @OtKuda_table
-    (name)
-      SELECT N'Городок'
+  INSERT INTO @OtKuda_table(name)
+    SELECT N'Городок'
   UNION ALL
     SELECT N'Система'
 END
 ELSE
 BEGIN
-  INSERT INTO @OtKuda_table
-    (name)
-  SELECT @OtKuda
+  INSERT INTO @OtKuda_table (name)
+    SELECT @OtKuda
 END
-
 
 
 DECLARE @Organization TABLE(Id INT);
 
 --select 8 id;
-
-
 -- ЕСЛИ НУЖНО ВЫБИРАТЬ ЮЗЕРА
 --declare @user_id nvarchar(300)=N'02ece542-2d75-479d-adad-fd333d09604d';
 -- МОЖНО ПРОСТО ИД ОРГАНИЗАЦИИ ВЛЕПИТЬ
 
---if @organization_id is null
-
-
 DECLARE @OrganizationId INT = 
 CASE 
 	WHEN @organization_id IS NOT NULL THEN @organization_id
-	ELSE (SELECT Id
-FROM [CRM_1551_Analitics].[dbo].[Organizations]
-WHERE Id IN 
-		(SELECT organization_id
-FROM [CRM_1551_Analitics].[dbo].[Workers]
-WHERE worker_user_id=@user_id))
+	ELSE (SELECT Id FROM [CRM_1551_Analitics].[dbo].[Organizations] WHERE Id IN 
+		      (SELECT organization_id FROM [CRM_1551_Analitics].[dbo].[Workers] WHERE worker_user_id=@user_id))
 END
 
 DECLARE @IdT TABLE (Id INT);
 
 -- НАХОДИМ ИД ОРГАНИЗАЦИЙ ГДЕ ИД И ПАРЕНТЫ ВЫБРАНОЙ И СРАЗУ ЗАЛИВАЕМ
-INSERT INTO @IdT
-  (Id)
-SELECT Id
-FROM [CRM_1551_Analitics].[dbo].[Organizations]
-WHERE (Id=@OrganizationId OR [parent_organization_id]=@OrganizationId) AND Id NOT IN (SELECT Id
-  FROM @IdT)
+INSERT INTO @IdT (Id)
+  SELECT Id FROM [CRM_1551_Analitics].[dbo].[Organizations]
+    WHERE (Id=@OrganizationId OR [parent_organization_id]=@OrganizationId) AND Id NOT IN (SELECT Id FROM @IdT)
 
 --  НАХОДИМ ПАРЕНТЫ ОРГ, КОТОРЫХ ЗАЛИЛИ, <-- нужен цыкл
 WHILE (SELECT count(id)
-FROM (SELECT Id
-  FROM [CRM_1551_Analitics].[dbo].[Organizations]
-  WHERE [parent_organization_id] IN (SELECT Id
-    FROM @IdT) --or Id in (select Id from @IdT)
-    AND Id NOT IN (SELECT Id
-    FROM @IdT)) q)!=0
+        FROM (SELECT Id FROM [CRM_1551_Analitics].[dbo].[Organizations]
+          WHERE [parent_organization_id] IN (SELECT Id FROM @IdT) 
+          AND Id NOT IN (SELECT Id FROM @IdT)) q) != 0
 BEGIN
 
-  INSERT INTO @IdT
-  SELECT Id
-  FROM [CRM_1551_Analitics].[dbo].[Organizations]
-  WHERE [parent_organization_id] IN (SELECT Id
-    FROM @IdT) --or Id in (select Id from @IdT)
-    AND Id NOT IN (SELECT Id
-    FROM @IdT)
+INSERT INTO @IdT
+  SELECT Id FROM [CRM_1551_Analitics].[dbo].[Organizations]
+    WHERE [parent_organization_id] IN (SELECT Id FROM @IdT)  AND Id NOT IN (SELECT Id FROM @IdT)
 END
 
-INSERT INTO @Organization
-  (Id)
-SELECT Id
-FROM @IdT
+INSERT INTO @Organization (Id)
+  SELECT Id FROM @IdT
+-- select * from @Organization
 
 -- for global Gorodok
-INSERT INTO @ObjectInOrg
-  (object_id)
-SELECT
-  isnull(eo.object_id, eo.building_id) AS obj_id
-FROM @Organization org
-  JOIN ExecutorInRoleForObject AS eo ON eo.executor_id = org.Id
-WHERE isnull(eo.object_id, eo.building_id) IS NOT NULL
+INSERT INTO @ObjectInOrg  (object_id)
+  SELECT
+    -- isnull(eo.object_id, eo.building_id) AS obj_id
+    eo.object_id AS obj_id
+  FROM @Organization org
+    JOIN ExecutorInRoleForObject AS eo ON eo.executor_id = org.Id
+  WHERE eo.object_id IS NOT NULL
+  -- WHERE isnull(eo.object_id, eo.building_id) IS NOT NULL
 
---select * from @ObjectInOrg
+-- select * from @ObjectInOrg
 
 ;WITH
   [Events_1]
   AS
   (
-          SELECT
+    SELECT
         [Events].Id,
         [Events].active,
         [Events].[plan_end_date],
@@ -135,11 +111,10 @@ WHERE isnull(eo.object_id, eo.building_id) IS NOT NULL
         INNER JOIN [CRM_1551_Analitics].[dbo].[EventObjects] ON [Events].Id=[EventObjects].event_id
         LEFT JOIN [CRM_1551_Analitics].[dbo].[Objects] ON [EventObjects].object_id=[Objects].Id
         LEFT JOIN [CRM_1551_Analitics].[dbo].[Buildings] ON [Buildings].Id=[Objects].builbing_id
-        LEFT JOIN [CRM_1551_Analitics].[dbo].[ExecutorInRoleForObject] ON [ExecutorInRoleForObject].building_id=[Buildings].Id
+        LEFT JOIN [CRM_1551_Analitics].[dbo].[ExecutorInRoleForObject] ON [ExecutorInRoleForObject].object_id=[Buildings].Id
         LEFT JOIN [Event_Class] ON [Events].event_class_id=[Event_Class].id
       WHERE [ExecutorInRoleForObject].[executor_role_id] IN (1, 68) /*балансоутримувач, генпідрядник*/
-        AND [ExecutorInRoleForObject].executor_id IN (SELECT id
-        FROM @Organization)
+        AND [ExecutorInRoleForObject].executor_id IN (SELECT id FROM @Organization)
 
   ),
 
@@ -156,8 +131,12 @@ WHERE isnull(eo.object_id, eo.building_id) IS NOT NULL
 		, gl.[registration_date] AS [start_date]
 		, gl.claims_type AS EventName
     FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_global] AS gl
-      JOIN (SELECT * FROM [CRM_1551_GORODOK_Integrartion].[dbo].[AllObjectInClaim]
-      WHERE object_id IN (SELECT object_id FROM @ObjectInOrg)) AS oc ON oc.claims_number_id = gl.claim_number
+      JOIN [CRM_1551_GORODOK_Integrartion].[dbo].[AllObjectInClaim] AS oc ON oc.claims_number_id = gl.claim_number
+	  JOIN [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] gh ON gh.gorodok_houses_id = oc.object_id
+      WHERE gh.[1551_houses_id] IN (SELECT [object_id] FROM @ObjectInOrg)
+
+      -- JOIN (SELECT * FROM [CRM_1551_GORODOK_Integrartion].[dbo].[AllObjectInClaim]
+      -- WHERE object_id IN (SELECT object_id FROM @ObjectInOrg)) AS oc ON oc.claims_number_id = gl.claim_number
   ),
 
   -- [Events_2] as 
