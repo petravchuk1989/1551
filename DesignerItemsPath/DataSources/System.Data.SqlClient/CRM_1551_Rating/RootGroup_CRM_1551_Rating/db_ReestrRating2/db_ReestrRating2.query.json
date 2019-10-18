@@ -1,7 +1,0 @@
-{
-  "ModelType": "Query",
-  "Code": "db_ReestrRating2",
-  "Name": "db_ReestrRating2",
-  "ConnectionCode": "CRM_1551_Rating",
-  "IsUsedForRightsFilter": false
-}

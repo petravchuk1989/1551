@@ -4,7 +4,7 @@
       keyValue: 'Id',
       displayValue: 'Name',
       baseQueryOptions: {
-          queryCode: 'ak_Filter_ConstructorOrganizationGroups',
+          queryCode: 'ListRDA',
           filterColumns: null,
           limit: -1,
           parameterValues: [],

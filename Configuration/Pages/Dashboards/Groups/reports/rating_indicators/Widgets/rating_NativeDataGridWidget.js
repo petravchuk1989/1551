@@ -2,8 +2,13 @@
   return {
     config: {
         query: {
-            code: 'Prozvon_Applicant',
-            parameterValues: [],
+            code: 'db_ReestrRating1',
+            parameterValues: [
+                {key: '@DateCalc' , value: 1 },
+                {key: '@RDAId', value: 0 },
+                {key: '@RatingId', value: 1 }
+
+            ],
             filterColumns: [],
             sortColumns: [],
             skipNotVisibleColumns: true,
@@ -11,113 +16,154 @@
         },
         columns: [
             {
-                dataField: 'institutionName',
+                dataField: 'RDAId',
                 caption: 'Назва установи',
+            }, {    
+                caption: 'Зареєстровано, В роботі, На доопрацюванні, На перевірці за попередній період',
+                alignItems: 'middle',
+                columns: [
+                    {
+                        dataField: 'PreviousPeriod_Total',
+                        caption: 'Всього',
+                    }, {
+                        dataField: 'PreviousPeriod_Registered',
+                        caption: 'Зареєстровано',
+                    }, {
+                        dataField: 'PreviousPeriod_InTheWorks',
+                        caption: 'В роботі',
+                    }, {
+                        dataField: 'PreviousPeriod_InTest',
+                        caption: 'На перевірці',
+                    }, {
+                        dataField: 'PreviousPeriod_ForRevision',
+                        caption: 'На доопрацюванні',
+                    }, {
+                        dataField: 'PreviousPeriod_Closed',
+                        caption: 'Закрито',
+                    } 
+                ]
             }, {
-                dataField: 'registeredInWorkPreviousRevision',
-                caption: 'Зареєстровано, В роботі, На доопрацюванні за попередній період',
-            }, {
-                dataField: 'totalNumberHitsForCurrentMonth',
+                dataField: 'CurrentMonth_Total',
                 caption: 'Загальна кількість звернень за поточний місяць',
             }, {
-                dataField: 'registered',
+                caption: 'За поточний місяць',
+                alignItems: 'middle',
+                columns: [
+                    {
+                        dataField: 'CurrentMonth_Registered',
+                        caption: 'Зареєстровано',
+                    }, {
+                        dataField: 'CurrentMonth_InTheWorks',
+                        caption: 'В роботі',
+                    }, {
+                        dataField: 'CurrentMonth_InTest',
+                        caption: 'На перевірці',
+                    }, {
+                        dataField: 'CurrentMonth_ForRevision',
+                        caption: 'На доопрацюванні',
+                    }, {
+                        dataField: 'CurrentMonth_Closed',
+                        caption: 'Закрито',
+                    } 
+                ]
+            }, {
+                dataField: 'OfThem_Registered',
                 caption: 'з них, Зареєстровано',
             }, {
-                dataField: 'overdue',
-                caption: 'з них, Прострочені',
-            }, {
-                dataField: 'inWork',
+                dataField: 'OfThem_AtWork',
                 caption: 'з них, В роботі',
             }, {
                 caption: 'На перевірці',
                 alignItems: 'middle',
                 columns: [
                     {
-                        dataField: 'testing__isDone_sub1',
-                        caption: 'Виконано',
-                    }, 
-                    {
-                        dataField: 'testing__inWork_sub1',
+                        dataField: 'OnTest_Done',
+                        caption: 'Зареєстровано',
+                    }, {
+                        dataField: 'OnTest_Explained',
                         caption: 'Роз\'яснено',
-                    }, 
-                    {
-                        dataField: 'testing__notPossiblePerformThisTime_sub1',
+                    }, {
+                        dataField: 'OnTest_CannotBeExecutedAtThisTime',
                         caption: 'Не можливо виконанти в даний період',
-                        width: 50
-                    } 
+                    }
                 ]
             }, {
-                caption: 'Результат виконання',
+                caption: 'Результат виконання ( поточний місяць) (Закриті)',
+                alignItems: 'middle',
                 columns: [
                     {
-                        dataField: 'done__isDone_sub2',
-                        caption: 'Виконано',
-                    }, 
-                    {
-                        dataField: 'done__inWork_sub2',
+                        dataField: 'ResultOfExecution_Done',
+                        caption: 'Зареєстровано',
+                    }, {
+                        dataField: 'ResultOfExecution_Explained',
                         caption: 'Роз\'яснено',
-                    }, 
-                    {
-                        dataField: 'done__revisionTotal_sub2',
-                        caption: 'На доопрацювання (Всього )',
-                    } 
+                    }, {
+                        dataField: 'ResultOfExecution_Others',
+                        caption: 'Інші',
+                    }
                 ]
+            // }, {
+            //     dataField: 'ForRevision_All',
+            //     caption: 'На доопрацювання (Всього)',
+            // }, {
+            //     dataField: 'ForRevision_Total',
+            //     caption: 'На доопрацювання (прозвон)',
+            // }, {
+            //     caption: 'На доопрацювання (прозвон)',
+            //     alignItems: 'middle',
+            //     columns: [
+            //         {
+            //             dataField: 'ForRevision_1Time',
+            //             caption: '1 раз',
+            //         }, {
+            //             dataField: 'ForRevision_2Times',
+            //             caption: '2 рази',
+            //         }, {
+            //             dataField: 'ForRevision_3AndMore',
+            //             caption: '3 і більше',
+            //         }
+            //     ]
+            // }, {
+            //     caption: 'Розглянуті виконавцем',
+            //     alignItems: 'middle',
+            //     columns: [
+            //         {
+            //             dataField: 'ViewedByArtist_Total',
+            //             caption: 'Всі',
+            //         }, {
+            //             dataField: 'ViewedByArtist_WrongTime',
+            //             caption: 'Не вчасно',
+            //         }
+            //     ]
             }, {
-                caption: 'На доопрацювання (Всього)',
-                columns: [
-                    {
-                        dataField: 'revisionTotal__one_sub3',
-                        caption: '1 раз',
-                    }, 
-                    {
-                        dataField: 'revisionTotal__two_sub3',
-                        caption: '2 раз',
-                    }, 
-                    {
-                        dataField: 'revisionTotal__three_sub3',
-                        caption: '3 раз',
-                    }, 
-                ]
-            }, {
-                dataField: 'revisionToday',
-                caption: 'На доопрацювання (на сьогодні)',
-            }, {
-                dataField: 'percentTimelyClosed',
+                dataField: 'PercentClosedOnTime',
                 caption: '% вчасно закритих',
             }, {
-                dataField: 'percentRevisionToday',
+                dataField: 'PercentOfExecution',
                 caption: '% виконання',
-                
             }, {
-                dataField: 'percentConfidence',
+                dataField: 'PercentOnVeracity',
                 caption: '% достовірності',
             }, {
-                dataField: 'performanceRateIndex',
+                dataField: 'IndexOfSpeedToExecution',
                 caption: 'Індекс швидкості виконання',
             }, {
-                dataField: 'explanationRateIndex',
+                dataField: 'IndexOfSpeedToExplain',
                 caption: 'Індекс швидкості роз\'яснення',
             }, {
-                dataField: 'actualPerformanceIndex',
+                dataField: 'IndexOfFactToExecution',
                 caption: 'Індекс фактичного виконання',
             }, {
-                dataField: 'percentSatisfactionWithPerformance',
+                dataField: 'PercentPleasureOfExecution',
                 caption: '% задоволеність виконанням',
             }, {
-                dataField: 'performanceLevel',
+                dataField: 'IntegratedMetric_PerformanceLevel',
                 caption: 'Рівень виконання',
-            }, 
+            }    
         ],
-        keyExpr: 'Id',
         columnChooser: {
             enabled: true
-        },
-        scrolling: {
-            mode: 'virtual'
-        },
-        columnFixing: { 
-            enabled: true
-        },
+        },   
         showBorders: false,
         showColumnLines: true,
         showRowLines: true,
@@ -131,13 +177,46 @@
         allowColumnResizing: true,
         showFilterRow: true,
         showHeaderFilter: false,
-        showColumnChooser: false,
+        showColumnChooser: true,
         showColumnFixing: true,
         groupingAutoExpandAll: null,
 
     },
     init: function() {
+        let msg = {
+            name: "SetFilterPanelState",
+            package: {
+                value: true
+            }
+        };
+        // this.messageService.publish(msg);
+
         this.sub = this.messageService.subscribe( 'GlobalFilterChanged', this.getFiltersParams, this );
+        this.sub1 = this.messageService.subscribe( 'ApplyGlobalFilters', this.renderTable, this );
+
+        this.dataGridInstance.onCellClick.subscribe(e => {
+            e.event.stopImmediatePropagation();
+            if(e.column){
+                if(e.row !== undefined
+                    && e.column.dataField !== 'IntegratedMetric_PerformanceLevel'
+                    && e.column.dataField !== 'PercentPleasureOfExecution'
+                    && e.column.dataField !== 'IndexOfFactToExecution'
+                    && e.column.dataField !== 'IndexOfSpeedToExplain'
+                    && e.column.dataField !== 'IndexOfSpeedToExecution'
+                    && e.column.dataField !== 'PercentOnVeracity'
+                    && e.column.dataField !== 'PercentOfExecution'
+                    && e.column.dataField !== 'PercentClosedOnTime'
+                ){
+                    let rdaid = e.data.RDAId;
+                    let ratingid = e.data.RatingId;
+                    let columncode = e.column.dataField;
+                    let date = this.period;
+                    let string = 'rdaid='+rdaid+'&ratingid='+ratingid+'&columncode='+columncode+'&date='+date;
+                    // window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indicators/"+string);
+                    console.log(string)
+                }
+            }
+        });
 
         this.config.columns.forEach( col => {
             function setColStyles(col){
@@ -155,28 +234,35 @@
        
         this.config.onContentReady = this.onMyContentReady.bind(this);
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
+
+        // удалить потом, для быстрого запуска страницы
+        this.loadData(this.afterLoadDataHandler);
+        // удалить потом, для быстрого запуска страницы
+    },
+    renderTable: function (message) {
+        let msg = {
+            name: "SetFilterPanelState",
+            package: {
+                value: false
+            }
+        };
+        this.messageService.publish(msg);
+        this.config.query.parameterValues = [ 
+            {key: '@DateCalc' , value: this.period },
+            {key: '@RDAId', value: this.executor },  
+            {key: '@RatingId', value: this.rating } 
+        ];
+        this.loadData(this.afterLoadDataHandler);
     },
     getFiltersParams: function(message){
         let period = message.package.value.values.find(f => f.name === 'period').value;
         let executor = message.package.value.values.find(f => f.name === 'executor').value;
         let rating = message.package.value.values.find(f => f.name === 'rating').value;
-
-        if( period !== null ){
-            if( period.dateFrom !== '' && period.dateTo !== ''){
-
-                this.dateFrom =  period.dateFrom;
-                this.dateTo = period.dateTo;
-                this.executor = executor === null ? 0 :  executor === '' ? 0 : executor.value ;
-                this.rating = rating === null ? 0 :  rating === '' ? 0 : rating.value ;
-                
-                this.config.query.parameterValues = [ 
-                    {key: '@dateFrom' , value: this.dateFrom },  
-                    {key: '@dateTo', value: this.dateTo },  
-                    {key: '@executor', value: this.executor },  
-                    {key: '@rating', value: this.rating } 
-                ];
-                this.loadData(this.afterLoadDataHandler);
-            }
+        
+        if( period !== '' ){
+            this.period = period;
+            this.executor = executor === null ? 0 :  executor === '' ? 0 : executor.value;
+            this.rating = rating === null ? 0 :  rating === '' ? 0 : rating.value;
         }
     },     
     createTableButton: function (e) {
@@ -191,34 +277,27 @@
                 text: "Excel",
                 onClick: function(e) {
                     e.event.stopImmediatePropagation();
-                    // let exportQuery = {
-                    //     queryCode: 'db_Report_3',
-                    //     limit: -1,
-                    //     parameterValues: [
-                    //         {key: '@dateFrom' , value: this.dateFrom },  
-                    //         {key: '@dateTo', value: this.dateTo }, 
-                    //         {key: '@questionGroup', value: this.questionGroup }, 
-                    //         {key: '@questionType', value: this.questionType }, 
-                    //     ]
-                    // };
-                    // this.queryExecutor(exportQuery, this.myCreateExcel, this);
-                    this.myCreateExcel();
+                    let exportQuery = {
+                        queryCode: this.config.query.code,
+                        limit: -1,
+                        parameterValues: [
+                            {key: '@DateCalc' , value: 1 },
+                            {key: '@RDAId', value: 0 },
+                            {key: '@RatingId', value: 1 }
+                        ]
+                    };
+                    this.queryExecutor(exportQuery, this.myCreateExcel, this);
+                    // this.myCreateExcel();
                 }.bind(this)
             },
         });
     },
     myCreateExcel: function (data) {
         this.showPagePreloader('Зачекайте, формується документ');
-        let columns = this.visibleColumns;
-        this.indexes1Length = 0;
-        this.indexes2Length  = 0;
-        this.indexes3Length  = 0;
-        this.sub1ColIndex = 0;
-        this.sub2ColIndex = 0;
-        this.sub3ColIndex = 0;
+        let visibleColumns = this.visibleColumns;
         this.columnsWithoutSub = [];
-        const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки2018', {
+        let workbook = this.createExcel();
+        let worksheet = workbook.addWorksheet('«Заявки2018', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -229,15 +308,10 @@
             top: 0.4, bottom: 0.4,
             header: 0.0, footer: 0.0
         };
-
-        let cellInfoCaption = worksheet.getCell('A1');
-        cellInfoCaption.value = 'Показники рейтингів';
-        let cellInfoDate = worksheet.getCell('A2');
-        cellInfoDate.value = 'з: ' + this.changeDateTimeValues(this.dateFrom)+' , по: ' + + this.changeDateTimeValues(this.dateTo);
-        
-        worksheet.mergeCells(1,columns.length,1,1); // top,left,bottom,right
-        worksheet.mergeCells(2,columns.length,2,1); // top,left,bottom,right
-        worksheet.mergeCells(3,columns.length,3,1); // top,left,bottom,right
+        // debugger;
+        // worksheet.mergeCells(1,visibleColumns.length,1,1); // top,left,bottom,right
+        // worksheet.mergeCells(2,visibleColumns.length,2,1); // top,left,bottom,right
+        // worksheet.mergeCells(3,visibleColumns.length,3,1); // top,left,bottom,right
 
         worksheet.getRow(1).font = { name: 'Times New Roman', family: 4, size: 16, underline: false, bold: true , italic: false};
         worksheet.getRow(1).alignment = { vertical: 'middle', horizontal: 'center' };
@@ -246,8 +320,8 @@
 
         let captions = [];
         let columnsHeader = [];      
-        for (let i = 0; i < columns.length; i++) {
-            let column = columns[i];
+        for (let i = 0; i < visibleColumns.length; i++) {
+            let column = visibleColumns[i];
             let caption = column.caption;
             captions.push(caption);
 
@@ -292,53 +366,117 @@
         //     };
         // };
 
-
-        for (let i = 0; i < columns.length; i++) {
-            let column = columns[i];
-            let key = column.dataField;
-            let caption = column.caption;
-            let subStr = key.slice(-5, -1);
-            let colIndexFrom = i+1;
-            if( subStr === '_sub'){
-                let subIndex = key.slice(-1);
-
-                if(+subIndex === 1){
-                    this.indexes1Length++;
-                    this.sub1ColIndex = this.sub1ColIndex === 0 ?  colIndexFrom : this.sub1ColIndex;
-                }else if(+subIndex === 2){
-                    this.indexes2Length++;
-                    this.sub2ColIndex = this.sub2ColIndex === 0 ?  colIndexFrom : this.sub2ColIndex;
-                }else if(+subIndex === 3){
-                    this.indexes3Length++;
-                    this.sub3ColIndex = this.sub3ColIndex === 0 ?  colIndexFrom : this.sub3ColIndex;
-                }              
-                var indexCaptionFrom = 5;
+        this.subColumnCaption = [];
+        this.allColumns = [];
+        this.subIndex = 0;
+        let resultColumns = [];
+        let lengthArray = [];
+        for (let i = 0; i < this.config.columns.length; i++) {
+            let column = this.config.columns[i];
+            let colCaption = column.caption;
+            if( !column.dataField ) {
+                column.columns.forEach( col => {
+                    let length = 0;
+                    let colIndexTo = 0;
+                    if(this.subColumnCaption.length > 0){
+                        if(this.subColumnCaption[this.subColumnCaption.length - 1].colCaption !== colCaption){
+                            let obj = {
+                                colCaption,
+                                length,
+                                colIndexTo
+                            }
+                            this.subColumnCaption.push(obj);
+                            this.subIndex++;
+                        }
+                    }else{
+                        let obj = {
+                            colCaption,
+                            length,
+                            colIndexTo
+                        }
+                        this.subColumnCaption.push(obj);
+                    }
+                    let obj = {
+                        isSub: true,
+                        index: this.subIndex,
+                        dataField: col.dataField,
+                        caption: colCaption
+                    }
+                    this.allColumns.push(obj);
+                });
             }else{
-                let column = { caption, colIndexFrom }
-                var indexCaptionFrom = 4;
+                let obj = {
+                    isSub: false,
+                    dataField: column.dataField,
+                    caption: colCaption
+                }
+                this.allColumns.push(obj);
+            }
+        }
+        for (let i = 0; i < visibleColumns.length; i++) {
+            const visCol = visibleColumns[i];
+            let df = visCol.dataField;
+            let index = this.allColumns.findIndex( el => el.dataField === df ); 
+            resultColumns.push(this.allColumns[index]);
+        }
+        
 
+        for (let i = 0; i < resultColumns.length; i++) {
+            const resCol = resultColumns[i];
+            const colIndexTo = i+1;
+            let indexCaptionFrom ;
+            if( resCol.isSub === true ){
+                if(this.subColumnCaption.length > 0) {
+                    if(this.subColumnCaption[resCol.index].colCaption === resCol.caption){
+                        this.subColumnCaption[resCol.index].length ++;
+                        this.subColumnCaption[resCol.index].colIndexTo = colIndexTo;
+                    }
+                }
+                indexCaptionFrom = 5;
+            }else{
+                let caption = resCol.caption;        
+                let column = { caption, colIndexTo }
+                indexCaptionFrom = 4;
                 this.columnsWithoutSub.push(column);
             }
-            worksheet.mergeCells(indexCaptionFrom, colIndexFrom, 5, colIndexFrom );
-        }  
-        worksheet.mergeCells( 4, this.sub1ColIndex, 4, (this.sub1ColIndex + this.indexes1Length - 1) );
-        worksheet.mergeCells( 4, this.sub2ColIndex, 4, (this.sub2ColIndex + this.indexes2Length - 1) );
-        worksheet.mergeCells( 4, this.sub3ColIndex, 4, (this.sub3ColIndex + this.indexes3Length - 1) );
-        let sub1Caption = worksheet.getCell(4, this.sub1ColIndex);
-        sub1Caption.value = 'На перевірці';
-        let sub2Caption = worksheet.getCell(4, this.sub2ColIndex);
-        sub2Caption.value = 'Результат виконання';
-        let sub3Caption = worksheet.getCell(4, this.sub3ColIndex);
-        sub3Caption.value = 'На доопрацювання (Всього)';
-
+            worksheet.mergeCells(indexCaptionFrom, colIndexTo, 5, colIndexTo );
+        }
+        
+        console.log('===========================');
+        console.log(this.subColumnCaption)
+        this.subColumnCaption.forEach( col => {
+            let indexFrom = col.colIndexTo - col.length + 1;
+            let indexTo = col.colIndexTo;
+            console.log(indexFrom, indexTo);
+            debugger;
+            worksheet.mergeCells( 4, indexFrom, 4, indexTo );
+            let caption = worksheet.getCell(4, indexFrom);
+            caption.value = col.colCaption;
+        });
 
         for (let i = 0; i < this.columnsWithoutSub.length; i++) {
             let element = this.columnsWithoutSub[i];
-            let caption = worksheet.getCell(4, element.colIndexFrom);
+            let caption = worksheet.getCell(4, element.colIndexTo);
             caption.value = element.caption;
         }
+        let cellInfoCaption = worksheet.getCell('A1');
+        cellInfoCaption.value = 'Показники рейтингів';
+        let cellInfoDate = worksheet.getCell('A2');
+        cellInfoDate.value = 'за: ' + this.changeDateTimeValues(this.period);
+        // cellInfoDate.value = 'з: ' + this.changeDateTimeValues(this.period)+' , по: ' + this.changeDateTimeValues(this.dateTo);
+        
+        for (let i = 0; i < data.rows.length; i++) {
+            let rowData = data.rows[i];
+            let rowValues = [];
+            for (let j = 0; j < resultColumns.length; j++) {
+                const element = resultColumns[j];
+                let index = data.columns.findIndex(el => el.code === element.dataField );
+                rowValues[j] = rowData.values[index];
+            }
+            worksheet.addRow(rowValues);
+        }
 
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     },
     changeDateTimeValues: function(value){
         
@@ -348,8 +486,9 @@
         let yyyy = date.getFullYear();
         let HH = date.getHours();
         let mm = date.getMinutes();
+        MM += 1;
         if( (dd.toString()).length === 1){  dd = '0' + dd; }
-        if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+        if( (MM.toString()).length === 1){ MM = '0' + MM; }
         if( (HH.toString()).length === 1){  HH = '0' + HH; }
         if( (mm.toString()).length === 1){ mm = '0' + mm; }
         let trueDate = dd+'.'+MM+'.' + yyyy +' '+ HH +':'+ mm;

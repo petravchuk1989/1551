@@ -43,7 +43,7 @@ SELECT [Id]
       ,[PercentPleasureOfExecution]
       ,[IntegratedMetric_PerformanceLevel]
   FROM [dbo].[Rating_ResultTable]
-  where [DateCalc] = @DateCalc 
+  where [DateCalc] = N'2019-10-16'
   and [RatingId] = @RatingId
   and ([RDAId] = @RDAId or isnull(@RDAId,0) = 0)
  -- and [RDAId] @GlobalFilter_RDAId

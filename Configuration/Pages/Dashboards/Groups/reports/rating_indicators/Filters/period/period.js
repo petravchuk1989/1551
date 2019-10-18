@@ -1,33 +1,33 @@
 (function () {
   return {
     placeholder: '',
-    showTime: true,
+    minDate: null,
+	maxDate: null,
+	showTime: false,
+	showSeconds: false,
+	hourFormat: 24,
+	showButtonBar: false,
+	numberOfMonths: 1,
+    dateFormat: 'dd.mm.yy',
+    monthNavigator: false,
+	yearNavigator: false,
+	yearRange: null,
+	timeOnly: false,
+	readonlyInput: null,
+    view: 'date',
+    disabledDays: null,
+	disabledDates: null,
     onItemSelect: function(date) {
         this.yourFunctionName(date);
     },
-    yourFunctionName: function(date) {
+    yourFunctionName: function(value) {
         let message = {
             name: '',
             package: {
-                dateFrom: date.dateFrom,
-                dateTo: date.dateTo
+                value: value
             }
         }
         this.messageService.publish(message);
-    },
-    initValue: function() {
-        let currentDate = new Date();
-        let year = currentDate.getFullYear();
-        let monthFrom = currentDate.getMonth();
-        let dayTo = currentDate.getDate();
-        let hh = currentDate.getHours();
-        let mm = currentDate.getMinutes();
-        
-        let defaultValue = {
-                dateFrom: new Date(year, monthFrom , '01', '00', '00'),
-                dateTo: new Date( year, monthFrom , dayTo, hh, mm)
-            }
-        this.setDefaultValue(defaultValue); 
     }
 };
 }());
