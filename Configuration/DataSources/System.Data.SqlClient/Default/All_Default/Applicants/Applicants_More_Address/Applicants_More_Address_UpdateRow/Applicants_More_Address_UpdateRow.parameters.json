@@ -5,8 +5,8 @@
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@buildings_id",
-    "Name": "buildings_id",
+    "Code": "@building_address",
+    "Name": "building_address",
     "ParameterType": "Integer"
   },
   {
