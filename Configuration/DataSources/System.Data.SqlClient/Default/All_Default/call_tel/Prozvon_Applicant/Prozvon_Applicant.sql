@@ -77,11 +77,12 @@
   where [AssignmentStates].code in (N''Registered'', N''InWork'', N''OnCheck'', N''NotFulfilled'') and
   [Assignments].[main_executor]=''true'' 
      --([ReceiptSources].code<>N''UGL'' and [AssignmentStates].code<>N''OnCheck'' and [AssignmentResults].code<>N''Done'')
-     and  not (([ReceiptSources].code=N''UGL'' or [ReceiptSources].code=N''Website_mob.addition'') and [AssignmentStates].code=N''OnCheck'' and [AssignmentResults].code=N''Done'')
-
+   and  not ([ReceiptSources].code=N''Website_mob.addition'' and [AssignmentStates].code=N''OnCheck'' and [AssignmentResults].code=N''Done'')
+	 and not ([ReceiptSources].code=N''UGL'')
   ) t
 
   where ApplicantsId='+ltrim(@ApplicantsId)+N' and '+@filter+N'
   order by '+@sort1
+--  and  not (([ReceiptSources].code=N''UGL'' or [ReceiptSources].code=N''Website_mob.addition'') and [AssignmentStates].code=N''OnCheck'' and [AssignmentResults].code=N''Done'')
 
   exec(@qcode)
