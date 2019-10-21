@@ -14,6 +14,10 @@
                 dataField: 'registration_number',
                 caption: 'Номер'
             }, {
+                dataField: 'registration_date',
+                caption: 'Дата надходження',
+                width: 200
+            },{
                 dataField: 'QuestionType',
                 caption: 'Тип питання',
                 width: 200

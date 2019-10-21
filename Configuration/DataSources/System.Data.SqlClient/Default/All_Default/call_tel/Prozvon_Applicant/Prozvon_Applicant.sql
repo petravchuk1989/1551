@@ -8,7 +8,7 @@
 
  select Id, registration_number, QuestionType, full_name, phone_number, DistrictName District,
  house, place_problem, vykon, zmist, comment, [history], ApplicantsId, BuildingId, [Organizations_Id],
- cc_nedozvon, entrance, [edit_date], [control_comment], [AssignmentStates], result_id, result
+ cc_nedozvon, entrance, [edit_date], [control_comment], [AssignmentStates], result_id, result, [registration_date]
  
  from
  (
