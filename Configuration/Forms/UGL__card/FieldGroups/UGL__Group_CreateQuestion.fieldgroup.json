@@ -1,5 +1,5 @@
 {
-  "Code": "Group_CreateQuestion",
+  "Code": "UGL__Group_CreateQuestion",
   "Name": "Реєстрація питання",
   "Position": 3,
   "IsWithClosing": true,
@@ -26,8 +26,7 @@
       "PathColumnCode": "Path",
       "SearchQueryCode": "List_QuestionTypes_SelectRows_Search",
       "SearchKeyColumnCode": "Id",
-      "SearchDisplayColumnCode": "Name", 
-      "HasChildrenColumnCode": "has_child" 
+      "SearchDisplayColumnCode": "Name"
     },
     {
       "Code": "Question_Building",

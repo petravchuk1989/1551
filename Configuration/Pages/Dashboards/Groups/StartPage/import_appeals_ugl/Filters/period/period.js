@@ -15,7 +15,7 @@
         let MM = currentDate.getMinutes();
 
         let defaultValue = {
-            dateFrom: new Date('2019', '06' , '01'),
+            dateFrom: new Date('2019', '05' , '01'),
             dateTo: new Date( year, monthFrom , dayTo, HH, MM)
         }
         this.setDefaultValue(defaultValue); 

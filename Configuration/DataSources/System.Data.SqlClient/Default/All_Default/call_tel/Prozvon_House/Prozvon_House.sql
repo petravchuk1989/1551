@@ -14,7 +14,7 @@
 
  select Id, registration_number, QuestionType, full_name, phone_number, DistrictName District,
  house, place_problem, vykon, zmist, comment, [history], ApplicantsId, BuildingId, [Organizations_Id],
- cc_nedozvon, AssignmentStates_code, states, result, result_id, entrance, [edit_date], [control_comment]
+ cc_nedozvon, AssignmentStates_code, states, result, result_id, entrance, [edit_date], [control_comment], [registration_date]
  
  from
  (
@@ -88,6 +88,18 @@
 
 	 and  not (([ReceiptSources].code=N''UGL'' or [ReceiptSources].code=N''Website_mob.addition'') and [AssignmentResults].code=N''Done'')
     and not ([ReceiptSources].code=N''UGL'' or [ReceiptSources].code=N''Website_mob.addition'')
+
+and 
+	
+	(case when [AssignmentStates].code=N''Closed'' and 
+	
+	(ltrim(isnull(year([Assignments].[close_date]), 2000))+ltrim(isnull(month([Assignments].[close_date]),1)))*1<>
+	(ltrim(year(getutcdate()))+ltrim(month(getutcdate())))*1
+	
+	
+	then 0 else 1 end)=1
+
+
   ) t
 
   where BuildingId='+ltrim(@buildId)+N' and '+@filter+N'

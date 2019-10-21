@@ -1,6 +1,6 @@
 {
   "ModelType": "Detail",
-  "Code": "Detail_UGL_QuestionNumberAppeal",
+  "Code": "Detail__UGL_QuestionNumberAppeal",
   "Name": "Питання за № Звернення",
   "SelectRowsQueryCode": "Detail_QuestionNumberAppeal_selectRows",
   "SectionCode": "",

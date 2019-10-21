@@ -47,7 +47,6 @@
         pager: {
             showPageSizeSelector: true,
             allowedPageSizes: [50, 100, 500],
-            showInfo: true,
         },
         paging: {
             pageSize: 50
@@ -59,9 +58,6 @@
         showColumnLines: false,
         showRowLines: true,
         keyExpr: 'Id',
-        height: function() {
-            return window.innerHeight / 1.4;
-        }
     },
     createButtons: function(e) {
         let toolbarItems = e.toolbarOptions.items;
@@ -106,6 +102,7 @@
     filtersValuesMacros: [],
     textFilterMacros: '',
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 230;
         document.getElementById('poshuk_table_main').style.display = 'none';
         
         this.sub = this.messageService.subscribe( 'GlobalFilterChanged', this.setFiltersValue, this );
@@ -432,6 +429,7 @@
     },
     afterLoadDataHandler: function(data) {
         this.render();
+        this.messageService.publish({ name: 'dataLength', value: data.length});
     },
     afterRenderTable: function(){
         let elements = document.querySelectorAll('.dx-datagrid-export-button');
@@ -478,6 +476,7 @@
         this.queryExecutor(exportQuery, this.myCreateExcel, this);
     },
     myCreateExcel: function(data){
+        console.log(data)
         if( data.rows.length > 0 ){    
             this.showPagePreloader('Зачекайте, формується документ');
             this.indexArr = [];
@@ -496,7 +495,7 @@
                 }
             });
             const workbook = this.createExcel();
-            const worksheet = workbook.addWorksheet('«Заявки2018', {
+            const worksheet = workbook.addWorksheet('«Заявки', {
                 pageSetup:{orientation: 'landscape', fitToPage: false, fitToWidth: true}
             });
             
@@ -600,7 +599,7 @@
                 
                 for( i = 0; i < indexArr.length; i ++){
                     let el = indexArr[i];
-                    
+
                     let cdValue = this.changeDateTimeValues(row.values[indexExecutionTerm])
                     let rdValue = this.changeDateTimeValues(row.values[indexRegistrationDate])
                     if( el.name === 'question_registration_number'  ){
@@ -703,6 +702,9 @@
                                 break
                             case 'control_comment':
                                 rowItem.control_comment = row.values[el.index];
+                                break
+                            case 'control_date':
+                                rowItem.control_date = this.changeDateTimeValues(row.values[el.index]);
                                 break
                         };
                         this.addetedIndexes.push(prop);
@@ -811,7 +813,10 @@
                             break   
                         case 'control_comment':
                             row.control_comment = el.control_comment;
-                            break   
+                            break  
+                        case 'control_date':
+                            row.control_date = el.control_date;
+                            break     
                             
                     };
                 }
@@ -851,7 +856,7 @@
             };
             worksheet.getRow(5).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
             worksheet.getRow(5).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-            this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+            this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
         }    
     },
     changeDateTimeValues: function(value){
@@ -863,8 +868,9 @@
             let yyyy = date.getFullYear();
             let HH = date.getUTCHours()
             let mm = date.getMinutes();
+            MM += 1 ;
             if( (dd.toString()).length === 1){  dd = '0' + dd; }
-            if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+            if( (MM.toString()).length === 1){ MM = '0' + MM ; }
             if( (HH.toString()).length === 1){  HH = '0' + HH; }
             if( (mm.toString()).length === 1){ mm = '0' + mm; }
             trueDate = dd+'.'+MM+'.' + yyyy;

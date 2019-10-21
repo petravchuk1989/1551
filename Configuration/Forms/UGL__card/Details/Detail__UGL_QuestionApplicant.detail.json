@@ -1,6 +1,6 @@
 {
   "ModelType": "Detail",
-  "Code": "Detail_UGL_QuestionApplicant",
+  "Code": "Detail__UGL_QuestionApplicant",
   "Name": "Питання заявника",
   "SelectRowsQueryCode": "Detail_QuestionApplicant_selectRows",
   "SectionCode": "",
