@@ -111,5 +111,10 @@
     "Code": "rn",
     "Name": " rn",
     "Position": 19
+  },
+  {
+    "Code": "registration_date",
+    "Name": " registration_date",
+    "Position": 20
   }
 ]

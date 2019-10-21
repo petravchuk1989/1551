@@ -14,7 +14,7 @@
 
  select Id, registration_number, QuestionType, full_name, phone_number, DistrictName District,
  house, place_problem, vykon, zmist, comment, [history], ApplicantsId, BuildingId, [Organizations_Id],
- cc_nedozvon, AssignmentStates_code, states, result, result_id, entrance, [edit_date], [control_comment]
+ cc_nedozvon, AssignmentStates_code, states, result, result_id, entrance, [edit_date], [control_comment], [registration_date]
  
  from
  (
