@@ -31,12 +31,9 @@ where la.building_id = @Id
 );
 
 update ExecutorInRoleForObject
-set object_id = (select Id from [Objects] where builbing_id = @building),
-building_id = @building 
-where Id in (
-select Id 
-from ExecutorInRoleForObject ex
-where building_id = @Id
+set object_id = (select Id from [Objects] where builbing_id = @building)
+-- building_id = @building 
+where Id in (select Id from ExecutorInRoleForObject ex where object_id = @Id
 );
 
 update ValuesParamsObjects

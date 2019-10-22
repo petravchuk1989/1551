@@ -14,6 +14,10 @@
                 dataField: 'registration_number',
                 caption: 'Номер'
             }, {
+                dataField: 'registration_date',
+                caption: 'Дата надходження',
+                width: 200
+            },{
                 dataField: 'QuestionType',
                 caption: 'Тип питання',
                 width: 200
@@ -289,11 +293,11 @@
         let dd = date.getDate();
         let MM = date.getMonth();
         let yyyy = date.getFullYear();
-        // let HH = date.getUTCHours()
         let HH = date.getHours();
         let mm = date.getMinutes();
+        MM += 1 ;
         if( (dd.toString()).length === 1){  dd = '0' + dd; }
-        if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+        if( (MM.toString()).length === 1){ MM = '0' + MM ; }
         if( (HH.toString()).length === 1){  HH = '0' + HH; }
         if( (mm.toString()).length === 1){ mm = '0' + mm; }
         let trueDate = dd+'.'+MM+'.' + yyyy +' '+ HH +':'+ mm;

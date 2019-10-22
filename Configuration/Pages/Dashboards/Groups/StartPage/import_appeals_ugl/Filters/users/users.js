@@ -4,7 +4,7 @@
     keyValue: 'Id',
     displayValue: 'Name',
     baseQueryOptions: {
-        queryCode: '',
+        queryCode: 'ys_user_ugl',
         filterColumns: null,
         limit: -1,
         parameterValues: [],

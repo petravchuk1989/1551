@@ -5,57 +5,6 @@
     formatTitle: function() {},
     customConfig:
                 `
-                <style>
-                    #btnsWrapper{
-                        margin-top: 20px;
-                        display: flex;
-                        justify-content: space-around;
-                    }
-                    .btn, #fileLabel{
-                        cursor: pointer;
-                        outline: none;
-                        color: white;
-                        padding: 5px 10px;
-                        width: 200px;
-                        display: flex;
-                        justify-content: center;
-                        height: 50px;
-                        border: none;
-                        align-items: center;
-                        text-align: center;
-                        position: relative;
-
-                    }
-                    input[type="file"] {
-                        display: none;
-                    }
-                    .triangle{
-                        width: 0;
-                        height: 0;
-                        border-style: solid;
-                        border-width: 25px 0 25px 21px;
-                        position: absolute;
-                        right: -21px;
-                    }
-                    .fileLabel__triangle{
-                        border-color: transparent transparent transparent #77e857;
-                    }
-                    .btnImportFile__triangle{
-                        border-color: transparent transparent transparent #58c339;
-                    }
-                    .showTable__triangle{
-                        border-color: transparent transparent transparent #3e9325;
-                    }
-                    #fileLabel{
-                        background-color: #77e857;
-                    }
-                    #btnImportFile{
-                        background-color: #58c339;
-                    }
-                    #btnShowTable{
-                        background-color: #3e9325;
-                    }
-                    </style>
                 <div id='container' ></div>
                 `
     ,
@@ -73,7 +22,7 @@
         let showTable__triangle  = this.createElement('div', {className: 'triangle showTable__triangle' });
         let btnShowTable = this.createElement('div', { className: 'btn', id: 'btnShowTable',  innerText: '3. Вiдобразити таблицю' },showTable__triangle);
 
-        let btnsWrapper = this.createElement('div', { id: 'btnsWrapper' }, fileInput, fileLabel, btnImportFile, btnShowTable);
+        let btnsWrapper = this.createElement('div', { id: 'btnsWrapper' }, fileInput, fileLabel, btnImportFile);
         CONTAINER.appendChild(btnsWrapper);
 
         fileInput.addEventListener('input', event => {
@@ -82,14 +31,9 @@
                 btnImportFile.disabled = false;
              }
         });   
-        btnShowTable.addEventListener( 'click', event => {
-            let executeQuery = {
-                queryCode: 'DepartmentUGL_ExcelButton3',
-                limit: -1,
-                parameterValues: []
-            };
-            this.queryExecutor(executeQuery, this.sendMessageToTable, this);
-        });
+        // btnShowTable.addEventListener( 'click', event => {
+        //     
+        // });
         
         btnImportFile.addEventListener( 'click', event => {
             let fileInput = document.getElementById('fileInput');
@@ -125,7 +69,7 @@
                         this.showModalWindow(responseModal, responseNotification, CONTAINER);                        
                     }
                 });
-                let url = window.location.origin + '/api/section/demo/import/csv';
+                let url = window.location.origin + '/api/section/Appeals_UGL/import/csv';
                 xhr.open("POST", url );
                 let token = localStorage.getItem('X-Auth-Token');
                 xhr.setRequestHeader("Authorization", 'Bearer ' + token );
@@ -147,7 +91,7 @@
         });
     },
     sendMessageToTable: function(){
-        this.messageService.publish( { name: 'showTable'});
+        
     },
     showModalWindow: function (responseModal, responseNotification, CONTAINER) {
         const modalBtnTrue =  this.createElement('button', { id:'modalBtnTrue', className: 'btn', innerText: 'Сховати'});
@@ -158,7 +102,22 @@
         const modalWindowWrapper = this.createElement('div', { id:'modalWindowWrapper', className: 'modalWindowWrapper'}, modalWindow); 
 
         modalBtnTrue.addEventListener( 'click', event => {
-            CONTAINER.removeChild(container.lastElementChild);
+            let target = event.currentTarget;
+            target.disabled = true;
+            target.style.backgroundColor = '#d7d2d1';
+            if(  responseNotification.success ){
+                let executeQuery = {
+                    queryCode: 'DepartmentUGL_ExcelButton3',
+                    limit: -1,
+                    parameterValues: []
+                };
+                this.queryExecutor(executeQuery, sendMessageToTable, this);
+                this.showPreloader = false;
+            }
+            function sendMessageToTable(){
+                this.messageService.publish( { name: 'showTable'});
+                CONTAINER.removeChild(container.lastElementChild);
+            }
         });
         for (key in responseNotification) {
             if( key === 'title'){ 

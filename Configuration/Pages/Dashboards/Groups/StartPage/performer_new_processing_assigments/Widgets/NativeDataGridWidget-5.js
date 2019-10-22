@@ -29,7 +29,7 @@
                 dataType: "datetime",
                 format: "dd.MM.yyyy HH:mm"               
             }, {
-                dataField: 'comment',
+                dataField: 'rework_counter',
                 caption: 'Лічильник',
             }
         ],
@@ -320,8 +320,9 @@
             let yyyy = date.getFullYear();
             let HH = date.getUTCHours()
             let mm = date.getMinutes();
+            MM += 1 ;
             if( (dd.toString()).length === 1){  dd = '0' + dd; }
-            if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+            if( (MM.toString()).length === 1){ MM = '0' + MM ; }
             if( (HH.toString()).length === 1){  HH = '0' + HH; }
             if( (mm.toString()).length === 1){ mm = '0' + mm; }
             var trueDate = dd+'.'+MM+'.' + yyyy ;
@@ -353,8 +354,8 @@
         let elementСontent__caption = this.createElement('div', { className: 'elementСontent__caption caption', innerText: "Зміст"});
         let elementСontent = this.createElement('div', { className: 'elementСontent element'}, elementСontent__caption, elementСontent__content);
         
-        let elementComment__content = this.createElement('div', { className: 'elementComment__content content', innerText: ""+currentEmployeeData.comment+""});
-        let elementComment__caption = this.createElement('div', { className: 'elementComment__caption caption', innerText: "Коментар виконавця"});
+        let elementComment__content = this.createElement('div', { className: 'elementComment__content content', innerText: ""+currentEmployeeData.short_answer+""});
+        let elementComment__caption = this.createElement('div', { className: 'elementComment__caption caption', innerText: "Коментар перевіряючого"});
         let elementComment = this.createElement('div', { className: 'elementСontent element'}, elementComment__caption, elementComment__content);
         
         let elementBalance__content = this.createElement('div', { className: 'elementBalance__content content', innerText: ""+currentEmployeeData.balans_name+""});
