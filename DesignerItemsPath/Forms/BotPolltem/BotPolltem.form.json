@@ -1,0 +1,12 @@
+{
+  "ModelType": "Form",
+  "Code": "BotPolltem",
+  "Name": "BotPolltem",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\main.fieldgroup.json"
+    ],
+    "DefaultFields": []
+  }
+}
