@@ -1,13 +1,10 @@
-/*
-  declare @RegistrationDateFrom date='2018-01-01';
-  declare @RegistrationDateTo date='2019-08-01';
-  declare @OrganizationExecId int;
-  declare @OrganizationExecGroupId int;
-  declare @ReceiptSourcesId int = 1;
-  declare @QuestionGroupId int;
-*/
-
-  
+  --declare @RegistrationDateFrom date='2018-08-01';
+  --declare @RegistrationDateTo date='2019-10-01';
+  --declare @OrganizationExecId int;
+  --declare @OrganizationExecGroupId int;
+  --declare @ReceiptSourcesId int = 1;
+  --declare @QuestionGroupId int;
+ 
 if object_id('tempdb..#temp_OUT') is not null drop table #temp_OUT
 create table #temp_OUT(
 OrgId int
@@ -44,18 +41,12 @@ begin
 	delete from #temp_OUT
 end
 
-
-
 if @OrganizationExecGroupId is null and @OrganizationExecId is null 
 begin
 	insert into #temp_OUT (OrgId)
 	select Id FROM [dbo].[Organizations]
 end
 
-
-
-
-  
 if object_id('tempdb..#temp_OUT_QuestionGroup') is not null drop table #temp_OUT_QuestionGroup
 create table #temp_OUT_QuestionGroup(
 QueTypeId int
@@ -108,7 +99,12 @@ end
 					for xml path('')), 1,1,N'') as [GroupQuestionTypes],
   [ReceiptSources].name [ReceiptSources],
   [QueTypes].[Id] as [QuestionTypeId],
-  QueTypes.[name] as [QuestionTypeName]
+  QueTypes.[name] as [QuestionTypeName],
+  case when QuestionStates.[name] = 'Зареєстровано' then 1 else 0 end as stateRegistered,
+  case when QuestionStates.[name] = 'В роботі' then 1 else 0 end as stateInWork,
+  case when QuestionStates.[name] = 'На перевірці' then 1 else 0 end as stateOnCheck,
+  case when QuestionStates.[name] = 'На доопрацюванні' then 1 else 0 end as stateOnRefinement,
+  case when QuestionStates.[name] = 'Закрито' then 1 else 0 end as stateClose
 
   from [Questions] as [Que]
   left join [QuestionTypes] as [QueTypes] on [Que].question_type_id=[QueTypes].Id

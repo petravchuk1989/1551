@@ -9,7 +9,7 @@ INSERT INTO [dbo].[LiveAddress]
 	output [inserted].[applicant_id]
      VALUES
            (@applicant_id
-           ,@buildings_id
+           ,@building_address
            ,@house_block
            ,@entrance
            ,@flat

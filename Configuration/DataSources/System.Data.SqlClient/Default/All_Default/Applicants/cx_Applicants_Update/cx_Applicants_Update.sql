@@ -152,9 +152,17 @@ else
 
 	end
 	end
-	
+
+update LiveAddress 
+set 
+building_id = @building_id,
+entrance = @entrance,
+flat = @flat 
+where applicant_id = @applicant_id
+and main = 1
+
 update [dbo].[Applicants]
-set [full_name]=@full_name
+set    [full_name]=@full_name
       ,[applicant_type_id]=@applicant_type_id
       ,[category_type_id]=@category_type_id
       ,[social_state_id]=@social_state_id

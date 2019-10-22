@@ -80,7 +80,7 @@ end
  select ROW_NUMBER() OVER (Order by (select 1)) as rn,
  Id, registration_number, QuestionType, full_name, phone_number, DistrictName District,
  house, place_problem, vykon, zmist, comment, [history], ApplicantsId, BuildingId, [Organizations_Id],
- cc_nedozvon, entrance, [edit_date], [control_comment]
+ cc_nedozvon, entrance, [edit_date], [control_comment], [registration_date]
  
  from
  (
