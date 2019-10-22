@@ -102,39 +102,39 @@
                         caption: 'Інші',
                     }
                 ]
-            // }, {
-            //     dataField: 'ForRevision_All',
-            //     caption: 'На доопрацювання (Всього)',
-            // }, {
-            //     dataField: 'ForRevision_Total',
-            //     caption: 'На доопрацювання (прозвон)',
-            // }, {
-            //     caption: 'На доопрацювання (прозвон)',
-            //     alignItems: 'middle',
-            //     columns: [
-            //         {
-            //             dataField: 'ForRevision_1Time',
-            //             caption: '1 раз',
-            //         }, {
-            //             dataField: 'ForRevision_2Times',
-            //             caption: '2 рази',
-            //         }, {
-            //             dataField: 'ForRevision_3AndMore',
-            //             caption: '3 і більше',
-            //         }
-            //     ]
-            // }, {
-            //     caption: 'Розглянуті виконавцем',
-            //     alignItems: 'middle',
-            //     columns: [
-            //         {
-            //             dataField: 'ViewedByArtist_Total',
-            //             caption: 'Всі',
-            //         }, {
-            //             dataField: 'ViewedByArtist_WrongTime',
-            //             caption: 'Не вчасно',
-            //         }
-            //     ]
+            }, {
+                dataField: 'ForRevision_All',
+                caption: 'На доопрацювання (Всього)',
+            }, {
+                dataField: 'ForRevision_Total',
+                caption: 'На доопрацювання (прозвон)',
+            }, {
+                caption: 'На доопрацювання (прозвон)',
+                alignItems: 'middle',
+                columns: [
+                    {
+                        dataField: 'ForRevision_1Time',
+                        caption: '1 раз',
+                    }, {
+                        dataField: 'ForRevision_2Times',
+                        caption: '2 рази',
+                    }, {
+                        dataField: 'ForRevision_3AndMore',
+                        caption: '3 і більше',
+                    }
+                ]
+            }, {
+                caption: 'Розглянуті виконавцем',
+                alignItems: 'middle',
+                columns: [
+                    {
+                        dataField: 'ViewedByArtist_Total',
+                        caption: 'Всі',
+                    }, {
+                        dataField: 'ViewedByArtist_WrongTime',
+                        caption: 'Не вчасно',
+                    }
+                ]
             }, {
                 dataField: 'PercentClosedOnTime',
                 caption: '% вчасно закритих',
@@ -189,7 +189,7 @@
                 value: true
             }
         };
-        // this.messageService.publish(msg);
+        this.messageService.publish(msg);
 
         this.sub = this.messageService.subscribe( 'GlobalFilterChanged', this.getFiltersParams, this );
         this.sub1 = this.messageService.subscribe( 'ApplyGlobalFilters', this.renderTable, this );
@@ -212,7 +212,7 @@
                     let columncode = e.column.dataField;
                     let date = this.period;
                     let string = 'rdaid='+rdaid+'&ratingid='+ratingid+'&columncode='+columncode+'&date='+date;
-                    // window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indicators/"+string);
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/district_rating_indicator?"+string);
                 }
             }
         });
@@ -282,7 +282,6 @@
                         ]
                     };
                     this.queryExecutor(exportQuery, this.myCreateExcel, this);
-                    // this.myCreateExcel();
                 }.bind(this)
             },
         });
@@ -496,8 +495,5 @@
     onMyContentReady: function () {
         this.visibleColumns = this.dataGridInstance.instance.getVisibleColumns();
     },
-    createCustomStyle: function() {
-
-    }, 
 };
 }());
