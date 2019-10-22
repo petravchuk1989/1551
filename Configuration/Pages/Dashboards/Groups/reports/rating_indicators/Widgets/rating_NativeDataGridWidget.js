@@ -213,7 +213,6 @@
                     let date = this.period;
                     let string = 'rdaid='+rdaid+'&ratingid='+ratingid+'&columncode='+columncode+'&date='+date;
                     // window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indicators/"+string);
-                    console.log(string)
                 }
             }
         });
@@ -234,10 +233,6 @@
        
         this.config.onContentReady = this.onMyContentReady.bind(this);
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
-
-        // удалить потом, для быстрого запуска страницы
-        this.loadData(this.afterLoadDataHandler);
-        // удалить потом, для быстрого запуска страницы
     },
     renderTable: function (message) {
         let msg = {
@@ -308,10 +303,16 @@
             top: 0.4, bottom: 0.4,
             header: 0.0, footer: 0.0
         };
-        // debugger;
-        // worksheet.mergeCells(1,visibleColumns.length,1,1); // top,left,bottom,right
-        // worksheet.mergeCells(2,visibleColumns.length,2,1); // top,left,bottom,right
-        // worksheet.mergeCells(3,visibleColumns.length,3,1); // top,left,bottom,right
+        let cellInfoCaption = worksheet.getCell('A1');
+        cellInfoCaption.value = 'Показники рейтингів';
+        let cellInfoDate = worksheet.getCell('A2');
+        cellInfoDate.value = 'за: ' + this.changeDateTimeValues(this.period);
+        let emptyCellInfoCaption = worksheet.getCell('A3');
+        // cellInfoDate.value = 'з: ' + this.changeDateTimeValues(this.period)+' , по: ' + this.changeDateTimeValues(this.dateTo);
+        emptyCellInfoCaption.value = ' ';
+        worksheet.mergeCells(1,visibleColumns.length,1,1); // top,left,bottom,right
+        worksheet.mergeCells(2,visibleColumns.length,2,1); // top,left,bottom,right
+        worksheet.mergeCells(3,visibleColumns.length,3,1); // top,left,bottom,right
 
         worksheet.getRow(1).font = { name: 'Times New Roman', family: 4, size: 16, underline: false, bold: true , italic: false};
         worksheet.getRow(1).alignment = { vertical: 'middle', horizontal: 'center' };
@@ -371,6 +372,7 @@
         this.subIndex = 0;
         let resultColumns = [];
         let lengthArray = [];
+
         for (let i = 0; i < this.config.columns.length; i++) {
             let column = this.config.columns[i];
             let colCaption = column.caption;
@@ -388,7 +390,8 @@
                             this.subColumnCaption.push(obj);
                             this.subIndex++;
                         }
-                    }else{
+                    }
+                    else{
                         let obj = {
                             colCaption,
                             length,
@@ -420,16 +423,16 @@
             resultColumns.push(this.allColumns[index]);
         }
         
-
         for (let i = 0; i < resultColumns.length; i++) {
             const resCol = resultColumns[i];
             const colIndexTo = i+1;
             let indexCaptionFrom ;
             if( resCol.isSub === true ){
                 if(this.subColumnCaption.length > 0) {
-                    if(this.subColumnCaption[resCol.index].colCaption === resCol.caption){
-                        this.subColumnCaption[resCol.index].length ++;
-                        this.subColumnCaption[resCol.index].colIndexTo = colIndexTo;
+                    let group = this.subColumnCaption[resCol.index];
+                    if(group.colCaption === resCol.caption){
+                        group.length ++;
+                        group.colIndexTo = colIndexTo;
                     }
                 }
                 indexCaptionFrom = 5;
@@ -442,16 +445,14 @@
             worksheet.mergeCells(indexCaptionFrom, colIndexTo, 5, colIndexTo );
         }
         
-        console.log('===========================');
-        console.log(this.subColumnCaption)
         this.subColumnCaption.forEach( col => {
             let indexFrom = col.colIndexTo - col.length + 1;
             let indexTo = col.colIndexTo;
-            console.log(indexFrom, indexTo);
-            debugger;
-            worksheet.mergeCells( 4, indexFrom, 4, indexTo );
-            let caption = worksheet.getCell(4, indexFrom);
-            caption.value = col.colCaption;
+            if( col.length > 0 ){
+                worksheet.mergeCells( 4, indexFrom, 4, indexTo );
+                let caption = worksheet.getCell(4, indexFrom);
+                caption.value = col.colCaption;
+            }
         });
 
         for (let i = 0; i < this.columnsWithoutSub.length; i++) {
@@ -459,12 +460,7 @@
             let caption = worksheet.getCell(4, element.colIndexTo);
             caption.value = element.caption;
         }
-        let cellInfoCaption = worksheet.getCell('A1');
-        cellInfoCaption.value = 'Показники рейтингів';
-        let cellInfoDate = worksheet.getCell('A2');
-        cellInfoDate.value = 'за: ' + this.changeDateTimeValues(this.period);
-        // cellInfoDate.value = 'з: ' + this.changeDateTimeValues(this.period)+' , по: ' + this.changeDateTimeValues(this.dateTo);
-        
+
         for (let i = 0; i < data.rows.length; i++) {
             let rowData = data.rows[i];
             let rowValues = [];
