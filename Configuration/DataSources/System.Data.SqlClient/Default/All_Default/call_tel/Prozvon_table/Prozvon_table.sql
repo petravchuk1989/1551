@@ -1,5 +1,19 @@
-  --declare @filter nvarchar(3000)=N'1=1'; --question_type in (50)
-  --declare @sort nvarchar(3000)=N'QuestionType asc, District desc';
+  
+  --declare @filter nvarchar(3000)=N'district in (1, 2, 3)'; --question_type in (50) district in (1, 2, 3) question_list_state in (1)
+  --declare @sort nvarchar(3000)=N'1=1';
+
+  ---перелік параметры начало
+  declare @comment_qls nvarchar(5);
+  declare @de_comment nvarchar(5);
+
+  set @comment_qls =(
+  select case when CHARINDEX(N'question_list_state in (', @filter, 0)>0
+  then N'' else N'--' end);
+
+  set @de_comment = case when @comment_qls=N'--' then N'' else N'--' end;
+
+  ---перелік параметры конец
+  --select @comment_qls, @de_comment
 
  declare @sort1 nvarchar(3000)=case when @sort=N'1=1' then N'QuestionType_sort' 
  else replace(replace(@sort, N' asc', N'_sort asc'), N' desc', N'_sort desc') end;
@@ -113,7 +127,8 @@ end
   ,[Objects].Id [object]
   ,[Organizations].Id organization
   ,[QuestionTypes].Id question_type
-  ,[Rating].Id [question_list_state]
+  '+@comment_qls+N',[Rating].Id [question_list_state] --@comment_qls
+  '+@de_comment+N' , null [question_list_state]
   ,[Assignments].registration_date
   ,[AssignmentRevisions].[edit_date]
   ,[AssignmentRevisions].[control_comment]
@@ -162,9 +177,9 @@ end
   left join [AssignmentStates] with (nolock) on [Assignments].assignment_state_id=[AssignmentStates].Id
   left join [AssignmentResults] with (nolock) on [Assignments].AssignmentResultsId=[AssignmentResults].Id
   left join [AssignmentConsiderations] with (nolock) on [Assignments].current_assignment_consideration_id=[AssignmentConsiderations].Id
-  left join [Questions] with (nolock) on [Assignments].question_id=[Questions].Id
+  inner join [Questions] with (nolock) on [Assignments].question_id=[Questions].Id
   left join [QuestionTypes] with (nolock) on [Questions].question_type_id=[QuestionTypes].Id
-  left join [Appeals] with (nolock) on [Questions].appeal_id=[Appeals].Id
+  inner join [Appeals] with (nolock) on [Questions].appeal_id=[Appeals].Id
   left join [Applicants] with (nolock) on [Appeals].applicant_id=[Applicants].Id
   left join (select [applicant_id], [phone_number]
   from [ApplicantPhones] with (nolock)
@@ -182,8 +197,8 @@ end
   left join [StreetTypes] [StreetTypes2] with (nolock) on [Streets2].street_type_id=[StreetTypes2].Id
   left join [Organizations] with (nolock) on [Assignments].executor_organization_id=[Organizations].Id
   left join [ReceiptSources] with (nolock) on [Appeals].receipt_source_id=[ReceiptSources].Id
-  left join [QuestionTypeInRating] with (nolock) on [QuestionTypes].question_type_id=[QuestionTypeInRating].QuestionType_id
-  left join [Rating] with (nolock) on [QuestionTypeInRating].Rating_id=[Rating].Id
+  '+@comment_qls+N'left join [QuestionTypeInRating] with (nolock) on [QuestionTypes].question_type_id=[QuestionTypeInRating].QuestionType_id
+  '+@comment_qls+N'left join [Rating] with (nolock) on [QuestionTypeInRating].Rating_id=[Rating].Id
   left join [AssignmentRevisions] with (nolock) on [AssignmentConsiderations].Id=[AssignmentRevisions].assignment_consideration_іd 
   where [AssignmentStates].code=N''OnCheck'' and [AssignmentResults].code=N''Done'' and
      [Assignments].[main_executor]=''true''
