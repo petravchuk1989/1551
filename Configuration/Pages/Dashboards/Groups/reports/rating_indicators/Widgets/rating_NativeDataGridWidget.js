@@ -78,7 +78,7 @@
                 columns: [
                     {
                         dataField: 'OnTest_Done',
-                        caption: 'Зареєстровано',
+                        caption: 'Виконано',
                     }, {
                         dataField: 'OnTest_Explained',
                         caption: 'Роз\'яснено',
@@ -93,7 +93,7 @@
                 columns: [
                     {
                         dataField: 'ResultOfExecution_Done',
-                        caption: 'Зареєстровано',
+                        caption: 'Виконано',
                     }, {
                         dataField: 'ResultOfExecution_Explained',
                         caption: 'Роз\'яснено',
