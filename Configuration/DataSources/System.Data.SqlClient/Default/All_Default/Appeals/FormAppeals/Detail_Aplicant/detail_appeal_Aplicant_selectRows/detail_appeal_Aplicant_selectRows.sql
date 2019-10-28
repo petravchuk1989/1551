@@ -1,6 +1,7 @@
 --declare @phone_number nvarchar(50) = N'0672170307'
 
-SELECT [Applicants].[Id]
+SELECT distinct 
+       [Applicants].[Id]
       ,[Applicants].[full_name] as [PIB]
       ,[Buildings].Id as [BuildingsId]
       ,[Buildings].name as [BuildingsName]

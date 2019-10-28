@@ -42,10 +42,10 @@ select Id from @IdT
 -- for global Gorodok
 insert into @ObjectInOrg (object_id)
 select 
-	isnull(eo.object_id, eo.building_id) as obj_id
+	eo.object_id as obj_id
 from @Organization org
 join ExecutorInRoleForObject as eo on eo.executor_id = org.Id
-where isnull(eo.object_id, eo.building_id) is not null
+where eo.object_id is not null
 
 ;with
   [Events_1] as 
@@ -77,7 +77,7 @@ where isnull(eo.object_id, eo.building_id) is not null
     inner join [CRM_1551_Analitics].[dbo].[EventObjects] on [Events].Id=[EventObjects].event_id
     left join [CRM_1551_Analitics].[dbo].[Objects] on [EventObjects].object_id=[Objects].Id
     left join [CRM_1551_Analitics].[dbo].[Buildings] on [Buildings].Id=[Objects].builbing_id
-    left join [CRM_1551_Analitics].[dbo].[ExecutorInRoleForObject] on [ExecutorInRoleForObject].building_id=[Buildings].Id
+    left join [CRM_1551_Analitics].[dbo].[ExecutorInRoleForObject] on [ExecutorInRoleForObject].object_id=[Buildings].Id
     left join [Event_Class] on [Events].event_class_id=[Event_Class].id
   where [ExecutorInRoleForObject].[executor_role_id] in (1, 68) /*балансоутримувач, генпідрядник*/
   and [ExecutorInRoleForObject].executor_id in (select id from @Organization)
@@ -96,7 +96,10 @@ where isnull(eo.object_id, eo.building_id) is not null
 	    ,gl.[registration_date] as [start_date]
       ,gl.claims_type as EventName
   FROM [CRM_1551_GORODOK_Integrartion].[dbo].[Lokal_copy_gorodok_global] AS gl
-   JOIN (select * from [CRM_1551_GORODOK_Integrartion].[dbo].[AllObjectInClaim] where object_id in (select object_id from @ObjectInOrg)) AS oc ON oc.claims_number_id = gl.claim_number
+      JOIN [CRM_1551_GORODOK_Integrartion].[dbo].[AllObjectInClaim] AS oc ON oc.claims_number_id = gl.claim_number
+	  JOIN [CRM_1551_GORODOK_Integrartion].[dbo].[Gorodok_1551_houses] gh ON gh.gorodok_houses_id = oc.object_id
+      WHERE gh.[1551_houses_id] IN (SELECT [object_id] FROM @ObjectInOrg)
+  --  JOIN (select * from [CRM_1551_GORODOK_Integrartion].[dbo].[AllObjectInClaim] where object_id in (select object_id from @ObjectInOrg)) AS oc ON oc.claims_number_id = gl.claim_number
   ),
 
   main as

@@ -3,5 +3,5 @@
     "Code": "Default",
     "Name": "Подключение по-умолчанию",
     "ProviderCode": "System.Data.SqlClient",
-    "ConnectionString": "newConnectionString"
+    "ConnectionString": "Data Source=db.ukrods.cf;Initial Catalog=CRM_1551_Analitics;User Id=smartbi; Password=BtHSZfwNkQAMscF$JO8#tYTExZ!a3; Connection Timeout=120"
 }

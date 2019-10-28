@@ -51,7 +51,7 @@
             if( e.column ){
                 if(e.column.dataField == "EnterNumber" && e.row != undefined){
                     debugger;
-                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/edit/"+e.data.Id);
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal_UGL/edit/"+e.data.Id);
                 }
             }
         });

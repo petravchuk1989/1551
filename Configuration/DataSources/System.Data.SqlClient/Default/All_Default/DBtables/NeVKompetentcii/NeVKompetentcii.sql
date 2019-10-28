@@ -81,7 +81,7 @@ end navigation,
  ,[Organizations2].[short_name] [transfer_to_organization_name]
  ,stuff ((select N', '+[Organizations].short_name
 from [ExecutorInRoleForObject] inner join [Organizations] on [ExecutorInRoleForObject].executor_id=[Organizations].Id
-where [ExecutorInRoleForObject].building_id=[Buildings].Id--ex.building_id
+where [ExecutorInRoleForObject].object_id=[Buildings].Id--ex.building_id
 and [executor_role_id]=1 /*Балансоутримувач*/
 for xml path('')),1,2,N'') balans_name
 

@@ -9,7 +9,8 @@
       "Name": "Зміст*",
       "FieldType": "textarea",
       "Position": 1,
-      "Width": "100%"
+      "Width": "100%",
+      "Rows": 4
     },
     {
       "Code": "Question_TypeId",
