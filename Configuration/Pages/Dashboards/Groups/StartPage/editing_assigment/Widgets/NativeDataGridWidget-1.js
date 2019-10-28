@@ -244,7 +244,7 @@
             }
         });
         const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки2018', {
+        const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -421,7 +421,7 @@
         };
         worksheet.getRow(2).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
         worksheet.getRow(2).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     }, 
     changeDateTimeValues: function(value){
         let trueDate ;

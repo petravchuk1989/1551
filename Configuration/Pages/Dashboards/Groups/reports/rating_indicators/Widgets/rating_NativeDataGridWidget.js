@@ -291,7 +291,7 @@
         let visibleColumns = this.visibleColumns;
         this.columnsWithoutSub = [];
         let workbook = this.createExcel();
-        let worksheet = workbook.addWorksheet('«Заявки2018', {
+        let worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,

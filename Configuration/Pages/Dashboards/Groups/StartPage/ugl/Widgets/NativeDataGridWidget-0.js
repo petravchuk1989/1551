@@ -88,6 +88,7 @@
             mode: "multiple"
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -114,8 +115,10 @@
         this.config.masterDetail.template = this.createMasterDetail.bind(this);
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField === "registration_number" && e.row !== undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },
@@ -127,7 +130,10 @@
             this.column = message.column;
             this.targetId = message.targetId;
             document.getElementById('table5__NeVKompetentsii').style.display = 'block';
-            this.config.query.parameterValues = [ { key: '@navigation', value: message.value} ];
+            this.config.query.parameterValues = [
+                 { key: '@navigation', value: message.value},
+                 { key: '@column', value: message.column}
+            ];
             let executeQuery = {
                 queryCode: 'CoordinatorController_PodOrganization',
                 parameterValues: [],
@@ -281,7 +287,7 @@
         
         
         const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки2018', {
+        const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -428,7 +434,7 @@
         };
         worksheet.getRow(5).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
         worksheet.getRow(5).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     },    
     destroy: function() {
         this.sub.unsubscribe();

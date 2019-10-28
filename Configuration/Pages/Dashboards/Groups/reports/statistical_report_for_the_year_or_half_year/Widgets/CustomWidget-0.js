@@ -116,7 +116,7 @@
     createTableExcel: function(){
         this.showPagePreloader('Зачекайте, формується документ');
         const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки2018', {
+        const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -485,7 +485,7 @@
         worksheet.getRow(10).height = 150;
         worksheet.getRow(36).height = 150;
         worksheet.getRow(51).height = 150;
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     },
     changeDateTimeValues: function(value){
         let date = new Date(value);

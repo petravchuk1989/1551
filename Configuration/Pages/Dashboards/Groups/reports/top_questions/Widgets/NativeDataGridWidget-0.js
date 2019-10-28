@@ -249,7 +249,7 @@
             };            
             worksheet.getRow(5).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
             worksheet.getRow(5).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-            this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+            this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
         }    
     
     },
