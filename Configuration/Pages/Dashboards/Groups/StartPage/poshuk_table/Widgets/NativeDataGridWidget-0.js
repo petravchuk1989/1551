@@ -495,7 +495,7 @@
                 }
             });
             const workbook = this.createExcel();
-            const worksheet = workbook.addWorksheet('«Заявки', {
+            const worksheet = workbook.addWorksheet('Заявки', {
                 pageSetup:{orientation: 'landscape', fitToPage: false, fitToWidth: true}
             });
             

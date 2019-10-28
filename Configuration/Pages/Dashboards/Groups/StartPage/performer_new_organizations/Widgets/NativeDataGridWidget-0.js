@@ -71,6 +71,7 @@
             enabled: true,
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
