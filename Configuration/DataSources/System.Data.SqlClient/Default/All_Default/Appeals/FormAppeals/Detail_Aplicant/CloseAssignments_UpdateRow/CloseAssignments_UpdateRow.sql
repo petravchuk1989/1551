@@ -191,6 +191,7 @@ begin
 	    		update dbo.AssignmentRevisions set
 	    			 [assignment_resolution_id] = @AssignmentResolutionsId
 	    			,[control_result_id] = null
+					,control_date  = null
 	    			,[grade] = @Question_Prew_Rating
 	    			,[grade_comment] = @Question_Prew_Comment
 	    			,[edit_date] = GETUTCDATE()
