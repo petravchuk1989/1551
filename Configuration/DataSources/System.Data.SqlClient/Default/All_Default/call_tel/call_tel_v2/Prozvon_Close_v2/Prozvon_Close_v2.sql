@@ -68,6 +68,7 @@ END
 														-- when ast.rework_counter is null then @control_result_id
 														else @control_result_id
 														end )
+							,control_date = GETUTCDATE()
 							,[control_comment]=isnull(@control_comment, control_comment)
 							-- ,[grade]=@grade
 							,[edit_date]=GETUTCDATE()
@@ -161,6 +162,7 @@ END
 						set  [assignment_resolution_id]= @assignment_resolution_id
 							,[control_result_id]=@control_result_id
 							,[control_comment]=@control_comment
+							,control_date = GETUTCDATE()
 							,[grade]=@grade
 							,[edit_date]=GETUTCDATE()
 							,[user_edit_id]=@user_id
