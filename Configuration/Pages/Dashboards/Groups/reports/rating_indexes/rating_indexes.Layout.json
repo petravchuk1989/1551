@@ -1,0 +1,162 @@
+{
+  "css": "",
+  "rootContainer": {
+    "width": "auto",
+    "margin": "0 5px 10px",
+    "flexWrap": "wrap",
+    "flexDirection": "row",
+    "order": 1,
+    "flexGrow": 1,
+    "alignSelf": "auto",
+    "border": "none",
+    "children": [
+      {
+        "width": "auto",
+        "margin": "0 5px 10px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "flex-start",
+        "border": "none",
+        "children": [
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "column",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "flex-start",
+            "border": "none",
+            "children": [
+              {
+                "width": "auto",
+                "margin": "0 5px 10px",
+                "flexWrap": "wrap",
+                "flexDirection": "row",
+                "order": 1,
+                "flexGrow": 1,
+                "alignSelf": "auto",
+                "border": "none",
+                "children": [
+                  {
+                    "code": "tabs__CustomWidget",
+                    "type": "CustomWidgetComponent",
+                    "name": "tabs"
+                  }
+                ],
+                "id": "Container-1",
+                "height": "auto",
+                "minHeight": "100px",
+                "minWidth": "calc(100% - 10px)",
+                "backgroundColor": "white"
+              },
+              {
+                "width": "auto",
+                "margin": "0 5px 10px",
+                "flexWrap": "wrap",
+                "flexDirection": "row",
+                "order": 1,
+                "flexGrow": 1,
+                "alignSelf": "auto",
+                "border": "none",
+                "children": [
+                  {
+                    "width": "auto",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "tabSpeedDone__NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "tableSpeedDone"
+                      }
+                    ],
+                    "id": "tableSpeedDone",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "tableSpeedDone"
+                  },
+                  {
+                    "width": "auto",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "tabSpeedExplained__NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "tableSpeedExplained"
+                      }
+                    ],
+                    "id": "tableSpeedExplained",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "tableSpeedExplained"
+                  },
+                  {
+                    "width": "auto",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "tabFactDone__NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "tableFactDone"
+                      }
+                    ],
+                    "id": "tableFactDone",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "tableFactDone"
+                  }
+                ],
+                "id": "Container-1",
+                "height": "auto",
+                "minHeight": "100px",
+                "minWidth": "calc(100% - 10px)",
+                "backgroundColor": "white"
+              }
+            ],
+            "id": "Container-1",
+            "height": "auto",
+            "minHeight": "100px",
+            "minWidth": "100px",
+            "backgroundColor": "white"
+          }
+        ],
+        "id": "Container-0",
+        "height": "calc(100% - 10px)",
+        "minHeight": "100px",
+        "minWidth": "100px",
+        "backgroundColor": "white"
+      }
+    ],
+    "id": "Container-0",
+    "height": "100%",
+    "minHeight": "100%",
+    "minWidth": "100%",
+    "backgroundColor": "white"
+  }
+}

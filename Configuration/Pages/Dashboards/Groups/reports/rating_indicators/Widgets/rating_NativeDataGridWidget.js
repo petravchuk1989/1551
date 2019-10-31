@@ -495,5 +495,9 @@
     onMyContentReady: function () {
         this.visibleColumns = this.dataGridInstance.instance.getVisibleColumns();
     },
+    destroy: function () {
+        this.sub.unsubscribe();
+        this.sub1.unsubscribe();
+    }
 };
 }());
