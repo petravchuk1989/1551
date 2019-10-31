@@ -1,7 +1,7 @@
-  --declare @org int = 3;
-  --declare @dateFrom date = '2019-01-01';
-  --declare @dateTo date = getdate();
-  --declare @question_type_id int = 1;
+  declare @org int = 2;
+  declare @dateFrom date = '2019-01-01';
+  declare @dateTo date = getdate();
+  declare @question_type_id int = 1;
 
 declare @question_type_t table (Id int)
 
@@ -115,12 +115,12 @@ end
 if object_id('tempdb..#temp_Main') is not null drop table #temp_Main
 
   select [Assignments].Id, [Organizations].main_org_id orgId, [Organizations].main_org_name orgName, 1 AllCount,
-  case when main_executor = 1 and /*close_date is not null and*/ (first_execution_date <= execution_date) then 1 else 0 end inTimeQty,--- Закритих вчасно
-  case when main_executor = 1 and /*close_date is not null and*/ (first_execution_date > execution_date) then 1 else 0 end outTimeQty,--- Закритих не вчасно
-  case when main_executor = 1 and /*close_date is not null and*/ (first_in_work > execution_date) then 1 else 0 end waitTimeQty,--- Зареєстровано та не надійшло в роботу вчасно
-  case when main_executor = 1 and AssignmentResultsId in (4,7,10) and assignment_state_id = 5  then 1 else 0 end doneClosedQty,--- Виконано та закрито
-  case when main_executor = 1 and AssignmentResultsId in (5,12) and assignment_state_id = 4  then 1 else 0 end notDoneClosedQty,--- Виконано та на доопрацювання
-  case when main_executor = 1 and AssignmentResultsId in (4, 7, 8) and assignment_state_id = 3 then 1 else 0 end doneOnCheckQty,--- Виконано та на перевірці
+  case when (first_execution_date <= execution_date) then 1 else 0 end inTimeQty,--- Закритих вчасно
+  case when (first_execution_date > execution_date) then 1 else 0 end outTimeQty,--- Закритих не вчасно
+  case when (first_in_work > execution_date) then 1 else 0 end waitTimeQty,--- Зареєстровано та не надійшло в роботу вчасно
+  case when AssignmentResultsId in (4,7,10) and assignment_state_id = 5  then 1 else 0 end doneClosedQty,--- Виконано та закрито
+  case when AssignmentResultsId in (5,12) and assignment_state_id = 4  then 1 else 0 end notDoneClosedQty,--- Виконано та на доопрацювання
+  case when AssignmentResultsId in (4, 7, 8) and assignment_state_id = 3 then 1 else 0 end doneOnCheckQty,--- Виконано та на перевірці
   case when assignment_state_id = 2  then 1 else 0 end inWorkQty, --В роботі
   Questions.control_date
 
@@ -148,30 +148,43 @@ if object_id('tempdb..#temp_Main') is not null drop table #temp_Main
 
   select #temp_MainMain.Id, #temp_MainMain.Id orgId, orgName, AllCount, inTimeQty, outTimeQty, waitTimeQty, doneClosedQty, doneOnCheckQty, notDoneClosedQty, inWorkQty,
 --- Вираховуємо % вчасно закритих доручень організації виконавця
-	case when cast(case when inWorkQty = 0
-		    then cast(inTimeQty as numeric(16,8)) / cast(AllCount as numeric(16,8)) * 100
-		  when inWorkQty != 0
-		    then 
-				case when (cast(AllCount as numeric(16,8)) - cast(inWorkQty as numeric(16,8))) > 0
-				then cast(inTimeQty as numeric(16,8)) / (cast(AllCount as numeric(16,8)) - cast(inWorkQty as numeric(16,8))) * 100
-				else 0 end
-		  else 0 end as numeric(18,2)) = 0 then N'0'
-	  else cast(cast(case when inWorkQty = 0 
-		    then cast(inTimeQty as numeric(16,8)) / cast(AllCount as numeric(16,8)) * 100
-		  when inWorkQty != 0
-		    then case when (cast(AllCount as numeric(16,8)) - cast(inWorkQty as numeric(16,8))) > 0
-				then cast(inTimeQty as numeric(16,8)) / (cast(AllCount as numeric(16,8)) - cast(inWorkQty as numeric(16,8))) * 100
-				else 0 end
-		  else 0 end as numeric(18,2)) as numeric(18,2))
-	 end as inTimePercent,
+case 
+when inTimeQty != 0 and outTimeQty != 0 and waitTimeQty != 0 then
+cast((1- (cast(outTimeQty as numeric(10,5)) + cast(waitTimeQty as numeric(10,5)) ) 
+/ (cast(inTimeQty as numeric(5,2)) + cast(outTimeQty as numeric(10,5)) + cast(waitTimeQty as numeric(10,5)) ) 
+) * 100 as numeric (36,2) ) 
+when inTimeQty = 0 and outTimeQty != 0 and waitTimeQty != 0 then 
+cast((1- (cast(outTimeQty as numeric(10,5)) + cast(waitTimeQty as numeric(10,5)) ) 
+/ (cast(outTimeQty as numeric(10,5)) + cast(waitTimeQty as numeric(10,5)) ) 
+) * 100 as numeric (36,2) )
+when inTimeQty != 0 and outTimeQty = 0 and waitTimeQty != 0 then 
+cast((1- (cast(outTimeQty as numeric(10,5)) + cast(waitTimeQty as numeric(10,5)) ) 
+/ (cast(inTimeQty as numeric(5,2)) + cast(waitTimeQty as numeric(10,5)) ) 
+) * 100 as numeric (36,2) )
+when inTimeQty != 0 and outTimeQty != 0 and waitTimeQty = 0 then 
+cast((1- (cast(outTimeQty as numeric(10,5)) + cast(waitTimeQty as numeric(10,5)) ) 
+/ (cast(inTimeQty as numeric(5,2)) + cast(outTimeQty as numeric(10,5)) ) 
+) * 100 as numeric (36,2) )
+else '0'
+end
+	as inTimePercent,
+case 
+when doneClosedQty != 0 and notDoneClosedQty != 0 then 
+cast(
+cast((cast(notDoneClosedQty as numeric(10,5)) / ( cast(doneClosedQty as numeric(10,5)) + cast(notDoneClosedQty as numeric(10,5)) 
+) ) 
+* 100 as numeric (36,2) ) as nvarchar(10) ) 
+ + N'%'  
+ when doneClosedQty = 0 and notDoneClosedQty != 0 then 
+cast(
+cast((cast(notDoneClosedQty as numeric(10,5)) / ( cast(notDoneClosedQty as numeric(10,5)) 
+) ) 
+* 100 as numeric (36,2) ) as nvarchar(10) ) 
+ + N'%' 
 
-	 case when doneClosedQty != 0 
-then case when right(cast(cast(cast(doneClosedQty as numeric(16,8)) / (cast(doneClosedQty as numeric(16,8)) + cast(notDoneClosedQty as numeric(16,8))) * 100 as numeric(18,2) ) as nvarchar(10)),2) = 00 
-then case when right(left(cast(cast(cast(doneClosedQty as numeric(16,8)) / (cast(doneClosedQty as numeric(16,8)) + cast(notDoneClosedQty as numeric(16,8))) * 100 as numeric(18,2) ) as nvarchar(10)),3),1) = N'.' 
-then left(cast(cast(cast(doneClosedQty as numeric(16,8)) / (cast(doneClosedQty as numeric(16,8)) + cast(notDoneClosedQty as numeric(16,8))) * 100 as numeric(18,2) ) as nvarchar(10)),2) 
-else left(cast(cast(cast(doneClosedQty as numeric(16,8)) / (cast(doneClosedQty as numeric(16,8)) + cast(notDoneClosedQty as numeric(16,8))) * 100 as numeric(18,2) ) as nvarchar(10)),3) end
-else cast(cast(cast(doneClosedQty as numeric(16,8)) / (cast(doneClosedQty as numeric(16,8)) + cast(notDoneClosedQty as numeric(16,8))) * 100 as numeric(18,2) ) as nvarchar(10)) end
-else N'0' end + N'%'  as donePercent
+ else '0%'
+ end
+ as donePercent
 
   from 
   #temp_MainMain 
