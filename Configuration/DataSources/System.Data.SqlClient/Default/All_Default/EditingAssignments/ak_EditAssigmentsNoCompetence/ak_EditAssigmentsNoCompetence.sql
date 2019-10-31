@@ -60,6 +60,7 @@
   update [AssignmentRevisions]
   set [assignment_resolution_id]=@resolution_Id
       ,[control_result_id]=@result_Id
+	   ,control_date = GETUTCDATE()
 	  ,[edit_date]=GETUTCDATE()
       ,[user_edit_id]=@user_id
   where assignment_consideration_іd=@Id_cons

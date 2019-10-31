@@ -15,6 +15,7 @@
  	  ,[grade]=@grade
  	  ,[grade_comment]=@grade_comment
  	  ,[control_result_id]=@result
+	  ,[control_date] = GETUTCDATE()
  	  ,[assignment_resolution_id]=case when @result=4 then 9 when @result=5 then 8 when @result=11 then 10 end
  	  where [assignment_consideration_іd] in (select [AssignmentConsiderations].Id
  											 from [CRM_1551_Analitics].[dbo].[Questions]

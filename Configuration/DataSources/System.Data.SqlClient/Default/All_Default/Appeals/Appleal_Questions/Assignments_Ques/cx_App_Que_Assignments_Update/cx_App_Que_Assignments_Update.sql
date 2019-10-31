@@ -310,7 +310,7 @@ BEGIN
 						   ,[control_type_id]
 						   ,[assignment_resolution_id]
 						   ,[control_comment]
-						   ,[control_date]
+						--    ,[control_date]
 						   ,[user_id]
 						   ,[rework_counter]
 						   ,[edit_date]
@@ -320,7 +320,7 @@ BEGIN
 						   ,1  -- @control_type_id = Контроль, Продзвон, Контроль заявником
 						   ,@resolution_id -- @assignment_resolution_id
 						   ,@control_comment
-						   ,getutcdate() --@control_date
+						--    ,getutcdate() 
 						   ,@user_edit_id --@user_id
 						  -- ,@rework_counter_count
 						   ,@rework_counter
@@ -361,7 +361,7 @@ BEGIN
 					   ,[control_type_id]
 					   ,[assignment_resolution_id]
 					   ,[control_comment]
-					   ,[control_date]
+					--    ,[control_date]
 					   ,[user_id]
 					   ,[rework_counter]
 					   ,[edit_date]
@@ -371,7 +371,7 @@ BEGIN
 					   ,1 -- @control_type_id = Контроль, Продзвон, Контроль заявником
 					   ,@resolution_id -- @assignment_resolution_id
 					   ,@control_comment
-					   ,getutcdate() --@control_date
+					--    ,getutcdate() 
 					   ,@user_edit_id --@user_id
 					  -- ,@rework_counter_count
 					   ,@rework_counter
@@ -403,7 +403,6 @@ BEGIN
 								set [assignment_resolution_id] = @resolution_id
 									,organization_id = @transfer_to_organization_id
 									,[control_comment] = @control_comment
-								-- 	,[rework_counter] = @rework_counter_count
 									,[rework_counter] = @rework_counter
 									,[edit_date] = getutcdate()
 									,[user_edit_id] = @user_edit_id
@@ -489,11 +488,11 @@ BEGIN
 								set [assignment_resolution_id] = @resolution_id
 									,organization_id = @transfer_to_organization_id
 									,[control_comment] = @control_comment
-								-- 	,[rework_counter] = @rework_counter_count
 									,[rework_counter] = @rework_counter
 									,[edit_date] = getutcdate()
 									,[user_edit_id] = @user_edit_id
 									,control_result_id = @resolution_id
+									,control_date = getutcdate()
 								where assignment_consideration_іd = @current_consid
 
 						delete from @output;
@@ -858,7 +857,7 @@ BEGIN
 						   ,[control_type_id]
 						   ,[assignment_resolution_id]
 						   ,[control_comment]
-						   ,[control_date]
+						--    ,[control_date]
 						   ,[user_id]
 						   ,[rework_counter]
 						   ,[edit_date]
@@ -872,7 +871,7 @@ BEGIN
 						   ,2  -- @control_type_id = Контроль, Продзвон, Контроль заявником
 						   ,@resolution_id -- @assignment_resolution_id
 						   ,@control_comment
-						   ,getutcdate() --@control_date
+						--    ,getutcdate() 
 						   ,@user_edit_id --@user_id
 						  -- ,@rework_counter_count
 						   ,@rework_counter
@@ -1056,7 +1055,7 @@ BEGIN
 					,[LogUpdated_Query] = N'cx_App_Que_Assignments_Update_Row965'
 				where Id = @Id
 				
-				if  exists (select * from AssignmentRevisions where assignment_consideration_іd = @current_consid)
+				if  exists (select 1 from AssignmentRevisions where assignment_consideration_іd = @current_consid)
 				begin
 					update AssignmentRevisions 
 					set [assignment_resolution_id] = @resolution_id
