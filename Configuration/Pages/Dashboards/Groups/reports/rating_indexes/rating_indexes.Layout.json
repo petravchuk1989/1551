@@ -53,9 +53,9 @@
                 "backgroundColor": "white"
               },
               {
-                "width": "auto",
+                "width": "calc(100% - 10px)",
                 "margin": "0 5px 10px",
-                "flexWrap": "wrap",
+                "flexWrap": "nowrap",
                 "flexDirection": "row",
                 "order": 1,
                 "flexGrow": 1,
@@ -63,7 +63,7 @@
                 "border": "none",
                 "children": [
                   {
-                    "width": "auto",
+                    "width": "calc(33% - 10px)",
                     "margin": "0 5px 10px",
                     "flexWrap": "wrap",
                     "flexDirection": "row",
@@ -73,20 +73,20 @@
                     "border": "none",
                     "children": [
                       {
-                        "code": "tabSpeedDone__NativeDataGridWidget",
+                        "code": "1_1_speedDone_NativeDataGridWidget",
                         "type": "NativeDataGridWidgetComponent",
-                        "name": "tableSpeedDone"
+                        "name": "SpeedDone_1"
                       }
                     ],
-                    "id": "tableSpeedDone",
+                    "id": "Container-1",
                     "height": "calc(100% - 10px)",
                     "minHeight": "100px",
                     "minWidth": "100px",
                     "backgroundColor": "white",
-                    "containerId": "tableSpeedDone"
+                    "containerId": "1_1_speedDone"
                   },
                   {
-                    "width": "auto",
+                    "width": "calc(33% - 10px)",
                     "margin": "0 5px 10px",
                     "flexWrap": "wrap",
                     "flexDirection": "row",
@@ -96,20 +96,20 @@
                     "border": "none",
                     "children": [
                       {
-                        "code": "tabSpeedExplained__NativeDataGridWidget",
+                        "code": "1_2_speedDone_NativeDataGridWidget",
                         "type": "NativeDataGridWidgetComponent",
-                        "name": "tableSpeedExplained"
+                        "name": "SpeedDone_2"
                       }
                     ],
-                    "id": "tableSpeedExplained",
+                    "id": "Container-1",
                     "height": "calc(100% - 10px)",
                     "minHeight": "100px",
                     "minWidth": "100px",
                     "backgroundColor": "white",
-                    "containerId": "tableSpeedExplained"
+                    "containerId": "1_2_speedDone"
                   },
                   {
-                    "width": "auto",
+                    "width": "calc(33% - 10px)",
                     "margin": "0 5px 10px",
                     "flexWrap": "wrap",
                     "flexDirection": "row",
@@ -119,31 +119,207 @@
                     "border": "none",
                     "children": [
                       {
-                        "code": "tabFactDone__NativeDataGridWidget",
+                        "code": "1_3_speedDone_NativeDataGridWidget",
                         "type": "NativeDataGridWidgetComponent",
-                        "name": "tableFactDone"
+                        "name": "SpeedDone_3"
                       }
                     ],
-                    "id": "tableFactDone",
+                    "id": "Container-1",
                     "height": "calc(100% - 10px)",
                     "minHeight": "100px",
                     "minWidth": "100px",
                     "backgroundColor": "white",
-                    "containerId": "tableFactDone"
+                    "containerId": "1_3_speedDone"
                   }
                 ],
-                "id": "Container-1",
-                "height": "auto",
+                "id": "containerSpeedDone",
+                "height": "calc(100% - 10px)",
                 "minHeight": "100px",
-                "minWidth": "calc(100% - 10px)",
-                "backgroundColor": "white"
+                "minWidth": "100px",
+                "backgroundColor": "white",
+                "containerId": "containerSpeedDone"
+              },
+              {
+                "width": "calc(100% - 10px)",
+                "margin": "0 5px 10px",
+                "flexWrap": "nowrap",
+                "flexDirection": "row",
+                "order": 1,
+                "flexGrow": 1,
+                "alignSelf": "auto",
+                "border": "none",
+                "children": [
+                  {
+                    "width": "calc(33% - 10px)",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "2_1_speedExplained_NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "SpeedExplained_1"
+                      }
+                    ],
+                    "id": "Container-1",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "2_1_speedExplained"
+                  },
+                  {
+                    "width": "calc(33% - 10px)",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "2_2_speedExplained_NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "SpeedExplained_2"
+                      }
+                    ],
+                    "id": "Container-1",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "2_2_speedExplained"
+                  },
+                  {
+                    "width": "calc(33% - 10px)",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "2_3_speedExplained_NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "SpeedExplained_3"
+                      }
+                    ],
+                    "id": "Container-1",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "2_3_speedExplained"
+                  }
+                ],
+                "id": "containerSpeedExplained",
+                "height": "calc(100% - 10px)",
+                "minHeight": "100px",
+                "minWidth": "100px",
+                "backgroundColor": "white",
+                "containerId": "containerSpeedExplained"
+              },
+              {
+                "width": "calc(100% - 10px)",
+                "margin": "0 5px 10px",
+                "flexWrap": "nowrap",
+                "flexDirection": "row",
+                "order": 1,
+                "flexGrow": 1,
+                "alignSelf": "auto",
+                "border": "none",
+                "children": [
+                  {
+                    "width": "calc(33% - 10px)",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "3_1_factDone_NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "FactDone_1"
+                      }
+                    ],
+                    "id": "Container-1",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "3_1_factDone"
+                  },
+                  {
+                    "width": "calc(33% - 10px)",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "3_2_factDone_NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "FactDone_2"
+                      }
+                    ],
+                    "id": "Container-1",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "3_2_factDone"
+                  },
+                  {
+                    "width": "calc(33% - 10px)",
+                    "margin": "0 5px 10px",
+                    "flexWrap": "wrap",
+                    "flexDirection": "row",
+                    "order": 1,
+                    "flexGrow": 1,
+                    "alignSelf": "auto",
+                    "border": "none",
+                    "children": [
+                      {
+                        "code": "3_3_factDone_NativeDataGridWidget",
+                        "type": "NativeDataGridWidgetComponent",
+                        "name": "FactDone_3"
+                      }
+                    ],
+                    "id": "Container-1",
+                    "height": "calc(100% - 10px)",
+                    "minHeight": "100px",
+                    "minWidth": "100px",
+                    "backgroundColor": "white",
+                    "containerId": "3_3_factDone"
+                  }
+                ],
+                "id": "containerFactDone",
+                "height": "calc(100% - 10px)",
+                "minHeight": "100px",
+                "minWidth": "100px",
+                "backgroundColor": "white",
+                "containerId": "containerFactDone"
               }
             ],
-            "id": "Container-1",
+            "id": "containersWrapper",
             "height": "auto",
             "minHeight": "100px",
             "minWidth": "100px",
-            "backgroundColor": "white"
+            "backgroundColor": "white",
+            "containerId": "containersWrapper"
           }
         ],
         "id": "Container-0",
