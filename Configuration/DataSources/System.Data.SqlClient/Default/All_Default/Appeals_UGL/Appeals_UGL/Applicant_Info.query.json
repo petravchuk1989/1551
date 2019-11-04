@@ -106,6 +106,18 @@
       "Name": "Applicant_Comment",
       "Position": 16,
       "IsPrintable": false
+    },
+    {
+      "Code": "ApplicantId",
+      "Name": "ApplicantId",
+      "Position": 17,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Applicant_Age",
+      "Name": "Applicant_Age",
+      "Position": 18,
+      "IsPrintable": false
     }
     ],
     "Parameters": [

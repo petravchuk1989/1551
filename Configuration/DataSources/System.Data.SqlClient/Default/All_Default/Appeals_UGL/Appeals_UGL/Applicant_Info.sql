@@ -16,9 +16,15 @@ ss.[name] as socialName,
 at.Id as applicantTypeId,
 at.[name] as applicantTypeName,
 a.sex as Applicant_Sex,
-a.birth_date as Applicant_BirthDate,
+cast(a.birth_date as date) as Applicant_BirthDate,
 a.mail as Applicant_Email,
-a.comment as Applicant_Comment
+a.comment as Applicant_Comment,
+a.Id as ApplicantId,
+IIF(
+a.birth_date is not null,
+year(getdate()) - year(a.birth_date),
+null
+) as Applicant_Age 
 
 from Applicants a
 join LiveAddress la on la.applicant_id = a.Id 
