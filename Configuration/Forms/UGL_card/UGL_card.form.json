@@ -3,7 +3,8 @@
   "Code": "UGL_card",
   "Name": "Картка UGL",
   "Details": [
-    "string:Details\\Detail__UGL_Aplicant.detail.json"
+    "string:Details\\Detail__UGL_Aplicant.detail.json",
+    "string:Details\\Detail_UGL_QuestionReestration.detail.json"
   ],
   "Config": {
     "FieldGroups": [

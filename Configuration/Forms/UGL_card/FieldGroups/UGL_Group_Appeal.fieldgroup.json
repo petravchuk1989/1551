@@ -44,8 +44,8 @@
     },
     {
       "Code": "DateStart",
-      "Name": "Дата та час прийому дзвінка",
-      "FieldType": "date-time",
+      "Name": "Дата та час реєстрації",
+      "FieldType": "text",
       "Position": 5
     },
     {

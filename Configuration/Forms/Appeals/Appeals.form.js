@@ -2544,12 +2544,9 @@
                 BirthDate = new Date(row.values[20]);
             };
             
-
             this.form.setControlValue('Applicant_Id', row.values[0]);
-            this.form.setControlValue('Applicant_PIB', row.values[1]);
-            
-            this.form.setControlValue('Applicant_District', { key: row.values[10], value: row.values[11] });
-            
+            this.form.setControlValue('Applicant_PIB', row.values[1]);        
+            this.form.setControlValue('Applicant_District', { key: row.values[10], value: row.values[11] });        
             this.form.setControlValue('Applicant_Building', { key: row.values[2], value: row.values[13]+' '+row.values[3] });
             this.form.setControlValue('Applicant_HouseBlock', row.values[16]);
             this.form.setControlValue('Applicant_Entrance', row.values[17]);
