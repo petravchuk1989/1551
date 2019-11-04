@@ -71,6 +71,7 @@
             mode: "multiple"
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -97,8 +98,10 @@
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
         this.config.masterDetail.template = this.createMasterDetail.bind(this);
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField === "registration_number" && e.row !== undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },
@@ -170,10 +173,10 @@
             queryCode: 'Nadiyshlo',
             limit: -1,
             parameterValues: [
-                    { key: '@organization_id',  value: this.orgId},
-                    { key: '@organizationName', value: this.orgName},
-                    { key: '@navigation', value: this.navigator}
-                ]
+                { key: '@organization_id',  value: this.orgId},
+                { key: '@organizationName', value: this.orgName},
+                { key: '@navigation', value: this.navigator}
+            ]
         };
         this.queryExecutor(exportQuery, this.myCreateExcel, this);
     },
@@ -189,7 +192,7 @@
         this.indexArr = [ column_registration_number, column_zayavnyk, column_QuestionType, column_vykonavets, column_adress];
         
         const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки2018', {
+        const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -353,7 +356,7 @@
         };
         worksheet.getRow(5).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
         worksheet.getRow(5).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     },
     changeDateTimeValues: function(value){
         let date = new Date(value);

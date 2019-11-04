@@ -70,6 +70,7 @@ begin
 						SET control_type_id = 2
 						,assignment_resolution_id = 4
 						,control_result_id = NULL
+						,control_date = NULL
 						,user_edit_id = @user_id
 						,edit_date = GETUTCDATE()
 				WHERE assignment_consideration_іd = @cons_id

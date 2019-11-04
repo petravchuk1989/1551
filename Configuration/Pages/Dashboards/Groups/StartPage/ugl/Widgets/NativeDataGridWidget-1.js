@@ -76,6 +76,7 @@
             mode: "multiple"
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -102,8 +103,10 @@
         this.config.masterDetail.template = this.createMasterDetail.bind(this);    
         this.sub = this.messageService.subscribe('clickOnСoordinator_table', this.changeOnTable, this);
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField === "registration_number" && e.row !== undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },

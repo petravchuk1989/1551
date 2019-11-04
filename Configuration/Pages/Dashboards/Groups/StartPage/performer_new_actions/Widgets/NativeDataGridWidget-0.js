@@ -78,6 +78,7 @@
                 mode: "multiple"
             },
             keyExpr: 'EventId',
+            focusedRowEnabled: true,
             showBorders: false,
             showColumnLines: false,
             showRowLines: true,
@@ -104,11 +105,13 @@
             this.sub1 = this.messageService.subscribe('search', this.searchRelust, this);
 
             this.dataGridInstance.onCellClick.subscribe(e => {
-                if (e.column.dataField == "EventId" && e.row != undefined) {
-                    if (e.data.gorodok_id === 0) {
-                        window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Events/edit/" + e.key + "");
-                    } else if (e.data.gorodok_id === 1) {
-                        window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Gorodok_global/view/" + e.key + "");
+                if(e.column) {
+                    if (e.column.dataField == "EventId" && e.row != undefined) {
+                        if (e.data.gorodok_id === 0) {
+                            window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Events/edit/" + e.key + "");
+                        } else if (e.data.gorodok_id === 1) {
+                            window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Gorodok_global/view/" + e.key + "");
+                        }
                     }
                 }
             });
@@ -162,15 +165,16 @@
             })
         },
         changeOnTable: function(message) {
-            var value = message.typeEvent.trim();
-            if (value != 'Прострочені' && value != 'Не активні' && value != "В роботі") {
+            let typeEvent = message.typeEvent.trim();
+            let source =  message.source;
+            if (typeEvent != 'Прострочені' && typeEvent != 'Не активні' && typeEvent != "В роботі") {
                 document.getElementById('table_events').style.display = 'none';
             } else {
                 document.getElementById('table_events').style.display = 'block';
                 this.config.query.queryCode = 'EventsTable';
-                this.config.query.parameterValues = [{ key: '@organization_id', value: message.orgId },
-                    { key: '@OtKuda', value: message.source },
-                    { key: '@TypeEvent', value: value }
+                this.config.query.parameterValues = [{ key: '@organization_id', typeEvent: message.orgId },
+                    { key: '@OtKuda', value: source },
+                    { key: '@TypeEvent', value: typeEvent }
                 ];
                 this.loadData(this.afterLoadDataHandler);
             }

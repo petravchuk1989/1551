@@ -91,7 +91,7 @@
     createTableExcel: function(){
         this.showPagePreloader('Зачекайте, формується документ');
         const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки2018', {
+        const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -229,7 +229,7 @@
             worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
             worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
         });
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     }, 
 	changeDateTimeValues: function(value){
         

@@ -79,7 +79,7 @@
         onRowRemoving: function(data) {},
         onCellClick: function(data) {},
         onRowClick: function(data) {},
-        selectionChanged: function(data) {}
+        selection: function(data) {}
     },
     sub: [],
     containerForChackedBox: [],

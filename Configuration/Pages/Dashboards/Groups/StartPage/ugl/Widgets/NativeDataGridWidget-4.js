@@ -72,6 +72,7 @@
             mode: "multiple"
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -97,8 +98,10 @@
         this.config.masterDetail.template = this.createMasterDetails.bind(this);
         
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField === "registration_number" && e.row !== undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },

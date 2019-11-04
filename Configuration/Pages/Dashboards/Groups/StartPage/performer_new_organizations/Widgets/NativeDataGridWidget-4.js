@@ -61,6 +61,7 @@
             applyFilter: "auto"
         }, 
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -95,8 +96,10 @@
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
         this.config.masterDetail.template = this.createMasterDetail.bind(this);
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField == "registration_number" && e.row != undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },

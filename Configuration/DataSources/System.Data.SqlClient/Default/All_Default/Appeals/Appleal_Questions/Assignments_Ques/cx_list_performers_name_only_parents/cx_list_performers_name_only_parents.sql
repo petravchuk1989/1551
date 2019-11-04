@@ -1,6 +1,6 @@
 declare @organization_id int
 -- declare @user_id nvarchar(300)=N'02ece542-2d75-479d-adad-fd333d09604d';
-set @organization_id = (select organization_id from Assignments where Id = @ass_id)
+set @organization_id = null -- (select organization_id from Assignments where Id = @ass_id)
 declare @Organization table(Id int);
 
 
@@ -20,7 +20,7 @@ declare @IdT table (Id int);
 -- НАХОДИМ ИД ОРГАНИЗАЦИЙ ГДЕ ИД И ПАРЕНТЫ ВЫБРАНОЙ И СРАЗУ ЗАЛИВАЕМ
 insert into @IdT(Id)
 select Id from [dbo].[Organizations] 
-where (Id=@OrganizationId or [parent_organization_id]=@OrganizationId) and Id not in (select Id from @IdT)
+where (Id=@OrganizationId or [parent_organization_id]=@OrganizationId) --and Id not in (select Id from @IdT)
 
 --  НАХОДИМ ПАРЕНТЫ ОРГ, КОТОРЫХ ЗАЛИЛИ, <-- нужен цыкл
 while (select count(id) from (select Id from [dbo].[Organizations]

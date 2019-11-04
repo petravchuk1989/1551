@@ -93,10 +93,9 @@
         showColumnChooser: false,
         showColumnFixing: true,
         groupingAutoExpandAll: null,
-        height: 700,
     },
     init: function() {
-        this.dataGridInstance.height = window.innerHeight - 150;
+        this.dataGridInstance.height = window.innerHeight - 200;
         this.sub = this.messageService.subscribe( 'GlobalFilterChanged', this.getFiltersParams, this );
     },
     getFiltersParams: function(message){
