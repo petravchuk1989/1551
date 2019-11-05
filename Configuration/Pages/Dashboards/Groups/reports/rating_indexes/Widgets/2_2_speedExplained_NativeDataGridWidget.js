@@ -58,13 +58,22 @@
         this.dataGridInstance.onCellClick.subscribe(e => {
           e.event.stopImmediatePropagation();
           if(e.column){
-            debugger;
-            let rdaid = e.data.RDAId;
-            let ratingid = e.data.RatingId;
-            let columncode = e.column.dataField;
-            let date = this.period;
-            let string = 'rdaid='+rdaid+'&ratingid='+ratingid+'&columncode='+columncode+'&date='+date;
-              // window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/district_rating_indicator?"+string);
+            if(e.row !== undefined){
+           
+              // Виконавець
+              // Дата
+              // Рейтинг
+              // ИД РДА
+              // ИД типу питання
+              let executor = this.executor;
+              let date = this.period;
+              let ratingid = this.rating;
+              let rdaid = e.column.dataField;
+              let question = e.data.code;
+              debugger;
+              let string = 'executor='+executor+'&date='+date+'&ratingid='+ratingid+'&rdaid='+rdaid+'&question='+question;
+              // window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indicator?"+string);
+            }
           }
         });
       },
