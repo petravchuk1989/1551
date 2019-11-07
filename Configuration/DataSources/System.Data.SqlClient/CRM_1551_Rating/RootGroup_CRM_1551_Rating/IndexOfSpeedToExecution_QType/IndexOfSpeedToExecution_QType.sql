@@ -6,8 +6,11 @@
 
 if isnull(@RDAId,0) = 0
 begin 
+	if object_id('tempdb..#temp_RatingResultData2') is not null drop table #temp_RatingResultData2
+
 	SELECT	 [id] as [QuestionTypeId],
 			 [name] as [QuestionTypeName]
+	into #temp_RatingResultData2
 			 FROM ( select * from (
 				 select  t0.id,
 						t0.name,
@@ -33,6 +36,14 @@ begin
 	 ) pvt
 	 where isnull(pvt.[2000],0)+isnull(pvt.[2001],0)+isnull(pvt.[2002],0)+isnull(pvt.[2003],0)+isnull(pvt.[2004],0)+isnull(pvt.[2005],0)+isnull(pvt.[2006],0)+isnull(pvt.[2007],0)+isnull(pvt.[2008],0)+isnull(pvt.[2009],0) > 0
 	 order by Id
+
+	 select t0.QuestionTypeId, t0.QuestionTypeName, t1.EtalonDaysToExecution as [EtalonDays]
+	 from #temp_RatingResultData2 as t0
+	 left join [CRM_1551_Rating].[dbo].[Rating_EtalonDaysToExecution] as t1 on t1.QuestionTypeId = t0.QuestionTypeId
+																		and t1.Id in (select max(Id) 
+																						from [CRM_1551_Rating].[dbo].[Rating_EtalonDaysToExecution]
+																						where DateStart <= @DateCalc
+																						group by QuestionTypeId)
 end
 else 
 begin
@@ -61,9 +72,13 @@ begin
 	) as Table123
 
 	
-	select QuestionTypeId, QuestionTypeName
-	from ##temp_RatingResultData
-	 
-	order by QuestionTypeId
+	select t0.QuestionTypeId, t0.QuestionTypeName, t1.EtalonDaysToExecution as [EtalonDays]
+	from ##temp_RatingResultData as t0
+	left join [CRM_1551_Rating].[dbo].[Rating_EtalonDaysToExecution] as t1 on t1.QuestionTypeId = t0.QuestionTypeId 
+																		and t1.Id in (select max(Id) 
+																						from [CRM_1551_Rating].[dbo].[Rating_EtalonDaysToExecution]
+																						where DateStart <= @DateCalc
+																						group by QuestionTypeId)
+	order by t0.QuestionTypeId
 end
 
