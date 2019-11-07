@@ -1,15 +1,15 @@
 {
   "ModelType": "Detail",
-  "Code": "Detail_UGL_QuestionReestration",
+  "Code": "Detail_UGL_QuestionRegistration",
   "Name": "Питання, зареєстровані під час розмови",
-  "SelectRowsQueryCode": "Detail_QuestionReestration_selectRows",
+  "SelectRowsQueryCode": "Questions_fromUGLAppeal",
   "SectionCode": "",
   "Position": 2,
   "IsExpand": true,
   "QueryParameters": [
     {
-      "FormFieldName": "AppealId",
-      "ParameterCode": "@AppealId"
+      "FormFieldName": "Id",
+      "ParameterCode": "@appealId"
     }
   ]
 }

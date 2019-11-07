@@ -21,7 +21,7 @@
       "Code": "ApplicantUGL",
       "Name": "Заявник з УГЛ",
       "FieldType": "textarea",
-      "Position": 3,
+      "Position": 4,
       "Width": "100%"
     },
     {
@@ -46,7 +46,7 @@
     },
     {
       "Code": "Applicant_Entrance",
-      "Name": "П*",
+      "Name": "П",
       "FieldType": "number",
       "Position": 6,
       "Width": "10%"

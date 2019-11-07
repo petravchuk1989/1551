@@ -26,9 +26,9 @@
       "Code": "Appeal_enter_number",
       "Name": "Вхідний номер",
       "FieldType": "text",
-      "Position": 2,
-      "Icon": "save",
-      "IconHint": "Зберегти вхідний номер"
+      "Position": 2
+     // "Icon": "save",
+     // "IconHint": "Зберегти вхідний номер"
     },
     {
       "Code": "AppealNumber",
