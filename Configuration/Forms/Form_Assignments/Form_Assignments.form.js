@@ -15,7 +15,9 @@
         init: function() {
 
             // в поле виконавець выводить только подрядные огранизации, родитель - Assignments.organization_id на кого пришло доручення
-            let param_ass_id = [{ parameterCode: '@ass_id', parameterValue: this.id }];
+            let param_ass_id = [
+                { parameterCode: '@ass_id', parameterValue: this.id }
+            ];
             this.form.setControlParameterValues('performer_id', param_ass_id);
 
             console.log(this.user);
