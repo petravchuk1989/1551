@@ -46,6 +46,18 @@
       "Name": "ApplicantUGL",
       "Position": 6,
       "IsPrintable": false
+    },
+    {
+      "Code": "uglId",
+      "Name": "uglId",
+      "Position": 7,
+      "IsPrintable": false
+    },
+    {
+      "Code": "appealNum",
+      "Name": "appealNum",
+      "Position": 8,
+      "IsPrintable": false
     }
     ],
     "Parameters": [
