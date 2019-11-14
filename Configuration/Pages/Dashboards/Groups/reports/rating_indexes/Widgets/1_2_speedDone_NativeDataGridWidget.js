@@ -2,57 +2,37 @@
   return {
     config: {
       query: {
-        code: "db_ReestrRating1",
+        code: "IndexOfSpeedToExecution_Percent",
         parameterValues: [],
         filterColumns: [],
         sortColumns: [],
         skipNotVisibleColumns: true,
         chunkSize: 1000
       },
-      columns: [
-        {
-          dataField: "ForRevision_1Time",
-          caption: "Голосіївська РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Дарницька РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Деснянська РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Дніпровська РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Оболонська РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Печерська РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Подільська  РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Святошинська РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Солом`янська РДА",
-          width: 140
-        }, {
-          dataField: "ForRevision_2Times",
-          caption: "Шевченківська РДА",
-          width: 140
-        }
-      ],
-      keyExpr: "Id",
+      columns: [],
+      scrolling: {
+        mode: 'virtual'
+      },
+      filterRow: {
+          visible: true,
+          applyFilter: "auto"
+      },
+      showBorders: false,
+      showColumnLines: false,
+      showRowLines: true,
+      remoteOperations: null,
+      allowColumnReordering: null,
+      rowAlternationEnabled: null,
+      columnAutoWidth: null,
+      hoverStateEnabled: true,
+      columnWidth: null,
+      wordWrapEnabled: true,
+      allowColumnResizing: true,
+      showFilterRow: true,
+      showHeaderFilter: false,
+      showColumnChooser: false,
+      showColumnFixing: true,
+      groupingAutoExpandAll: null,
       onCellPrepared: function(options) {  
         
         if (options.rowType == 'header'){  
@@ -71,7 +51,9 @@
         }  
       }
     },
+    columns: [],
     init: function() {
+      this.dataGridInstance.height = window.innerHeight - 200;
       this.active = true;
       let msg = {
         name: "SetFilterPanelState",
@@ -80,10 +62,10 @@
         }
       };
       this.messageService.publish(msg);
-      this.sub = this.messageService.subscribe("showTable",this.showTable,this);
-      this.sub1 = this.messageService.subscribe("GlobalFilterChanged",this.getFiltersParams,this);
-      this.sub2 = this.messageService.subscribe("ApplyGlobalFilters",this.renderTable,this);
-
+      this.sub = this.messageService.subscribe('showTable', this.showTable, this);
+      this.sub1 = this.messageService.subscribe('FilterParameters', this.executeQuery, this);
+      this.sub2 = this.messageService.subscribe( 'ApplyGlobalFilters', this.renderTable, this );
+      
       this.dataGridInstance.onCellClick.subscribe(e => {
         e.event.stopImmediatePropagation();
         if(e.column){
@@ -106,54 +88,67 @@
         }
       });
     },
-    showTable: function(message) {
+    showTable: function(message){
       let tabName = message.tabName;
-      if (tabName !== "tabSpeedDone") {
-        this.active = false;
-        document.getElementById("containerSpeedDone").style.display = "none";
-      } else {
-        this.active = true;
-        document.getElementById("containerSpeedDone").style.display = "block";
-        this.renderTable();
+      if(tabName !== 'tabSpeedDone'){
+          this.active = false;
+          document.getElementById('containerSpeedDone').style.display = 'none';
+      }else {
+          this.active = true;
+          document.getElementById('containerSpeedDone').style.display = 'block';
+          this.renderTable();
       }
     },
-    getFiltersParams: function(message) {
-      let period = message.package.value.values.find(f => f.name === "period").value;
-      let executor = message.package.value.values.find(f => f.name === "executor").value;
-      let rating = message.package.value.values.find(f => f.name === "rating").value;
+    setColumns: function (data) {
+        for (let i = 0; i < data.columns.length; i++) {
+            
+            const element = data.columns[i];
+            if( element.code !== 'QuestionTypeId') {
 
-      if (period !== "") {
-        this.period = period;
-        this.executor =executor === null ? 0 : executor === "" ? 0 : executor.value;
-        this.rating = rating === null ? 0 : rating === "" ? 0 : rating.value;
-      }
-    },
-    renderTable: function() {
-      if (this.period) {
-        if (this.active) {
-          let msg = {
-            name: "SetFilterPanelState",
-            package: {
-              value: false
+                let dataField = element.code;
+                let caption = element.name;
+                let obj = { dataField, caption }
+                this.config.columns.push(obj);
             }
-          };
-          this.messageService.publish(msg);
-          this.config.query.parameterValues = [
-            { key: "@DateCalc", value: this.period },
-            { key: "@RDAId", value: this.executor },
-            { key: "@RatingId", value: this.rating }
-          ];
-          this.loadData(this.afterLoadDataHandler);
+        }   
+        this.config.keyExpr = data.columns[0].code;
+        this.config.query.parameterValues = this.parameters;
+        this.loadData(this.afterLoadDataHandler);
+    },
+    executeQuery: function (message) {
+        this.period = message.period;
+        this.rating = message.rating;
+        this.executor = message.executor;
+        this.parameters = message.parameters;
+        let executeQuery = {
+            queryCode: this.config.query.code,
+            parameterValues: this.parameters,
+            limit: -1
+        };
+        this.queryExecutor(executeQuery, this.setColumns, this);  
+    },
+    renderTable: function () {
+        if (this.period) {
+            if (this.active) {
+                let msg = {
+                    name: "SetFilterPanelState",
+                    package: {
+                        value: false
+                    }
+                };
+                this.messageService.publish(msg);
+                this.config.query.parameterValues = this.parameters;
+                this.loadData(this.afterLoadDataHandler);  
+            }
         }
-      }
     },
     afterLoadDataHandler: function(data) {
-      this.render();
+        this.render();
     },
-    destroy: function() {
-      this.sub.unsubscribe();
-      this.sub1.unsubscribe();
-      this.sub2.unsubscribe();
+    destroy: function () {
+        this.sub.unsubscribe();
+        this.sub1.unsubscribe();
+        this.sub2.unsubscribe();
     }
   };
 }());

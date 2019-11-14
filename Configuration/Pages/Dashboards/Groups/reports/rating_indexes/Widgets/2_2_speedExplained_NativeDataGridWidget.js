@@ -46,7 +46,30 @@
                 width: 0
               }
           ],
-          keyExpr: 'Id'
+          keyExpr: 'Id',
+          scrolling: {
+            mode: 'virtual'
+        },
+        filterRow: {
+            visible: true,
+            applyFilter: "auto"
+        },
+        showBorders: false,
+        showColumnLines: false,
+        showRowLines: true,
+        remoteOperations: null,
+        allowColumnReordering: null,
+        rowAlternationEnabled: null,
+        columnAutoWidth: null,
+        hoverStateEnabled: true,
+        columnWidth: null,
+        wordWrapEnabled: true,
+        allowColumnResizing: true,
+        showFilterRow: true,
+        showHeaderFilter: false,
+        showColumnChooser: false,
+        showColumnFixing: true,
+        groupingAutoExpandAll: null,
       },
       init: function() {
         this.active = false;

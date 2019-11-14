@@ -42,7 +42,43 @@
                 caption: "Шевченківська РДА"
               }
           ],
-          keyExpr: 'Id'
+          keyExpr: 'Id',
+          scrolling: {
+            mode: 'virtual'
+        },
+        filterRow: {
+            visible: true,
+            applyFilter: "auto"
+        },
+        showBorders: false,
+        showColumnLines: false,
+        showRowLines: true,
+        remoteOperations: null,
+        allowColumnReordering: null,
+        rowAlternationEnabled: null,
+        columnAutoWidth: null,
+        hoverStateEnabled: true,
+        columnWidth: null,
+        wordWrapEnabled: true,
+        allowColumnResizing: true,
+        showFilterRow: true,
+        showHeaderFilter: false,
+        showColumnChooser: false,
+        showColumnFixing: true,
+        groupingAutoExpandAll: null,
+        summary: {
+            totalItems: [{
+                column: "ForRevision_1Time",
+                summaryType: "avg"
+            }, {
+                column: "ForRevision_1Time",
+                summaryType: "min",
+                customizeText: function(data) {
+                    return "10.12%";
+                }
+            }
+                    ]
+        }
       },
       init: function() {
           this.active = false;

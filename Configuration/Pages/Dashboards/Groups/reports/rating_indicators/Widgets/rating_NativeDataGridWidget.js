@@ -18,6 +18,7 @@
             {
                 dataField: 'RDAId',
                 caption: 'Назва установи',
+                fixed: true
             }, {    
                 caption: 'Зареєстровано, В роботі, На доопрацюванні, На перевірці за попередній період',
                 alignItems: 'middle',

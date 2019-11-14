@@ -20,6 +20,10 @@
     onItemSelect: function(date) {
         this.yourFunctionName(date);
     },
+    initValue: function() {
+        let defaultValue = new Date('2019', '10' , '01');
+        this.setDefaultValue(defaultValue);
+    },
     yourFunctionName: function(value) {
         let message = {
             name: '',
