@@ -1,7 +1,7 @@
 {
   "ModelType": "Query",
-  "Code": "IndexOfFactToExecution_ResultPercent",
-  "Name": "IndexOfFactToExecution_ResultPercent",
+  "Code": "IndexOfSpeedToExecution",
+  "Name": "IndexOfSpeedToExecution",
   "ConnectionCode": "CRM_1551_Rating",
   "IsUsedForRightsFilter": false,
   "Parameters": [
@@ -11,13 +11,13 @@
       "ParameterType": "DateTime"
     },
     {
-      "Code": "@RatingId",
-      "Name": "RatingId",
+      "Code": "@RDAId",
+      "Name": "RDAId",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@RDAId",
-      "Name": "RDAId",
+      "Code": "@RatingId",
+      "Name": "RatingId",
       "ParameterType": "Integer"
     }
   ]

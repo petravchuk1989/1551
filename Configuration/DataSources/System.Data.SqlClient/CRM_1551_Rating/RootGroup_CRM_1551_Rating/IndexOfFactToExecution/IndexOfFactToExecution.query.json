@@ -1,7 +1,7 @@
 {
   "ModelType": "Query",
-  "Code": "IndexOfSpeedToExplain_QType",
-  "Name": "IndexOfSpeedToExplain_QType",
+  "Code": "IndexOfFactToExecution",
+  "Name": "IndexOfFactToExecution",
   "ConnectionCode": "CRM_1551_Rating",
   "IsUsedForRightsFilter": false,
   "Parameters": [
