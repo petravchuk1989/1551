@@ -1,18 +1,6 @@
 (function () {
   return {
     init: function() {
-      this.districts = [
-        { id: 0, name: 'Голосіївська РДА'},
-        { id: 1, name: 'Дарницька РДА'},
-        { id: 2, name: 'Деснянська РДА'},
-        { id: 3, name: 'Дніпровська РДА'},
-        { id: 4, name: 'Оболонська РДА'},
-        { id: 5, name: 'Печерська РДА'},
-        { id: 6, name: 'Подільська  РДА'},
-        { id: 7, name: 'Святошинська РДА'},
-        { id: 8, name: 'Солом`янська РДА'},
-        { id: 9, name: 'Шевченківська РДА'}
-      ];
       this.sub = this.messageService.subscribe('GlobalFilterChanged', this.getFiltersParams, this);
     },
     getFiltersParams: function(message){
@@ -31,7 +19,7 @@
             {key: '@RatingId', value: ratingValue } 
           ];
           if(this.rating !== 0) {
-              this.messageService.publish({ name, parameters, districts: this.districts, period: periodValue, executor: executorValue, rating: ratingValue});
+              this.messageService.publish({ name, parameters, period: periodValue, executor: executorValue, rating: ratingValue});
           }
       }
     },

@@ -3,5 +3,5 @@
   "Code": "CRM_1551_Rating",
   "Name": "CRM_1551_Rating",
   "ProviderCode": "System.Data.SqlClient",
-  "ConnectionString": "ConnectionString"
+  "ConnectionString": "Data Source=db.ukrods.cf;Initial Catalog=CRM_1551_Rating;User Id=smartbi; Password=BtHSZfwNkQAMscF$JO8#tYTExZ!a3; Connection Timeout=120;"
 }

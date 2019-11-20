@@ -1,154 +1,201 @@
 (function () {
   return {
-      config: {
-          query: {
-              code: 'db_ReestrRating1',
-              parameterValues: [],
-              filterColumns: [],
-              sortColumns: [],
-              skipNotVisibleColumns: true,
-              chunkSize: 1000
-          },
-          columns: [
-              { 
-                dataField: "ForRevision_1Time",
-                caption: "Голосіївська РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Дарницька РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Деснянська РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Дніпровська РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Оболонська РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Печерська РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Подільська  РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Святошинська РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Солом`янська РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Шевченківська РДА"
-              }, {
-                dataField: "ForRevision_2Times",
-                caption: "Шевченківська 1312312",
-                width: 0
-              }
-          ],
-          keyExpr: 'Id',
-          scrolling: {
-            mode: 'virtual'
+        config: {
+            query: {
+                code: 'IndexOfSpeedToExplain',
+                parameterValues: [],
+                filterColumns: [],
+                sortColumns: [],
+                skipNotVisibleColumns: true,
+                chunkSize: 1000
+            },
+            columns: [],
+            summary: {
+              totalItems: [],
+            },
+            scrolling: {
+                mode: 'virtual'
+            },
+            filterRow: {
+                visible: true,
+                applyFilter: "auto"
+            },
+            showBorders: false,
+            showColumnLines: false,
+            showRowLines: true,
+            remoteOperations: null,
+            allowColumnReordering: null,
+            rowAlternationEnabled: null,
+            columnAutoWidth: null,
+            hoverStateEnabled: true,
+            columnWidth: null,
+            wordWrapEnabled: true,
+            allowColumnResizing: true,
+            showFilterRow: true,
+            showHeaderFilter: false,
+            showColumnChooser: false,
+            showColumnFixing: true,
+            groupingAutoExpandAll: null,
         },
-        filterRow: {
-            visible: true,
-            applyFilter: "auto"
+        init: function() {
+            this.results = [];
+            this.dataGridInstance.height = window.innerHeight - 200;
+            this.active = false;
+            document.getElementById('containerSpeedExplained').style.display = 'none';
+            this.sub = this.messageService.subscribe('showTable', this.showTable, this);
+            this.sub1 = this.messageService.subscribe('FilterParameters', this.executeQuery, this);
+            this.sub2 = this.messageService.subscribe( 'ApplyGlobalFilters', this.renderTable, this );
         },
-        showBorders: false,
-        showColumnLines: false,
-        showRowLines: true,
-        remoteOperations: null,
-        allowColumnReordering: null,
-        rowAlternationEnabled: null,
-        columnAutoWidth: null,
-        hoverStateEnabled: true,
-        columnWidth: null,
-        wordWrapEnabled: true,
-        allowColumnResizing: true,
-        showFilterRow: true,
-        showHeaderFilter: false,
-        showColumnChooser: false,
-        showColumnFixing: true,
-        groupingAutoExpandAll: null,
-      },
-      init: function() {
-        this.active = false;
-        document.getElementById('containerSpeedExplained').style.display = 'none';
-        this.sub = this.messageService.subscribe('showTable', this.showTable, this);
-        this.sub1 = this.messageService.subscribe('GlobalFilterChanged', this.getFiltersParams, this);
-        this.sub2 = this.messageService.subscribe( 'ApplyGlobalFilters', this.renderTable, this );
-        
-        this.dataGridInstance.onCellClick.subscribe(e => {
-          e.event.stopImmediatePropagation();
-          if(e.column){
-            if(e.row !== undefined){
-           
-              // Виконавець
-              // Дата
-              // Рейтинг
-              // ИД РДА
-              // ИД типу питання
-              let executor = this.executor;
-              let date = this.period;
-              let ratingid = this.rating;
-              let rdaid = e.column.dataField;
-              let question = e.data.code;
-              debugger;
-              let string = 'executor='+executor+'&date='+date+'&ratingid='+ratingid+'&rdaid='+rdaid+'&question='+question;
-              // window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indicator?"+string);
+        showTable: function(message){
+            let tabName = message.tabName;
+            if(tabName !== 'tabSpeedExplained'){
+                this.active = false;
+                document.getElementById('containerSpeedExplained').style.display = 'none';
+            }else {
+                this.active = true;
+                document.getElementById('containerSpeedExplained').style.display = 'block';
+                this.renderTable();
             }
-          }
-        });
-      },
-      showTable: function(message){
-        let tabName = message.tabName;
-        if(tabName !== 'tabSpeedExplained'){
-          this.active = false;
-          document.getElementById('containerSpeedExplained').style.display = 'none';
-        }else {
-          this.active = true;
-          document.getElementById('containerSpeedExplained').style.display = 'block';
-          this.renderTable();
-        }
-      },
-      getFiltersParams: function(message){
-        let period = message.package.value.values.find(f => f.name === 'period').value;
-        let executor = message.package.value.values.find(f => f.name === 'executor').value;
-        let rating = message.package.value.values.find(f => f.name === 'rating').value;
-        
-        if( period !== '' ){
-            this.period = period;
-            this.executor = executor === null ? 0 :  executor === '' ? 0 : executor.value;
-            this.rating = rating === null ? 0 :  rating === '' ? 0 : rating.value;
-        }
-      }, 
-      renderTable: function () {
-        if(this.period) {
-          if (this.active) {
-
-            let msg = {
-                name: "SetFilterPanelState",
-                package: {
-                    value: false
-                }
+        },
+        executeQuery: function (message) {
+            this.period = message.period;
+            this.rating = message.rating;
+            this.executor = message.executor;
+            this.parameters = message.parameters;
+            this.districts = message.districts;
+            let executeQuery = {
+                queryCode: this.config.query.code,
+                parameterValues: this.parameters,
+                limit: -1
             };
-            this.messageService.publish(msg);
-            this.config.query.parameterValues = [ 
-                {key: '@DateCalc' , value: this.period },
-                {key: '@RDAId', value: this.executor },  
-                {key: '@RatingId', value: this.rating } 
-            ];
-            this.loadData(this.afterLoadDataHandler);  
+            this.queryExecutor(executeQuery, this.setColumns, this);  
+        },
+        setColumns: function (data) {
+          for (let i = 0; i < data.columns.length; i++) {
+                
+            const element = data.columns[i];
+            if( element.code !== 'QuestionTypeId') {
+              let format = undefined;
+              const width = i === 1 ? 400 : 120;
+              const dataField = element.code;
+              const caption = this.setCaption(element.name);
+              const columnSliced =  element.name.slice(0, 7);
+              if(columnSliced === 'Percent') {
+                  format = function (value) {
+                      return value.toFixed(2);
+                  }
+              }
+              const obj = { dataField, caption, width, format }
+              this.config.columns.push(obj);
+            }
+          }   
+          this.config.keyExpr = data.columns[0].code;
+          this.config.columns[0].fixed = true;
+          this.config.columns[1].alignment = 'center';
+          let executeQuery = {
+              queryCode: 'IndexOfSpeedToExplain_Percent',
+              parameterValues: this.parameters,
+              limit: -1
+          };
+          this.queryExecutor(executeQuery, this.setColumnsSummary, this); 
+        },
+        setCaption: function (caption) {
+            if(caption === 'QuestionTypeName') {
+                return '';
+            } else if(caption === 'EtalonDays') {
+                return 'Середнє (еталон)';
+            } else {
+                const id = +caption.slice(-1);
+                const index = this.districts.findIndex(el => el.id === id );
+                return this.districts[index].name;
+            }
+        },
+        setColumnsSummary: function (data) {
+
+          for (let i = 0; i < data.columns.length; i++) {
+              const element = data.columns[i];
+              const dataField = "Place_" + element.code;
+              const value = data.rows[0].values[i];
+              const dataType = element.dataType;
+
+              let objAvg = {
+                  column: dataField,
+                  summaryType: "avg",
+                  customizeText: function(data) {
+                      return data.value.toFixed(2);
+                  }
+              }
+              let obj = {
+                  column: dataField,
+                  name: dataField,
+                  summaryType: "custom"
+              }
+              this.results.push(value);
+              this.config.summary.totalItems.push(objAvg);
+              this.config.summary.totalItems.push(obj);
           }
+          this.config.summary.calculateCustomSummary = this.calculateCustomSummary.bind(this);
+          this.config.query.parameterValues = this.parameters;
+          this.loadData(this.afterLoadDataHandler);        
+        },
+        calculateCustomSummary: function (options) {
+          switch (options.name) {
+              case 'Place_2000':
+                  options.totalValue = this.results[0].toFixed(2);
+                  break;
+              case 'Place_2001':
+                  options.totalValue = this.results[1].toFixed(2);
+                  break;
+              case 'Place_2002':
+                  options.totalValue = this.results[2].toFixed(2);
+                  break;
+              case 'Place_2003':
+                  options.totalValue = this.results[3].toFixed(2);
+                  break;
+              case 'Place_2004':
+                  options.totalValue = this.results[4].toFixed(2);
+                  break;
+              case 'Place_2005':
+                  options.totalValue = this.results[5].toFixed(2);
+                  break;
+              case 'Place_2006':
+                  options.totalValue = this.results[6].toFixed(2);
+                  break;
+              case 'Place_2007':
+                  options.totalValue = this.results[7].toFixed(2);
+                  break;
+              case 'Place_2008':
+                  options.totalValue = this.results[8].toFixed(2);
+                  break;
+              case 'Place_2009':
+                  options.totalValue = this.results[9].toFixed(2);
+                  break;
+              default:
+                  break;
+          }
+        },
+        renderTable: function () {
+            if (this.period) {
+                if (this.active) {
+                    let msg = {
+                        name: "SetFilterPanelState",
+                        package: {
+                            value: false
+                        }
+                    };
+                    this.messageService.publish(msg);
+                    this.config.query.parameterValues = this.parameters;
+                    this.loadData(this.afterLoadDataHandler);  
+                }
+            }
+        },
+        afterLoadDataHandler: function(data) {
+            this.render();
+        },
+        destroy: function () {
+            this.sub.unsubscribe();
+            this.sub1.unsubscribe();
+            this.sub2.unsubscribe();
         }
-      },
-      afterLoadDataHandler: function(data) {
-        this.render();
-      },
-      destroy: function () {
-        this.sub.unsubscribe();
-        this.sub1.unsubscribe();
-        this.sub2.unsubscribe();
-      }
   };
 }());
