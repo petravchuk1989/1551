@@ -1,0 +1,1 @@
+Data Source=db.ukrods.cf;Initial Catalog=CRM_1551_Rating;User Id=smartbi; Password=BtHSZfwNkQAMscF$JO8#tYTExZ!a3; Connection Timeout=110;
