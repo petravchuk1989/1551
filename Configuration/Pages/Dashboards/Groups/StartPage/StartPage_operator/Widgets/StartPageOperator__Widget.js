@@ -26,7 +26,7 @@
             listItem.addEventListener( 'click', event => {
                 let target = event.currentTarget;
                 let phoneNumber = document.getElementById('listPhoneNumberInput').value;
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone="+phoneNumber+"&type="+target.type);
+                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone="+phoneNumber+"&type="+target.type+"&sipcallid=0");
             });
         });
         const listTitle  =  this.createElement('div', { id:'listTitle', innerText: 'Виберіть тип звернення:' } );
@@ -132,7 +132,7 @@
           let target = event.currentTarget;
           let number = modalNumber.value
           console.log(number);
-          window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone="+number+"&type=1");
+          window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/CreateAppeal/add?phone="+number+"&type=1&sipcallid=0");
           CONTAINER.removeChild(container.lastElementChild);
       });
       modalBtnClose.addEventListener( 'click', event => {

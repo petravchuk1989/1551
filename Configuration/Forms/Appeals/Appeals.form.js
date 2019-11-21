@@ -1,5 +1,5 @@
 (function () {
-    return {
+  return {
         RecordId: 0,
         StateServerId: 0,
 
@@ -517,6 +517,11 @@
                         val_phone = getDataFromLink["phone"]
                     };
                     
+                    
+                var val_sipcallid = '';
+                val_sipcallid = getDataFromLink["sipcallid"]
+                    
+                    
                     const queryForGetValue = {
                         queryCode: 'Appeals_Insert',
                         parameterValues: [
@@ -527,6 +532,10 @@
                             {
                                 key: '@phone_number',
                                 value: val_phone
+                            },
+                            {
+                                key: '@sipcallid',
+                                value: val_sipcallid
                             }
                         ]
                     };
