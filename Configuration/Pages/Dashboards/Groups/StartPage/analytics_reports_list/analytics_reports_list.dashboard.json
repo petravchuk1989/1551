@@ -3,6 +3,6 @@
   "Description": "",
   "DescriptionUrl": "",
   "ModelType": "Dashboard",
-  "Code": "reports_list",
+  "Code": "analytics_reports_list",
   "Name": "Список звiтiв"
 }
