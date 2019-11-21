@@ -14,11 +14,12 @@ select
     	left join Questions as q on q.question_type_id = eqt.question_type_id and q.[object_id] = eo.[object_id]
     	left join Assignments on Assignments.Id = q.last_assignment_for_execution_id
     	left join Organizations on Organizations.Id = Assignments.executor_organization_id
-	where e.Id = @Id
+	where (e.Id = @Id
 	and q.registration_date >= e.registration_date
 	and eqt.[is_hard_connection] = 1
 	AND Assignments.main_executor = 1
-	AND Assignments.assignment_state_id <> 5
+	AND Assignments.assignment_state_id <> 5)
+	or q.event_id = e.Id
     and 
         #filter_columns#
         #sort_columns#
