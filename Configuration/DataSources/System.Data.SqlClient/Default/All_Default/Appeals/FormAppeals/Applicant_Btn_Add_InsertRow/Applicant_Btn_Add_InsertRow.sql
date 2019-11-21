@@ -67,12 +67,7 @@
 		      where applicant_id = @Applicant_Id and IsMain = 1
 		end
 
-
-
-
-
-
-	    select @Applicant_Id as ApplicantId  
+	    select @Applicant_Id as ApplicantId 
 	end
 	else 
 	begin
@@ -107,15 +102,22 @@
 				   ,@Applicant_Email
 				   ,@Applicant_Type
 				   )
-				   
-			
+				   		
 			set @app_id = (select top 1 Id from @output)
 
+			declare @is_phoneSaved bit;
+			set @is_phoneSaved = case when 
+			(select Id from ApplicantPhones where applicant_id = @app_id and phone_number = @Applicant_Phone) is null then 0
+			else 1 end
+
+			if(@is_phoneSaved = 0)
+			begin
 			insert into [dbo].[ApplicantPhones]  (applicant_id, phone_type_id, phone_number, IsMain, CreatedAt)
 			values (@app_id, isnull(@Applicant_TypePhone,1), replace(replace(REPLACE(@Applicant_Phone, N'(', ''), N')', N''), N'-', N''), 1, getutcdate())
+			end
 
-
-
+			if(@Applicant_Building is not null)
+			begin
 			insert into [dbo].[LiveAddress] (applicant_id, building_id, house_block, entrance, flat, main, active)
 			values (@app_id, @Applicant_Building, @Applicant_HouseBlock, @Applicant_Entrance, @Applicant_Flat, 1, 1)
 			
@@ -141,10 +143,10 @@
   where applicant_id=@app_id)
   where Id=@app_id
   --арт
-
+              end
 			  update [dbo].[Appeals] set [applicant_id] = @app_id
 			  where [Id] = @AppealId
 			  
 			select @app_id as ApplicantId  
-	
+
   end

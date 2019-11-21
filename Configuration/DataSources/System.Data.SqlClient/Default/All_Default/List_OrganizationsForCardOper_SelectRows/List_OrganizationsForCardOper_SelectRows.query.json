@@ -23,7 +23,7 @@
     },
     {
       "Code": "Name",
-      "Name": "Назву",
+      "Name": "Назва",
       "Position": 2,
       "IsPrintable": false,
       "SqlName": "[short_name]",

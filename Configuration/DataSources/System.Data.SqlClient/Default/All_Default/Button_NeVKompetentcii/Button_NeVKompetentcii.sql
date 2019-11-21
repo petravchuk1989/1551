@@ -240,6 +240,7 @@ BEGIN
 									,[edit_date] = getutcdate()
 									,[user_edit_id] = @user_edit_id
 									,control_result_id = @new_resol
+									,control_date = GETUTCDATE()
 								WHERE assignment_consideration_іd = @current_consid
 
 			UPDATE Assignments 
@@ -322,6 +323,7 @@ BEGIN
 									,[edit_date] = getutcdate()
 									,[user_edit_id] = @user_edit_id
 									,control_result_id = @new_resol
+									,control_date = GETUTCDATE()
 								WHERE assignment_consideration_іd = @current_consid
 
 			DELETE FROM @output;

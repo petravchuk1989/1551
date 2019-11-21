@@ -78,6 +78,7 @@ and [Assignments].Id in (select Id from @table t)
     set
      assignment_resolution_id = 4
     ,control_result_id = NULL
+    ,control_date = NULL
     ,control_type_id = 2
     ,edit_date = GETUTCDATE()
     ,user_edit_id = @user
