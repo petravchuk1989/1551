@@ -198,7 +198,7 @@
         this.dataGridInstance.onCellClick.subscribe(e => {
             e.event.stopImmediatePropagation();
             if(e.column){
-                if(e.row !== undefined
+                if( e.row !== undefined
                     && e.column.dataField !== 'IntegratedMetric_PerformanceLevel'
                     && e.column.dataField !== 'PercentPleasureOfExecution'
                     && e.column.dataField !== 'IndexOfFactToExecution'
@@ -231,7 +231,6 @@
                 setColStyles(col);
             }
         });
-       
         this.config.onContentReady = this.onMyContentReady.bind(this);
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
     },
@@ -244,7 +243,8 @@
             {key: '@RDAId', value: this.executor },  
             {key: '@RatingId', value: this.rating } 
         ];
-        this.renderTable();
+        this.loadData(this.afterLoadDataHandler);
+        // this.renderTable();
     },
     renderTable: function (message) {
         let msg = {

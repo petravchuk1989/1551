@@ -1,10 +1,10 @@
 (function () {
-  return {
-      placeholder: 'Рейтинг',
+    return {
+      placeholder: 'Виконавець',
       keyValue: 'Id',
       displayValue: 'Name',
       baseQueryOptions: {
-          queryCode: 'ListRating',
+          queryCode: 'ListRDA',
           filterColumns: null,
           limit: -1,
           parameterValues: [],
@@ -21,6 +21,9 @@
       },
       onClearFilter: function() {
       },
+      initValue: function() {
+        this.setDefaultValue('first'); 
+      }, 
       setValues: function(item) {
           let message = {
               name: '',
@@ -31,4 +34,5 @@
           this.messageService.publish(message);
       }
   };
-}());
+  }());
+  
