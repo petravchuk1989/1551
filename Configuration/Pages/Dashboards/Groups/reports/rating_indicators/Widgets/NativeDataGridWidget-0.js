@@ -67,6 +67,17 @@
 
     },
     init: function() {
+        this.sub = this.messageService.subscribe( 'FiltersParams', this.setFiltersParams, this );  
+    },
+    setFiltersParams: function (message) {
+        this.date = message.date;
+        this.executor =   message.executor;
+        this.rating =   message.rating;
+        // this.config.query.parameterValues = [ 
+        //     {key: '@DateCalc' , value: this.date },
+        //     {key: '@RDAId', value: this.executor },  
+        //     {key: '@RatingId', value: this.rating } 
+        // ];
         this.loadData(this.afterLoadDataHandler);
     },
     afterLoadDataHandler: function(data) {
