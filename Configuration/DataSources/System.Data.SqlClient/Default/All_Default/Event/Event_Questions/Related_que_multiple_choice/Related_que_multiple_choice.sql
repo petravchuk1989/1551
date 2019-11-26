@@ -11,6 +11,7 @@ FROM [dbo].[Events] AS e
 	JOIN Questions
 		ON Questions.question_type_id = EventClass_QuestionType.question_type_id
 		AND Questions.[object_id] = EventObjects.[object_id]
+		and Questions.event_id is NULL
 	LEFT JOIN Assignments ON Assignments.Id = Questions.last_assignment_for_execution_id
 	LEFT JOIN Organizations ON Organizations.Id = Assignments.executor_organization_id
 	LEFT JOIN QuestionTypes ON QuestionTypes.Id = Questions.question_type_id
