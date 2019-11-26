@@ -53,7 +53,7 @@
             "border": "none",
             "children": [
               {
-                "width": "auto",
+                "width": "calc(100% - 10px)",
                 "margin": "0 5px 10px",
                 "flexWrap": "wrap",
                 "flexDirection": "row",
@@ -75,7 +75,7 @@
                 "backgroundColor": "white"
               },
               {
-                "width": "auto",
+                "width": "calc(100% - 10px)",
                 "margin": "0 5px 10px",
                 "flexWrap": "wrap",
                 "flexDirection": "row",
@@ -85,7 +85,7 @@
                 "border": "none",
                 "children": [
                   {
-                    "width": "auto",
+                    "width": "calc(50% - 10px)",
                     "margin": "0 5px 10px",
                     "flexWrap": "wrap",
                     "flexDirection": "row",
@@ -107,7 +107,7 @@
                     "backgroundColor": "white"
                   },
                   {
-                    "width": "auto",
+                    "width": "calc(50% - 10px)",
                     "margin": "0 5px 10px",
                     "flexWrap": "wrap",
                     "flexDirection": "row",
@@ -140,7 +140,8 @@
             "height": "auto",
             "minHeight": "100px",
             "minWidth": "100px",
-            "backgroundColor": "white"
+            "backgroundColor": "white",
+            "containerId": "infoContainer"
           }
         ],
         "id": "Container-0",
