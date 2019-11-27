@@ -46,6 +46,7 @@ left join (select   RDAId,  AVG(Indicator) as IndicatorAVG
 		   group by RDAId
 		) t2 on t2.RDAId = pvt.RDAId
 left join [CRM_1551_Analitics].[dbo].[Organizations] as t3 on t3.Id = pvt.RDAId 
+ORDER BY rnk DESC
 '
 --select @q
 exec (@q)

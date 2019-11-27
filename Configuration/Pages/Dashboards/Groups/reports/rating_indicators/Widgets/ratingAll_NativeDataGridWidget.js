@@ -3,11 +3,7 @@
         config: {
             query: {
                 code: 'db_ReestrRating1',
-                parameterValues: [
-                    {key: '@DateCalc' , value: 1 },
-                    {key: '@RDAId', value: 0 },
-                    {key: '@RatingId', value: 1 }
-                ],
+                parameterValues: [],
                 filterColumns: [],
                 sortColumns: [],
                 skipNotVisibleColumns: true,
@@ -15,16 +11,17 @@
             },
             columns: [
                 {
-                    dataField: 'RDAId',
+                    dataField: 'RDAName',
                     caption: 'Назва установи',
-                    fixed: true
+                    fixed: true,
+                    width: 200
                 }, {    
                     caption: 'Зареєстровано, В роботі, На доопрацюванні, На перевірці за попередній період',
                     alignItems: 'middle',
                     columns: [
                         {
                             dataField: 'PreviousPeriod_Total',
-                            caption: 'Всього',
+                            caption: 'Всього'
                         }, {
                             dataField: 'PreviousPeriod_Registered',
                             caption: 'Зареєстровано',
@@ -138,31 +135,58 @@
                 }, {
                     dataField: 'PercentClosedOnTime',
                     caption: '% вчасно закритих',
+                    format: function (value) { 
+                        return value.toFixed(2);
+                    }
                 }, {
                     dataField: 'PercentOfExecution',
                     caption: '% виконання',
+                    format: function (value) { 
+                        return value.toFixed(2);
+                    }
                 }, {
                     dataField: 'PercentOnVeracity',
                     caption: '% достовірності',
+                    format: function (value) { 
+                        return value.toFixed(2);
+                    }
                 }, {
                     dataField: 'IndexOfSpeedToExecution',
                     caption: 'Індекс швидкості виконання',
+                    format: function (value) { 
+                        return value.toFixed(2);
+                    }
                 }, {
                     dataField: 'IndexOfSpeedToExplain',
                     caption: 'Індекс швидкості роз\'яснення',
+                    format: function (value) { 
+                        return value.toFixed(2);
+                    }
                 }, {
                     dataField: 'IndexOfFactToExecution',
                     caption: 'Індекс фактичного виконання',
+                    format: function (value) { 
+                        return value.toFixed(2);
+                    }
                 }, {
                     dataField: 'PercentPleasureOfExecution',
                     caption: '% задоволеність виконанням',
+                    format: function (value) { 
+                        return value.toFixed(2);
+                    }
                 }, {
                     dataField: 'IntegratedMetric_PerformanceLevel',
                     caption: 'Рівень виконання',
+                    format: function (value) { 
+                        return value.toFixed(2);
+                    }
                 }    
             ],
             columnChooser: {
                 enabled: true
+            },
+            sorting: {
+                mode: "multiple"
             },   
             showBorders: false,
             showColumnLines: true,
@@ -181,6 +205,7 @@
             showColumnFixing: true,
             groupingAutoExpandAll: null
         },
+        
         init: function() {
             let msg = {
                 name: "SetFilterPanelState",
@@ -213,6 +238,7 @@
                         window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/district_rating_indicator?"+string);
                     }
                     if(e.row !== undefined && e.column.dataField === 'IntegratedMetric_PerformanceLevel') {
+                        this.showPagePreloader('');
                         this.messageService.publish({ name: 'showInfo'});
                     }
                 }
@@ -220,7 +246,7 @@
 
             this.config.columns.forEach( col => {
                 function setColStyles(col){
-                    col.width = '120';
+                    col.dataField === "RDAName" ? col.width = '200' : col.width = '120';
                     col.alignment = 'center';
                     col.verticalAlignment = 'Bottom';
                 }
@@ -235,16 +261,18 @@
             this.config.onContentReady = this.onMyContentReady.bind(this);
             this.config.onToolbarPreparing = this.createTableButton.bind(this);
         },
+
         setFiltersParams: function (message) {
             this.date = message.date;
             this.executor =   message.executor;
             this.rating =   message.rating;
-            // this.config.query.parameterValues = [ 
-            //     {key: '@DateCalc' , value: this.date },
-            //     {key: '@RDAId', value: this.executor },  
-            //     {key: '@RatingId', value: this.rating } 
-            // ];
+            this.config.query.parameterValues = [ 
+                {key: '@DateCalc' , value: this.date },
+                {key: '@RDAId', value: this.executor },
+                {key: '@RatingId', value: this.rating }
+            ];
         },
+
         renderTable: function (message) {
             let msg = {
                 name: "SetFilterPanelState",
@@ -255,7 +283,8 @@
             this.messageService.publish(msg);
             
             this.loadData(this.afterLoadDataHandler);
-        },    
+        }, 
+
         createTableButton: function (e) {
             let toolbarItems = e.toolbarOptions.items;
 
@@ -274,10 +303,12 @@
                             parameterValues: this.config.query.parameterValues
                         };
                         this.queryExecutor(exportQuery, this.myCreateExcel, this);
+                        this.showPreloader = false;
                     }.bind(this)
                 },
             });
         },
+
         myCreateExcel: function (data) {
             this.showPagePreloader('Зачекайте, формується документ');
             let visibleColumns = this.visibleColumns;
@@ -297,9 +328,8 @@
             let cellInfoCaption = worksheet.getCell('A1');
             cellInfoCaption.value = 'Показники рейтингів';
             let cellInfoDate = worksheet.getCell('A2');
-            cellInfoDate.value = 'за: ' + this.changeDateTimeValues(this.period);
+            cellInfoDate.value = 'за: ' + this.date;
             let emptyCellInfoCaption = worksheet.getCell('A3');
-            // cellInfoDate.value = 'з: ' + this.changeDateTimeValues(this.period)+' , по: ' + this.changeDateTimeValues(this.dateTo);
             emptyCellInfoCaption.value = ' ';
             worksheet.mergeCells(1,visibleColumns.length,1,1); // top,left,bottom,right
             worksheet.mergeCells(2,visibleColumns.length,2,1); // top,left,bottom,right
@@ -441,28 +471,15 @@
 
             this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
         },
-        changeDateTimeValues: function(value){
-            
-            let date = new Date(value);
-            let dd = date.getDate();
-            let MM = date.getMonth();
-            let yyyy = date.getFullYear();
-            let HH = date.getHours();
-            let mm = date.getMinutes();
-            MM += 1;
-            if( (dd.toString()).length === 1){  dd = '0' + dd; }
-            if( (MM.toString()).length === 1){ MM = '0' + MM; }
-            if( (HH.toString()).length === 1){  HH = '0' + HH; }
-            if( (mm.toString()).length === 1){ mm = '0' + mm; }
-            let trueDate = dd+'.'+MM+'.' + yyyy +' '+ HH +':'+ mm;
-            return trueDate;
-        },
+
         afterLoadDataHandler: function(data) {
             this.render();
         },
+
         onMyContentReady: function () {
             this.visibleColumns = this.dataGridInstance.instance.getVisibleColumns();
         },
+
         destroy: function () {
             this.sub.unsubscribe();
             this.sub1.unsubscribe();
