@@ -1,0 +1,22 @@
+{
+  "ModelType": "Detail",
+  "Code": "det_PersonExecutorChooseObjects",
+  "Name": "Об'єкти",
+  "FormCode": "Form_PersonExecutorChooseObjects",
+  "SelectRowsQueryCode": "ak_PersonExecutorChooseObjectsSelectRows_det",
+  "SelectRowQueryCode": "ak_PersonExecutorChooseObjectsSelectRow",
+  "DeleteQueryCode": "ak_PersonExecutorChooseObjectsDeleteRow",
+  "UpdateQueryCode": "ak_PersonExecutorChooseObjectsUpdateRow",
+  "Add": {
+    "InsertQueryCode": "ak_PersonExecutorChooseObjectsInsertRow"
+  },
+  "SectionCode": "",
+  "Position": 2,
+  "IsExpand": true,
+  "QueryParameters": [
+    {
+      "FormFieldName": "Id",
+      "ParameterCode": "@person_executor_choose_id"
+    }
+  ]
+}
