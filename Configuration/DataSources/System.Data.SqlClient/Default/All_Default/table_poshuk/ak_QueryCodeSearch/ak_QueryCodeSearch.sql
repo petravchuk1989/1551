@@ -680,7 +680,7 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   [Assignments] with (nolock)
   inner join [Questions] with (nolock) on [Assignments].question_id=[Questions].Id
   inner join [Appeals] with (nolock) on [Questions].[appeal_id]=[Appeals].Id
-  inner join [Applicants] with (nolock) on [Applicants].Id=[Appeals].applicant_id
+  left join [Applicants] with (nolock) on [Applicants].Id=[Appeals].applicant_id
   '+@filter_zayavnyk_phone_number+N' App_phone on [Applicants].Id=App_phone.applicant_id
   '+@filter_transfer_date+N' [AssignmentConsiderations] with (nolock) on [AssignmentConsiderations].Id = Assignments.current_assignment_consideration_id
   '+@filter_assigm_assignment_state+N' [AssignmentStates] with (nolock) on [Assignments].assignment_state_id=[AssignmentStates].Id
@@ -695,8 +695,8 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   '+@filter_zayavnyk_entrance_zayavnyk_flat_district+N' [LiveAddress] with (nolock) on [LiveAddress].applicant_id=[Applicants].Id
   '+@filter_appeals_district+' [Buildings] with (nolock) on [LiveAddress].building_id=[Buildings].Id
   '+@filter_appeals_district+N'  [Districts]  on [Buildings].district_id=[Districts].Id 
-  inner join [Streets] with (nolock) on [Buildings].street_id=[Streets].Id
-  left join [StreetTypes] with (nolock) on [Streets].[street_type_id]=[StreetTypes].Id
+  '+@filter_appeals_district+N' [Streets] with (nolock) on [Buildings].street_id=[Streets].Id
+  '+@filter_appeals_district+N' [StreetTypes] with (nolock) on [Streets].[street_type_id]=[StreetTypes].Id
   '+@filter_zayavnyk_applicant_privilage+N' [ApplicantPrivilege] with (nolock) on [Applicants].applicant_privilage_id=[ApplicantPrivilege].Id
   '+@filter_zayavnyk_social_state+' [SocialStates] with (nolock) on [Applicants].social_state_id=[SocialStates].Id
   '+@filter_zayavnyk_applicant_type+' [ApplicantTypes] with (nolock) on [Applicants].applicant_type_id=[ApplicantTypes].Id
