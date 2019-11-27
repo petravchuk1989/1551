@@ -9,16 +9,14 @@
                 .contentBox{
                     height: 100%;
                 }
-
-                .sphere{
+                #chartInfo, .sphere{
                     display: flex;
                     align-items: center;
                 }
-
                 .sphere__text{
                     display: flex;
                     align-items: center;
-                    font-size: 18px;
+                    font-size: 14px;
                     font-weight: 600;
                     margin-left: 10px;
                     padding: 10px;

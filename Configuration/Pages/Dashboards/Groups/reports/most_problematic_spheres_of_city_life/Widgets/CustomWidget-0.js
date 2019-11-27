@@ -7,10 +7,12 @@
             `
             <style>
                 #widgetTitle{
-                    width: 37%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     font-weight: 600;
                     font-size: 20px;
-                    margin: 0 auto;
                 }
             </style>
             <div id='widgetTitle' ></div>
