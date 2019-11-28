@@ -1,7 +1,7 @@
 {
   "ModelType": "Query",
-  "Code": "cx_Applicants_OtherResidentsByPhone_SelectRows",
-  "Name": "cx_Applicants_OtherResidentsByPhone_SelectRows",
+  "Code": "Appl_OtherByPhone_SelectRows",
+  "Name": "Appl_OtherByPhone_SelectRows",
   "ConnectionCode": "Default",
   "IsUsedForRightsFilter": false,
   "Columns": [

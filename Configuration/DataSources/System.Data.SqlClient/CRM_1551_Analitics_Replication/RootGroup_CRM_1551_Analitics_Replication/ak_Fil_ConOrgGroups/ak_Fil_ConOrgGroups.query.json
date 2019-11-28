@@ -1,7 +1,7 @@
 {
   "ModelType": "Query",
-  "Code": "ak_Filter_ConstructorOrganizationGroups",
-  "Name": "ak_Filter_ConstructorOrganizationGroups",
+  "Code": "ak_Fil_ConOrgGroups",
+  "Name": "ak_Fil_ConOrgGroups",
   "ConnectionCode": "CRM_1551_Analitics_Replication",
   "IsUsedForRightsFilter": false,
   "Columns": [

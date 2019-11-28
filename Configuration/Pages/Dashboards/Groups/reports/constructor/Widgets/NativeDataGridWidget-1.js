@@ -2,7 +2,7 @@
   return {
     config: {
         query: {
-            code: 'ak_Filter_ConstructorOrganizationGroups',
+            code: 'ak_Fil_ConOrgGroups',
             parameterValues: [],
             filterColumns: [],
             sortColumns: [],
