@@ -18,6 +18,7 @@
             {
                 dataField: 'RDAId',
                 caption: 'Назва установи',
+                fixed: true
             }, {    
                 caption: 'Зареєстровано, В роботі, На доопрацюванні, На перевірці за попередній період',
                 alignItems: 'middle',
@@ -191,13 +192,13 @@
         };
         this.messageService.publish(msg);
 
-        this.sub = this.messageService.subscribe( 'GlobalFilterChanged', this.getFiltersParams, this );
+        this.sub = this.messageService.subscribe( 'FiltersParams', this.setFiltersParams, this );
         this.sub1 = this.messageService.subscribe( 'ApplyGlobalFilters', this.renderTable, this );
 
         this.dataGridInstance.onCellClick.subscribe(e => {
             e.event.stopImmediatePropagation();
             if(e.column){
-                if(e.row !== undefined
+                if( e.row !== undefined
                     && e.column.dataField !== 'IntegratedMetric_PerformanceLevel'
                     && e.column.dataField !== 'PercentPleasureOfExecution'
                     && e.column.dataField !== 'IndexOfFactToExecution'
@@ -207,11 +208,11 @@
                     && e.column.dataField !== 'PercentOfExecution'
                     && e.column.dataField !== 'PercentClosedOnTime'
                 ){
-                    let rdaid = e.data.RDAId;
-                    let ratingid = e.data.RatingId;
-                    let columncode = e.column.dataField;
-                    let date = this.period;
-                    let string = 'rdaid='+rdaid+'&ratingid='+ratingid+'&columncode='+columncode+'&date='+date;
+                    const rdaid = e.data.RDAId;
+                    const ratingid = e.data.RatingId;
+                    const columncode = e.column.dataField;
+                    const date = this.date;
+                    const string = 'rdaid='+rdaid+'&ratingid='+ratingid+'&columncode='+columncode+'&date='+date;
                     window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/district_rating_indicator?"+string);
                 }
             }
@@ -230,9 +231,20 @@
                 setColStyles(col);
             }
         });
-       
         this.config.onContentReady = this.onMyContentReady.bind(this);
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
+    },
+    setFiltersParams: function (message) {
+        this.date = message.date;
+        this.executor =   message.executor;
+        this.rating =   message.rating;
+        this.config.query.parameterValues = [ 
+            {key: '@DateCalc' , value: this.date },
+            {key: '@RDAId', value: this.executor },  
+            {key: '@RatingId', value: this.rating } 
+        ];
+        this.loadData(this.afterLoadDataHandler);
+        // this.renderTable();
     },
     renderTable: function (message) {
         let msg = {
@@ -242,24 +254,9 @@
             }
         };
         this.messageService.publish(msg);
-        this.config.query.parameterValues = [ 
-            {key: '@DateCalc' , value: this.period },
-            {key: '@RDAId', value: this.executor },  
-            {key: '@RatingId', value: this.rating } 
-        ];
-        this.loadData(this.afterLoadDataHandler);
-    },
-    getFiltersParams: function(message){
-        let period = message.package.value.values.find(f => f.name === 'period').value;
-        let executor = message.package.value.values.find(f => f.name === 'executor').value;
-        let rating = message.package.value.values.find(f => f.name === 'rating').value;
         
-        if( period !== '' ){
-            this.period = period;
-            this.executor = executor === null ? 0 :  executor === '' ? 0 : executor.value;
-            this.rating = rating === null ? 0 :  rating === '' ? 0 : rating.value;
-        }
-    },     
+        this.loadData(this.afterLoadDataHandler);
+    },    
     createTableButton: function (e) {
         let toolbarItems = e.toolbarOptions.items;
 
@@ -275,11 +272,7 @@
                     let exportQuery = {
                         queryCode: this.config.query.code,
                         limit: -1,
-                        parameterValues: [
-                            {key: '@DateCalc' , value: 1 },
-                            {key: '@RDAId', value: 0 },
-                            {key: '@RatingId', value: 1 }
-                        ]
+                        parameterValues: this.config.query.parameterValues
                     };
                     this.queryExecutor(exportQuery, this.myCreateExcel, this);
                 }.bind(this)
@@ -341,30 +334,6 @@
         worksheet.getRow(4).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
         worksheet.getRow(4).height = 70;
         worksheet.getRow(5).height = 70;
-
-        // for(let  i = 0; i < rows.length + 1; i++ ){
-        //     let number = i + 5 ;
-        //     let row = worksheet.getRow(number);
-        //     row.height = 100;
-        //     worksheet.getRow(number).border = {
-        //         top: {style:'thin'},
-        //         left: {style:'thin'},
-        //         bottom: {style:'thin'},
-        //         right: {style:'thin'}
-        //     };
-        //     worksheet.getRow(number).alignment = { 
-        //         vertical: 'middle',
-        //         horizontal: 'center',
-        //         wrapText: true 
-        //     };
-        //     worksheet.getRow(number).font = {
-        //         name: 'Times New Roman',
-        //         family: 4, size: 10,
-        //         underline: false,
-        //         bold: false ,
-        //         italic: false
-        //     };
-        // };
 
         this.subColumnCaption = [];
         this.allColumns = [];
@@ -488,12 +457,16 @@
         if( (mm.toString()).length === 1){ mm = '0' + mm; }
         let trueDate = dd+'.'+MM+'.' + yyyy +' '+ HH +':'+ mm;
         return trueDate;
-    },  
+    },
     afterLoadDataHandler: function(data) {
         this.render();
     },
     onMyContentReady: function () {
         this.visibleColumns = this.dataGridInstance.instance.getVisibleColumns();
+    },
+    destroy: function () {
+        this.sub.unsubscribe();
+        this.sub1.unsubscribe();
     },
 };
 }());
