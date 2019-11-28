@@ -9,6 +9,8 @@ declare @Id int=2974015;
 declare @result int=4;
 declare @user_id nvarchar(128)=N'Вася';
 */
+declare @Id int =@appeal_id;
+
 declare @output table ([Id] int)
 
 declare @question_id int=(select question_id from [Assignments] where Id=@Id);
@@ -34,6 +36,8 @@ set assignment_resolution_id  = 9
 ,[control_date]=GETUTCDATE()
 ,[edit_date]=GETUTCDATE()
 ,[user_edit_id]=@user_id
+,[grade]=@grade
+,[grade_comment]=@grade_comment
 where assignment_consideration_іd in 
 (select [AssignmentConsiderations].Id
   from [Assignments]
@@ -67,10 +71,10 @@ where assignment_consideration_іd in
       ,9--[assignment_resolution_id]
       ,4--[control_result_id]
       ,null--[organization_id]
-      ,null--[control_comment]
+      ,@grade_comment--[control_comment]
       ,getutcdate() --[control_date]
       ,@user_id --[user_id]
-      ,null--[grade]
+      ,@grade--[grade] 
       ,null--[grade_comment]
       ,null--[rework_counter]
       ,null--[missed_call_counter]
@@ -94,6 +98,8 @@ set assignment_resolution_id  = 8
 ,[rework_counter]=case when [rework_counter] is null then 1 else [rework_counter]+1 end
 ,[edit_date]=GETUTCDATE()
 ,[user_edit_id]=@user_id
+,[grade]=@grade
+,[grade_comment]=@grade_comment
 where assignment_consideration_іd in 
 (select [AssignmentConsiderations].Id
   from [Assignments]
@@ -140,7 +146,7 @@ where Id=@Id
 	end
 
 
-
+select N'Ok' as [Result]
 
 --  if (select count(1) from [CRM_1551_Analitics].[dbo].[AssignmentRevisions]
 --    where [assignment_consideration_іd] in (select [AssignmentConsiderations].Id
