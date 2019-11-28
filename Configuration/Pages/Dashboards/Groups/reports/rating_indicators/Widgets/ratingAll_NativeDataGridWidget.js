@@ -254,7 +254,7 @@
 
             this.config.columns.forEach( col => {
                 function setColStyles(col){
-                    col.dataField === "RDAName" ? col.width = '200' : col.width = '120';
+                    col.width = col.dataField === "RDAName" ? '200' : '120';
                     col.alignment = 'center';
                     col.verticalAlignment = 'Bottom';
                 }

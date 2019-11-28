@@ -215,5 +215,3 @@ cast((cast(doneClosedQty as numeric(18,6)) / (cast(doneClosedQty as numeric(18,6
   from 
   #temp_MainMain 
   order by AllCount desc
-
- 
