@@ -1,7 +1,7 @@
 {
   "ModelType": "Query",
-  "Code": "cx_Ass_Documents_ReadOnly_SelectRows",
-  "Name": "cx_Ass_Documents_ReadOnly_SelectRows",
+  "Code": "AssDoc_SelectRow",
+  "Name": "AssDoc_SelectRow",
   "ConnectionCode": "Default",
   "IsUsedForRightsFilter": false,
   "Columns": [
@@ -10,26 +10,36 @@
       "Name": "Id",
       "Position": 0,
       "IsPrimaryKey": true,
-      "ViewState": "Hidden",
       "IsPrintable": false
     },
     {
       "Code": "doc_type_id",
-      "Name": "Тип",
+      "Name": "doc_type_id",
       "Position": 1,
       "IsPrintable": false
     },
     {
       "Code": "add_date",
-      "Name": "Дата створення",
+      "Name": "add_date",
       "Position": 2,
       "IsPrintable": false
     },
     {
       "Code": "name",
-      "Name": "Назва",
+      "Name": "name",
       "Position": 3,
       "IsPrintable": false
+    },
+    {
+      "Code": "doc_type_name",
+      "Name": "doc_type_name",
+      "Position": 4,
+      "ReferenceKeyCode": "doc_type_id"
+    },
+    {
+      "Code": "content",
+      "Name": "content",
+      "Position": 5
     }
   ],
   "Parameters": [
@@ -38,18 +48,6 @@
       "Name": "Id",
       "ParameterType": "Integer",
       "IsPrimaryKey": true
-    },
-    {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
-    },
-    {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
-      "ParameterType": "Integer",
-      "IsPageLimitRows": true
     }
   ]
 }
