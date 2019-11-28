@@ -1,3 +1,5 @@
+
+
  declare @output table (Id int);
 -- declare @question_type_id int;
 
@@ -124,62 +126,79 @@ INSERT INTO [dbo].[QuestionTypes]
    set @id_type=(select top 1 id from @output)		   
    
 
-		if @zhkg=1
-		begin
+	--	if @zhkg=1
+	--	begin
 
-	insert into [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
-  (
-  [QuestionType_id]
-      ,[Rating_id]
+	--insert into [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+ -- (
+ -- [QuestionType_id]
+ --     ,[Rating_id]
       
-  )
+ -- )
 
-  VALUES
+ -- VALUES
   
-  ( @id_type
-      , 1
-  ) 
+ -- ( @id_type
+ --     , 1
+ -- ) 
 
-  end
+ -- end
 
-  if @blag=1
+ -- if @blag=1
 
-  begin
+ -- begin
 
+ -- insert into [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+ -- (
+ -- [QuestionType_id]
+ --     ,[Rating_id]
+      
+ -- )
+
+ -- VALUES
+  
+ -- ( @id_type
+ --     , 2
+ -- ) 
+
+ -- end
+
+ -- if @zhytraion=1
+
+ -- begin
+
+ -- insert into [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+ -- (
+ -- [QuestionType_id]
+ --     ,[Rating_id]
+      
+ -- )
+
+ -- VALUES
+  
+ -- ( @id_type
+ --     , 3
+ -- ) 
+
+ -- end
+  
   insert into [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
-  (
-  [QuestionType_id]
-      ,[Rating_id]
+  ([Rating_id],
+  [QuestionType_id])
       
-  )
 
-  VALUES
-  
-  ( @id_type
-      , 2
-  ) 
-
-  end
-
-  if @zhytraion=1
-
-  begin
-
-  insert into [CRM_1551_Analitics].[dbo].[QuestionTypeInRating]
+  select t, id
+  from 
   (
-  [QuestionType_id]
-      ,[Rating_id]
-      
-  )
+  select case when @zhkg=1 then 1 else null end t, @id_type id
+  union all
+  select case when @blag=1 then 2 else null end t, @id_type id
+  union all
+  select case when @zhytraion=1 then 3 else null end t, @id_type id
+  ) q
+  where t is not null
 
-  VALUES
-  
-  ( @id_type
-      , 3
-  ) 
 
-  end
-  
   declare @step nvarchar(50)=N'insert_question_type';
   exec [dbo].[ak_UpdateOrganizationsQuestionsTypeAndParent] @step, @id_type
 

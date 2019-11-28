@@ -6,6 +6,16 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
+      "Code": "@state_id",
+      "Name": "state_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@user_edit_id",
+      "Name": "user_edit_id",
+      "ParameterType": "CurrentUserId"
+    },
+    {
       "Code": "@Id",
       "Name": "Id",
       "ParameterType": "Integer",
@@ -14,16 +24,6 @@
     {
       "Code": "@comment_moderator",
       "Name": "comment_moderator"
-    },
-    {
-      "Code": "@user_edit_id",
-      "Name": "user_edit_id",
-      "ParameterType": "CurrentUserId"
-    },
-    {
-      "Code": "@state_id",
-      "Name": "state_id",
-      "ParameterType": "Integer"
     }
   ]
 }

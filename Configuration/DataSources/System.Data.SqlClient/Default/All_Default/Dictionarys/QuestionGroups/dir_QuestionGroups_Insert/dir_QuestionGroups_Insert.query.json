@@ -12,12 +12,12 @@
       "IsPrimaryKey": true
     },
     {
-      "Code": "@groupName",
-      "Name": "groupName"
-    },
-    {
       "Code": "@reportCode",
       "Name": "reportCode"
+    },
+    {
+      "Code": "@groupName",
+      "Name": "groupName"
     }
   ]
 }

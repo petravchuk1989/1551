@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Grouo1.fieldgroup.json"
+      "string:FieldGroups\\Grouo1.fieldgroup.json"
     ],
     "DefaultFields": [
       {

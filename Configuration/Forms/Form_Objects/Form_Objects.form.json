@@ -3,15 +3,17 @@
   "Code": "Form_Objects",
   "Name": "Об'єкти",
   "Details": [
-    "json:Details\\Detail_Question_by_Object.detail.json",
-    "json:Details\\Detail_Object_in_mainObject.detail.json",
-    "json:Details\\Detail_Objects_Params.detail.json",
-    "json:Details\\Detail_mainObject_in_Object.detail.json",
-    "json:Details\\Detail_Object_ConnectOrg.detail.json"
+    "string:Details\\Detail_mainObject_in_Object.detail.json",
+    "string:Details\\Detail_Object_ConnectOrg.detail.json",
+    "string:Details\\Detail_Objects_Params.detail.json",
+    "string:Details\\Detail_Object_in_mainObject.detail.json",
+    "string:Details\\Detail_Question_by_Object.detail.json",
+    "string:Details\\Detail_ObjectHistory.detail.json",
+    "string:Details\\Detail_ObjectHistory_details.detail.json"
   ],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Group_Object.fieldgroup.json"
+      "string:FieldGroups\\Group_Object.fieldgroup.json"
     ],
     "DefaultFields": [],
     "Script": "string:Form_Objects.form.js"

@@ -24,7 +24,7 @@
                         height: 150,
                         columns: [
                             {
-                                caption: 'previoustYear',
+                                caption: 'previousYear',
                                 dataField: 'prevCommunal',
                                 alignment: 'center',
                                 
@@ -47,7 +47,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previoustYear',
+                                caption: 'previousYear',
                                 dataField: 'prevResidential',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -69,7 +69,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previoustYear',
+                                caption: 'previousYear',
                                 dataField: 'prevEcology',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -91,7 +91,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previoustYear',
+                                caption: 'previousYear',
                                 dataField: 'prevLaw',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -113,7 +113,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previoustYear',
+                                caption: 'previousYear',
                                 dataField: 'prevFamily',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -135,7 +135,7 @@
                         alignment: 'center',
                         columns: [
                             {
-                                caption: 'previoustYear',
+                                caption: 'previousYear',
                                 dataField: 'prevHealth',
                                 alignment: 'center',
                                 customizeText: function(cellInfo) {
@@ -162,7 +162,7 @@
         let date = new Date();
         let yyyy = date.getFullYear();
 	    this.currentYear = yyyy
-        this.previoustYear = yyyy - 1;
+        this.previousYear = yyyy - 1;
         this.sub =  this.messageService.subscribe( 'GlobalFilterChanged', this.getFilterParams, this );
         this.config.onContentReady = this.afterRenderTable.bind(this);
         this.dataGridInstance.onContentReady = this.onContentReady(); 
@@ -190,11 +190,12 @@
     },
 	onContentReady: function(){
 	   this.config.columns[1].columns.forEach( el => {
-			el.columns[0].caption = this.previoustYear;
+			el.columns[0].caption = this.previousYear;
 			el.columns[1].caption = this.currentYear;
 		}); 
 	},
     afterLoadDataHandler: function(data) {
+        this.messageService.publish( {name: 'setData', rep4_data: data} );
         this.render(this.onContentReady());
     },
 	getFilterParams: function(message){
@@ -207,20 +208,18 @@
                 this.dateFrom =  period.dateFrom;
                 this.dateTo = period.dateTo;
                 
-        	    this.previoustYear = this.changeDateTimeValues(this.dateFrom);
+        	    this.previousYear = this.changeDateTimeValues(this.dateFrom);
         	    this.currentYear = this.changeDateTimeValues(this.dateTo);
         	    
-        	    if( this.previoustYear === this.currentYear){
+        	    if( this.previousYear === this.currentYear){
         	        
-        	        this.previoustYear -= 1;
+        	        this.previousYear -= 1;
                     this.config.query.parameterValues = [ 
                         {key: '@dateFrom' , value: this.dateFrom },  
                         {key: '@dateTo', value: this.dateTo },  
                     
                     ];
                     this.loadData(this.afterLoadDataHandler);
-        	    }else{
-        	       // alert('оберIть правильну дату');
         	    }
 	        }
 	    }

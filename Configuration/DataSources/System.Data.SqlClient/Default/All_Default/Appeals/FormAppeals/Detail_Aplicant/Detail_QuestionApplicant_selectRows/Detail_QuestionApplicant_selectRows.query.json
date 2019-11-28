@@ -24,9 +24,16 @@
       "ReferenceSectionCode": "Questions"
     },
     {
+      "Code": "Джерело",
+      "Name": "Джерело",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "[ReceiptSources].name",
+    },
+    {
       "Code": "Дата та час реєстрації питання",
       "Name": "Дата реєстрації питання",
-      "Position": 3,
+      "Position": 4,
       "IsPrintable": false,
       "SqlName": "[Questions].registration_date",
       "FilterParameterCode": "@Questionsregistration_date"
@@ -34,7 +41,7 @@
     {
       "Code": "Стан питання",
       "Name": "Стан питання",
-      "Position": 4,
+      "Position": 5,
       "ViewState": "Hidden",
       "IsPrintable": false,
       "SqlName": "[QuestionStates].[name]",
@@ -43,7 +50,7 @@
     {
       "Code": "Тип питання",
       "Name": "Тип питання",
-      "Position": 5,
+      "Position": 6,
       "IsPrintable": false,
       "SqlName": "[QuestionTypes].[name]",
       "FilterParameterCode": "@QuestionTypesname"
@@ -51,7 +58,7 @@
     {
       "Code": "Виконавець",
       "Name": "Виконавець",
-      "Position": 6,
+      "Position": 7,
       "IsPrintable": false,
       "SqlName": "[Organizations].[name]",
       "FilterParameterCode": "@Organizationsname"
@@ -59,7 +66,7 @@
     {
       "Code": "Дата контролю",
       "Name": "Дата контролю",
-      "Position": 7,
+      "Position": 8,
       "IsPrintable": false,
       "SqlName": "[Questions].control_date",
       "FilterParameterCode": "@Questionscontrol_date"
@@ -67,9 +74,10 @@
   ],
   "Parameters": [
     {
-      "Code": "@applicant_id",
-      "Name": "applicant_id",
-      "ParameterType": "Integer"
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
     },
     {
       "Code": "@type",
@@ -82,10 +90,9 @@
       "IsPageOffsetRows": true
     },
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
-      "ParameterType": "Integer",
-      "IsPageLimitRows": true
+      "Code": "@applicant_id",
+      "Name": "applicant_id",
+      "ParameterType": "Integer"
     }
   ]
 }

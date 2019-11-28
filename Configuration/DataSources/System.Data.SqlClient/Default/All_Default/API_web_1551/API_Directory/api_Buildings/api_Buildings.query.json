@@ -42,9 +42,22 @@
       "Position": 4,
       "SqlName": "[Objects].geolocation_lon",
       "FilterParameterCode": "@geolocation_lon"
+    },
+    {
+      "Code": "ObjectId",
+      "Name": "ObjectId",
+      "Position": 5,
+      "SqlName": "[Objects].Id",
+      "FilterParameterCode": "@ObjectId"
     }
   ],
   "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
     {
       "Code": "@street_id",
       "Name": "street_id",
@@ -55,12 +68,6 @@
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
-    },
-    {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
     }
   ]
 }

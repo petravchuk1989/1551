@@ -4,15 +4,15 @@
   "Position": 1,
   "Fields": [
     {
-      "Code": "buildings_id",
+      "Code": "building_address",
       "Name": "Будинок",
       "FieldType": "select",
       "IsRequired": true,
       "Position": 1,
       "Icon": "home",
-      "QueryCode": "dir_ApplicantsBuildsSelectRows",
+      "QueryCode": "list_active_buildings",
       "KeyColumnCode": "Id",
-      "DisplayColumnCode": "full_name",
+      "DisplayColumnCode": "name",
       "QueryParameters": []
     },
     {

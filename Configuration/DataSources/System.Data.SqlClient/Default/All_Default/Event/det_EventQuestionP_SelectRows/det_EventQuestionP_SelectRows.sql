@@ -11,6 +11,7 @@
 	left join Organizations on Organizations.Id = Assignments.executor_organization_id
 	where e.Id = @Id
 	and q.registration_date  between  DATEADD(hour, -6, e.registration_date)  and e.registration_date
+  and eqt.[is_hard_connection] = 0
       and #filter_columns#
       #sort_columns#
      offset @pageOffsetRows rows fetch next @pageLimitRows rows only

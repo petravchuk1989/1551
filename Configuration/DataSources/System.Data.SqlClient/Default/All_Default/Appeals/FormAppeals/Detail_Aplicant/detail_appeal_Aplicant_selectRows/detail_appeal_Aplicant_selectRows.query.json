@@ -6,6 +6,10 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
+      "Code": "@phone_number",
+      "Name": "phone_number"
+    },
+    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
@@ -16,10 +20,6 @@
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
-    },
-    {
-      "Code": "@phone_number",
-      "Name": "phone_number"
     }
   ]
 }

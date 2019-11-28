@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\ComplainTypes.fieldgroup.json"
+      "string:FieldGroups\\ComplainTypes.fieldgroup.json"
     ],
     "DefaultFields": []
   }

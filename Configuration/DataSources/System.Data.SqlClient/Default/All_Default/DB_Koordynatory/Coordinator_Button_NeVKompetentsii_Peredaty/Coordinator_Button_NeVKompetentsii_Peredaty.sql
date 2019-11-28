@@ -67,7 +67,8 @@ where Id = ( select current_assignment_consideration_id from Assignments where I
            ,[edit_date]
            ,[user_edit_id]
            ,AssignmentResultsId
-           ,AssignmentResolutionsId)
+           ,AssignmentResolutionsId
+           ,[LogUpdated_Query])
 
      output inserted.Id into @output([Id])
     
@@ -87,6 +88,7 @@ where Id = ( select current_assignment_consideration_id from Assignments where I
            ,@user_edit_id
            ,1  --Очікує прийому в роботу
            ,null
+           ,N'Coordinator_Button_NeVKompetentsii_Peredaty_ROW91'
          from Assignments as ass where ass.id = @Id
 
        set @ass_id = (select top 1 [Id] from @output);

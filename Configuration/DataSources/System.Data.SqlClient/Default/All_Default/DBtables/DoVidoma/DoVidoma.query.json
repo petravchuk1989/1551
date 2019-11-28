@@ -6,9 +6,8 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@user_id",
-      "Name": "user_id",
-      "ParameterType": "CurrentUserId"
+      "Code": "@organizationName",
+      "Name": "organizationName"
     },
     {
       "Code": "@organization_id",
@@ -16,8 +15,9 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@organizationName",
-      "Name": "organizationName"
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
     },
     {
       "Code": "@navigation",

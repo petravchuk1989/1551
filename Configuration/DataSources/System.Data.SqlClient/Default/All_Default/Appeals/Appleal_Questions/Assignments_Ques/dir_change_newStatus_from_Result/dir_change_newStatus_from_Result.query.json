@@ -21,13 +21,13 @@
   ],
   "Parameters": [
     {
-      "Code": "@new_resolution",
-      "Name": "new_resolution",
+      "Code": "@new_result",
+      "Name": "new_result",
       "ParameterType": "Integer"
     },
     {
-      "Code": "@new_result",
-      "Name": "new_result",
+      "Code": "@new_resolution",
+      "Name": "new_resolution",
       "ParameterType": "Integer"
     }
   ]

@@ -83,6 +83,7 @@
             mode: "multiple"
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -100,16 +101,18 @@
         showColumnFixing: true,
         groupingAutoExpandAll: null,
     },
-    sub: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 305;
         this.showPreloader = false;
         document.getElementById('table8_prosctoch').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnСoordinator_table', this.changeOnTable, this);
        
         this.config.masterDetail.template = this.craeteMasterDetail.bind(this);
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField === "registration_number" && e.row !== undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },
@@ -121,7 +124,10 @@
             this.column = message.column;
             this.targetId = message.targetId;
             document.getElementById('table8_prosctoch').style.display = 'block';
-            this.config.query.parameterValues = [ { key: '@navigation', value: message.value}, { key: '@column', value: message.column} ];
+            this.config.query.parameterValues = [
+                { key: '@navigation', value: message.value},
+                { key: '@column', value: message.column}
+            ];
             this.loadData(this.afterLoadDataHandler);
         }
     },

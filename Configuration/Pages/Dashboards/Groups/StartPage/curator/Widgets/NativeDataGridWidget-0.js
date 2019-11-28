@@ -10,15 +10,15 @@
             chunkSize: 1000
         },
         columns: [
-           {
+            {
                 dataField: 'registration_number',
                 caption: 'Номер питання',
                 fixed: true,
-            },  {
+            }, {
                 dataField: 'QuestionType',
                 caption: 'Тип питання',
                 fixed: true,
-            },  {
+            }, {
                 dataField: 'zayavnikName',
                 caption: 'Заявник',
                 fixed: true,
@@ -31,6 +31,11 @@
                 caption: 'Виконавець',
                 fixed: true,
                 sortOrder: 'asc',
+            }, {
+                dataField: 'control_date',
+                caption: 'Дата контролю',
+                dataType: "datetime",
+                format: "dd.MM.yyyy HH:mm"   
             }, {
                 dataField: 'transfer_to_organization_id',
                 caption: 'Можливий виконавець',
@@ -87,8 +92,8 @@
         selection: {
             mode: "multiple"
         },
-        height: 500,
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -106,8 +111,9 @@
         showColumnFixing: true,
         groupingAutoExpandAll: null,
     },
-    sub: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 305;
+        console.log(this.dataGridInstance.height);
         this.showPreloader = false;
         document.getElementById('table5__NeVKompetentsii').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnСoordinator_table', this.changeOnTable, this);
@@ -115,8 +121,10 @@
         this.config.masterDetail.template = this.createMasterDetail.bind(this);
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField == "registration_number" && e.row != undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },
@@ -140,24 +148,6 @@
     },
     findAllRowsNeVKompetentсii: function(message){
         let rows = this.dataGridInstance.instance.getSelectedRowsData();
-        //   function makeRequest(index) {
-        //      if(rows[index]){
-        //             let executeQuery = {
-        //             queryCode: 'Button_NeVKompetentcii',
-        //             parameterValues: [ {key: '@executor_organization_id', value: el.transfer_to_organization_id},
-        //                               {key: '@Id', value: el.Id } ],
-        //             limit: -1
-        //         };        
-        //         this.queryExecutor(executeQuery, getResult.bind(index), this);
-        //          function getResult(index){
-        //              return makeRequest(index+1);
-        //          }    
-        //           let row = arr[index];
-        //           console.log(arr[index] + '___');
-        //           return makeRequest(index+1);
-        //      }
-        // }
-        // makeRequest(0);
         if( rows.length > 0 ){
             rows.forEach( function(el) {
             let executeQuery = {
@@ -232,7 +222,7 @@
             } 
             this.elements.push(obj);
         }
-        this.config.columns[5].lookup.dataSource.store = this.elements;
+        this.config.columns[6].lookup.dataSource.store = this.elements;
         this.loadData(this.afterLoadDataHandler);
     },
     afterLoadDataHandler: function(){
@@ -315,7 +305,7 @@
         
         
         const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки2018', {
+        const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -461,7 +451,7 @@
         };
         worksheet.getRow(5).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
         worksheet.getRow(5).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     },    
     destroy: function() {
         this.sub.unsubscribe();

@@ -1,19 +1,9 @@
 [
   {
-    "Code": "@new_assignment_result_id",
-    "Name": "new_assignment_result_id",
-    "ParameterType": "Integer"
-  },
-  {
     "Code": "@pageLimitRows",
     "Name": "pageLimitRows",
     "ParameterType": "Integer",
     "IsPageLimitRows": true
-  },
-  {
-    "Code": "@AssignmentId",
-    "Name": "AssignmentId",
-    "ParameterType": "Integer"
   },
   {
     "Code": "@programuser_id",
@@ -25,5 +15,15 @@
     "Name": "pageOffsetRows",
     "ParameterType": "Integer",
     "IsPageOffsetRows": true
+  },
+  {
+    "Code": "@new_assignment_result_id",
+    "Name": "new_assignment_result_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@AssignmentId",
+    "Name": "AssignmentId",
+    "ParameterType": "Integer"
   }
 ]

@@ -91,7 +91,7 @@
     createTableExcel: function(){
         this.showPagePreloader('Зачекайте, формується документ');
         const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки2018', {
+        const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -102,64 +102,39 @@
             top: 0.4, bottom: 0.4,
             header: 0.0, footer: 0.0
         };
+        worksheet.mergeCells('A1:B1');
+        worksheet.mergeCells('A2:B2');
+        worksheet.mergeCells('A3:B3'); 
+        let cellInfoCaption = worksheet.getCell('A1');
+        cellInfoCaption.value = 'Виконавець: КП «Київський метрополітен»';
+        let cellInfo = worksheet.getCell('A2');
+        cellInfo.value = 'Статистична інформація за період';
+        let cellPeriod = worksheet.getCell('A3');
+        cellPeriod.value = 'з '+this.changeDateTimeValues(this.dateFrom)+'до '+this.changeDateTimeValues(this.dateTo);
+        
+        worksheet.getRow(1).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
+        worksheet.getRow(1).alignment = { vertical: 'middle', horizontal: 'center' };
+        worksheet.getRow(2).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
+        worksheet.getRow(2).alignment = { vertical: 'middle', horizontal: 'center' };
+        worksheet.getRow(3).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
+        worksheet.getRow(3).alignment = { vertical: 'middle', horizontal: 'center' };
+
+        let tds = [];
+        let tdsCounter = [];
         let mainHeaders = [];
         for(let i = 0; i <  this.dataArray.length; i++){
-            
             let data =  this.dataArray[i];
-            this.indexArr = [];
-            let name = { name: 'orgName', index: 0 };
-            let counter = { name: 'questionQty', index: 1 };
-            this.indexArr = [ name, counter];
-        
-            let indexArr = this.indexArr;
-            let rows = [];
-            let captions = [];
-            let columnsHeader = [];
-            
-            indexArr.forEach( el => {
-                if( el.name === 'orgName'){
-                    let obj =  {
-                        key: el.name,
-                        width: 44,
-                    };
-                    columnsHeader.push(obj);
-                    captions.push('Назва');
-                }else if(el.name === 'questionQty'){
-                    let obj =  { 
-                        key: el.name,
-                        width: 15
-                    };
-                    columnsHeader.push(obj);
-                    captions.push('Кiлькiсть');
-                }
-            });
-            let tds = [];
-            let tdsCounter = [];
-            
-            worksheet.getRow(5).values = captions;
+            let name = { key: 'orgName', width: 44 };
+            let counter = { key: 'questionQty', width: 15 };
+            let captions = ['', 'Кiлькiсть'];
+            let columnsHeader = [name, counter];
             worksheet.columns = columnsHeader;
             
             if(i === 0){
-                let cellInfoCaption = worksheet.getCell('A1');
-                cellInfoCaption.value = 'Виконавець: КП «Київський метрополітен»';
-                let cellInfo = worksheet.getCell('A2');
-                cellInfo.value = 'Статистична інформація за період ';
-                let cellPeriod = worksheet.getCell('A3');
-                cellPeriod.value = 'з '+this.changeDateTimeValues(this.dateFrom)+'до '+this.changeDateTimeValues(this.dateTo);
-                worksheet.mergeCells('A1:B1'); //вставить другой конец колонок
-                worksheet.mergeCells('A2:B2'); //вставить другой конец колонок
-                worksheet.mergeCells('A3:B3'); //вставить другой конец колонок
-                
-                worksheet.getRow(1).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
-                worksheet.getRow(1).alignment = { vertical: 'middle', horizontal: 'center' };
-                
-                worksheet.getRow(2).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
-                worksheet.getRow(2).alignment = { vertical: 'middle', horizontal: 'center' };
-                
-                worksheet.getRow(3).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
-                worksheet.getRow(3).alignment = { vertical: 'middle', horizontal: 'center' };
-                mainHeaders.push(5);
                 worksheet.getRow(5).values = captions;
+                let firstColumnCaption = worksheet.getCell('A5');
+                firstColumnCaption.value = 'Показники';
+                mainHeaders.push(5);
                 for(let i = 6; i < (data.length + 6); i++ ){
                     let value = data[i-6];
                     columnText = worksheet.getCell('A'+i);
@@ -171,12 +146,19 @@
                 }
             }
             else if(i === 1){
-                this.rowTable1 = (this.dataArray[0].length + 7);
-                mainHeaders.push(this.rowTable1);
-                worksheet.getRow(this.rowTable1).values = captions;
-                // let data = this.dataArray[0];
-                for(let i =  this.rowTable1  + 1 ; i < (data.length + this.rowTable1 + 1 ); i++ ){
-                    let value = data[i-( this.rowTable1 + 1)];
+                this.rowTable1Length = (this.dataArray[0].length + 7);
+                worksheet.getRow(this.rowTable1Length).values = captions;
+                let firstColumnCaption = worksheet.getCell('A'+this.rowTable1Length);
+                firstColumnCaption.value = 'Питання';
+                let summary = [];
+                data.forEach( el =>  summary.push(el[2]));
+                let result = summary.reduce(function(sum, current) {
+                    return sum + current;
+                }, 0);
+
+                mainHeaders.push(this.rowTable1Length);
+                for(let i =  this.rowTable1Length  + 1 ; i < (data.length + this.rowTable1Length + 1 ); i++ ){
+                    let value = data[i-( this.rowTable1Length + 1)];
                     columnText = worksheet.getCell('A'+i);
                     columnCounter = worksheet.getCell('B'+i);
                     columnText.value = value[1];
@@ -186,59 +168,68 @@
                     tdsCounter.push('B'+i);
                     tdsCounter.push('B'+(i-1));
                 }
+                let dataLength = data.length === 0 ? 0 : data.length;
+                this.sumLength = dataLength + this.rowTable1Length+1;
+                let allTitle = worksheet.getCell('A'+(this.sumLength));
+                allTitle.value = 'Всього:';
+                let allValue = worksheet.getCell('B'+(this.sumLength));
+                allValue.value = result;
+                mainHeaders.push(this.sumLength);
             }
-            console.log(tds, tdsCounter);
-            for(let  i = 0; i < tds.length; i++ ){
-                let td = tds[i];
-                worksheet.getCell(td).border = {
-                    top: {style:'thin'},
-                    left: {style:'thin'},
-                    bottom: {style:'thin'},
-                    right: {style:'thin'}
-                };
-                worksheet.getCell(td).alignment = { 
-                    vertical: 'middle',
-                    horizontal: 'left',
-                    wrapText: true 
-                };
-                worksheet.getCell(td).font = {
-                    name: 'Times New Roman',
-                    family: 4, size: 10,
-                    underline: false,
-                    bold: false ,
-                    italic: false
-                };
-            };
-            for(let  i = 0; i < tdsCounter.length; i++ ){
-                let td = tdsCounter[i];
-                worksheet.getCell(td).border = {
-                    top: {style:'thin'},
-                    left: {style:'thin'},
-                    bottom: {style:'thin'},
-                    right: {style:'thin'}
-                };
-                worksheet.getCell(td).alignment = { 
-                    vertical: 'middle',
-                    horizontal: 'center',
-                    wrapText: true 
-                };
-                worksheet.getCell(td).font = {
-                    name: 'Times New Roman',
-                    family: 4, size: 10,
-                    underline: false,
-                    bold: false ,
-                    italic: false
-                };
-            };
-            mainHeaders.forEach( number => {
-                worksheet.getRow(number).height = 50;
-                worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
-                worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-            });
         }
+
+        for(let  i = 0; i < tds.length; i++ ){
+            let td = tds[i];
+            worksheet.getCell(td).border = {
+                top: {style:'thin'},
+                left: {style:'thin'},
+                bottom: {style:'thin'},
+                right: {style:'thin'}
+            };
+            worksheet.getCell(td).alignment = { 
+                vertical: 'middle',
+                horizontal: 'left',
+                wrapText: true 
+            };
+            worksheet.getCell(td).font = {
+                name: 'Times New Roman',
+                family: 4, size: 10,
+                underline: false,
+                bold: false ,
+                italic: false
+            };
+        };
+        for(let  i = 0; i < tdsCounter.length; i++ ){
+            let td = tdsCounter[i];
+            worksheet.getCell(td).border = {
+                top: {style:'thin'},
+                left: {style:'thin'},
+                bottom: {style:'thin'},
+                right: {style:'thin'}
+            };
+            worksheet.getCell(td).alignment = { 
+                vertical: 'middle',
+                horizontal: 'center',
+                wrapText: true 
+            };
+            worksheet.getCell(td).font = {
+                name: 'Times New Roman',
+                family: 4, size: 10,
+                underline: false,
+                bold: false ,
+                italic: false
+            };
+        };
         worksheet.getCell('A5').border = {  top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
+        worksheet.getCell('A'+(this.sumLength)).border = {  top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
         worksheet.getCell('B5').border = {  top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        worksheet.getCell('B'+(this.sumLength)).border = {  top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
+        mainHeaders.forEach( number => {
+            worksheet.getRow(number).height = 50;
+            worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
+            worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
+        });
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     }, 
 	changeDateTimeValues: function(value){
         
@@ -248,8 +239,9 @@
         let yyyy = date.getFullYear();
         let HH = date.getUTCHours()
         let mm = date.getMinutes();
+        MM += 1 ;
         if( (dd.toString()).length === 1){  dd = '0' + dd; }
-        if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+        if( (MM.toString()).length === 1){ MM = '0' + MM; }
         if( (HH.toString()).length === 1){  HH = '0' + HH; }
         if( (mm.toString()).length === 1){ mm = '0' + mm; }
         let trueDate = dd+'.'+MM+'.' + yyyy;

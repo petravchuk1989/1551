@@ -77,6 +77,7 @@
             enabled: true,
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -92,18 +93,12 @@
         showHeaderFilter: false,
         showColumnChooser: false,
         showColumnFixing: true,
-        groupingAutoExpandAll: null,
-        onRowUpdating: function(data) {},
-        onRowExpanding: function(data) {},
-        onRowInserting: function(data) {},
-        onRowRemoving: function(data) {},
-        onCellClick: function(data) {},
-        onRowClick: function(data) {},
-        selectionChanged: function(data) {}
+        groupingAutoExpandAll: null
     },
     sub: [],
     sub1: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 305;
         this.showPreloader = false;
         document.getElementById('searchTable').style.display = 'none';
         this.sub = this.messageService.subscribe('resultSearch', this.changeOnTable, this);

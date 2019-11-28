@@ -15,10 +15,12 @@ SELECT distinct top 1
 	   ,[Objects].Id as [object_id]
 	   --,IIF(st.name is null, null, concat(ObjectTypes.name,' : ',sty.shortname,' ', st.name, ' ', bl.number,bl.letter)) as [object_name0]
 
+	   --,isnull(ObjectTypes.name+N' : ', N'')+
+	   --isnull(sty.shortname+' ',N'')+
+	   --isnull(st.name+N' ',N'')+
+	   --isnull(bl.name,N'') [object_name]
 	   ,isnull(ObjectTypes.name+N' : ', N'')+
-	   isnull(sty.shortname+' ',N'')+
-	   isnull(st.name+N' ',N'')+
-	   isnull(bl.name,N'') [object_name]
+	   isnull([Objects].Name+' ',N'') [object_name]
 
        --,IIF(st.name is null, null,concat(sty.shortname,' ',st.name, ' ', bl.number,bl.letter) ) as address_problem
 	   ,isnull(sty.shortname+N' ', N'')+
@@ -59,7 +61,10 @@ SELECT distinct top 1
 	  ,(select count( assg.main_executor)
 			 from  [Assignments] assg 
 			 where assg.question_id = Assignments.question_id and assg.main_executor = 1 and assg.close_date is null) as is_aktiv_true
-	  ,assRev.control_comment
+--	  ,assRev.control_comment
+	  , ( SELECT TOP 1 	control_comment FROM AssignmentRevisions AS ar
+				JOIN AssignmentConsiderations AS ac ON ac.Id = ar.assignment_consideration_іd
+					WHERE ac.assignment_id = @Id ORDER BY ar.id DESC ) as control_comment
 -- 	  ,isnull(assRev.rework_counter,0) as rework_counter
 	  ,(select count(id) from AssignmentRevisions where assignment_consideration_іd in
 	    (select Id from AssignmentConsiderations where assignment_id= @Id) and control_result_id = 5 )  as rework_counter

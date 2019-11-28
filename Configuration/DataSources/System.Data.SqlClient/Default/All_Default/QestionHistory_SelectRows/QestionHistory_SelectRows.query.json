@@ -6,17 +6,9 @@
   "IsUsedForRightsFilter": false,
   "Columns": [
     {
-      "Code": "Id",
-      "Name": "Id",
-      "Position": 0,
-      "IsPrimaryKey": true,
-      "ViewState": "Hidden",
-      "IsPrintable": false
-    },
-    {
       "Code": "Log_Date",
       "Name": "Дата операції",
-      "Position": 1,
+      "Position": 2,
       "IsPrintable": false,
       "SqlName": "[Question_History].[Log_Date]",
       "FilterParameterCode": "@Log_Date"
@@ -24,7 +16,7 @@
     {
       "Code": "Log_User_FIO",
       "Name": "Виконав",
-      "Position": 2,
+      "Position": 3,
       "IsPrintable": false,
       "SqlName": "isnull(LastName, N'')+N' '+isnull([FirstName], N'')+N' '+isnull([Patronymic], N'')",
       "FilterParameterCode": "@Log_User_FIO"
@@ -32,19 +24,20 @@
     {
       "Code": "Log_Activity",
       "Name": "Операція",
-      "Position": 3,
+      "Position": 4,
       "IsPrintable": false,
       "SqlName": "case when [Question_History].[Log_Activity] = N'INSERT' then N'Створення' \t\t\twhen [Question_History].[Log_Activity] = N'UPDATE' then N'Редагування' \t\t\telse [Question_History].[Log_Activity] end",
       "FilterParameterCode": "@Log_Activity"
+    },
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 1,
+      "ViewState": "Hidden",
+      "IsPrintable": false
     }
   ],
   "Parameters": [
-    {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
-      "ParameterType": "Integer",
-      "IsPageLimitRows": true
-    },
     {
       "Code": "@question_id",
       "Name": "question_id",
@@ -55,6 +48,12 @@
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
       "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
     }
   ]
 }

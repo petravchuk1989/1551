@@ -26,13 +26,13 @@
   ],
   "Parameters": [
     {
+      "Code": "@organizationName",
+      "Name": "organizationName"
+    },
+    {
       "Code": "@user_id",
       "Name": "user_id",
       "ParameterType": "CurrentUserId"
-    },
-    {
-      "Code": "@organizationName",
-      "Name": "organizationName"
     },
     {
       "Code": "@organizationId",

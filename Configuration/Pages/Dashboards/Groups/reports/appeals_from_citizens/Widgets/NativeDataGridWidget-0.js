@@ -11,57 +11,57 @@
         },
         columns: [
             {
-                dataField: 'Operator',
+                dataField: 'oper',
                 caption: 'ПІП користувача',
             }, {
-                dataField: 'AppealCount',
+                dataField: 'questionQ',
                 caption: 'Звернень',
                 alignment: 'center'
             }, {
-                dataField: 'QuestionCount',
-                caption: 'Питань',
+                dataField: 'assignmentQ',
+                caption: 'Доручень',
                 alignment: 'center'
             }, {
-                dataField: 'DoneAssignments',
+                dataField: 'doneQ',
                 caption: 'Виконано',
                 alignment: 'center'
             }, {
-                dataField: 'reWorkAssignments',
+                dataField: 'reworkQ',
                 caption: 'На доопрацювання',
                 alignment: 'center'
             }, {
-                dataField: 'notAnswerAssignments',
+                dataField: 'notCallQ',
                 caption: 'Недозвон',
                 alignment: 'center'
             },
         ],
         summary: {
                 totalItems: [{
-                    column: "AppealCount",
+                    column: "questionQ",
                     summaryType: "sum",
                     customizeText: function(data) {
                     return "Сума: " + data.value;
                 }
                 }, {
-                    column: "QuestionCount",
+                    column: "assignmentQ",
                     summaryType: "sum",
                     customizeText: function(data) {
                     return "Сума: " + data.value;
                 }
                 }, {
-                    column: "DoneAssignments",
+                    column: "doneQ",
                     summaryType: "sum",
                     customizeText: function(data) {
                     return "Сума: " + data.value;
                 }
                 }, {
-                    column: "reWorkAssignments",
+                    column: "reworkQ",
                     summaryType: "sum",
                     customizeText: function(data) {
                     return "Сума: " + data.value;
                 }
                 }, {
-                    column: "notAnswerAssignments",
+                    column: "notCallQ",
                     summaryType: "sum",
                     customizeText: function(data) {
                     return "Сума: " + data.value;
@@ -117,7 +117,7 @@
                 this.config.query.filterColumns = [];
                 if (this.citizenName.length > 0) {
                     const filter = {
-                        key: "Operator",
+                        key: "operId",
                         value: {
                                     operation: 0,
                                     not: false,

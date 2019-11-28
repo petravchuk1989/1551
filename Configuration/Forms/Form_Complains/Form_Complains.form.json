@@ -5,7 +5,7 @@
   "Details": [],
   "Config": {
     "FieldGroups": [
-      "json:FieldGroups\\Group_Complains.fieldgroup.json"
+      "string:FieldGroups\\Group_Complains.fieldgroup.json"
     ],
     "DefaultFields": [],
     "Script": "string:Form_Complains.form.js"

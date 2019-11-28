@@ -68,6 +68,7 @@
             mode: "multiple"
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -84,24 +85,18 @@
         showColumnChooser: false,
         showColumnFixing: true,
         groupingAutoExpandAll: null,
-        onRowUpdating: function(data) {},
-        onRowExpanding: function(data) {},
-        onRowInserting: function(data) {},
-        onRowRemoving: function(data) {},
-        onCellClick: function(data) {},
-        onRowClick: function(data) {},
-        selectionChanged: function(data) {}
     },
-    sub: [],
-    containerForChackedBox: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         document.getElementById('table10_Plan_Programs').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnTable2', this.changeOnTable, this);
         
         this.config.masterDetail.template = this.createMasterDetail.bind(this);
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField == "registration_number" && e.row != undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },

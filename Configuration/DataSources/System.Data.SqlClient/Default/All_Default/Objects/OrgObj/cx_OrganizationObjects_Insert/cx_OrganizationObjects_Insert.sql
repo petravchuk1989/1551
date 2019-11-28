@@ -5,7 +5,7 @@ declare @builbing_id int=
 
 insert into [CRM_1551_Analitics].[dbo].[ExecutorInRoleForObject]
   (
-  [building_id]
+  [object_id]
       --,[district_id]
       --,[city_id]
       ,[executor_role_id]

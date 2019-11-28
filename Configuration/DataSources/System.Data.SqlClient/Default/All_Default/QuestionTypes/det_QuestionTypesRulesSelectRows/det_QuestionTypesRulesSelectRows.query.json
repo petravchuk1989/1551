@@ -14,14 +14,6 @@
       "IsPrintable": false
     },
     {
-      "Code": "ExecutorRole",
-      "Name": "Роль виконавця",
-      "Position": 1,
-      "IsPrintable": false,
-      "SqlName": "[ExecutorRole].name ",
-      "FilterParameterCode": "@ExecutorRole"
-    },
-    {
       "Code": "ExecutorRoleLevelName",
       "Name": "Рівень ролі",
       "Position": 1,
@@ -36,6 +28,14 @@
       "IsPrintable": false,
       "SqlName": "ltrim([Rules].Id)+N'. '+[Rules].name",
       "FilterParameterCode": "@Rule"
+    },
+    {
+      "Code": "ExecutorRole",
+      "Name": "Роль виконавця",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "[ExecutorRole].name ",
+      "FilterParameterCode": "@ExecutorRole"
     },
     {
       "Code": "priority",
@@ -76,11 +76,6 @@
   ],
   "Parameters": [
     {
-      "Code": "@questionType_Id",
-      "Name": "questionType_Id",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
@@ -91,6 +86,11 @@
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@questionType_Id",
+      "Name": "questionType_Id",
+      "ParameterType": "Integer"
     }
   ]
 }

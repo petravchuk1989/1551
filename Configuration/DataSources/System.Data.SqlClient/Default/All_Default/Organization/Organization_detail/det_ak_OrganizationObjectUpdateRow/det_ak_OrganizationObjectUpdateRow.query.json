@@ -6,14 +6,13 @@
   "IsUsedForRightsFilter": false,
   "Parameters": [
     {
-      "Code": "@Id",
-      "Name": "Id",
-      "ParameterType": "Integer",
-      "IsPrimaryKey": true
-    },
-    {
       "Code": "@building_id",
       "Name": "building_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@executor_role_id",
+      "Name": "executor_role_id",
       "ParameterType": "Integer"
     },
     {
@@ -22,9 +21,10 @@
       "ParameterType": "Integer"
     },
     {
-      "Code": "@executor_role_id",
-      "Name": "executor_role_id",
-      "ParameterType": "Integer"
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
     }
   ]
 }

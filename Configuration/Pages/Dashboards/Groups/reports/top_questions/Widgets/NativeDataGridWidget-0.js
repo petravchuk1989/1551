@@ -249,7 +249,7 @@
             };            
             worksheet.getRow(5).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
             worksheet.getRow(5).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
-            this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+            this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
         }    
     
     },
@@ -262,8 +262,9 @@
             let yyyy = date.getFullYear();
             let HH = date.getUTCHours()
             let mm = date.getMinutes();
+            MM += 1 ;
             if( (dd.toString()).length === 1){  dd = '0' + dd; }
-            if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+            if( (MM.toString()).length === 1){ MM = '0' + MM ; }
             if( (HH.toString()).length === 1){  HH = '0' + HH; }
             if( (mm.toString()).length === 1){ mm = '0' + mm; }
             trueDate = dd+'.'+MM+'.' + yyyy;

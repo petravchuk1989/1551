@@ -18,39 +18,58 @@
       "Name": "Номер питання",
       "Position": 2,
       "IsPrintable": false,
+      "SqlName": "[Questions].[registration_number]",
+      "FilterParameterCode": "@Questionsregistration_number",
       "ReferenceKeyCode": "Id",
       "ReferenceSectionCode": "Questions"
     },
     {
+      "Code": "Джерело",
+      "Name": "Джерело",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "[ReceiptSources].name"
+    },
+    {
       "Code": "Дата та час реєстрації питання",
       "Name": "Дата реєстрації питання",
-      "Position": 3,
-      "IsPrintable": false
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "[Questions].registration_date",
+      "FilterParameterCode": "@Questionsregistration_date"
     },
     {
       "Code": "Стан питання",
       "Name": "Стан питання",
-      "Position": 4,
+      "Position": 5,
       "ViewState": "Hidden",
-      "IsPrintable": false
+      "IsPrintable": false,
+      "SqlName": "[QuestionStates].[name]",
+      "FilterParameterCode": "@QuestionStatesname"
     },
     {
       "Code": "Тип питання",
       "Name": "Тип питання",
-      "Position": 5,
-      "IsPrintable": false
+      "Position": 6,
+      "IsPrintable": false,
+      "SqlName": "[QuestionTypes].[name]",
+      "FilterParameterCode": "@QuestionTypesname"
     },
     {
       "Code": "Виконавець",
       "Name": "Виконавець",
-      "Position": 6,
-      "IsPrintable": false
+      "Position": 7,
+      "IsPrintable": false,
+      "SqlName": "[Organizations].[name]",
+      "FilterParameterCode": "@Organizationsname"
     },
     {
       "Code": "Дата контролю",
       "Name": "Дата контролю",
-      "Position": 7,
-      "IsPrintable": false
+      "Position": 8,
+      "IsPrintable": false,
+      "SqlName": "[Questions].control_date",
+      "FilterParameterCode": "@Questionscontrol_date"
     }
   ],
   "Parameters": [
@@ -59,6 +78,10 @@
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
+    },
+    {
+      "Code": "@type",
+      "Name": "type"
     },
     {
       "Code": "@pageOffsetRows",
@@ -70,10 +93,6 @@
       "Code": "@applicant_id",
       "Name": "applicant_id",
       "ParameterType": "Integer"
-    },
-    {
-      "Code": "@type",
-      "Name": "type"
     }
   ]
 }

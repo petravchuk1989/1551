@@ -1,23 +1,7 @@
 [
   {
-    "Code": "@street_id",
-    "Name": "street_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@district_id",
-    "Name": "district_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@builbing_id",
-    "Name": "builbing_id",
-    "ParameterType": "Integer"
-  },
-  {
-    "Code": "@obj_type_id",
-    "Name": "obj_type_id",
-    "ParameterType": "Integer"
+    "Code": "@object_name",
+    "Name": "object_name"
   },
   {
     "Code": "@Id",
@@ -26,12 +10,33 @@
     "IsPrimaryKey": true
   },
   {
+    "Code": "@builbing_id",
+    "Name": "builbing_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@street_id",
+    "Name": "street_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@obj_type_id",
+    "Name": "obj_type_id",
+    "ParameterType": "Integer"
+  },
+  {
     "Code": "@is_active",
     "Name": "is_active",
     "ParameterType": "Boolean"
   },
   {
-    "Code": "@object_name",
-    "Name": "object_name"
+    "Code": "@district_id",
+    "Name": "district_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserId"
   }
 ]

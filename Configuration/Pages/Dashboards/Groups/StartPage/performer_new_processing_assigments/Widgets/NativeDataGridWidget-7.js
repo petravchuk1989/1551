@@ -71,6 +71,7 @@
             mode: "multiple"
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -88,9 +89,8 @@
         showColumnFixing: true,
         groupingAutoExpandAll: null,
     },
-    sub: [],
-    sub1: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 300;
         document.getElementById('searchTable').style.display = 'none';
         this.sub = this.messageService.subscribe('resultSearch', this.changeOnTable, this);
         this.sub1 = this.messageService.subscribe('clearInput', this.hideAllTable, this);

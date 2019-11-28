@@ -5,4 +5,6 @@ UPDATE [dbo].[Objects]
            ,[name]= @object_name
            ,[builbing_id]= @builbing_id
            ,is_active = @is_active
+           ,edit_date = getutcdate()
+           ,[user_edit_id] = @user_edit_id
 		where Id = @Id

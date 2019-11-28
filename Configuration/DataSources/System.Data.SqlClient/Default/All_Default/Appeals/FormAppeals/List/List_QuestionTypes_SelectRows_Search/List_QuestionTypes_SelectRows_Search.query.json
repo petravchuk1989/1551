@@ -22,12 +22,20 @@
       "FilterParameterCode": "@Name"
     },
     {
-      "Code": "Path",
-      "Name": "Шлях",
+      "Code": "comments",
+      "Name": "Опис",
       "Position": 3,
       "IsPrintable": false,
+      "SqlName": "comments"
+    },
+    {
+      "Code": "Path",
+      "Name": "Шлях",
+      "Position": 4,
+      "IsPrintable": false,
       "SqlName": "Path",
-      "FilterParameterCode": "@Path"
+      "FilterParameterCode": "@Path",
+      "ViewState": "Collapsed"
     }
   ],
   "Parameters": [

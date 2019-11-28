@@ -23,12 +23,11 @@
     "Code": "buildings_name",
     "Name": "buildings_name",
     "Position": 4,
-    "IsPrintable": false,
-    "ReferenceKeyCode": "buildings_id"
+    "IsPrintable": false
   },
   {
-    "Code": "buildings_id",
-    "Name": "buildings_id",
+    "Code": "building_address",
+    "Name": "building_address",
     "Position": 5,
     "IsPrintable": false
   },
@@ -66,5 +65,12 @@
     "Code": "applicant_id",
     "Name": "applicant_id",
     "Position": 11
+  },
+  {
+    "Code": "building_address_name",
+    "Name": "building_address_name",
+    "Position": 12,
+    "IsPrintable": false,
+    "ReferenceKeyCode": "building_address"
   }
 ]

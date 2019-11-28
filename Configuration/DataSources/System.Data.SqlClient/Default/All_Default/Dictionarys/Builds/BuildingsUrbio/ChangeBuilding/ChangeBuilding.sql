@@ -1,7 +1,8 @@
 declare @updated table (prevId int);
 
 update Questions 
-set [object_id] = (select Id from [Objects] where builbing_id = @building)
+set [object_id] = (select Id from [Objects] where builbing_id = @building),
+[CodeOperation] = N'ChangeFromFormBuilding'
 OUTPUT deleted.Id
 into @updated
 where Id in (
@@ -31,12 +32,9 @@ where la.building_id = @Id
 );
 
 update ExecutorInRoleForObject
-set object_id = (select Id from [Objects] where builbing_id = @building),
-building_id = @building 
-where Id in (
-select Id 
-from ExecutorInRoleForObject ex
-where building_id = @Id
+set object_id = (select Id from [Objects] where builbing_id = @building)
+-- building_id = @building 
+where Id in (select Id from ExecutorInRoleForObject ex where object_id = @Id
 );
 
 update ValuesParamsObjects

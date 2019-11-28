@@ -22,34 +22,40 @@
       "ReferenceSectionCode": "Questions"
     },
     {
+      "Code": "Джерело",
+      "Name": "Джерело",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
       "Code": "Дата та час реєстрації питання",
       "Name": "Дата реєстрації питання",
-      "Position": 3,
+      "Position": 4,
       "IsPrintable": false
     },
     {
       "Code": "Стан питання",
       "Name": "Стан питання",
-      "Position": 4,
+      "Position": 5,
       "ViewState": "Hidden",
       "IsPrintable": false
     },
     {
       "Code": "Тип питання",
       "Name": "Тип питання",
-      "Position": 5,
+      "Position": 6,
       "IsPrintable": false
     },
     {
       "Code": "Виконавець",
       "Name": "Виконавець",
-      "Position": 6,
+      "Position": 7,
       "IsPrintable": false
     },
     {
       "Code": "Дата контролю",
       "Name": "Дата контролю",
-      "Position": 7,
+      "Position": 8,
       "IsPrintable": false
     }
   ],
@@ -61,18 +67,18 @@
       "IsPageLimitRows": true
     },
     {
-      "Code": "@pageOffsetRows",
-      "Name": "pageOffsetRows",
-      "ParameterType": "Integer",
-      "IsPageOffsetRows": true
+      "Code": "@phone_number",
+      "Name": "phone_number"
     },
     {
       "Code": "@type",
       "Name": "type"
     },
     {
-      "Code": "@phone_number",
-      "Name": "phone_number"
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
     }
   ]
 }

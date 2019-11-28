@@ -22,10 +22,9 @@
   ],
   "Parameters": [
     {
-      "Code": "@pageLimitRows",
-      "Name": "pageLimitRows",
-      "ParameterType": "Integer",
-      "IsPageLimitRows": true
+      "Code": "@user_Id",
+      "Name": "user_Id",
+      "ParameterType": "CurrentUserId"
     },
     {
       "Code": "@pageOffsetRows",
@@ -34,9 +33,10 @@
       "IsPageOffsetRows": true
     },
     {
-      "Code": "@user_Id",
-      "Name": "user_Id",
-      "ParameterType": "CurrentUserId"
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
     }
   ]
 }

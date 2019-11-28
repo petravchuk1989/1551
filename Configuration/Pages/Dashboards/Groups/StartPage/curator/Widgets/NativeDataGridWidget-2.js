@@ -71,6 +71,7 @@
             mode: "multiple"
         },        
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -87,16 +88,9 @@
         showColumnChooser: false,
         showColumnFixing: true,
         groupingAutoExpandAll: null,
-        onRowUpdating: function(data) {},
-        onRowExpanding: function(data) {},
-        onRowInserting: function(data) {},
-        onRowRemoving: function(data) {},
-        onCellClick: function(data) {},
-        onRowClick: function(data) {},
-        selectionChanged: function(data) {}
     },
-    sub: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 305;
         this.showPreloader = false;
         document.getElementById('table6_rozyasneno').style.display = 'none';
         this.sub = this.messageService.subscribe('clickOnСoordinator_table', this.changeOnTable, this);
@@ -105,8 +99,10 @@
         this.config.masterDetail.template = this.createMasterDetail.bind(this);
         
         this.dataGridInstance.onCellClick.subscribe(e => {
-            if(e.column.dataField == "registration_number" && e.row != undefined){
-                window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+            if(e.column) {
+                if(e.column.dataField == "registration_number" && e.row != undefined){
+                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                }
             }
         });
     },
@@ -239,7 +235,7 @@
         
         
         const workbook = this.createExcel();
-        const worksheet = workbook.addWorksheet('«Заявки', {
+        const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
@@ -385,7 +381,7 @@
         };
         worksheet.getRow(5).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: true , italic: false};
         worksheet.getRow(5).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
-        this.helperFunctions.excel.save(workbook, '«Заявки', this.hidePagePreloader);
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     },       
     
     createMasterDetail: function(container, options) {
@@ -445,6 +441,7 @@
         let elements = document.querySelectorAll('.dx-datagrid-export-button');
         elements = Array.from(elements);
         elements.forEach( function(element){
+            debugger;
             let spanElement = this.createElement('span', { className: 'dx-button-text', innerText: 'Excel'});
             element.firstElementChild.appendChild(spanElement);
         }.bind(this));

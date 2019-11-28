@@ -77,6 +77,7 @@
             enabled: true,
         },
         keyExpr: 'Id',
+        focusedRowEnabled: true,
         showBorders: false,
         showColumnLines: false,
         showRowLines: true,
@@ -93,17 +94,9 @@
         showColumnChooser: false,
         showColumnFixing: true,
         groupingAutoExpandAll: null,
-        onRowUpdating: function(data) {},
-        onRowExpanding: function(data) {},
-        onRowInserting: function(data) {},
-        onRowRemoving: function(data) {},
-        onCellClick: function(data) {},
-        onRowClick: function(data) {},
-        selectionChanged: function(data) {}
     },
-    sub: [],
-    sub1: [],
     init: function() {
+        this.dataGridInstance.height = window.innerHeight - 305;
         this.showPreloader = false;
         document.getElementById('searchTable').style.display = 'none';
         this.sub = this.messageService.subscribe('resultSearch', this.changeOnTable, this);
@@ -169,8 +162,10 @@
             this.loadData(this.afterLoadDataHandler);
             
             this.dataGridInstance.onCellClick.subscribe(e => {
-                if(e.column.dataField == "registration_number" && e.row != undefined){
-                    window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                if(e.column) {
+                    if(e.column.dataField === "registration_number" && e.row !== undefined) {
+                        window.open(location.origin + localStorage.getItem('VirtualPath') + "/sections/Assignments/edit/"+e.key+"");
+                    }
                 }
             });
         }

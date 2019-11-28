@@ -22,15 +22,21 @@
       "ReferenceSectionCode": "Questions"
     },
     {
+      "Code": "Джерело",
+      "Name": "Джерело",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
       "Code": "Дата реєстрації",
       "Name": "Дата реєстрації",
-      "Position": 3,
+      "Position": 4,
       "IsPrintable": false
     },
     {
       "Code": "Стан питання",
       "Name": "Стан питання",
-      "Position": 4,
+      "Position": 5,
       "ViewState": "Hidden",
       "IsPrintable": false
     },
@@ -55,25 +61,25 @@
   ],
   "Parameters": [
     {
-      "Code": "@applicant_id",
-      "Name": "applicant_id",
-      "ParameterType": "Integer"
-    },
-    {
       "Code": "@pageLimitRows",
       "Name": "pageLimitRows",
       "ParameterType": "Integer",
       "IsPageLimitRows": true
     },
     {
+      "Code": "@type",
+      "Name": "type"
+    },
+    {
+      "Code": "@applicant_id",
+      "Name": "applicant_id",
+      "ParameterType": "Integer"
+    },
+    {
       "Code": "@pageOffsetRows",
       "Name": "pageOffsetRows",
       "ParameterType": "Integer",
       "IsPageOffsetRows": true
-    },
-    {
-      "Code": "@type",
-      "Name": "type"
     }
   ]
 }

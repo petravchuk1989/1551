@@ -4,7 +4,7 @@
     config: {
 
         query: {
-            code: 'db_report_5_2',
+            code: 'db_Report_5_2',
             parameterValues: [],
             filterColumns: [],
             sortColumns: [],
@@ -113,8 +113,9 @@
             let yyyy = date.getFullYear();
             let HH = date.getUTCHours()
             let mm = date.getMinutes();
+            MM += 1 ;
             if( (dd.toString()).length === 1){  dd = '0' + dd; }
-            if( (MM.toString()).length === 1){ MM = '0' + (MM + 1); }
+            if( (MM.toString()).length === 1){ MM = '0' + MM ; }
             if( (HH.toString()).length === 1){  HH = '0' + HH; }
             if( (mm.toString()).length === 1){ mm = '0' + mm; }
             var trueDate = dd+'.'+MM+'.' + yyyy;
