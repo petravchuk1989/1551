@@ -32,49 +32,43 @@
                  <div id='container'></div>
                 `
     ,
+
+    data: [],
+
+    counter: 0,
+
     init: function() {
         this.sub = this.messageService.subscribe('showWarning', this.showWarning, this);
         this.sub1 = this.messageService.subscribe('setData', this.setData, this );
-        this.sub2 = this.messageService.subscribe('GlobalFilterChanged', this.getFilterParams, this );
+        this.sub2 = this.messageService.subscribe( 'FiltersParams', this.setFilterParams, this );
     },
-    getFilterParams: function (message) {
-        let period = message.package.value.values.find(f => f.name === 'period').value;
-        if( period !== null ){
-            if( period.dateFrom !== '' && period.dateTo !== ''){
-                this.dateFrom =  period.dateFrom;
-                this.dateTo = period.dateTo;
-                let  datePrev = new Date(this.dateFrom);   
-                let  dateCurr = new Date(this.dateTo);               
-                this.previousYear = datePrev.getFullYear();
-                this.currentYear =  dateCurr.getFullYear();
-                this.previousYear = this.currentYear === this.previousYear ? this.currentYear - 1 : this.previousYear;
-                this.dateFromViewValues = this.changeDateTimeValues(this.dateFrom);
-                this.dateToViewValues = this.changeDateTimeValues(this.dateTo);
-            }
-        }
+
+    setFilterParams: function (message) {
+        this.dateFrom = message.dateFrom;
+        this.dateTo = message.dateTo;
+        this.previousYear = message.previousYear;
+        this.currentYear = message.currentYear;
+        this.dateFromViewValues = message.dateFromViewValues;
+        this.dateToViewValues = message.dateToViewValues;
     },
-    afterViewInit: function(data) {
+
+    afterViewInit: function() {
         const reportTitle = document.getElementById('reportTitle');
         const organizationNameInput = document.createElement('span');
         reportTitle.appendChild(organizationNameInput);
         organizationNameInput.id = 'organizationName';
         
-        
         let CONTAINER = document.getElementById('container');
-        this.counter = 0
         let btnExcel = this.createElement('button', { id: 'btnExcel', innerText: 'Вигрузити в Excel', disabled: true } );
         let btnWrap = this.createElement('div', { className: 'btnWrap' }, btnExcel );
         CONTAINER.appendChild(btnWrap);
         
         btnExcel.addEventListener('click', event => {
             event.stopImmediatePropagation();
-            this.createTableExcel();
+            this.createExcelPage();
         });         
     },
-    setYears: function (message) {
-        this.previousYear = message.previousYear;
-        this.currentYear = message.currentYear;
-    },
+
     showWarning: function(message) {
         let CONTAINER = document.getElementById('container');
         
@@ -90,30 +84,44 @@
             CONTAINER.removeChild(container.lastElementChild);
         });
     },
-    setData: function(message){
-        if( message.rep1_data){
-            this.rep1_data =  message.rep1_data;
-            this.counter += 1;
-        }else if( message.rep2_data){
-            this.rep2_data =  message.rep2_data;
-            this.counter += 1;
-        }else if( message.rep3_data){
-            this.rep3_data =  message.rep3_data;
-            this.counter += 1;
-        }else if( message.rep4_data){
-            this.rep4_data =  message.rep4_data;
-            this.counter += 1;
-        }else if( message.rep5_data){
-            this.rep5_data =  message.rep5_data;
-            this.counter += 1;
+
+    setData: function(message) {
+
+        let table = {
+            data: message.data,
+            columns: message.columns   
         }
+        this.data[message.position] = table;
+        this.counter += 1;
+
         if( this.counter === 5 ){
-            this.dataArray = [ this.rep1_data, this.rep2_data, this.rep3_data, this.rep4_data, this.rep5_data];
             document.getElementById('btnExcel').disabled = false;
             this.counter = 0;
         }
     },
-    createTableExcel: function(){
+
+    createExcelPage: function () {
+        const data  =  this.data;
+        const workbook = this.createExcel();
+        const worksheet = workbook.addWorksheet('Заявки', {
+            pageSetup:{
+                orientation: 'landscape',
+                fitToPage: false,
+            }
+        });
+        worksheet.pageSetup.margins = {
+            left: 0.4, right: 0.3,
+            top: 0.4, bottom: 0.4,
+            header: 0.0, footer: 0.0
+        };
+        let years = [ this.previousYear, this.currentYear];
+        let yearsTemp = [ this.previousYear, this.currentYear];
+        console.log(data);
+
+        this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
+    },
+
+    createTableExcel: function() {
         this.showPagePreloader('Зачекайте, формується документ');
         const workbook = this.createExcel();
         const worksheet = workbook.addWorksheet('Заявки', {
@@ -487,21 +495,7 @@
         worksheet.getRow(51).height = 150;
         this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     },
-    changeDateTimeValues: function(value){
-        let date = new Date(value);
-        let dd = date.getDate();
-        let MM = date.getMonth();
-        let yyyy = date.getFullYear();
-        let HH = date.getUTCHours()
-        let mm = date.getMinutes();
-        MM += 1 ;
-        if( (dd.toString()).length === 1){  dd = '0' + dd; }
-        if( (MM.toString()).length === 1){ MM = '0' + MM ; }
-        if( (HH.toString()).length === 1){  HH = '0' + HH; }
-        if( (mm.toString()).length === 1){ mm = '0' + mm; }
-        let trueDate = dd+'.'+MM+'.' + yyyy;
-        return trueDate;
-    },         
+       
 	createElement: function(tag, props, ...children) {
         const element = document.createElement(tag);
         Object.keys(props).forEach( key => element[key] = props[key] );
@@ -510,7 +504,8 @@
                 element.appendChild(child);
             });
         } return element;
-    },    
+    },
+
     destroy: function(){
         this.sub.unsubscribe();
         this.sub1.unsubscribe();
