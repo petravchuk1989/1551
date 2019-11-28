@@ -241,6 +241,14 @@
                         this.showPagePreloader('');
                         this.messageService.publish({ name: 'showInfo'});
                     }
+                    if(e.column.dataField == 'RDAName'
+                    ){
+                        let rdaid = e.data.RDAId;
+                        let ratingid = e.data.RatingId;
+                        let date = this.period;
+                        let string = 'RDAId='+rdaid+'&RatingId='+ratingid+'&DateCalc='+date;
+                        window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indicators_detail?"+string);
+                    }
                 }
             });
 
