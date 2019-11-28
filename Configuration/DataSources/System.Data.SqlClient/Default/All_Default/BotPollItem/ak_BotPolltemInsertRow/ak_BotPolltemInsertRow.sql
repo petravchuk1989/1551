@@ -1,4 +1,4 @@
-insert into [CRM_1551_Bot_Intagration].[dbo].[BotPollItem]
+insert into [CRM_1551_Bot_Integration].[dbo].[BotPollItem]
   (
   [name]
       ,[active]
