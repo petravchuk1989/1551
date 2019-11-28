@@ -19,7 +19,13 @@
         "flexGrow": 1,
         "alignSelf": "auto",
         "border": "none",
-        "children": [],
+        "children": [
+          {
+            "code": "NativeDataGridWidget-0",
+            "type": "NativeDataGridWidgetComponent",
+            "name": "ratings"
+          }
+        ],
         "id": "Container-0",
         "height": "calc(100% - 10px)",
         "minHeight": "100px",
