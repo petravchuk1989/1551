@@ -144,7 +144,9 @@
   where Id=@app_id
   --арт
               end
-			  update [dbo].[Appeals] set [applicant_id] = @app_id
+			  update [dbo].[Appeals] 
+			  set [applicant_id] = @app_id
+			  ,[edit_date]=getutcdate()
 			  where [Id] = @AppealId
 			  
 			select @app_id as ApplicantId  
