@@ -88,15 +88,13 @@
       "Code": "AppealFromSite_geolocation_lat",
       "Name": "Координат широты",
       "FieldType": "text",
-      "Position": 10,
-      "Width": "50%"
+      "Position": 10
     },
     {
       "Code": "AppealFromSite_geolocation_lon",
       "Name": "Координат долготы",
       "FieldType": "text",
-      "Position": 11,
-      "Width": "50%"
+      "Position": 11
     },
     {
       "Code": "btn_searchPerson",
@@ -106,15 +104,6 @@
       "Width": "30%",
       "Icon": "search",
       "IconHint": "Пошук та створення заявника в системі"
-    },
-    {
-      "Code": "btn_searchAdressByCoordinate",
-      "Name": "Відобразити адресу на карті",
-      "FieldType": "button",
-      "Position": 13,
-      "Width": "40%",
-      "Icon": "my_location",
-      "IconHint": "Відобразити адресу на карті"
     }
   ]
 }
