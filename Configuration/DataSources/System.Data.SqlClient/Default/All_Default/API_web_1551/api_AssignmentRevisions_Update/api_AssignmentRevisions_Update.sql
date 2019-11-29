@@ -1,19 +1,51 @@
---declare @appeal_id int = 5392227
+
 /*
 "по якому робили прозвон"- що мається на увазі?
 2.2 2.3 пункт результат,резолюція така, як і в 2.1?
 2.4 створюється нове доручення чи оновлюється?
 2.2 first_executor_organization_id скопіював з доручення таблиці Assignments значення executor_organization_id
 
-declare @Id int=2974015;
-declare @result int=4;
-declare @user_id nvarchar(128)=N'Вася';
+2975230
+2975229 main
+
+5398713 appel
+
+declare @appeal_id int = 5398477;
+declare @result int=5;
+declare @user_id nvarchar(128)=N'тестт';
+declare @grade int =5;
+declare @grade_comment nvarchar(128)=N'тестт';
 */
-declare @Id int =@appeal_id;
+--declare @Id int =@appeal_id;
+
+-- таблица с нужными ображениями
+declare @assignments_table table (Id int);
+
+  insert into @assignments_table (Id)
+
+  select [Assignments].Id
+  from [Appeals]
+  inner join [Questions] on [Appeals].Id=[Questions].appeal_id
+  inner join [Assignments] on [Questions].Id=[Assignments].question_id
+  where [Appeals].Id=@appeal_id
+
+ -- select * from @assignments_table
+-- таблица с нужными вопросами
+declare @questions_table table (Id int);
+
+  insert into @questions_table (Id)
+
+  select [Questions].Id
+  from [Appeals]
+  inner join [Questions] on [Appeals].Id=[Questions].appeal_id
+  where [Appeals].Id=@appeal_id
+
+
+
+
 
 declare @output table ([Id] int)
 
-declare @question_id int=(select question_id from [Assignments] where Id=@Id);
 
 
 if @result in (4,11)
@@ -27,7 +59,8 @@ set [AssignmentResolutionsId]=9
 ,[close_date]=GETUTCDATE()
 ,[edit_date]=GETUTCDATE()
 ,[user_edit_id]=@user_id
-where question_id=@question_id
+where question_id in (select Id from @questions_table)
+--question_id=@question_id
 
 
 update [AssignmentRevisions]
@@ -42,7 +75,9 @@ where assignment_consideration_іd in
 (select [AssignmentConsiderations].Id
   from [Assignments]
   inner join [AssignmentConsiderations] on [Assignments].current_assignment_consideration_id=[AssignmentConsiderations].Id
-  where [Assignments].question_id=@question_id)
+  inner join @questions_table qt on [Assignments].question_id=qt.Id
+  --where [Assignments].question_id=@question_id
+  )
 
 
 
@@ -83,7 +118,10 @@ where assignment_consideration_іd in
   from [AssignmentConsiderations]
   inner join [Assignments] on [AssignmentConsiderations].Id=[Assignments].current_assignment_consideration_id
   left join [AssignmentRevisions] on [AssignmentRevisions].assignment_consideration_іd=[AssignmentConsiderations].Id
-  where [Assignments].question_id=@question_id and [AssignmentRevisions].Id is null
+  inner join @questions_table qt on [Assignments].question_id=qt.Id
+  where 
+  --[Assignments].question_id=@question_id 
+  [AssignmentRevisions].Id is null
 
 	end
 
@@ -104,8 +142,11 @@ where assignment_consideration_іd in
 (select [AssignmentConsiderations].Id
   from [Assignments]
   inner join [AssignmentConsiderations] on [Assignments].current_assignment_consideration_id=[AssignmentConsiderations].Id
-  where [Assignments].Id=@Id)
+  inner join @assignments_table ast on [Assignments].Id=ast.Id
+  --where [Assignments].Id=@Id
+  )
 
+  -- тут стоп, возможно цикл
 
 insert into [AssignmentConsiderations]
   (
@@ -119,7 +160,7 @@ insert into [AssignmentConsiderations]
 
   output inserted.Id into @output([Id])
 
-  select Id--[assignment_id] 
+  select [Assignments].Id--[assignment_id] 
   ,getdate()--[consideration_date] 
   ,5--[assignment_result_id] 
   ,[executor_organization_id]--[first_executor_organization_id] узнать
@@ -128,8 +169,9 @@ insert into [AssignmentConsiderations]
   ,@user_id--[user_edit_id]
 
   from [Assignments]
+  inner join @assignments_table ast on [Assignments].Id=ast.Id
 
-
+  
 
 
 update [Assignments]
@@ -140,7 +182,10 @@ set [AssignmentResolutionsId]=8
 ,[edit_date]=GETUTCDATE()
 ,[user_edit_id]=@user_id
 ,[current_assignment_consideration_id]=(select top 1 Id from @output)
-where Id=@Id
+from [Assignments]
+--inner join @output o on [Assignments].Id=o.Id
+inner join @assignments_table ast on [Assignments].Id=ast.Id
+where [Assignments].main_executor='true'
 
 
 	end
