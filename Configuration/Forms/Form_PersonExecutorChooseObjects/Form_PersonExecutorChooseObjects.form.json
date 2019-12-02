@@ -13,6 +13,7 @@
         "ParentFormFieldCodeForKeyValue": "Id",
         "ParentFormFieldCodeForDisplayValue": "Id"
       }
-    ]
+    ],
+    "Script": "string:Form_PersonExecutorChooseObjects.form.js"
   }
 }

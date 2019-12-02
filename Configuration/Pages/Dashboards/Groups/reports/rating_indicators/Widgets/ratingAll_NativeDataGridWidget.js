@@ -221,6 +221,7 @@
                 e.event.stopImmediatePropagation();
                 if(e.column){
                     if(e.row !== undefined
+						&& e.column.dataField !== 'RDAName'
                         && e.column.dataField !== 'IntegratedMetric_PerformanceLevel'
                         && e.column.dataField !== 'PercentPleasureOfExecution'
                         && e.column.dataField !== 'IndexOfFactToExecution'
@@ -241,12 +242,20 @@
                         this.showPagePreloader('');
                         this.messageService.publish({ name: 'showInfo'});
                     }
+                    if(e.column.dataField == 'RDAName'
+                    ){
+                        let rdaid = e.data.RDAId;
+                        let ratingid = e.data.RatingId;
+                        let date = this.date;
+                        let string = 'RDAId='+rdaid+'&RatingId='+ratingid+'&DateCalc='+date;
+                        window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indicators_detail?"+string);
+                    }
                 }
             });
 
             this.config.columns.forEach( col => {
                 function setColStyles(col){
-                    col.dataField === "RDAName" ? col.width = '200' : col.width = '120';
+                    col.width = col.dataField === "RDAName" ? '200' : '120';
                     col.alignment = 'center';
                     col.verticalAlignment = 'Bottom';
                 }
@@ -481,8 +490,8 @@
         },
 
         destroy: function () {
-            this.sub.unsubscribe();
-            this.sub1.unsubscribe();
+            // this.sub.unsubscribe();
+            // this.sub1.unsubscribe();
         },
     };
 }());

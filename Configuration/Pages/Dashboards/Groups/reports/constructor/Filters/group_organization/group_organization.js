@@ -4,7 +4,7 @@
     keyValue: 'Id',
     displayValue: 'Name',
     baseQueryOptions: {
-        queryCode: 'ak_Filter_ConstructorOrganizationGroups',
+        queryCode: 'ak_Fil_ConOrgGroups',
         filterColumns: null,
         limit: -1,
         parameterValues: [ {key:'@pageOffsetRows' , value:0},{key: '@pageLimitRows', value: 50} ],
