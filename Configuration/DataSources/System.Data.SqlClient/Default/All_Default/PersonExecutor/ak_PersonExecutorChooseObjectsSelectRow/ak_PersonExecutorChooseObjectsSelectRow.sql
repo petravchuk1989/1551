@@ -1,4 +1,4 @@
-select [PersonExecutorChooseObjects].Id, [Districts].name District_name, [Objects].name [Object_name],
+select [PersonExecutorChooseObjects].Id, [Districts].name district_name, [Objects].name [object_name],
 [Districts].Id districts_Id, [Objects].Id object_Id, [PersonExecutorChooseObjects].[person_executor_choose_id]
   from [PersonExecutorChooseObjects]
   inner join [Objects] on [PersonExecutorChooseObjects].object_id=[Objects].Id
