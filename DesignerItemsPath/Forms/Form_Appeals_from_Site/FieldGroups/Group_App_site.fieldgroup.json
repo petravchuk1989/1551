@@ -85,6 +85,18 @@
       "QueryParameters": []
     },
     {
+      "Code": "AppealFromSite_geolocation_lat",
+      "Name": "Координат широты",
+      "FieldType": "text",
+      "Position": 10
+    },
+    {
+      "Code": "AppealFromSite_geolocation_lon",
+      "Name": "Координат долготы",
+      "FieldType": "text",
+      "Position": 11
+    },
+    {
       "Code": "btn_searchPerson",
       "Name": "Пошук заявника",
       "FieldType": "button",
