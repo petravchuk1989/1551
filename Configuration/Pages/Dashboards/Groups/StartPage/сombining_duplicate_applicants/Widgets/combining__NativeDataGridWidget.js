@@ -2,7 +2,7 @@
   return {
     config: {
         query: {
-            code: 'test',
+            code: 'ak_db_doubles_table2',
             parameterValues: [],
             filterColumns: [],
             sortColumns: [],
@@ -11,23 +11,23 @@
         },
         columns: [
             {
-                dataField: 'priority',
+                dataField: 'Phone_number',
                 caption: 'Номер телефону',
             }, {
-                dataField: 'main',
-                caption: 'Кількість дзвінків',
+                dataField: 'Full_name',
+                caption: 'ПІБ',
             }, {
-                dataField: 'executor_role_level_id',
-                caption: 'Кількість дзвінків',
+                dataField: 'Address',
+                caption: 'Адреса',
             }, {
-                dataField: 'priocessing_kind_id',
-                caption: 'Кількість дзвінків',
+                dataField: 'Privilege',
+                caption: 'Пільга',
             }
         ],
         selection: {
             mode: 'multiple'
         },
-        keyExpr: 'priority',
+        keyExpr: 'Id',
         
         focusedRowEnabled: true,
     },
@@ -74,30 +74,30 @@
     },
 
     showApplicants: function (message) {
-        // this.config.query.parameterValues = [
-        //     { key: '@id', value: message.id }
-        // ];
+        this.config.query.parameterValues = [
+            { key: '@Id', value: message.id }
+        ];
         this.loadData(this.afterLoadDataHandler);
     },
 
     executeQueryCombining: function (id, rowsId) {
         let query = {
-            queryCode: this.config.query.code,
+            queryCode: 'ak_db_doubles_ButtonSkip',
             limit: -1,
             parameterValues: [
                 { key: '@id',  value: id},
                 { key: '@id1',  value: rowsId}
             ]
         };
-        this.queryExecutor(query, this.response, this);
+        // this.queryExecutor(query, this.response, this);
     },
 
     executeQueryMissing: function (rowsId) {
         let query = {
-            queryCode: this.config.query.code,
+            queryCode: 'ak_db_doubles_ButtonSkip',
             limit: -1,
             parameterValues: [
-                { key: '@id',  value: rowsId}
+                { key: '@Ids',  value: rowsId}
             ]
         };
         this.queryExecutor(query, this.response, this);

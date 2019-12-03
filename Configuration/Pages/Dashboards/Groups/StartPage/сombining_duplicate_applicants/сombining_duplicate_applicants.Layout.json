@@ -22,7 +22,7 @@
         "children": [
           {
             "width": "calc(30% - 10px)",
-            "margin": "0 5px 10px",
+            "margin": "47px 5px 10px",
             "flexWrap": "wrap",
             "flexDirection": "row",
             "order": 1,
@@ -37,7 +37,7 @@
               }
             ],
             "id": "Container-1",
-            "height": "calc(100% - 10px)",
+            "height": "calc(100% - 57px)",
             "minHeight": "100px",
             "minWidth": "100px",
             "backgroundColor": "white"

@@ -2,7 +2,7 @@
   return {
     config: {
         query: {
-            code: 'test',
+            code: 'ak_db_doubles_table1',
             parameterValues: [],
             filterColumns: [],
             sortColumns: [],
@@ -11,15 +11,15 @@
         },
         columns: [
             {
-                dataField: 'priority',
+                dataField: 'Phone_number',
                 caption: 'Номер телефону',
             }, {
 
-                dataField: 'executor_role_level_id',
+                dataField: 'Count_applicants',
                 caption: 'Кількість дзвінків',
             }
         ],
-        keyExpr: 'priority',
+        keyExpr: 'Id',
     },
 
     init: function() {
