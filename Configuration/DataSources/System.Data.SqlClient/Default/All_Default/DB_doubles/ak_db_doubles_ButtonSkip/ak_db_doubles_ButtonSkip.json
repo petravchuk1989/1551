@@ -1,0 +1,13 @@
+{
+    "ModelType": "Query",
+    "Code": "ak_db_doubles_ButtonSkip",
+    "Name": "кнопка пропустити",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Parameters": [
+        {
+        "Code": "@Ids",
+        "Name": "Ids"
+        } 
+        ]
+}
