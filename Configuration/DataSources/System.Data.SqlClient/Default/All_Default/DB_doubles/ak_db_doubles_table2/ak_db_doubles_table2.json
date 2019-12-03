@@ -31,9 +31,21 @@
             "IsPrintable": false
           },
           {
+            "Code": "Years",
+            "Name": "Years",
+            "Position": 5,
+            "IsPrintable": false
+          },
+          {
+            "Code": "SocialState",
+            "Name": "SocialState",
+            "Position": 6,
+            "IsPrintable": false
+          },
+          {
             "Code": "Privilege",
             "Name": "Privilege",
-            "Position": 5,
+            "Position": 7,
             "IsPrintable": false
           }
     ],
