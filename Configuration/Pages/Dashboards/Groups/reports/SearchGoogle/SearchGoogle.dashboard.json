@@ -1,7 +1,8 @@
 {
+  "DashboardGroupCode": "reports",
   "Description": "",
   "DescriptionUrl": "",
   "ModelType": "Dashboard",
-  "Code": "SearhGoogle",
+  "Code": "SearchGoogle",
   "Name": "Пошук по карті"
 }

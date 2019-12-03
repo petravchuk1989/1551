@@ -4,7 +4,7 @@
 
             this.sub = this.messageService.subscribe('GlobalFilterChanged', this.getFilterParams, this );
             this.sub1 = this.messageService.subscribe('setYears', this.setYears, this );
-            this.sub1 = this.messageService.subscribe('setStyles', this.afterRenderTable, this );
+            this.sub1 = this.messageService.subscribe('setStyles', this.setStyles, this );
         },
         
         getFilterParams: function (message) {
@@ -33,19 +33,12 @@
             }
         },
 
-        afterRenderTable: function(){
+        setStyles: function() {
 
             let tds = document.querySelectorAll('td');
             tdsArr = Array.from(tds);
-            tdsArr.forEach( el => {
-            el.style.whiteSpace = "pre-wrap";
-            });
-            
-            let noWrapTdCollection = document.querySelectorAll('.dx-datagrid-text-content');
-            let noWrapTdArr = Array.from(noWrapTdCollection);
-            noWrapTdArr.forEach( td => {
+            tdsArr.forEach( td => {
                 td.style.whiteSpace = "pre-wrap";
-                td.parentElement.style.verticalAlign = "middle";
             });
 
             function setTdPreWrap(){
@@ -60,9 +53,10 @@
         },
 
         setYears: function (message) {
-            message.columns.forEach( el => {
-                el.columns[0].caption = this.previousYear;
-                el.columns[1].caption = this.currentYear;
+
+            message.columns.forEach( col => {
+                col.columns[0].caption = this.previousYear;
+                col.columns[1].caption = this.currentYear;
             });
         },
 
@@ -71,13 +65,8 @@
             let dd = date.getDate().toString();
             let mm = (date.getMonth() + 1).toString();
             let yyyy = date.getFullYear().toString();
-            // let HH = date.getUTCHours().toString();
-            // let MM = date.getMinutes().toString();
-
             dd = dd.length === 1 ? '0' + dd : dd;
             mm = mm.length === 1 ? '0' + mm : mm;
-            // MM = MM.length === 1 ? '0' + MM : MM;
-            // HH = HH.length === 1 ? '0' + HH : HH;
             return dd + '.' + mm + '.' + yyyy;
         },  
 

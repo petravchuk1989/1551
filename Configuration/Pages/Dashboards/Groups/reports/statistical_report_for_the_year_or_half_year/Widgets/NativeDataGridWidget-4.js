@@ -188,13 +188,6 @@
             this.config.onContentReady = this.afterRenderTable.bind(this);
         },
 
-        afterRenderTable: function() {
-            this.messageService.publish({
-                name: 'setYears',
-                columns: this.config.columns[1].columns
-            });
-        }, 
-
         setFilterParams: function (message) {
             this.config.query.parameterValues = [
                 {key: '@dateFrom' , value:  message.dateFrom },  
@@ -213,6 +206,10 @@
 
         afterRenderTable: function (params) {
             this.messageService.publish({ name: 'setStyles'});
+            this.messageService.publish({
+                name: 'setYears',
+                columns: this.config.columns[1].columns
+            });
         },
 
         destroy: function() {

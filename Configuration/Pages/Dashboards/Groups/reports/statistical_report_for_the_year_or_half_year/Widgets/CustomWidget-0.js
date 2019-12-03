@@ -35,7 +35,7 @@
 
     data: [],
 
-    counter: 0,
+    counter: 4,
 
     init: function() {
         this.sub = this.messageService.subscribe('showWarning', this.showWarning, this);
@@ -65,7 +65,7 @@
         
         btnExcel.addEventListener('click', event => {
             event.stopImmediatePropagation();
-            this.createExcelPage();
+            this.createExcelWorkbook();
         });         
     },
 
@@ -100,25 +100,134 @@
         }
     },
 
-    createExcelPage: function () {
-        const data  =  this.data;
+    createExcelWorkbook: function () {
         const workbook = this.createExcel();
         const worksheet = workbook.addWorksheet('Заявки', {
             pageSetup:{
                 orientation: 'landscape',
                 fitToPage: false,
+                margins: {
+                    left: 0.4, right: 0.3,
+                    top: 0.4, bottom: 0.4,
+                    header: 0.0, footer: 0.0
+                }
             }
         });
-        worksheet.pageSetup.margins = {
-            left: 0.4, right: 0.3,
-            top: 0.4, bottom: 0.4,
-            header: 0.0, footer: 0.0
-        };
-        let years = [ this.previousYear, this.currentYear];
-        let yearsTemp = [ this.previousYear, this.currentYear];
-        console.log(data);
+        this.years = [ this.previousYear, this.currentYear];
+        this.yearsTemp = [ this.previousYear, this.currentYear];
+        this.startStep = 5;
+        this.step = 10;
 
+        for (let i = 0; i < this.data.length; i++) {
+            const data = this.data[i];
+            let columns = data.columns;
+            let columnsProperties = [];
+            
+            if( i === 0) {
+                this.setTableType1Header(columns, worksheet);
+            } else if ( i === 1) {
+                this.setTableType2Header(columns, worksheet);
+            } else {
+                this.setTableType3Header(columns, worksheet);
+            }
+        }
         this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
+    },
+
+
+    setTableType2Header: function (columns, worksheet) {
+        let position = 1;
+
+        for (let i = 0; i < columns.length; i++) {
+            const column = columns[i];
+            let headerBot = headerTop = this.startStep;
+            let headerRight = position + column.columns.length;
+            let headerLeft = position + 1;
+            for (let j = 0; j < column.columns.length; j++) {
+                const element = column.columns[j];
+                let cellBot = cellTop = this.startStep + 1;
+                position += 1;
+                worksheet.mergeCells( cellTop, position, cellBot, position);
+                let caption = worksheet.getCell( cellTop, position);
+                caption.value = element.caption;
+            }
+            worksheet.mergeCells( headerTop, headerLeft, headerBot, headerRight );
+            let headerCaption = worksheet.getCell(headerTop, headerLeft);
+            headerCaption.value = column.caption;
+        }
+        this.startStep += 5;
+    },
+
+    setTableType1Header: function (columns, worksheet) {
+        let position = 0;
+        for (let i = 0; i < columns.length; i++) {
+            const column = columns[i];
+            let headerBot = headerTop = this.startStep;
+            let headerLeft = position + 2;
+            let headerRight = position + column.columns.length * 2 ;            
+            for (let i = 0; i < column.columns.length; i++) {
+                const subHeader = column.columns[i];
+                let cellBot = cellTop = this.startStep + 1;
+                position += 2;
+                let cellLeft = position;
+                let cellRight = cellLeft + 1;
+                worksheet.mergeCells( cellTop, cellLeft, cellBot, cellRight);
+                let caption = worksheet.getCell( cellTop, cellLeft);
+                caption.value = subHeader.caption;
+                this.setCellYearsValue(subHeader, position, worksheet);
+            }
+            worksheet.mergeCells( headerTop, headerLeft, headerBot, headerRight );
+            let headerCaption = worksheet.getCell(headerTop, headerLeft);
+            headerCaption.value = column.caption;
+        }
+        this.startStep += 5;
+    },
+
+    setCellYearsValue: function (subHeader, position, worksheet) {
+        for (let i = 0; i < subHeader.columns.length; i++) {
+            const year = subHeader.columns[i];
+            let yearTop = yearBot = this.startStep + 2;
+            let yearPosition = position + i;
+            worksheet.mergeCells( yearTop, yearPosition, yearBot, yearPosition);
+            let caption = worksheet.getCell( yearTop, yearPosition);
+            caption.value = year.caption;
+        }
+    },
+    
+
+    setTableType3Header: function (columns, worksheet) {
+        let position = 0;
+        columns.forEach( column => {
+            if(column.columns) {
+                let headerBot = headerTop = this.startStep;
+                let headerLeft = position + 2;
+                let headerRight = position + column.columns.length * 2 ;     
+                worksheet.mergeCells( headerTop, headerLeft, headerBot, headerRight );
+                let headerCaption = worksheet.getCell(headerTop, headerLeft);
+                headerCaption.value = column.caption;
+                for (let i = 0; i < column.columns.length; i++) {
+                    const subHeader = column.columns[i];
+                    let cellBot = cellTop = this.startStep + 1;
+                    position += 2;
+                    let cellLeft = position;
+                    let cellRight = cellLeft + 1;
+                    worksheet.mergeCells( cellTop, cellLeft, cellBot, cellRight);
+                    let caption = worksheet.getCell( cellTop, cellLeft);
+                    caption.value = subHeader.caption;
+                    this.setCellYearsValue(subHeader, position, worksheet);
+                }
+            } else {
+                const emptyHeaderTop = this.startStep;
+                const emptyHeaderBot = this.startStep + 2;
+                const emptyHeaderRight = 1;
+                const emptyHeaderLeft = 1;
+                worksheet.mergeCells( emptyHeaderTop, emptyHeaderRight, emptyHeaderBot, emptyHeaderLeft);
+                let caption = worksheet.getCell( emptyHeaderTop, emptyHeaderRight);
+                caption.value = 'Пустая строка';
+            }
+            
+        });
+        this.startStep += this.step;
     },
 
     createTableExcel: function() {

@@ -20,11 +20,11 @@
                             height: 100,
                             columns: [
                                 {
-                                    caption: '2018',
+                                    caption: 'previousYear',
                                     dataField: 'qtyPrev',
                                     alignment: 'center',
                                 }, {
-                                    caption: '2019',
+                                    caption: 'currentYear',
                                     dataField: 'qtyCurrent',
                                     alignment: 'center',
                                 }
@@ -34,12 +34,12 @@
                             alignment: 'center',
                             columns: [
                                 {
-                                    caption: '2018',
+                                    caption: 'previousYear',
                                     dataField: 'qtyMail_prev',
                                     alignment: 'center',
                                     
                                 }, {
-                                    caption: '2019',
+                                    caption: 'currentYear',
                                     dataField: 'qtyMail_curr',
                                     alignment: 'center',
                                 }
@@ -50,12 +50,12 @@
                             alignment: 'center',
                             columns: [
                                 {
-                                    caption: '2018',
+                                    caption: 'previousYear',
                                     dataField: 'qtyPersonal_prev',
                                     alignment: 'center',
                                     
                                 }, {
-                                    caption: '2019',
+                                    caption: 'currentYear',
                                     dataField: 'qtyPersonal_curr',
                                     alignment: 'center',
                                 }
@@ -72,13 +72,13 @@
                             alignment: 'center',
                             columns: [
                                 {
-                                    caption: '2018',
+                                    caption: 'previousYear',
                                     dataField: 'qtyPos_prev',
                                     alignment: 'center',
                                 }, {
                                     dataField: 'qtyPos_curr',
                                     alignment: 'center',
-                                    caption: '2019',
+                                    caption: 'currentYear',
                                 }
                             ]
                         }, {
@@ -87,13 +87,13 @@
                             alignment: 'center',
                             columns: [
                                 {
-                                    caption: '2018',
+                                    caption: 'previousYear',
                                     dataField: 'qtyNeg_prev',
                                     alignment: 'center',
                                 }, {
                                     dataField: 'qtyNeg_curr',
                                     alignment: 'center',
-                                    caption: '2019',
+                                    caption: 'currentYear',
                                 }
                             ]
                         }, {
@@ -101,13 +101,13 @@
                             alignment: 'center',
                             columns: [
                                 {
-                                    caption: '2018',
+                                    caption: 'previousYear',
                                     dataField: 'qtyExpl_prev',
                                     alignment: 'center',
                                 }, {
                                     dataField: 'qtyExpl_curr',
                                     alignment: 'center',
-                                    caption: '2019',
+                                    caption: 'currentYear',
                                 }
                             ]
                         }, {
@@ -115,13 +115,13 @@
                             alignment: 'center',
                             columns: [
                                 {
-                                    caption: '2018',
+                                    caption: 'previousYear',
                                     dataField: 'qtyElse_prev',
                                     alignment: 'center',
                                 }, {
                                     dataField: 'qtyElse_curr',
                                     alignment: 'center',
-                                    caption: '2019',
+                                    caption: 'currentYear',
                                 }
                             ]
                         }
@@ -136,14 +136,9 @@
             this.config.onContentReady = this.afterRenderTable.bind(this);
         },
 
-        afterRenderTable: function() {
-            this.messageService.publish({
-                name: 'setYears',
-                columns: this.config.columns
-            });
-        }, 
-
         setFilterParams: function (message) {
+            this.previousYear = message.previousYear;
+            this.currentYear = message.currentYear;
             this.config.query.parameterValues = [
                 {key: '@dateFrom' , value:  message.dateFrom },  
                 {key: '@dateTo', value: message.dateTo } 
@@ -158,9 +153,21 @@
             this.messageService.publish( {name, data, columns, position} );
             this.render(this.afterRenderTable());
         },   
+        
         afterRenderTable: function (params) {
             this.messageService.publish({ name: 'setStyles'});
+            this.setYears();
         },
+
+        setYears: function() {
+            this.config.columns.forEach( col => {
+                col.columns.forEach( col => {
+                    col.columns[0].caption = this.previousYear;
+                    col.columns[1].caption = this.currentYear;
+                });
+            });
+        },
+
         destroy: function() {
             this.sub.unsubscribe();
         },

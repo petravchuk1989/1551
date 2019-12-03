@@ -191,13 +191,6 @@
         init: function() {
             this.sub =  this.messageService.subscribe( 'FiltersParams', this.setFilterParams, this );
             this.config.onContentReady = this.afterRenderTable.bind(this);
-        },
-
-        afterRenderTable: function() {
-            this.messageService.publish({
-                name: 'setYears',
-                columns: this.config.columns[1].columns
-            });
         }, 
 
         setFilterParams: function (message) {
@@ -218,6 +211,10 @@
 
         afterRenderTable: function (params) {
             this.messageService.publish({ name: 'setStyles'});
+            this.messageService.publish({
+                name: 'setYears',
+                columns: this.config.columns[1].columns
+            });
         },
 
         destroy: function() {
