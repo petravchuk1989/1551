@@ -9,40 +9,37 @@
         "Code": "Id",
         "Name": "Id",
         "Position": 1,
-        "IsPrimaryKey": true,
-        "IsPrintable": false
-
+        "IsPrimaryKey": true
       },{
-        "Code": "District_name",
-        "Name": "District_name",
-        "Position": 2,
-        "IsPrintable": false
+        "Code": "district_name",
+        "Name": "district_name",
+        "ReferenceKeyCode": "districts_Id",
+        "Position": 2
       },{
-        "Code": "Object_name",
-        "Name": "Object_name",
-        "Position": 3,
-        "IsPrintable": false
+        "Code": "object_name",
+        "Name": "object_name",
+        "ReferenceKeyCode": "object_Id",
+        "Position": 3
       },{
         "Code": "districts_Id",
         "Name": "districts_Id",
-        "Position": 4,
-        "IsPrintable": false
+        "Position": 4
       },{
         "Code": "object_Id",
         "Name": "object_Id",
-        "Position": 5,
-        "IsPrintable": false
-      },{
+        "Position": 5
+      },
+      {
         "Code": "person_executor_choose_id",
         "Name": "person_executor_choose_id",
-        "Position": 6,
-        "IsPrintable": false
+        "Position": 6
       }
     ],
     "Parameters": [
       {
         "Code": "@Id",
         "Name": "Id",
+        "ParameterType": "Integer",
         "IsPrimaryKey": true
       }
     ]
