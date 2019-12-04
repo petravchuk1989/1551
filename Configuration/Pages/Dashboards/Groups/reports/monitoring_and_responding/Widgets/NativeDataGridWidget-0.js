@@ -67,6 +67,9 @@
                     dataField: 'donePercent',
                     caption: '% виконання',
                     alignment: 'center',
+                    format: function(value){
+                        return value + '%';
+                    },
                 } 
             ],
             summary: {
@@ -284,7 +287,10 @@
                 let rowValues = [];
                 rows.push( i + 5);
                 for (let j = 0; j < rowData.values.length - 2; j++) {
-                    const value = rowData.values[j];
+                    let value = rowData.values[j];
+                    if( j === (rowData.values.length - 3) || j === (rowData.values.length - 4 )) {
+                        value = value + '%';
+                    }
                     rowValues.push(value);
                 }
                 worksheet.addRow(rowValues);
