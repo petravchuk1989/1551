@@ -28,6 +28,7 @@
       "FieldType": "textarea",
       "IsRequired": true,
       "Position": 3,
+      "Width": "100%",
       "Rows": 29
     },
     {
