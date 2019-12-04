@@ -1,6 +1,6 @@
 --declare @phone_number nvarchar(50)=(select [PhoneNumber] from [ApplicantDublicate] where id=@Id)
 
-  select [Applicants].Id, replace([ApplicantPhones].[phone_number], N'+38', N'') [Phone_number], [Applicants].full_name Full_name, isnull(StreetTypes.shortname+N' ', N'')+isnull(Streets.name+N'. ', N'')+isnull(Buildings.name, N'') Address,
+  select distinct [Applicants].Id, replace([ApplicantPhones].[phone_number], N'+38', N'') [Phone_number], [Applicants].full_name Full_name, isnull(StreetTypes.shortname+N' ', N'')+isnull(Streets.name+N'. ', N'')+isnull(Buildings.name, N'') Address,
   case
   when [Applicants].birth_date is null and [Applicants].birth_year is null then null
   when [Applicants].birth_date is null and [Applicants].birth_year is not null then YEAR(getdate())-[Applicants].birth_year+1

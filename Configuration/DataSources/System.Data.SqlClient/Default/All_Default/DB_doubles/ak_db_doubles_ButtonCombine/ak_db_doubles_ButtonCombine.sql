@@ -2,46 +2,14 @@
 declare @phone nvarchar(50)=N'11111111111';
 declare @true_applicant_id int = 1490252;
 declare @user_Id nvarchar(128)=N'Вася Тестовый';
-declare @Id int=1;
+declare @Id_table int=1;
 */
- ----добавляется запись в [ApplicantDublicateHistory], то что и отборажалось на ДБ
-  
-  insert into [ApplicantDublicateHistory]
-  (
-  [phone_number]
-      ,[applicant_id]
-      ,[full_name]
-      ,[live_address]
-      ,[birth_date]
-      ,[birth_year]
-      ,[social_state_id]
-      ,[category_type_id]
-      ,[true_applicant_id]
-      ,[user_done_id]
-      ,[done_date]
-  )
-  
-  select distinct [ApplicantPhones].[phone_number], 
-  [Applicants].Id [applicant_id], 
-  [Applicants].full_name [full_name], 
-  isnull(StreetTypes.shortname+N' ', N'')+isnull(Streets.name+N'. ', N'')+isnull(Buildings.name, N'') [live_address],
-  [Applicants].birth_date,
-  [Applicants].[birth_year],
-  [Applicants].social_state_id [social_state_id],
-  [Applicants].[applicant_privilage_id] [category_type_id],
-  @true_applicant_id [true_applicant_id],
-  @user_Id [user_done_id],
-  getutcdate() [done_date]
-  
-  from [ApplicantPhones]
-  inner join [ApplicantDublicate] on replace([ApplicantPhones].[phone_number], N'+38', N'')=[ApplicantDublicate].PhoneNumber
-  inner join [Applicants] on [ApplicantPhones].applicant_id=[Applicants].Id
-  left join [LiveAddress] on [Applicants].Id=[LiveAddress].applicant_id
-  inner join [Buildings] on [LiveAddress].[building_id]=[Buildings].id
-  left join [Streets] on [Buildings].street_id=[Streets].Id
-  left join [StreetTypes] on [Streets].street_type_id=[StreetTypes].Id
-  where [ApplicantDublicate].Id=@Id_table
-
+ 
+ update [ApplicantDublicate]
+  set [IsDone]='true'
+  ,[User_done_id]=@user_Id
+  ,[Done_date]=GETUTCDATE()
+  where Id=@Id_table
 
 
 -- все номера у данного апликанта
@@ -66,6 +34,39 @@ declare @Id int=1;
   declare @main_appl_phone_id int=
   (select top 1 Id from [ApplicantPhones] where applicant_id=@true_applicant_id and phone_number=@phone order by Id)
 
+
+  ----добавляется запись в [ApplicantDublicateHistory], то что обновляется+ те, что отображаются
+  
+  insert into [ApplicantDublicateHistory]
+  (
+  [phone_number]
+      ,[applicant_id]
+      ,[full_name]
+      ,[live_address]
+      ,[birth_date]
+      ,[birth_year]
+      ,[social_state_id]
+      ,[category_type_id]
+      ,[true_applicant_id]
+      ,[user_done_id]
+      ,[done_date]
+  )
+
+  select ap.phone_number, ap.applicant_Id, a.full_name, a.ApplicantAdress, a.birth_date, a.birth_year, 
+  a.social_state_id, a.category_type_id, @true_applicant_id, @user_Id, GETUTCDATE()
+  from @applicant_with_phones ap
+  inner join [Applicants] a on ap.applicant_Id=a.Id
+  union all
+  select null, ap.applicant_Id, null, 
+  isnull([Districts].name+N' р-н, ', N'')+isnull([StreetTypes].shortname, N'')+isnull(Streets.name+N' ', N'')+isnull(Buildings.name, N''),
+  null, null, null, null, @true_applicant_id, @user_Id, GETUTCDATE()
+
+  from (select distinct applicant_Id from @applicant_with_phones) ap
+  inner join [LiveAddress] on ap.applicant_Id=[LiveAddress].applicant_id
+  left join [Buildings] on [LiveAddress].building_id=[Buildings].Id
+  left join [Districts] on [Buildings].district_id=[Districts].Id
+  left join [Streets] on [Buildings].street_id=[Streets].Id
+  left join [StreetTypes] on [Streets].street_type_id=[StreetTypes].Id
 
 
   -- обновить Appeals на главного. нужно ли здесь обновлять номер телефона?
@@ -133,13 +134,13 @@ declare @delete_LiveAddress table (Id int, applicant_id int, building_id int, ho
   group by applicant_id)
 
 --удалить с телефонов не нужные
-
+/**/
 delete 
 from [ApplicantPhones]
 where Id in (select Id from @delete_phone)
 
 -- удаление с LiveAddress
-
+/**/
 delete 
 from LiveAddress
 where Id=(select Id from @delete_LiveAddress)
