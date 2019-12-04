@@ -40,6 +40,7 @@
             }
             else { // state != create
                 this.form.setControlValue('AppealId', this.id);
+                this.form.setControlValue('ReceiptSources', { key: 3, value: 'УГЛ' });
 
                 document.getElementsByClassName('float_r')[0].children[1].style.display = 'none';
                 document.getElementById('Question_Btn_Add').disabled = true;
@@ -56,10 +57,13 @@
                 this.form.disableControl('Question_OrganizationId');
                 this.form.disableControl('Question_ControlDate');
 
-                this.form.setControlValue('ReceiptSources', { key: 3, value: 'УГЛ' });
-                this.form.onControlValueChanged('Question_AnswerType', this.onChangedQuestion_AnswerType.bind(this));
-
+                // Убрать видимость до выяснения обстоятельств
+                this.form.setControlVisibility('Question_Building', false);
+                this.form.setControlVisibility('entrance', false);
+                this.form.setControlVisibility('flat', false);
+                this.form.setControlVisibility('Question_Organization', false);
                 this.details.setVisibility('Detail_UGL_QuestionNumberAppeal', false);
+
                 // Если Applicant_Id в форме не задан то создавать Questions еще рано (заявителя нету)
                 if (this.form.getControlValue('Applicant_Id') == null) {
                     document.getElementById('Question_Aplicant_Btn_Add').disabled = true;
@@ -70,9 +74,14 @@
                 if (this.form.getControlValue('Applicant_PIB') == null) { document.getElementById('Applicant_Btn_Add').disabled = true; };
 
                 this.form.onControlValueChanged('Applicant_Building', this.getDistrictAndExecutor);
+                this.form.onControlValueChanged('Applicant_Building', this.checkApplicantSaveAvailable);
                 this.form.onControlValueChanged('Applicant_PIB', this.checkApplicantSaveAvailable);
                 this.form.onControlValueChanged('Question_TypeId', this.onChanged_Question_TypeId);
+                this.form.onControlValueChanged('Question_TypeId', this.questionObjectOrg);
                 this.form.onControlValueChanged('Question_Content', this.checkQuestionRegistrationAvailable);
+                this.form.onControlValueChanged('Question_AnswerType', this.onChangedQuestion_AnswerType.bind(this));
+
+
                 // Заполнение полей "Загальна інформація"          
                 const AppealUGL = {
                     queryCode: 'AppealUGL_Info',
@@ -94,6 +103,7 @@
                     this.form.setControlValue('Question_Content', data.rows[0].values[5]);
                     this.form.setControlValue('ApplicantUGL', data.rows[0].values[6]);
                     this.form.setControlValue('AppealNumber', data.rows[0].values[8]);
+                    this.form.setControlValue('applicantAddress', data.rows[0].values[9]);
 
                     // Загрузка заявителей по телефону в деталь
                     const parameters = [
@@ -189,6 +199,7 @@
                             ]
                         };
 
+
                         this.queryExecutor.getValues(queryForGetValue2).subscribe(data => {
 
                             this.form.setControlValue('Applicant_Id', data.rows[0].values[0]);
@@ -201,7 +212,7 @@
                                     }
                                 ]
                             };
-
+                            document.getElementById('Applicant_Btn_Add').disabled = true;
                             this.queryExecutor.getValues(queryForGetValue3).subscribe(data => {
 
                                 //LoadDetail Detail_UGL_Aplicant
@@ -221,7 +232,7 @@
 
                             this.checkApplicantSaveAvailable();
                         });
-                        document.getElementById('Applicant_Btn_Add').disabled = true;
+
                     }
                 }.bind(this));
 
@@ -355,14 +366,13 @@
                         this.form.setControlValue('ReceiptSources', { key: data.rows[0].values[4], value: data.rows[0].values[19] });
                         this.form.setControlValue('AppealNumber', data.rows[0].values[3]);
                         this.form.setControlValue('Phone', data.rows[0].values[5]);
-                        // this.form.setControlValue('DateStart', new Date(data.rows[0].values[10]));
                         this.form.setControlValue('DateStart', new Date());
-                        //LoadDetail Detail_UGL_Aplicant
+
                         const parameters = [
                             { key: '@phone_number', value: data.rows[0].values[5] }
                         ];
                         this.details.loadData('Detail_UGL_Aplicant', parameters);
-                        //LoadDetail Detail_UGL_QuestionRegistration
+
                         const parameters2 = [
                             { key: '@appealId', value: this.id }
                         ];
@@ -389,6 +399,50 @@
             }.bind(this));
         },
         // END INIT
+        questionObjectOrg: function () {
+            let q_type_id = this.form.getControlValue('Question_TypeId');
+            if (q_type_id == undefined) {
+                this.form.setControlVisibility('Question_Building', false);
+                this.form.setControlVisibility('entrance', false);
+                this.form.setControlVisibility('flat', false);
+                this.form.setControlVisibility('Question_Organization', false);
+            }
+            else {
+                const objAndOrg = {
+                    queryCode: 'QuestionTypes_HideColumns',
+                    parameterValues: [
+                        {
+                            key: '@question_type_id',
+                            value: q_type_id
+                        }
+                    ]
+                };
+                this.queryExecutor.getValues(objAndOrg).subscribe(data => {
+                    let is_obj = data.rows[0].values[1];
+                    let is_org = data.rows[0].values[0];
+
+                    if (is_obj == true) {
+                        this.form.setControlVisibility('Question_Building', true);
+                        this.form.setControlVisibility('entrance', true);
+                        this.form.setControlVisibility('flat', true);
+                    }
+                    else {
+                        this.form.setControlVisibility('Question_Building', false);
+                        this.form.setControlVisibility('entrance', false);
+                        this.form.setControlVisibility('flat', false);
+                    }
+
+                    if (is_org == true) {
+                        this.form.setControlVisibility('Question_Organization', true);
+                    }
+                    else {
+                        this.form.setControlVisibility('Question_Organization', false);
+                    }
+
+                });
+            }
+        },
+
         checkApplicantHere: function () {
             if (this.form.getControlValue('Applicant_Id') != null) {
                 document.getElementById('Question_Aplicant_Btn_Add').disabled = false;
@@ -399,7 +453,7 @@
         },
         // Условие доступности сохранения заявителя
         checkApplicantSaveAvailable: function () {
-            if (this.form.getControlValue('Applicant_PIB') == null) {
+            if (this.form.getControlValue('Applicant_PIB') == null || this.form.getControlValue('Applicant_Building') == null) {
                 document.getElementById('Applicant_Btn_Add').disabled = true;
             }
             else {
@@ -409,7 +463,6 @@
         //Получение данных заявителя
         getApplicantInfo: function (column, row, value, event, indexOfColumnId) {
             let applicantId = row.values[4];
-            console.log(applicantId);
 
             const Applicant = {
                 queryCode: 'Applicant_Info',
@@ -438,7 +491,6 @@
                     sex = (data.rows[0].values[13]).toString();
                 };
 
-                console.log(data);
                 this.form.setControlValue('Applicant_Building',
                     { key: data.rows[0].values[1], value: data.rows[0].values[2] });
                 this.form.setControlValue('Applicant_Entrance', data.rows[0].values[4])
@@ -537,7 +589,7 @@
             };
 
             if (value == 4 || value == 5) {
-                this.form.setControlValue('Question_AnswerPhoneOrPost', this.form.getControlValue('Adress_for_answer'));
+                this.form.setControlValue('Question_AnswerPhoneOrPost', this.form.getControlValue('applicantAddress'));
             };
 
             if (value == 3) {
@@ -570,6 +622,8 @@
                 this.form.setControlValue('Question_Building',
                     { key: data.rows[0].values[0], value: data.rows[0].values[1] });
             });
+            this.form.setControlValue('flat', this.form.getControlValue('Applicant_Flat'));
+            this.form.setControlValue('entrance', this.form.getControlValue('Applicant_Entrance'));
         },
         convertDateNull: function (value) {
             if (!value) { return this.extractStartDate(); } else { return value; };
@@ -583,7 +637,6 @@
         },
         getDistrictAndExecutor: function () {
             let building = this.form.getControlValue('Applicant_Building');
-            //   console.log(typeof(building));
             if (building != null && typeof (building) == 'number') {
                 const query = {
                     queryCode: 'DistrictAndExecutor_byBuilding',
@@ -593,7 +646,8 @@
                     }]
                 };
                 this.queryExecutor.getValues(query).subscribe(function (data) {
-                    if (data) {
+
+                    if (data.rows[0] != undefined) {
                         this.form.setControlValue('Applicant_District', data.rows[0].values[1]);
                         this.form.setControlValue('ExecutorInRoleForObject', data.rows[0].values[2]);
                     }
