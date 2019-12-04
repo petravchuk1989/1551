@@ -1,7 +1,7 @@
---   declare @org int = 2;
---   declare @dateFrom date = '2019-01-01';
---   declare @dateTo date = getdate();
---   declare @question_type_id int = 2;
+  --  declare @org int = 2;
+  --  declare @dateFrom date = '2019-01-01';
+  --  declare @dateTo date = getdate();
+  --  declare @question_type_id int = 2;
 
 
   if object_id('tempdb..##temp_QuestionTypes4monitoring') is not null drop table ##temp_QuestionTypes4monitoring
@@ -191,24 +191,20 @@ cast((1- (cast(outTimeQty as numeric(18,6)) + cast(waitTimeQty as numeric(18,6))
 when inTimeQty != 0 and outTimeQty = 0 and waitTimeQty = 0 then 
 cast((1 - (0 / (cast(inTimeQty as numeric(18,6)) ) 
 )) * 100 as numeric (36,2) )
-else '0'
+else 0
 end
 	as inTimePercent,
 case 
 when doneClosedQty != 0 and notDoneClosedQty != 0 then 
-cast(
 cast((cast(DoneClosedQty as numeric(18,6)) / ( cast(doneClosedQty as numeric(18,6)) + cast(notDoneClosedQty as numeric(18,6)) 
 ) ) 
-* 100 as numeric (36,2) ) as nvarchar(10) ) 
- + N'%'  
- when doneClosedQty != 0 and notDoneClosedQty = 0 then 
-cast(
+* 100 as numeric (36,2) )   
+when doneClosedQty != 0 and notDoneClosedQty = 0 then 
 cast((cast(doneClosedQty as numeric(18,6)) / (cast(doneClosedQty as numeric(18,6)) 
 )) 
-* 100 as numeric (36,2) ) as nvarchar(10) ) 
- + N'%' 
+* 100 as numeric (36,2) )  
 
- else '0%'
+ else 0
  end
  as donePercent
 
