@@ -69,6 +69,72 @@
                     alignment: 'center',
                 } 
             ],
+            summary: {
+                totalItems: [
+                    {
+                        column: "AllCount",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "inTimeQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "outTimeQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "waitTimeQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "doneClosedQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "notDoneClosedQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "doneOnCheckQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "inWorkQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "inTimePercent",
+                        summaryType: "avg",
+                        customizeText: function(data) {
+                            return "Середнє: " + data.value.toFixed(2);
+                        }
+                    },  {
+                        column: "donePercent",
+                        summaryType: "avg",
+                        customizeText: function(data) {
+                            return "Середнє: " + data.value.toFixed(2);
+                        }
+                    }
+                ]
+                
+            },
             keyExpr: 'Id',
             scrolling: {
                 mode: 'virtual'
