@@ -1,12 +1,13 @@
 --declare @phone_number nvarchar(50)=(select [PhoneNumber] from [ApplicantDublicate] where id=@Id)
 
-  select [Applicants].Id, replace([ApplicantPhones].[phone_number], N'+38', N'') [Phone_number], [Applicants].full_name Full_name, isnull(StreetTypes.shortname+N' ', N'')+isnull(Streets.name+N'. ', N'')+isnull(Buildings.name, N'') Address,
+  select distinct [Applicants].Id, replace([ApplicantPhones].[phone_number], N'+38', N'') [Phone_number], [Applicants].full_name Full_name, isnull(StreetTypes.shortname+N' ', N'')+isnull(Streets.name+N'. ', N'')+isnull(Buildings.name, N'') Address,
   case
   when [Applicants].birth_date is null and [Applicants].birth_year is null then null
   when [Applicants].birth_date is null and [Applicants].birth_year is not null then YEAR(getdate())-[Applicants].birth_year+1
   when month([Applicants].birth_date)*100+day([Applicants].birth_date)<month(getdate())*100+day(getdate()) then YEAR(getdate())-[Applicants].birth_year+1
   when month([Applicants].birth_date)*100+day([Applicants].birth_date)>=month(getdate())*100+day(getdate()) then YEAR(getdate())-[Applicants].birth_year
-  end years, [SocialStates].name SocialState, [ApplicantPrivilege].Name Privilege
+  end Years, 
+  [SocialStates].name SocialState, [ApplicantPrivilege].Name Privilege
   from [ApplicantPhones]
   inner join [ApplicantDublicate] on replace([ApplicantPhones].[phone_number], N'+38', N'')=[ApplicantDublicate].PhoneNumber
   inner join [Applicants] on [ApplicantPhones].applicant_id=[Applicants].Id

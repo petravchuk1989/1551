@@ -50,10 +50,12 @@
                     text: 'Об\'єднати',
                     onClick: function(e) {
                         e.event.stopImmediatePropagation();
+                        debugger;
                         const index = this.dataGridInstance.focusedRowKey;
                         const id = this.data[index][0];
+                        const phone = this.data[index][1];
                         const rowsId = this.dataGridInstance.selectedRowKeys.join(", ");
-                        this.executeQueryCombining(id, rowsId);
+                        this.executeQueryCombining(id, phone, rowsId);
                     }.bind(this)
                 },
             }, {
@@ -82,10 +84,12 @@
 
     executeQueryCombining: function (id, rowsId) {
         let query = {
-            queryCode: 'ak_db_doubles_ButtonSkip',
+            queryCode: 'ak_db_doubles_ButtonCombine',
             limit: -1,
             parameterValues: [
-                { key: '@id',  value: id},
+                { key: '@phone',  value: id},
+                { key: '@id1',  value: rowsId},
+                { key: '@id1',  value: rowsId},
                 { key: '@id1',  value: rowsId}
             ]
         };
