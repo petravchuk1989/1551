@@ -124,7 +124,8 @@
       "Name": "assignmentConsiderations_id",
       "FieldType": "number",
       "Position": 456,
-      "Width": "50%"
+      "Width": "50%",
+      "IsHidden": true
     },
     {
       "Code": "is_exe",
