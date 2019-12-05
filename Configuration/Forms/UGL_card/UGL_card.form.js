@@ -80,7 +80,8 @@
                 this.form.onControlValueChanged('Question_TypeId', this.questionObjectOrg);
                 this.form.onControlValueChanged('Question_Content', this.checkQuestionRegistrationAvailable);
                 this.form.onControlValueChanged('Question_AnswerType', this.onChangedQuestion_AnswerType.bind(this));
-
+                this.form.onControlValueChanged('Question_Building', this.checkQuestionRegistrationAvailable);
+                this.form.onControlValueChanged('Question_Organization', this.checkQuestionRegistrationAvailable);
 
                 // Заполнение полей "Загальна інформація"          
                 const AppealUGL = {
@@ -397,8 +398,12 @@
                 this.details.loadData('Detail_UGL_QuestionNumberAppeal', parameters/*, filters, sorting*/);
                 this.details.setVisibility('Detail_UGL_QuestionNumberAppeal', true);
             }.bind(this));
+
+            var is_obj = "";
+            var is_org = "";
         },
         // END INIT
+
         questionObjectOrg: function () {
             let q_type_id = this.form.getControlValue('Question_TypeId');
             if (q_type_id == undefined) {
@@ -418,13 +423,14 @@
                     ]
                 };
                 this.queryExecutor.getValues(objAndOrg).subscribe(data => {
-                    let is_obj = data.rows[0].values[1];
-                    let is_org = data.rows[0].values[0];
+                    this.is_obj = data.rows[0].values[1];
+                    this.is_org = data.rows[0].values[0];
 
-                    if (is_obj == true) {
+                    if (this.is_org == true) {
                         this.form.setControlVisibility('Question_Building', true);
                         this.form.setControlVisibility('entrance', true);
                         this.form.setControlVisibility('flat', true);
+
                     }
                     else {
                         this.form.setControlVisibility('Question_Building', false);
@@ -432,7 +438,7 @@
                         this.form.setControlVisibility('flat', false);
                     }
 
-                    if (is_org == true) {
+                    if (this.is_obj == true) {
                         this.form.setControlVisibility('Question_Organization', true);
                     }
                     else {
@@ -599,13 +605,65 @@
         },
         // Условия допустимости регистрации Questions`a
         checkQuestionRegistrationAvailable: function () {
-            if (this.form.getControlValue('Question_Content') != null
-                && this.form.getControlValue('Question_TypeId') != null
-                && this.form.getControlValue('Question_AnswerType') != null) {
-                document.getElementById('Question_Btn_Add').disabled = false;
-            }
-            else {
-                document.getElementById('Question_Btn_Add').disabled = true;
+            // Куча ифов стартует
+            if (this.form.getControlValue('Question_TypeId') != null) {
+                if (this.form.getControlValue('Question_Building') == null) {
+                    this.form.setControlValue('flat', null);
+                    this.form.setControlValue('entrance', null);
+                }
+                // Случай когда объект вопроса и организация обязательны
+                if (this.is_obj == true && this.is_org == true) {
+                    let currentObj = this.form.getControlValue('Question_Building');
+                    let currentOrg = this.form.getControlValue('Question_Organization');
+                    if (currentObj == null || currentOrg == null) {
+                        document.getElementById('Question_Btn_Add').disabled = true;
+                    }
+                    else {
+
+                        if (this.form.getControlValue('Question_Content') != null
+                            && this.form.getControlValue('Question_TypeId') != null
+                            && this.form.getControlValue('Question_AnswerType') != null) {
+                            document.getElementById('Question_Btn_Add').disabled = false;
+                        }
+                        else {
+                            document.getElementById('Question_Btn_Add').disabled = true;
+                        }
+                    }
+                }
+                // Случай когда объект вопроса обязательно а орг нет
+                if (this.is_obj == true && this.is_org == false) {
+                    let currentObj = this.form.getControlValue('Question_Building');
+                    if (currentObj == null) {
+                        document.getElementById('Question_Btn_Add').disabled = true;
+                    }
+                    else {
+                        if (this.form.getControlValue('Question_Content') != null
+                            && this.form.getControlValue('Question_TypeId') != null
+                            && this.form.getControlValue('Question_AnswerType') != null) {
+                            document.getElementById('Question_Btn_Add').disabled = false;
+                        }
+                        else {
+                            document.getElementById('Question_Btn_Add').disabled = true;
+                        }
+                    }
+                }
+                // Случай когда орг вопроса обязательно а объект нет
+                if (this.is_obj == false && this.is_org == true) {
+                    let currentOrg = this.form.getControlValue('Question_Organization');
+                    if (currentOrg == null) {
+                        document.getElementById('Question_Btn_Add').disabled = true;
+                    }
+                    else {
+                        if (this.form.getControlValue('Question_Content') != null
+                            && this.form.getControlValue('Question_TypeId') != null
+                            && this.form.getControlValue('Question_AnswerType') != null) {
+                            document.getElementById('Question_Btn_Add').disabled = false;
+                        }
+                        else {
+                            document.getElementById('Question_Btn_Add').disabled = true;
+                        }
+                    }
+                }
             }
         },
         // Если надо по Id дома найти его полный адрес
