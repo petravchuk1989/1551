@@ -1,5 +1,5 @@
 (function () {
-  return {
+    return {
         placeholder: 'Рейтинг',
         keyValue: 'Id',
         displayValue: 'Name',
@@ -16,17 +16,14 @@
                 }
             ]
         },
+
         onItemSelect: function(item) {
             this.setValues(item);
         },
-        onClearFilter: function() {
-        },
         
-        //   убрать 
         initValue: function() {
             this.setDefaultValue('first'); 
         },
-        //   убрать 
 
         setValues: function(item) {
             let message = {
