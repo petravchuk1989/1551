@@ -2,7 +2,7 @@
     return {
 
         placeholder: 'Період',
-
+        type: "Date",
         onItemSelect: function (date) {
         },
 
