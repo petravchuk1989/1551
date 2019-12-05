@@ -98,6 +98,7 @@ SELECT distinct top 1
   ,org_bal.short_name bal_name
   ,case when [ReceiptSources].code=N'UGL' then Appeals.[enter_number] end [enter_number]
   ,Assignments.edit_date as date_in_form
+  ,Assigments.executor_person_id as executor_person
   FROM [dbo].[Assignments]
 	left join AssignmentTypes aty on aty.Id = Assignments.assignment_type_id
 	left join AssignmentStates ast on ast.Id = Assignments.assignment_state_id
