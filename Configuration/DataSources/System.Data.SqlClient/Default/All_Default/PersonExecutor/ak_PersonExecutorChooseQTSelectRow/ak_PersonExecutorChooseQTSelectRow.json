@@ -23,12 +23,19 @@
         "Code": "question_type_id",
         "Name": "question_type_id",
         "Position": 4
+      },
+      {
+        "Code": "question_type_name",
+        "Name": "question_type_name",
+        "ReferenceKeyCode": "question_type_id",
+        "Position": 5
       }
     ],
     "Parameters": [
       {
         "Code": "@Id",
         "Name": "Id",
+        "ParameterType": "Integer",
         "IsPrimaryKey": true
       }
     ]
