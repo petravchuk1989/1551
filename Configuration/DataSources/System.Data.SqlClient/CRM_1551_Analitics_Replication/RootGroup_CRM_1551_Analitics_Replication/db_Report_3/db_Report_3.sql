@@ -1,10 +1,15 @@
+--  declare @dateFrom datetime = '2019-06-01 22:00:00';
+--  declare @dateTo datetime = current_timestamp;
+
+--  declare @questionType int = 0;
+--  declare @questionGroup int = 0;
+
+ declare @filterFrom datetime = cast(dateadd(day,0,@datefrom) as date);
+ declare @filterTo datetime = dateadd(second,59,(dateadd(minute,59,(dateadd(hour,23,cast(cast(dateadd(day,0,@dateTo) as date) as datetime))))));
+
+
  declare @question_t table (typeQ int)
  declare @question_g table (typeG int)
- --declare @dateFrom datetime = '2019-05-24 00:00:00';
- --declare @dateTo datetime = current_timestamp;
-
- --declare @questionType int = 0;
- --declare @questionGroup int = 0;
  
 if @questionType = 0
 begin  
@@ -47,7 +52,7 @@ begin
       where qg.report_code = 'Analitica_spheres'  
 	  and qg.Id = @questionGroup        
  end
- -- select * from @question_g
+
 
 select TOP 10 ROW_NUMBER() OVER(ORDER BY x.questionType DESC) as Id, *,
 sum(x.Golosiivsky + x.Darnitsky + x.Desnyansky + x.Dnirovsky + x.Obolonsky +
@@ -74,7 +79,7 @@ left join QuestionTypes qt on qt.Id = q.question_type_id
 			left join [Districts] d on d.Id = b.district_id
 			left join [QGroupIncludeQTypes] qgiqt on qgiqt.type_question_id = qt.Id
 			left join [QuestionGroups] qg on qg.Id = qgiqt.group_question_id
-  where q.registration_date between @dateFrom and @dateTo
+  where q.registration_date between @filterFrom and @filterTo
   and qt.Id in (select typeQ from @question_t) 
   and qt.Id in (select typeG from @question_g) 
   and qg.report_code = 'Analitica_spheres'
@@ -90,14 +95,6 @@ FOR district IN ([Голосіївський], [Дарницький], [Десн
 				 [Подільський], [Святошинський], 
 			     [Солом`янський], [Шевченківський])  
 ) AS PivotTable 
---where questionType in (select top 10 qt.[name] 
---                              from QuestionTypes qt
---							  join (select qt.[name], COUNT(q.Id) as qty 
---							  from Questions q
---							  join QuestionTypes qt on qt.Id = q.question_type_id
---							  group by qt.[name]) q on q.name = qt.name
---							  order by qty desc
---							  )
 							  ) x group by x.questionType, x.Darnitsky,x.Desnyansky,x.Dnirovsky,x.Golosiivsky,x.Obolonsky,x.Pechersky,
 							               x.Podilsky, x.Shevchenkovsky, x.Solomiansky, x.Svyatoshinsky
 										   order by allQuestionsQty desc

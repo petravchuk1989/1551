@@ -1,6 +1,6 @@
 declare @appealInfo table (incomNum nvarchar(50), phone nvarchar(13), full_phone nvarchar(max),
                            incomDate varchar(20), Applicant_PIB nvarchar(500), Question_Content nvarchar(max), 
-						   ApplicantUGL nvarchar(max), uglId int, appealNum nvarchar(200) );
+						   ApplicantUGL nvarchar(max), uglId int, appealNum nvarchar(200), applicantAddress nvarchar(500) );
 -- declare @Id int = 5398676
 
 Insert into @appealInfo
@@ -37,7 +37,8 @@ convert(varchar, [Дата завантаження],(120)) as incomDate,
   cast([Дата народження] as varchar)  else '' end
  as ApplicantUGL,
  a.Id as uglId,
- appeal.registration_number as appealNum
+ appeal.registration_number as appealNum,
+ Адреса as applicantAddress 
 
 from dbo.[Звернення УГЛ] a
 join Appeals appeal on appeal.Id = a.Appeals_id

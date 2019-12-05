@@ -1,5 +1,7 @@
---declare @dateFrom date = '2019-05-01';
---declare @dateTo date = cast(current_timestamp as date);
+ --declare @dateFrom datetime = '2019-01-01 00:00:00';
+ --declare @dateTo datetime = current_timestamp;
+
+ declare @filterTo datetime = dateadd(second,59,(dateadd(minute,59,(dateadd(hour,23,cast(cast(dateadd(day,0,@dateTo) as date) as datetime))))));
 
 select distinct
 IIF(qtyPrev = '0', N'-', qtyPrev ) qtyPrev, 
@@ -21,13 +23,13 @@ left join (select cast(count(Id) as nvarchar) as qtyPrev
            from Questions where year(registration_date) = 
 		   (select dateadd(year, -1, year(current_timestamp)))
 		    and registration_date between dateadd(year, -1, year(@dateFrom))
-			and dateadd(year, -1, year(@dateTo)) 
+			and dateadd(year, -1, year(@filterTo)) 
 		   ) qPrev on 1 <> 0
  -- Всього за теперішній
 left join (select cast(count(Id) as nvarchar) as qtyCurrent
            from Questions where year(registration_date) = 
 		                        year(current_timestamp)
-			and registration_date between @dateFrom and @dateTo
+			and registration_date between @dateFrom and @filterTo
 		   ) qCurr on 1 <> 0
 -- Поштовим листом за попередній
 left join (select cast(count(q.Id) as nvarchar) as qtyMail_prev
@@ -36,7 +38,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyMail_prev
 		   where a.receipt_source_id = 5 and year(q.registration_date) = 
 		           (select dateadd(year, -1, year(current_timestamp)))
 		    and q.registration_date between dateadd(year, -1, year(@dateFrom))
-			and dateadd(year, -1, year(@dateTo)) 
+			and dateadd(year, -1, year(@filterTo)) 
 		   ) qMail_prev on 1 <> 0
 -- Поштовим листом за теперішній
 left join (select cast(count(q.Id) as nvarchar) as qtyMail_curr
@@ -44,7 +46,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyMail_curr
 		   join Appeals a on a.Id = q.appeal_id 
 		   where a.receipt_source_id = 5 and year(q.registration_date) = 
 		                                     year(current_timestamp)
-			and q.registration_date between @dateFrom and @dateTo
+			and q.registration_date between @dateFrom and @filterTo
 		   ) qMail_curr on 1 <> 0
 -- На особистому прийомі за попередній
 left join (select '-' as qtyPersonal_prev
@@ -60,7 +62,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyPos_prev
 		   and ass.assignment_state_id = 5 and ass.AssignmentResultsId = 4
 		   and year(q.registration_date) = (select dateadd(year, -1, year(current_timestamp)))
 		   and q.registration_date between dateadd(year, -1, year(@dateFrom))
-		   and dateadd(year, -1, year(@dateTo))
+		   and dateadd(year, -1, year(@filterTo))
 		   ) qPos_prev on 1 <> 0
 -- Вирішено позитивно (виконано) за теперішній
 left join (select cast(count(q.Id) as nvarchar) as qtyPos_curr
@@ -69,7 +71,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyPos_curr
 		   where ass.main_executor = 1 
 		   and ass.assignment_state_id = 5 and ass.AssignmentResultsId = 4
 		   and year(q.registration_date) = year(current_timestamp)
-		   and q.registration_date between @dateFrom and @dateTo
+		   and q.registration_date between @dateFrom and @filterTo
 		   ) qPos_curr on 1 <> 0
 -- Вирішено негативно (не виконано) за попередній 
 left join (select cast(count(q.Id) as nvarchar) as qtyNeg_prev
@@ -79,7 +81,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyNeg_prev
 		   and ass.assignment_state_id = 4 
 		   and year(q.registration_date) = (select dateadd(year, -1, year(current_timestamp)))
 		   and q.registration_date between dateadd(year, -1, year(@dateFrom))
-		   and dateadd(year, -1, year(@dateTo))
+		   and dateadd(year, -1, year(@filterTo))
 		   ) qNeg_prev on 1 <> 0
 -- Вирішено негативно (не виконано) за теперішній
 left join (select cast(count(q.Id) as nvarchar) as qtyNeg_curr
@@ -88,7 +90,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyNeg_curr
 		   where ass.main_executor = 1 
 		   and ass.assignment_state_id = 4 
 		   and year(q.registration_date) = year(current_timestamp)
-		   and q.registration_date between @dateFrom and @dateTo
+		   and q.registration_date between @dateFrom and @filterTo
 		   ) qNeg_curr on 1 <> 0
 -- Дано роз'яснення за попередній 
 left join (select cast(count(q.Id) as nvarchar) as qtyExpl_prev
@@ -99,7 +101,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyExpl_prev
 --		   and ass.assignment_state_id not in (1,2,3)
 		   and year(q.registration_date) = (select dateadd(year, -1, year(current_timestamp)))
 		   and q.registration_date between dateadd(year, -1, year(@dateFrom))
-		   and dateadd(year, -1, year(@dateTo))
+		   and dateadd(year, -1, year(@filterTo))
 		   ) qExpl_prev on 1 <> 0
 -- Дано роз'яснення за теперішній
 left join (select cast(count(q.Id) as nvarchar) as qtyExpl_curr
@@ -109,7 +111,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyExpl_curr
 		   and ass.AssignmentResultsId  = 7 
 --		   and ass.assignment_state_id not in (1,2,3)
 		   and year(q.registration_date) = year(current_timestamp)
-		   and q.registration_date between @dateFrom and @dateTo
+		   and q.registration_date between @dateFrom and @filterTo
 		   ) qExpl_curr on 1 <> 0
 -- Інше (зареєстровано, в роботі, на перевірці) за попередній 
 left join (select cast(count(q.Id) as nvarchar) as qtyElse_prev
@@ -119,7 +121,7 @@ left join (select cast(count(q.Id) as nvarchar) as qtyElse_prev
 		   and ass.assignment_state_id in (1,2,3)  
 		   and year(q.registration_date) = (select dateadd(year, -1, year(current_timestamp)))
 		   and q.registration_date between dateadd(year, -1, year(@dateFrom))
-		   and dateadd(year, -1, year(@dateTo))
+		   and dateadd(year, -1, year(@filterTo))
 		   ) qElse_prev on 1 <> 0
 -- Інше (зареєстровано, в роботі, на перевірці) за теперішній
 left join (select cast(count(q.Id) as nvarchar) as qtyElse_curr
@@ -128,5 +130,5 @@ left join (select cast(count(q.Id) as nvarchar) as qtyElse_curr
 		   where ass.main_executor = 1 
 		   and ass.assignment_state_id in (1,2,3) 
 		   and year(q.registration_date) = year(current_timestamp)
-		   and q.registration_date between @dateFrom and @dateTo
+		   and q.registration_date between @dateFrom and @filterTo
 		   ) qElse_curr on 1 <> 0
