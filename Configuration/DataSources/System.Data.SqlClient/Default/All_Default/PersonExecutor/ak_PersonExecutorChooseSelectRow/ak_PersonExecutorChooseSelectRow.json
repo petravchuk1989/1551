@@ -43,6 +43,7 @@
       {
         "Code": "@Id",
         "Name": "Id",
+        "ParameterType": "Integer",
         "IsPrimaryKey": true
       }
     ]
