@@ -145,8 +145,10 @@
             let headerRight = position + column.columns.length * 2 + 1;
             position = this.setSubHeaders(column, worksheet, position, this.startStep);
             worksheet.mergeCells(headerTop, headerLeft, headerBot, headerRight);
-            let headerCaption = worksheet.getCell(headerTop, headerLeft);
-            headerCaption.value = column.caption;
+            let cell = worksheet.getCell(headerTop, headerLeft);
+            cell.value = column.caption;
+            this.setCellStyle(cell);
+            this.setRowStyle(headerTop, worksheet, 30);
         }
         const headerHeight = 3;
         this.setRowValues(data, worksheet, headerHeight);
@@ -158,20 +160,24 @@
 
         for (let i = 0; i < columns.length; i++) {
             const column = columns[i];
-            let headerBot = headerTop = this.startStep;
-            let headerRight = position + column.columns.length;
-            let headerLeft = position + 1;
+            const headerBot = headerTop = this.startStep;
+            const headerRight = position + column.columns.length;
+            const headerLeft = position + 1;
             for (let j = 0; j < column.columns.length; j++) {
                 const element = column.columns[j];
-                let cellBot = cellTop = this.startStep + 1;
+                const cellBot = cellTop = this.startStep + 1;
                 position += 1;
                 worksheet.mergeCells( cellTop, position, cellBot, position);
-                let cell = worksheet.getCell( cellTop, position);
+                const cell = worksheet.getCell( cellTop, position);
                 cell.value = element.caption;
+                this.setCellStyle(cell);
+                this.setRowStyle(cellTop, worksheet, 30);
             }
             worksheet.mergeCells( headerTop, headerLeft, headerBot, headerRight );
-            let headerCaption = worksheet.getCell(headerTop, headerLeft);
-            headerCaption.value = column.caption;
+            const cell = worksheet.getCell(headerTop, headerLeft);
+            cell.value = column.caption;
+            this.setCellStyle(cell);
+            this.setRowStyle(headerTop, worksheet, 100);
         }
         const headerHeight = 2;
         this.setRowValues(data, worksheet, headerHeight);
@@ -181,14 +187,15 @@
     setCellYearsValue: function (subHeader, position, worksheet) {
         for (let i = 0; i < subHeader.columns.length; i++) {
             const year = subHeader.columns[i];
-            let yearTop = yearBot = this.startStep + 2;
-            let yearPosition = position + i;
+            const yearTop = yearBot = this.startStep + 2;
+            const yearPosition = position + i;
             worksheet.mergeCells( yearTop, yearPosition, yearBot, yearPosition);
-            let cell = worksheet.getCell( yearTop, yearPosition);
+            const cell = worksheet.getCell( yearTop, yearPosition);
             cell.value = year.caption;
+            this.setCellStyle(cell);
+            this.setRowStyle(yearTop, worksheet, 30);
         }
     },
-    
 
     setTableType3Header: function (columns, worksheet, data) {
         let position = this.excelColumnsStart + 1;
@@ -198,21 +205,23 @@
                 let headerLeft = position + 2;
                 let headerRight = position + column.columns.length * 2 + 1;     
                 worksheet.mergeCells( headerTop, headerLeft, headerBot, headerRight );
-                let headerCaption = worksheet.getCell(headerTop, headerLeft);
-                headerCaption.value = column.caption;
+                let cell = worksheet.getCell(headerTop, headerLeft);
+                cell.value = column.caption;
+                this.setCellStyle(cell);
+                this.setRowStyle(headerTop, worksheet, 30);
                 position = this.setSubHeaders(column, worksheet, position, this.startStep);
             } else {
                 const numberStart = 1;
                 const numberCaption = '№ з\п';
                 const emptyStart = 2;
-                const emptyCaption = 'Пустая строка';
+                const emptyCaption = '';
                 this.setStandardCells(numberStart, numberCaption, worksheet);
                 this.setStandardCells(emptyStart, emptyCaption, worksheet);
             }
         });
         const headerHeight = 3;
         this.setRowValues(data, worksheet, headerHeight);
-        this.startStep += this.step;
+        this.startStep += this.step + 15;
     },
 
     setSubHeaders: function (column, worksheet, position, startStep) {
@@ -226,6 +235,8 @@
             const cell = worksheet.getCell( cellTop, cellLeft);
             cell.value = subHeader.caption;
             this.setCellYearsValue(subHeader, position, worksheet);
+            this.setCellStyle(cell);
+            this.setRowStyle(cellTop, worksheet, 130);
         }
         return position;
     },
@@ -238,10 +249,10 @@
         worksheet.mergeCells( top, right, bot, left);
         let cell = worksheet.getCell( top, right);
         cell.value = caption;
-        this.setStandardStyle(cell);
+        this.setCellStyle(cell);
     },
 
-    setStandardStyle: function (cell) {
+    setCellStyle: function (cell) {
         cell.border = {   top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'} };
         cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
         cell.font = { name: 'Times New Roman', family: 4, size: 10,  underline: false, bold: false , italic: false };
@@ -252,12 +263,13 @@
             const values = message.data[i];
             const number = this.startStep + headerHeight + i;
             worksheet.getRow(number).values = values;
-            this.setValuesStyle(number, worksheet);
+            this.setRowStyle(number, worksheet);
         }
     },
 
-    setValuesStyle: function (number, worksheet) {
-        worksheet.getRow(number).height = 60;
+    setRowStyle: function (number, worksheet, cellHeight) {
+        height = cellHeight ? cellHeight : 60;
+        worksheet.getRow(number).height = height;
         worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: false , italic: false};
         worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
     },
