@@ -4,7 +4,7 @@
 --  declare @questionType int = 0;
 --  declare @questionGroup int = 0;
 
- declare @filterFrom datetime = cast(dateadd(day,1,@datefrom) as date);
+ declare @filterFrom datetime = cast(dateadd(day,0,@datefrom) as date);
  declare @filterTo datetime = dateadd(second,59,(dateadd(minute,59,(dateadd(hour,23,cast(cast(dateadd(day,0,@dateTo) as date) as datetime))))));
 
 
