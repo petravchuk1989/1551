@@ -57,7 +57,7 @@
     },
     {
       "Code": "Question_Organization",
-      "Name": "Організація",
+      "Name": "Організація*",
       "FieldType": "lookup",
       "Position": 5,
       "Width": "100%",
