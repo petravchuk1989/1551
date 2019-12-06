@@ -119,10 +119,16 @@
         this.startStep = 5;
         this.step = 10;
 
+        this.numberRowsArray = [];
+        const columnsHeader = [];
+        for (let i = 0; i < 16; i++) {
+            let width = { width: 7.8 };
+            columnsHeader.push(width);
+        }
+        worksheet.columns = columnsHeader;
         for (let i = 0; i < this.data.length; i++) {
             const data = this.data[i];
-            let columns = data.columns;
-            let columnsProperties = [];
+            const columns = data.columns;
             
             if( i === 0) {
                 this.setTableType1Header(columns, worksheet, data);
@@ -132,27 +138,37 @@
                 this.setTableType3Header(columns, worksheet, data);
             }
         }
+        this.setCellValuesStyles(worksheet);
+        this.setExcelTitle(worksheet);
         this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
     },
 
+    setExcelTitle: function (worksheet) {
+        const title = worksheet.getCell('A1');
+        title.value = 'Статистичний звіт за період з ' + this.dateFromViewValues + ' по ' + this.dateToViewValues;
+        title.font = { name: 'Times New Roman', family: 4, size: 12, underline: false, bold: true , italic: false};
+        title.alignment = { vertical: 'middle', horizontal: 'center', wrapText: false  };
+        worksheet.mergeCells('A1:N1'); 
+    },
 
     setTableType1Header: function (columns, worksheet, data) {
         let position = this.excelColumnsStart - 1;
         for (let i = 0; i < columns.length; i++) {
             const column = columns[i];
-            let headerBot = headerTop = this.startStep;
-            let headerLeft = position + 2;
-            let headerRight = position + column.columns.length * 2 + 1;
+            const headerTop = this.startStep;
+            const headerBot = this.startStep;
+            const headerLeft = position + 2;
+            const headerRight = position + column.columns.length * 2 + 1;
             position = this.setSubHeaders(column, worksheet, position, this.startStep);
             worksheet.mergeCells(headerTop, headerLeft, headerBot, headerRight);
-            let cell = worksheet.getCell(headerTop, headerLeft);
+            const cell = worksheet.getCell(headerTop, headerLeft);
             cell.value = column.caption;
             this.setCellStyle(cell);
             this.setRowStyle(headerTop, worksheet, 30);
         }
         const headerHeight = 3;
         this.setRowValues(data, worksheet, headerHeight);
-        this.startStep += 5;
+        this.startStep += 10;
     },
 
     setTableType2Header: function (columns, worksheet, data) {
@@ -171,7 +187,7 @@
                 const cell = worksheet.getCell( cellTop, position);
                 cell.value = element.caption;
                 this.setCellStyle(cell);
-                this.setRowStyle(cellTop, worksheet, 30);
+                this.setRowStyle(cellTop, worksheet, 50);
             }
             worksheet.mergeCells( headerTop, headerLeft, headerBot, headerRight );
             const cell = worksheet.getCell(headerTop, headerLeft);
@@ -181,7 +197,7 @@
         }
         const headerHeight = 2;
         this.setRowValues(data, worksheet, headerHeight);
-        this.startStep += 5;
+        this.startStep += 7;
     },
 
     setCellYearsValue: function (subHeader, position, worksheet) {
@@ -193,7 +209,7 @@
             const cell = worksheet.getCell( yearTop, yearPosition);
             cell.value = year.caption;
             this.setCellStyle(cell);
-            this.setRowStyle(yearTop, worksheet, 30);
+            this.setRowStyle(yearTop, worksheet, 50);
         }
     },
 
@@ -201,14 +217,15 @@
         let position = this.excelColumnsStart + 1;
         columns.forEach( column => {
             if(column.columns) {
-                let headerBot = headerTop = this.startStep;
-                let headerLeft = position + 2;
-                let headerRight = position + column.columns.length * 2 + 1;     
+                const headerTop = this.startStep;
+                const headerBot = this.startStep;
+                const headerLeft = position + 2;
+                const headerRight = position + column.columns.length * 2 + 1;     
                 worksheet.mergeCells( headerTop, headerLeft, headerBot, headerRight );
-                let cell = worksheet.getCell(headerTop, headerLeft);
+                const cell = worksheet.getCell(headerTop, headerLeft);
                 cell.value = column.caption;
                 this.setCellStyle(cell);
-                this.setRowStyle(headerTop, worksheet, 30);
+                this.setRowStyle(headerTop, worksheet, 50);
                 position = this.setSubHeaders(column, worksheet, position, this.startStep);
             } else {
                 const numberStart = 1;
@@ -221,7 +238,7 @@
         });
         const headerHeight = 3;
         this.setRowValues(data, worksheet, headerHeight);
-        this.startStep += this.step + 15;
+        this.startStep += this.step + 8;
     },
 
     setSubHeaders: function (column, worksheet, position, startStep) {
@@ -247,7 +264,7 @@
         const right = this.excelColumnsStart + start;
         const left = this.excelColumnsStart + start;
         worksheet.mergeCells( top, right, bot, left);
-        let cell = worksheet.getCell( top, right);
+        const cell = worksheet.getCell( top, right);
         cell.value = caption;
         this.setCellStyle(cell);
     },
@@ -262,8 +279,11 @@
         for (let i = 0; i < message.data.length; i++) {
             const values = message.data[i];
             const number = this.startStep + headerHeight + i;
+            const obj = {values, number}
+            this.numberRowsArray.push(obj);
             worksheet.getRow(number).values = values;
-            this.setRowStyle(number, worksheet);
+            const height = 70;
+            this.setRowStyle(number, worksheet, height);
         }
     },
 
@@ -272,6 +292,17 @@
         worksheet.getRow(number).height = height;
         worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, bold: false , italic: false};
         worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true  };
+    },
+
+    setCellValuesStyles: function (worksheet) {
+        this.numberRowsArray.forEach( row => {
+            for (let j = 0; j < row.values.length; j++) {
+                const top = row.number;
+                const left = j + 1;
+                const cell = worksheet.getCell( top, left);
+                this.setCellStyle(cell);
+            }
+        });
     },
 
     createTableExcel: function() {
