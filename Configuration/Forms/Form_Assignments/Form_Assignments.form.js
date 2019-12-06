@@ -140,7 +140,6 @@
                 };
 
                 if (result_id == 4 || result_id == 7 || result_id == 8) {
-                    debugger;
                     if (rework_count < 2) {
                         this.form.setControlVisibility('rework_counter', true);
                         ChoiseResult = [{ parameterCode: '@AssignmentId', parameterValue: this.id }, { parameterCode: '@res_id', parameterValue: 12 }];
@@ -239,7 +238,6 @@
                 this.form.setControlValue('executor_person_id', {});
             };
 
-            debugger;
             let param = [{ parameterCode: '@org_id', parameterValue: executor_id }];
             this.form.setControlParameterValues('executor_person_id', param);
         },
@@ -249,7 +247,6 @@
         },
 
         filterResolution: function(result_id) {
-            // debugger;
             this.form.setControlVisibility('transfer_to_organization_id', false);
             this.form.setControlRequirement('transfer_to_organization_id', false);
             this.form.setControlVisibility('rework_counter', false);
@@ -278,7 +275,6 @@
             } else {
                 this.form.enableControl('resolution_id');
                 if (result_id == 3 && this.previous_result != 3) {
-                    // debugger;
                     this.form.setControlVisibility('transfer_to_organization_id', true);
                     this.form.disableControl('resolution_id');
 
