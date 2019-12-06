@@ -42,6 +42,16 @@ BEGIN
 			-- если виконавець не изменился но апдейтим только коментарий исполнителя + сис.поля
 			if @performer_id = ( select executor_organization_id from Assignments where Id = @Id ) --@parent_id
 			 begin
+				if @executor_person_id <> ( select isnull(executor_person_id,0) from Assignments where Id = @Id )
+				begin
+					UPDATE  [dbo].[Assignments] set 
+							[edit_date]= getutcdate()
+							,[user_edit_id]= @user_edit_id
+							,[executor_person_id] = @executor_person_id
+							,[LogUpdated_Query] = N'cx_App_Que_Assignments_Update_Row49'
+					WHERE Id= @Id
+				end
+
     			 update AssignmentConsiderations 
     				set short_answer =  @short_answer
     				,[edit_date] = getutcdate()
@@ -58,6 +68,7 @@ BEGIN
     				   ,[execution_date]= @execution_date  
     				   ,[edit_date]= getutcdate()
     				   ,[user_edit_id]= @user_edit_id
+					   ,[executor_person_id] = @executor_person_id
 					   ,[LogUpdated_Query] = N'cx_App_Que_Assignments_Update_Row51'
     		WHERE Id= @Id
     	
@@ -126,6 +137,7 @@ BEGIN
     		UPDATE  [dbo].[Assignments]
     			  set  [assignment_state_id]= @ass_state_id 
     				   ,[executor_organization_id]= @performer_id -- новый исполнитель на кого переопределили
+					   ,executor_person_id = @executor_person_id
     				   ,[execution_date]= @execution_date  
     				   ,[edit_date]= getutcdate()
     				   ,[user_edit_id]= @user_edit_id
