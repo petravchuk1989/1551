@@ -80,5 +80,17 @@
     "IsPrintable": false,
     "SqlName": "o.Id",
     "FilterParameterCode": "@orgId"
+  },
+  {
+    "Code": "PlanProg",
+    "Name": "PlanProg",
+    "Position": 13,
+    "IsPrintable": false
+  },
+  {
+    "Code": "withPlanPercent",
+    "Name": "withPlanPercent",
+    "Position": 14,
+    "IsPrintable": false
   }
 ]
