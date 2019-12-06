@@ -30,7 +30,7 @@
                             dataField: "outTimeQty",
                             alignment: 'center'
                         }, {
-                            caption: "Зареєстровано",
+                            caption: "Прострочено",
                             dataField: "waitTimeQty",
                             alignment: 'center'
                         }
@@ -45,6 +45,10 @@
                         }, {
                             caption: "Не виконано",
                             dataField: "notDoneClosedQty",
+                            alignment: 'center'
+                        }, {
+                            caption: "План/Програма",
+                            dataField: "PlanProg",
                             alignment: 'center'
                         }, {
                             caption: "На перевірці",
@@ -65,7 +69,14 @@
                     },        
                 },  {
                     dataField: 'donePercent',
-                    caption: '% виконання',
+                    caption: '% виконання без План/Програма',
+                    alignment: 'center',
+                    format: function(value){
+                        return value + '%';
+                    },
+                },  {
+                    dataField: 'withPlanPercent',
+                    caption: '% виконання з План/Програма',
                     alignment: 'center',
                     format: function(value){
                         return value + '%';
@@ -111,6 +122,12 @@
                             return "Разом: " + data.value;
                         }
                     },  {
+                        column: "PlanProg",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
                         column: "doneOnCheckQty",
                         summaryType: "sum",
                         customizeText: function(data) {
@@ -130,6 +147,12 @@
                         }
                     },  {
                         column: "donePercent",
+                        summaryType: "avg",
+                        customizeText: function(data) {
+                            return "Середнє: " + data.value.toFixed(2);
+                        }
+                    },  {
+                        column: "withPlanPercent",
                         summaryType: "avg",
                         customizeText: function(data) {
                             return "Середнє: " + data.value.toFixed(2);
