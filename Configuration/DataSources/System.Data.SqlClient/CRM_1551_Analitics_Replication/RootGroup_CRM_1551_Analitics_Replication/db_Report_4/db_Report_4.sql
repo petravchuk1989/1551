@@ -1,7 +1,7 @@
-    --declare @org int = 3;
-    --declare @dateFrom date = '2019-01-01';
-    --declare @dateTo date = getdate();
-    --declare @question_type_id int = 1;
+    -- declare @org int = 3;
+    -- declare @dateFrom date = '2019-01-01';
+    -- declare @dateTo date = getdate();
+    -- declare @question_type_id int = 1;
 
 
   if object_id('tempdb..##temp_QuestionTypes4monitoring') is not null drop table ##temp_QuestionTypes4monitoring
@@ -184,7 +184,7 @@ if object_id('tempdb..#temp_Main') is not null drop table #temp_Main
   end as withPlanPercent
   from (
   select #temp_MainMain.Id, #temp_MainMain.Id orgId, orgName, AllCount, inTimeQty, outTimeQty, 
-  waitTimeQty, doneClosedQty, doneOnCheckQty, notDoneClosedQty, PlanProg,
+  waitTimeQty, doneClosedQty, doneOnCheckQty, inWorkQty, notDoneClosedQty, PlanProg,
 --- Вираховуємо % вчасно закритих доручень організації виконавця
 case 
 when inTimeQty != 0 and outTimeQty != 0 and waitTimeQty != 0 then
