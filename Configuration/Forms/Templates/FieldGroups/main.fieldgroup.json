@@ -1,0 +1,22 @@
+{
+  "Code": "NameGroupQuestion",
+  "Name": "Шаблон",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "name",
+      "Name": "Назва шаблону",
+      "FieldType": "text",
+      "Position": 1,
+      "IsRequired": true,
+      "QueryParameters": []
+    },{
+      "Code": "content",
+      "Name": "Зміст",
+      "FieldType": "text",
+      "Position": 2,
+      "IsRequired": true,
+      "QueryParameters": []
+    }
+  ]
+}

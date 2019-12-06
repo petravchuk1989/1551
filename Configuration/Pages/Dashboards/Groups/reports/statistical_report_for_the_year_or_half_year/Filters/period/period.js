@@ -31,6 +31,5 @@
     destroy(){
        // console.log('Destroy date filter');
     }
-}
-;
+};
 }());

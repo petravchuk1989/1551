@@ -1,3 +1,8 @@
+--  declare @dateFrom datetime = '2019-11-05 00:00:00';
+--  declare @dateTo datetime = current_timestamp;
+
+ declare @filterTo datetime = dateadd(second,59,(dateadd(minute,59,(dateadd(hour,23,cast(cast(dateadd(day,0,@dateTo) as date) as datetime))))));
+
 if object_id('tempdb..#temp_OUT') is not null drop table #temp_OUT
 create table #temp_OUT(
 GroupQuestionId    int,
@@ -5,8 +10,6 @@ QuestionTypeName  nvarchar(200),
 QuestionTypeId     int
 )
 
---declare @dateFrom datetime = '2019-01-01 00:00:00';
---declare @dateTo datetime = current_timestamp;
 
 DECLARE @QuestionRowId INT
 DECLARE @CURSOR CURSOR
@@ -46,7 +49,7 @@ CLOSE @CURSOR
   left join (select count(q.Id) val, qt.Id 
              from Questions q
 			 JOIN QuestionTypes qt ON q.question_type_id = qt.Id
-			 where q.registration_date between @dateFrom and @dateTo
+			 where q.registration_date between @dateFrom and @filterTo
 			 group by qt.Id  
 			 ) z on z.Id = o.QuestionTypeId		 
 			 group by o.GroupQuestionId
