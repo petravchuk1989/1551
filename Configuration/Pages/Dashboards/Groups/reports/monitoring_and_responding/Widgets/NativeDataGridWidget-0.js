@@ -30,7 +30,7 @@
                             dataField: "outTimeQty",
                             alignment: 'center'
                         }, {
-                            caption: "Зареєстровано",
+                            caption: "Прострочено",
                             dataField: "waitTimeQty",
                             alignment: 'center'
                         }
@@ -45,6 +45,10 @@
                         }, {
                             caption: "Не виконано",
                             dataField: "notDoneClosedQty",
+                            alignment: 'center'
+                        }, {
+                            caption: "План/Програма",
+                            dataField: "PlanProg",
                             alignment: 'center'
                         }, {
                             caption: "На перевірці",
@@ -65,10 +69,98 @@
                     },        
                 },  {
                     dataField: 'donePercent',
-                    caption: '% виконання',
+                    caption: '% виконання без План/Програма',
                     alignment: 'center',
+                    format: function(value){
+                        return value + '%';
+                    },
+                },  {
+                    dataField: 'withPlanPercent',
+                    caption: '% виконання з План/Програма',
+                    alignment: 'center',
+                    format: function(value){
+                        return value + '%';
+                    },
                 } 
             ],
+            summary: {
+                totalItems: [
+                    {
+                        column: "AllCount",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "inTimeQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "outTimeQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "waitTimeQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "doneClosedQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "notDoneClosedQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "PlanProg",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "doneOnCheckQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "inWorkQty",
+                        summaryType: "sum",
+                        customizeText: function(data) {
+                            return "Разом: " + data.value;
+                        }
+                    },  {
+                        column: "inTimePercent",
+                        summaryType: "avg",
+                        customizeText: function(data) {
+                            return "Середнє: " + data.value.toFixed(2);
+                        }
+                    },  {
+                        column: "donePercent",
+                        summaryType: "avg",
+                        customizeText: function(data) {
+                            return "Середнє: " + data.value.toFixed(2);
+                        }
+                    },  {
+                        column: "withPlanPercent",
+                        summaryType: "avg",
+                        customizeText: function(data) {
+                            return "Середнє: " + data.value.toFixed(2);
+                        }
+                    }
+                ]
+                
+            },
             keyExpr: 'Id',
             scrolling: {
                 mode: 'virtual'
@@ -218,7 +310,10 @@
                 let rowValues = [];
                 rows.push( i + 5);
                 for (let j = 0; j < rowData.values.length - 2; j++) {
-                    const value = rowData.values[j];
+                    let value = rowData.values[j];
+                    if( j === (rowData.values.length - 3) || j === (rowData.values.length - 4 )) {
+                        value = value + '%';
+                    }
                     rowValues.push(value);
                 }
                 worksheet.addRow(rowValues);
