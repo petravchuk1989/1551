@@ -6,8 +6,8 @@
     "IsUsedForRightsFilter": false,
     "Parameters": [
         {
-            "Code": "@phone",
-            "Name": "phone"
+            "Code": "@Ids",
+            "Name": "Ids"
         },
         {
             "Code": "@true_applicant_id",
@@ -23,6 +23,6 @@
               "Code": "@Id_table",
               "Name": "Id_table",
               "ParameterType": "Integer"
-          },
+          }
         ]
 }

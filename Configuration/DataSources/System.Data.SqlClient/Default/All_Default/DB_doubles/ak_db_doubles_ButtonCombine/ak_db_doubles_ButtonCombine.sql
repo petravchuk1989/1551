@@ -1,45 +1,93 @@
+
 /*
-declare @phone nvarchar(50)=N'11111111111';
-declare @true_applicant_id int = 1490252;
-declare @user_Id nvarchar(128)=N'Вася Тестовый';
-declare @Id_table int=1;
+declare @Ids nvarchar(300)=N'1490251,1490252'
+declare @true_applicant_id int =1490251;
+declare @user_Id nvarchar(128)=N'Тестовый';
+declare @Id_table int=3;
 */
- 
- update [ApplicantDublicate]
-  set [IsDone]='true'
-  ,[User_done_id]=@user_Id
-  ,[Done_date]=GETUTCDATE()
-  where Id=@Id_table
 
+declare @phone nvarchar(50)=(select PhoneNumber from [ApplicantDublicate] where Id=@Id_table);
 
--- все номера у данного апликанта
-  declare @phones_with_applicant table (Id int, applicant_Id int, phone_number nvarchar(50));
+-- наша входная строка с айдишниками
+declare @input_str nvarchar(max) = @Ids+N',';
+-- создаем таблицу в которую будем
+-- записывать наши айдишники
+declare @table_applicant table (id int)
+-- создаем переменную, хранящую разделитель
+declare @delimeter nvarchar(1) = ','
+-- определяем позицию первого разделителя
+declare @pos int = charindex(@delimeter,@input_str)
+-- создаем переменную для хранения
+-- одного айдишника
+declare @id nvarchar(100) 
+while (@pos != 0)
+begin
+    -- получаем айдишник
+    set @id = SUBSTRING(@input_str, 1, @pos-1)
+    -- записываем в таблицу
+    insert into @table_applicant (id) values(cast(@id as int))
+    -- сокращаем исходную строку на
+    -- размер полученного айдишника
+    -- и разделителя
+    set @input_str = SUBSTRING(@input_str, @pos+1, LEN(@input_str))
+    -- определяем позицию след. разделителя
+    set @pos = CHARINDEX(@delimeter,@input_str)
+end
 
-  insert into @phones_with_applicant (Id, applicant_Id, phone_number)
+--select * from @table_applicant
 
-  select Id, applicant_Id, phone_number
-  from [ApplicantPhones]
-  where applicant_id=@true_applicant_id
+-- обновить таблицу дубликатов 
+/**/
+update [ApplicantDublicate]
+set [IsDone]='true',
+[User_done_id]=@user_Id,
+[Done_date]=getutcdate()
+where Id=@Id_table
 
-  -- все applicant за данными номерами
-  declare @applicant_with_phones table (Id int, applicant_Id int, phone_number nvarchar(50));
+--сформировать таблицу истории
 
-  insert into @applicant_with_phones (Id, applicant_Id, phone_number)
-  select [ApplicantPhones].Id, [ApplicantPhones].applicant_id, [ApplicantPhones].phone_number
-  from [ApplicantPhones]
-  where [ApplicantPhones].phone_number in (select distinct phone_number from @phones_with_applicant a)
-  --select * from @applicant_with_phones
+-- апликант, номера телефона через запятую
+declare @table_phones table (applicant_id int, phones nvarchar(max));
 
-  -- выбрать главного id с [ApplicantPhones]
-  declare @main_appl_phone_id int=
-  (select top 1 Id from [ApplicantPhones] where applicant_id=@true_applicant_id and phone_number=@phone order by Id)
+insert into @table_phones (applicant_id, phones)
+select distinct ap1.applicant_id,
 
+stuff((select distinct N', '+replace(ap2.[phone_number], N'+38', N'')
+from [ApplicantPhones] ap2
+where ap2.applicant_id=ap1.applicant_id
+for xml path ('')),1,2,N'') phones
 
-  ----добавляется запись в [ApplicantDublicateHistory], то что обновляется+ те, что отображаются
-  
-  insert into [ApplicantDublicateHistory]
-  (
-  [phone_number]
+from [ApplicantPhones] ap1
+where ap1.applicant_id in (select Id from @table_applicant)
+
+--select * from @table_phones
+
+-- табличка адресов заявителей, заявителей через запятую
+declare @table_addresses table (applicant_id int, addresses nvarchar(max));
+
+insert into @table_addresses (applicant_id, addresses)
+
+select distinct la1.applicant_id,
+
+stuff((select N', Id:'+ltrim(la2.Id)+isnull(N', '+st.shortname, N'')+isnull(N', '+s.name, N'')
++isnull(N', корпус '+la2.house_block, N'')+isnull(N', парадне '+ltrim(la2.entrance), N'')+isnull(N', квартира '+la2.flat, N'')
+from [LiveAddress] la2
+inner join [Buildings] b on la2.building_id=b.Id
+left join [Streets] s on b.street_id=s.Id
+left join [StreetTypes] st on s.street_type_id=st.Id
+where la2.applicant_id=la1.applicant_id
+for xml path('')),1,2,N'') addresses
+
+from [LiveAddress] la1
+where la1.applicant_id in (select Id from @table_applicant);
+
+--select * from @table_addresses
+
+--заполняется таблица для history
+/**/
+insert into [ApplicantDublicateHistory]
+(
+[phone_number]
       ,[applicant_id]
       ,[full_name]
       ,[live_address]
@@ -50,97 +98,69 @@ declare @Id_table int=1;
       ,[true_applicant_id]
       ,[user_done_id]
       ,[done_date]
-  )
+)
 
-  select ap.phone_number, ap.applicant_Id, a.full_name, a.ApplicantAdress, a.birth_date, a.birth_year, 
-  a.social_state_id, a.category_type_id, @true_applicant_id, @user_Id, GETUTCDATE()
-  from @applicant_with_phones ap
-  inner join [Applicants] a on ap.applicant_Id=a.Id
-  union all
-  select null, ap.applicant_Id, null, 
-  isnull([Districts].name+N' р-н, ', N'')+isnull([StreetTypes].shortname, N'')+isnull(Streets.name+N' ', N'')+isnull(Buildings.name, N''),
-  null, null, null, null, @true_applicant_id, @user_Id, GETUTCDATE()
+select tp.phones-- [phone_number]
+      ,a.Id --[applicant_id]
+      ,a.full_name--[full_name]
+      ,ta.addresses--[live_address]
+      ,a.birth_date [birth_date]
+      ,a.birth_year [birth_year]
+      ,a.social_state_id [social_state_id]
+      ,a.category_type_id [category_type_id]
+      ,@true_applicant_id [true_applicant_id]
+      ,@user_Id [user_done_id]
+      ,GETUTCDATE() [done_date]
+from [Applicants] a
+left join @table_phones tp on a.Id=tp.applicant_id
+left join @table_addresses ta on a.Id=ta.applicant_id
+where a.Id in (select Id from @table_applicant)
 
-  from (select distinct applicant_Id from @applicant_with_phones) ap
-  inner join [LiveAddress] on ap.applicant_Id=[LiveAddress].applicant_id
-  left join [Buildings] on [LiveAddress].building_id=[Buildings].Id
-  left join [Districts] on [Buildings].district_id=[Districts].Id
-  left join [Streets] on [Buildings].street_id=[Streets].Id
-  left join [StreetTypes] on [Streets].street_type_id=[StreetTypes].Id
 
+-- обновление таблицы Appeals на новых заявителей
+/**/
+update [Appeals]
+set applicant_id=@true_applicant_id
+,[edit_date]=GETUTCDATE()
+,[user_edit_id]=@user_Id
+where applicant_id in (select Id from @table_applicant)
 
-  -- обновить Appeals на главного. нужно ли здесь обновлять номер телефона?
-  /**/
-  update [Appeals]
-  set applicant_id=@true_applicant_id
-  where applicant_id in (select distinct applicant_id from @applicant_with_phones a)
-  
+--Appeal_getApplicantAddress
+--обновить таблицу [ApplicantPhones] на нового заявителя и его телефон главный, остальные других выбраных не главные
+/**/
+update [ApplicantPhones]
+set [IsMain]=case when applicant_id=@true_applicant_id then 'true' else 'false' end
+,applicant_id=@true_applicant_id
+where applicant_id in (select Id from @table_applicant)
 
-  -- обновить [ApplicantPhones] на главного заявителя и признак главного/не главного
-  /**/
-  update [ApplicantPhones]
-  set applicant_id=@main_appl_phone_id
-  ,IsMain=case when Id=@main_appl_phone_id then 'true' else 'false' end
-  where Id in (select Id from @applicant_with_phones a )
-  
-
-  --табличка данных, которые нужно удалить и записать в хистори ЗАКОМЕНТИЛ, НИЧЕГО НЕ УДАЛЯЮ
-  /**/
-  declare @delete_phone table (Id int, applicant_id int, phone nvarchar(50));
-
-insert into @delete_phone (Id, applicant_id, phone)
-select ap.Id, ap.applicant_id, ap.phone_number
-from [ApplicantPhones] ap
-where ap.applicant_id=@true_applicant_id
-and ap.Id not in
-(select min(Id) --min_Id
+--удалить дубликаты по заявителю и по номеру с таблицы [ApplicantPhones]
+/**/
+delete
 from [ApplicantPhones]
 where applicant_id=@true_applicant_id
-group by applicant_id, phone_number)
+and Id not in (
+select min(Id) mid
+from [ApplicantPhones]
+where applicant_id=@true_applicant_id
+group by replace([ApplicantPhones].[phone_number], N'+38', N''))
 
 
------/*LiveAdress*/
-
---основная Id LiveAdress
-
-declare @live_address_main_Id int=
-  (
-  select top 1 Id
-  from [LiveAddress]
-  where applicant_id=@true_applicant_id and main='true') 
-
-
--- обновить applicant_id на главного и проставить им не главные
-
+--обновить таблицу [LiveAddress] на нового заявителя и его адресс главный, остальные других выбраных не главные
 /**/
 update [LiveAddress]
-set applicant_id=@true_applicant_id
-,main='false'
-where applicant_id in (select distinct applicant_id from @applicant_with_phones a)
+set main=case when applicant_id=@true_applicant_id then 'true' else 'false' end
+,applicant_id=@true_applicant_id
+where applicant_id in (select Id from @table_applicant)
 
 
--- то что нужно удалить с LiveAddress ЗАКОМЕНТИЛ, НИЧЕГО НЕ УДАЛЯЮ
+--удалить дубликаты по заявителю и по адресу с таблицы [LiveAddress]
 /**/
-declare @delete_LiveAddress table (Id int, applicant_id int, building_id int, house_block nvarchar(50), entrance int, flat nvarchar(50))
-  
-  insert into @delete_LiveAddress (Id, applicant_id, building_id, house_block, entrance, flat)
-  select Id, applicant_id, building_id, house_block, entrance, flat
-  from [LiveAddress]
-  where applicant_id=@true_applicant_id
-  and id not in
-  (select min(Id) min_Id
-  from [LiveAddress]
-  where applicant_id=@true_applicant_id
-  group by applicant_id)
-
---удалить с телефонов не нужные
-/**/
-delete 
-from [ApplicantPhones]
-where Id in (select Id from @delete_phone)
-
--- удаление с LiveAddress
-/**/
-delete 
-from LiveAddress
-where Id=(select Id from @delete_LiveAddress)
+delete
+from [LiveAddress]
+where applicant_id=@true_applicant_id
+and Id not in(
+select min(Id) mid
+from [LiveAddress]
+where applicant_id=@true_applicant_id
+group by [building_id], [flat]
+)

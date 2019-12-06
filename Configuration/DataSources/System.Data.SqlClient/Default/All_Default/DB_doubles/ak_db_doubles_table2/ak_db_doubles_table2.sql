@@ -12,7 +12,7 @@
   inner join [ApplicantDublicate] on replace([ApplicantPhones].[phone_number], N'+38', N'')=[ApplicantDublicate].PhoneNumber
   inner join [Applicants] on [ApplicantPhones].applicant_id=[Applicants].Id
   left join [LiveAddress] on [Applicants].Id=[LiveAddress].applicant_id
-  inner join [Buildings] on [LiveAddress].[building_id]=[Buildings].id
+  left join [Buildings] on [LiveAddress].[building_id]=[Buildings].id
   left join [Streets] on [Buildings].street_id=[Streets].Id
   left join [StreetTypes] on [Streets].street_type_id=[StreetTypes].Id
   left join [SocialStates] on [Applicants].social_state_id=[SocialStates].Id
