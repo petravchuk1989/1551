@@ -16,7 +16,7 @@
             "Name": "executor_person",
             "Position": 1,
             "IsPrintable": false,
-            "SqlName": "concat([name], ' (' + [position] +')')",
+            "SqlName": "concat(p.[name], ' (' + p.[position] +')')",
             "FilterParameterCode": "@name"
         }
     ],

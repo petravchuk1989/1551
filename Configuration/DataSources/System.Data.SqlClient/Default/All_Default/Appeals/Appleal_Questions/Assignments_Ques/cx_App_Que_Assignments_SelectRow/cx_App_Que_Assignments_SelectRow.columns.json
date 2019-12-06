@@ -278,9 +278,16 @@
         "IsPrintable": false
     },
     {
-        "Code": "executor_person",
-        "Name": "executor_person",
+        "Code": "executor_person_id",
+        "Name": "executor_person_id",
         "Position": 49,
         "IsPrintable": false
+    },
+    {
+        "Code": "executor_person_name",
+        "Name": "executor_person_name",
+        "Position": 50,
+        "IsPrintable": false,
+        "ReferenceKeyCode": "executor_person_id"
     }
 ]
