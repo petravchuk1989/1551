@@ -97,7 +97,6 @@
         },
 
         setColumns: function (config, codeResult, tab, data) {
-            console.log(data)
             if(data.rows.length) {
                 for (let i = 0; i < data.columns.length; i++) {
                     const element = data.columns[i];
@@ -168,13 +167,8 @@
                     config.summary.totalItems.push(obj);
                 }
                 config.summary.calculateCustomSummary = this.calculateCustomSummary.bind(this);
-                if(tab === 1) {
-                    this.messageService.publish({ name: 'setConfig1', config: config});
-                } else if( tab === 2) {
-                    this.messageService.publish({ name: 'setConfig2', config: config});
-                } else if( tab === 3) {
-                    this.messageService.publish({ name: 'setConfig3', config: config});
-                }
+                const name = 'setConfig' + tab;
+                this.messageService.publish({ name, config});
                 this.hidePagePreloader('Зачекайте, завантажуються фiльтри');
             } else {
                 this.hidePagePreloader('Зачекайте, завантажуються фiльтри');

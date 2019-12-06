@@ -56,7 +56,6 @@
                 this.active = false;
                 document.getElementById('containerFactDone').style.display = 'none';
             } else {
-                debugger;
                 this.active = true;
                 document.getElementById('containerFactDone').style.display = 'block';
                 this.renderTable();
@@ -103,6 +102,7 @@
             this.sub.unsubscribe();
             this.sub1.unsubscribe();
             this.sub2.unsubscribe();
+            this.sub3.unsubscribe();
         }
     };
 }());
