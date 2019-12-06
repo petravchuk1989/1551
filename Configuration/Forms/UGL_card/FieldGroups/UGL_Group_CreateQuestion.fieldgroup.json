@@ -9,7 +9,8 @@
       "Name": "Зміст*",
       "FieldType": "textarea",
       "Position": 1,
-      "Width": "100%"
+      "Width": "100%",
+      "Rows": 5
     },
     {
       "Code": "Question_TypeId",
@@ -26,7 +27,8 @@
       "PathColumnCode": "Path",
       "SearchQueryCode": "List_QuestionTypes_SelectRows_Search",
       "SearchKeyColumnCode": "Id",
-      "SearchDisplayColumnCode": "Name"
+      "SearchDisplayColumnCode": "Name",
+      "HasChildrenColumnCode": "has_child"
     },
     {
       "Code": "Question_Building",
@@ -69,7 +71,7 @@
       "Name": "Виконавець",
       "FieldType": "lookup",
       "Position": 5,
-      "IsHidden": true,
+      "IsHidden": false,
       "QueryCode": "List_Organizations_SelectRows",
       "KeyColumnCode": "Id",
       "DisplayColumnCode": "Name",

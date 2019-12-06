@@ -1,0 +1,13 @@
+{
+  "ModelType": "Query",
+  "Code": "GetQuestionsByPhone",
+  "Name": "GetQuestionsByPhone",
+  "ConnectionCode": "CRM_1551_Bot_Integration",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@phone_number",
+      "Name": "phone_number"
+    }
+  ]
+}

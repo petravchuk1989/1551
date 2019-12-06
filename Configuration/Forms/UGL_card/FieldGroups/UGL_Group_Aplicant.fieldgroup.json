@@ -18,10 +18,17 @@
       "Width": "100%"
     },
     {
+      "Code": "ApplicantUGL",
+      "Name": "Заявник з УГЛ",
+      "FieldType": "textarea",
+      "Position": 4,
+      "Width": "100%"
+    },
+    {
       "Code": "Applicant_Building",
       "Name": "Будинок*",
       "FieldType": "select",
-      "Position": 6,
+      "Position": 4,
       "Width": "75%",
       "QueryCode": "list_houses_number2",
       "KeyColumnCode": "Id",
@@ -33,36 +40,37 @@
       "Code": "Applicant_HouseBlock",
       "Name": "Корпус",
       "FieldType": "text",
-      "Position": 6,
+      "Position": 5,
       "IsHidden": true,
       "Width": "33%"
     },
     {
       "Code": "Applicant_Entrance",
-      "Name": "П*",
+      "Name": "П",
       "FieldType": "number",
-      "Position": 7,
-      "Width": "10%"
+      "Position": 6,
+      "Width": "10%",
+      "Min": 0
     },
     {
       "Maxlength": 15,
       "Code": "Applicant_Flat",
       "Name": "Кв",
       "FieldType": "text",
-      "Position": 8,
+      "Position": 7,
       "Width": "15%"
     },
     {
       "Code": "Applicant_District",
       "Name": "Район",
       "FieldType": "text",
-      "Position": 9
+      "Position": 8
     },
     {
       "Code": "ExecutorInRoleForObject",
       "Name": "Балансоутримувач",
       "FieldType": "text",
-      "Position": 10
+      "Position": 9
     },
     {
       "Code": "Applicant_Privilege",
@@ -79,7 +87,7 @@
       "Code": "Applicant_SocialStates",
       "Name": "Соціальний стан",
       "FieldType": "select",
-      "Position": 10,
+      "Position": 11,
       "QueryCode": "List_SocialStates_SelectRows",
       "KeyColumnCode": "Id",
       "DisplayColumnCode": "Name",
@@ -89,7 +97,7 @@
       "Code": "Applicant_CategoryType",
       "Name": "Категорія заявника",
       "FieldType": "select",
-      "Position": 11,
+      "Position": 12,
       "IsHidden": true,
       "QueryCode": "List_CategoryType_SelectRows",
       "KeyColumnCode": "Id",
@@ -100,7 +108,7 @@
       "Code": "Applicant_Type",
       "Name": "Тип заявника",
       "FieldType": "select",
-      "Position": 11,
+      "Position": 13,
       "QueryCode": "dir_ApplicantTypes_SelectRows",
       "KeyColumnCode": "Id",
       "DisplayColumnCode": "name",
@@ -110,7 +118,7 @@
       "Code": "Applicant_Sex",
       "Name": "Стать",
       "FieldType": "radio",
-      "Position": 12,
+      "Position": 14,
       "Width": "35%",
       "Items": [
         {
@@ -124,31 +132,31 @@
       ]
     },
     {
-      "Code": "Application_BirthDate",
+      "Code": "Applicant_BirthDate",
       "Name": "Дата народження",
       "FieldType": "date",
-      "Position": 13,
+      "Position": 15,
       "Width": "45%"
     },
     {
       "Code": "Applicant_Age",
       "Name": "Вік",
       "FieldType": "number",
-      "Position": 14,
+      "Position": 16,
       "Width": "15%"
     },
     {
       "Code": "Applicant_Email",
       "Name": "E-mail",
       "FieldType": "text",
-      "Position": 15
+      "Position": 17
     },
     {
       "Maxlength": 50,
       "Code": "Applicant_Comment",
       "Name": "Нотатки",
       "FieldType": "text",
-      "Position": 16
+      "Position": 18
     },
     {
       "Code": "Applicant_Btn_Clear",

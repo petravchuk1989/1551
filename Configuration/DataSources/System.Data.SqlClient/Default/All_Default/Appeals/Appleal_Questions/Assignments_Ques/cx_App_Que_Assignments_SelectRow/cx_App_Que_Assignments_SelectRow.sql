@@ -15,10 +15,12 @@ SELECT distinct top 1
 	   ,[Objects].Id as [object_id]
 	   --,IIF(st.name is null, null, concat(ObjectTypes.name,' : ',sty.shortname,' ', st.name, ' ', bl.number,bl.letter)) as [object_name0]
 
+	   --,isnull(ObjectTypes.name+N' : ', N'')+
+	   --isnull(sty.shortname+' ',N'')+
+	   --isnull(st.name+N' ',N'')+
+	   --isnull(bl.name,N'') [object_name]
 	   ,isnull(ObjectTypes.name+N' : ', N'')+
-	   isnull(sty.shortname+' ',N'')+
-	   isnull(st.name+N' ',N'')+
-	   isnull(bl.name,N'') [object_name]
+	   isnull([Objects].Name+' ',N'') [object_name]
 
        --,IIF(st.name is null, null,concat(sty.shortname,' ',st.name, ' ', bl.number,bl.letter) ) as address_problem
 	   ,isnull(sty.shortname+N' ', N'')+
