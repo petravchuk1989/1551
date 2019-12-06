@@ -1,4 +1,6 @@
+
 ----------после 2019 11 28 , согласно задачи 545 с файла
+
 
 /*
  declare @user_id nvarchar(300)=N'd0da1bfc-438a-45ec-bc75-f1c8d05f0d9a';
@@ -6,9 +8,9 @@
  --aa4c1f84-df33-452c-88e7-5a58dfd0b2d3
 
 
- declare @zayavnyk_phone_number nvarchar(max)=N'631388062'; --0442859062 0631388062
+ declare @zayavnyk_phone_number nvarchar(max)=N'062'; --0442859062 0631388062
 
-  declare @param1 nvarchar(max)=N'1=1'; --appeals_district in (1, 2, 3, 4, 5)
+  declare @param1 nvarchar(max)=N'1=1 and timeliness in (1)'; --appeals_district in (1, 2, 3, 4, 5)
  declare @pageOffsetRows int =0;
  declare @pageLimitRows int =10;
 
@@ -29,8 +31,8 @@
 
  declare @control_date_from datetime;--='2019-07-21 21:00:00.000';
 declare @control_date_to datetime;--='2019-07-21 21:00:00.000';
-*/
- 
+
+ */
 
 ---------
 --set @DateStart1=getdate();
@@ -520,6 +522,12 @@ case when charindex(N'zayavnyk_social_state in (', @param1,  1)>0
 then N'inner join'
 else N'left join'
 end;
+--вчасність
+declare @filter_timeliness nvarchar(20)=
+case when charindex(N'timeliness in (', @param1,  1)>0
+then N'inner join'
+else N'left join'
+end;
   --------параметры для фильтрации конец
 
 --select @param_new
@@ -671,6 +679,14 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
  ,[AssignmentRevisions].control_date
  ,App_phone.phone_number zayavnyk_phone_number
  ,[Appeals].[registration_number] appeals_registration_number
+
+ ,case when [AssignmentStates].Id in (1,2) and [AssignmentRevisions].control_date<getutcdate()
+ then ''true'' end overdue
+ 
+ ,case when timeliness_table.min_date<=[AssignmentRevisions].control_date then 1
+	   when timeliness_table.min_date>[AssignmentRevisions].control_date then 2
+  end timeliness
+
   from 
   [Assignments] with (nolock)
   inner join [Questions] with (nolock) on [Assignments].question_id=[Questions].Id
@@ -688,13 +704,13 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   '+@appeals_receipt_source+N' [ReceiptSources] with (nolock) on [Appeals].receipt_source_id=[ReceiptSources].Id
   left join [Workers] with (nolock) on [Appeals].user_id=[Workers].worker_user_id
   '+@filter_zayavnyk_entrance_zayavnyk_flat_district+N' [LiveAddress] with (nolock) on [LiveAddress].applicant_id=[Applicants].Id
-  '+@filter_appeals_district+' [Buildings] with (nolock) on [LiveAddress].building_id=[Buildings].Id
+  '+@filter_appeals_district+N' [Buildings] with (nolock) on [LiveAddress].building_id=[Buildings].Id
   '+@filter_appeals_district+N'  [Districts]  on [Buildings].district_id=[Districts].Id 
   '+@filter_appeals_district+N' [Streets] with (nolock) on [Buildings].street_id=[Streets].Id
   '+@filter_appeals_district+N' [StreetTypes] with (nolock) on [Streets].[street_type_id]=[StreetTypes].Id
   '+@filter_zayavnyk_applicant_privilage+N' [ApplicantPrivilege] with (nolock) on [Applicants].applicant_privilage_id=[ApplicantPrivilege].Id
-  '+@filter_zayavnyk_social_state+' [SocialStates] with (nolock) on [Applicants].social_state_id=[SocialStates].Id
-  '+@filter_zayavnyk_applicant_type+' [ApplicantTypes] with (nolock) on [Applicants].applicant_type_id=[ApplicantTypes].Id
+  '+@filter_zayavnyk_social_state+N' [SocialStates] with (nolock) on [Applicants].social_state_id=[SocialStates].Id
+  '+@filter_zayavnyk_applicant_type+N' [ApplicantTypes] with (nolock) on [Applicants].applicant_type_id=[ApplicantTypes].Id
   '+@filter_question_object+N' [Objects] with (nolock) on [Questions].object_id=[Objects].Id
   '+@filter_question_ObjectTypes+N' [ObjectTypes] with (nolock) on [Objects].object_type_id=[ObjectTypes].Id
   '+@filter_question_organization+N' [Organizations] with (nolock) on [Questions].organization_id=[Organizations].Id
@@ -704,6 +720,9 @@ when [Applicants].[birth_date] is null then year(getdate())-[Applicants].birth_y
   '+@comment_qls+N' '+@filter_question_list_state+N' [Rating] with (nolock) on [QuestionTypeInRating].Rating_id=[Rating].Id
   '+@filter_assigm_accountable+N' [Organizations] [Organizations10] with (nolock) on [Assignments].[executor_organization_id]=[Organizations10].id
   left join [AssignmentConsDocuments] with (nolock) on [AssignmentConsiderations].Id=[AssignmentConsDocuments].assignment_сons_id
+  '+@filter_timeliness+' (select [assignment_id], min([Log_Date]) min_date 
+  from [Assignment_History] where assignment_state_id=3 and Log_Activity=N''UPDATE'' 
+  group by [assignment_id]) timeliness_table on [Assignments].Id=timeliness_table.[assignment_id]
   
   --left join (select distinct [AssignmentConsDocuments].assignment_сons_id, [content]
   --from [10.192.200.82].[CRM_1551_Analitics].[dbo].[AssignmentConsDocuments] with (nolock)
