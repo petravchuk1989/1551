@@ -474,7 +474,11 @@
     onMyContentReady: function () {
         this.visibleColumns = this.dataGridInstance.instance.getVisibleColumns();
     },
+<<<<<<< HEAD:Configuration/Pages/Dashboards/Groups/reports/rating_indicators/Widgets/rating_NativeDataGridWidget.js
+    destroy: function () {
+=======
     destroy: function(){
+>>>>>>> 30530b07ce938500e82b06761e53b968d9ccc1e7:Configuration/Pages/Dashboards/Groups/reports/rating_indicators_detail/Widgets/NativeDataGridWidget-0.js
         this.sub.unsubscribe();
         this.sub1.unsubscribe();
     }
