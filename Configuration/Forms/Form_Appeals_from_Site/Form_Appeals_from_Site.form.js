@@ -144,7 +144,7 @@
         
 
         document.getElementById('btn_searchAdressByCoordinate').addEventListener("click", function(event) {
-             window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/SearhGoogle?lat="+this.form.getControlValue('AppealFromSite_geolocation_lat')+"&lon="+this.form.getControlValue('AppealFromSite_geolocation_lon')+"");
+             window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/SearchGoogle?lat="+this.form.getControlValue('AppealFromSite_geolocation_lat')+"&lon="+this.form.getControlValue('AppealFromSite_geolocation_lon')+"");
         }.bind(this)); 
         
         

@@ -1,7 +1,7 @@
 (function () {
   return {
     placeholder: 'Дата з початку року',
-    type: "Date",
+    type: 'Date',
     onItemSelect: function(date) {
         this.datePeriod(date);
     },
@@ -31,6 +31,5 @@
     destroy(){
        // console.log('Destroy date filter');
     }
-}
-;
+};
 }());
