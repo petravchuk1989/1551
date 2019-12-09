@@ -187,10 +187,29 @@
             groupingAutoExpandAll: null,
         },
 
+        summary: [],
+
         init: function() {
+            this.summary = [];
             this.dataGridInstance.height = window.innerHeight - 200;
             this.sub = this.messageService.subscribe( 'GlobalFilterChanged', this.getFiltersParams, this );
             this.config.onToolbarPreparing = this.createTableButton.bind(this);
+
+            this.config.onContentReady = this.afterRenderTable.bind(this);
+        },
+
+        afterRenderTable: function (data) {
+            this.summary = [];
+            const collections = document.querySelectorAll('.dx-row');
+            collections.forEach( collection => {
+                const summary = Array.prototype.slice.call(collection.cells, 0 );
+                summary.forEach( cell => {
+                    const sum = cell.innerText.slice(0, 5);
+                    if(sum === 'Разом' || sum === 'Серед') {
+                        this.summary.push(cell.innerText);
+                    }
+                });
+            });
         },
 
         createTableButton: function(e) {
@@ -220,7 +239,7 @@
 
         createExcelWorkbook: function (data) {
             
-            let workbook = this.createExcel();
+              workbook = this.createExcel();
             let worksheet = workbook.addWorksheet('Заявки', {
                 pageSetup:{
                     orientation: 'landscape',
@@ -240,7 +259,8 @@
             this.setTableHeader(columns, worksheet);
             this.setWorksheetTitle(worksheet);
             this.setTableValues(data, columns, worksheet, rows);
-            this.setTableRowsStyles(worksheet, rows)
+            this.setTableRowsStyles(worksheet, rows);
+            this.setSummaryValues(worksheet);
             
             this.helperFunctions.excel.save(workbook, 'Заявки', this.hidePagePreloader);
         },
@@ -275,7 +295,6 @@
                 const column = columns[i];
                 
                 if(column.columns) {
-
                     let headerPositionTo = position + column.columns.length;
                     let headerPositionFrom = position + 1;
                     worksheet.mergeCells( 3, headerPositionFrom, 3, headerPositionTo );
@@ -309,15 +328,17 @@
                 let rowData = data.rows[i];
                 let rowValues = [];
                 rows.push( i + 5);
-                for (let j = 0; j < rowData.values.length - 2; j++) {
+                for (let j = 2; j < rowData.values.length; j++) {
                     let value = rowData.values[j];
-                    if( j === (rowData.values.length - 3) || j === (rowData.values.length - 4 )) {
+                    const percentValue = rowData.values.length;
+                    if( j === (percentValue - 3)  || j === (percentValue - 1 ) || j === (percentValue - 2 )) {
                         value = value + '%';
                     }
                     rowValues.push(value);
                 }
                 worksheet.addRow(rowValues);
-            }  
+                this.summaryStartRow = i + 7;
+            }
         },
 
         setTableRowsStyles: function (worksheet, rows) {
@@ -336,8 +357,22 @@
                 worksheet.getRow(row).height = 50;
                 worksheet.getRow(row).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, italic: false};
                 worksheet.getRow(row).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true }; 
-                worksheet.getCell('A' + row).alignment = { vertical: 'middle', horizontal: 'left', wrapText: true  };
+                worksheet.getCell('A' + row).alignment = { vertical: 'middle', horizontal: 'left', wrapText: true };
             });
+        },
+
+        setSummaryValues: function (worksheet) {
+            const values = [ " " ];
+            this.summary.forEach( value => values.push(value));
+            worksheet.addRow(values);
+            const number = this.summaryStartRow - 1;
+            this.setSummaryStyle(worksheet, number);
+        },
+
+        setSummaryStyle: function (worksheet, number) {
+            worksheet.getRow(number).height = 50;
+            worksheet.getRow(number).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, italic: false};
+            worksheet.getRow(number).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true }; 
         },
 
         getFiltersParams: function(message) {
@@ -364,7 +399,7 @@
 
         extractOrgValues: function(val) {
             if(val !== ''){
-                var valuesList = [];
+                const valuesList = [];
                 valuesList.push(val.value);
                 return  valuesList.length > 0 ? valuesList : [];
             } else {

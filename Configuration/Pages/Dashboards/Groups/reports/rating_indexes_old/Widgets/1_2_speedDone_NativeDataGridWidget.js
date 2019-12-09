@@ -46,8 +46,6 @@
           // options.cellElement.style.verticalAlignment = 'Center';
           // options.cellElement.style.textAlignment = 'Center';
           // options.cellElement.style.horizontalAlignment = 'Center';
-
-          // debugger;
         }  
       }
     },
@@ -81,7 +79,6 @@
             let ratingid = this.rating;
             let rdaid = e.column.dataField;
             let question = e.data.code;
-            debugger;
             let string = 'executor='+executor+'&date='+date+'&ratingid='+ratingid+'&rdaid='+rdaid+'&question='+question;
               window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indexes_by_rda_question?"+string);
           }

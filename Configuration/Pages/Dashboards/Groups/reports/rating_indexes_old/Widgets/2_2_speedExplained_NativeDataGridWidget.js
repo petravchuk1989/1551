@@ -93,7 +93,6 @@
               let ratingid = this.rating;
               let rdaid = e.column.dataField;
               let question = e.data.code;
-              debugger;
               let string = 'executor='+executor+'&date='+date+'&ratingid='+ratingid+'&rdaid='+rdaid+'&question='+question;
               // window.open(location.origin + localStorage.getItem('VirtualPath') + "/dashboard/page/rating_indicator?"+string);
             }
