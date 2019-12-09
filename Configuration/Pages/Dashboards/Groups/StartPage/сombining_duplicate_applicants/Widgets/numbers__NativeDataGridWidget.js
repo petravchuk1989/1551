@@ -20,10 +20,10 @@
             }
         ],
         keyExpr: 'Id',
+        focusedRowEnabled: true
     },
 
     init: function() {
-        this.sub = this.messageService.subscribe('reloadTable', this.reloadTable, this);
         this.loadData(this.afterLoadDataHandler);
 
         this.dataGridInstance.onCellClick.subscribe(e => {
@@ -34,10 +34,6 @@
                 }
             }
         });
-    },
-
-    reloadTable: function () {
-        this.loadData(this.afterLoadDataHandler);
     },
 
     afterLoadDataHandler: function(data) {

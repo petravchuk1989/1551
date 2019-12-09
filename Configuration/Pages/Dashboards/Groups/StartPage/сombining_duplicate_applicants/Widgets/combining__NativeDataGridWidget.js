@@ -41,6 +41,7 @@
 
     init: function() {
         this.mainRowId = undefined;
+        this.tableId = undefined;
         this.loadData(this.afterLoadDataHandler);
         this.sub = this.messageService.subscribe('showApplicants', this.showApplicants, this);
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
@@ -62,8 +63,13 @@
                     onClick: function(e) {
                         e.event.stopImmediatePropagation();
                         if(this.mainRowId) {
-                            const rowsId = this.dataGridInstance.selectedRowKeys.join(",");
-                            this.executeQueryCombining(rowsId);
+                            const keys = this.dataGridInstance.selectedRowKeys;
+                            const index = keys.findIndex(value => value === this.mainRowId );
+                            if(index !== -1) {
+                                const rowsId = this.dataGridInstance.selectedRowKeys.join(",");
+                                this.showPagePreloader('Триває об\'єднання');
+                                this.executeQueryCombining(rowsId);
+                            }
                         }
                     }.bind(this)
                 },
@@ -76,7 +82,10 @@
                     text: 'Пропустити',
                     onClick: function(e) {
                         e.event.stopImmediatePropagation();
-                        this.executeQueryMissing();
+                        if(this.tableId) {
+                            this.showPagePreloader('Триває об\'єднання');
+                            this.executeQueryMissing();
+                        }
                     }.bind(this)
                 },
             }
@@ -102,6 +111,7 @@
             ]
         };
         this.queryExecutor(query, this.response, this);
+        this.showPreloader = false;
     },
 
     executeQueryMissing: function () {
@@ -113,11 +123,11 @@
             ]
         };
         this.queryExecutor(query, this.response, this);
+        this.showPreloader = false;
     },
 
     response: function () {
-        this.messageService.publish({ name: 'reloadTable'});
-        this.loadData(this.afterLoadDataHandler);
+        window.location.reload();
     },
 
     afterLoadDataHandler: function(data) {
