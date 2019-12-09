@@ -14,7 +14,6 @@
             let d2 = message.package.value.values.find(f => f.name === 'd2').value;
             let d3 = message.package.value.values.find(f => f.name === 'd3').value;
             let d4 = message.package.value.values.find(f => f.name === 'd4').value;
-            debugger;
             console.log(d1);
             console.log(d2);
             console.log(d3);
