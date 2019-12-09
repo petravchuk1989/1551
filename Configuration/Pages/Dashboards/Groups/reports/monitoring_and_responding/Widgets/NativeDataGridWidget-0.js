@@ -142,18 +142,21 @@
                     },  {
                         column: "inTimePercent",
                         summaryType: "avg",
+                        format: "percent",
                         customizeText: function(data) {
                             return "Середнє: " + data.value.toFixed(2);
                         }
                     },  {
                         column: "donePercent",
                         summaryType: "avg",
+                        format: "percent",
                         customizeText: function(data) {
                             return "Середнє: " + data.value.toFixed(2);
                         }
                     },  {
                         column: "withPlanPercent",
                         summaryType: "avg",
+                        format: "percent",
                         customizeText: function(data) {
                             return "Середнє: " + data.value.toFixed(2);
                         }
@@ -271,7 +274,7 @@
                 
                 let header ;
                 let index = 0;
-                let width = column.dataField === 'orgName' ? 25 : 11;
+                let width = column.dataField === 'orgName' ? 20 : 9;
                 let columnProp = { header, width, index };
                 if(column.columns) {
                     for (let j = 0; j < column.columns.length; j++) {
@@ -287,6 +290,12 @@
                 }
             }    
             worksheet.columns = columnsProperties;
+        },
+
+        setWorksheetTitle: function (worksheet) {
+            worksheet.mergeCells( 1, 1, 1, this.lastPosition );
+            let title = worksheet.getCell(1, 1);
+            title.value = 'Моніторинг та реагування на звернення громадян';
         },
 
         setTableHeader: function (columns, worksheet) {
@@ -317,23 +326,13 @@
             this.lastPosition = position;
         },
 
-        setWorksheetTitle: function (worksheet) {
-            worksheet.mergeCells( 1, 1, 1, this.lastPosition );
-            let title = worksheet.getCell(1, 1);
-            title.value = 'Моніторинг та реагування на звернення громадян';
-        },
-
         setTableValues: function (data, columns, worksheet, rows) {
             for (let i = 0; i < data.rows.length; i++) {
                 let rowData = data.rows[i];
                 let rowValues = [];
                 rows.push( i + 5);
                 for (let j = 2; j < rowData.values.length; j++) {
-                    let value = rowData.values[j];
-                    const percentValue = rowData.values.length;
-                    if( j === (percentValue - 3)  || j === (percentValue - 1 ) || j === (percentValue - 2 )) {
-                        value = value + '%';
-                    }
+                    const value = rowData.values[j];
                     rowValues.push(value);
                 }
                 worksheet.addRow(rowValues);
@@ -354,7 +353,7 @@
             worksheet.getRow(4).height = 70;
 
             rows.forEach( row => {
-                worksheet.getRow(row).height = 50;
+                worksheet.getRow(row).height = 100;
                 worksheet.getRow(row).font = { name: 'Times New Roman', family: 4, size: 10, underline: false, italic: false};
                 worksheet.getRow(row).alignment = { vertical: 'middle', horizontal: 'center', wrapText: true }; 
                 worksheet.getCell('A' + row).alignment = { vertical: 'middle', horizontal: 'left', wrapText: true };
