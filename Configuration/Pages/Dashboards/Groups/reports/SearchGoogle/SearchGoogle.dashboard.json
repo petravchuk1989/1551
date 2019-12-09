@@ -3,6 +3,6 @@
   "Description": "",
   "DescriptionUrl": "",
   "ModelType": "Dashboard",
-  "Code": "rating_indexes_old",
-  "Name": "Створити ДБ для індексів рейтингу"
+  "Code": "SearchGoogle",
+  "Name": "Пошук по карті"
 }
