@@ -22,20 +22,31 @@
             }, {
                 dataField: 'Privilege',
                 caption: 'Пільга',
+            }, {
+                dataField: 'Check',
+                caption: 'Головний',
+                dataType: 'boolean',
             }
         ],
+        editing: {
+            allowUpdating: true,
+            mode: 'Row',
+            useIcons: true
+        },
         selection: {
             mode: 'multiple'
         },
-        keyExpr: 'Id',
-        
-        focusedRowEnabled: true,
+        keyExpr: 'Id'
     },
 
     init: function() {
+        this.mainRowId = undefined;
         this.loadData(this.afterLoadDataHandler);
         this.sub = this.messageService.subscribe('showApplicants', this.showApplicants, this);
         this.config.onToolbarPreparing = this.createTableButton.bind(this);
+        this.dataGridInstance.onRowUpdating.subscribe( row => {
+            this.mainRowId = row.key;
+        });
     },
 
     createTableButton: function(e) {
@@ -50,12 +61,10 @@
                     text: 'Об\'єднати',
                     onClick: function(e) {
                         e.event.stopImmediatePropagation();
-                        debugger;
-                        const index = this.dataGridInstance.focusedRowKey;
-                        const id = this.data[index][0];
-                        const phone = this.data[index][1];
-                        const rowsId = this.dataGridInstance.selectedRowKeys.join(", ");
-                        this.executeQueryCombining(id, phone, rowsId);
+                        if(this.mainRowId) {
+                            const rowsId = this.dataGridInstance.selectedRowKeys.join(",");
+                            this.executeQueryCombining(rowsId);
+                        }
                     }.bind(this)
                 },
             }, {
@@ -67,8 +76,7 @@
                     text: 'Пропустити',
                     onClick: function(e) {
                         e.event.stopImmediatePropagation();
-                        const rowsId = this.dataGridInstance.selectedRowKeys.join(", ");
-                        this.executeQueryMissing(rowsId);
+                        this.executeQueryMissing();
                     }.bind(this)
                 },
             }
@@ -76,32 +84,32 @@
     },
 
     showApplicants: function (message) {
+        this.tableId = message.id;
         this.config.query.parameterValues = [
-            { key: '@Id', value: message.id }
+            { key: '@Id', value: this.tableId }
         ];
         this.loadData(this.afterLoadDataHandler);
     },
 
-    executeQueryCombining: function (id, rowsId) {
+    executeQueryCombining: function (rowsId) {
         let query = {
             queryCode: 'ak_db_doubles_ButtonCombine',
             limit: -1,
             parameterValues: [
-                { key: '@phone',  value: id},
-                { key: '@id1',  value: rowsId},
-                { key: '@id1',  value: rowsId},
-                { key: '@id1',  value: rowsId}
+                { key: '@true_applicant_id',  value: this.mainRowId},
+                { key: '@Id_table',  value: this.tableId},
+                { key: '@Ids',  value: rowsId}
             ]
         };
-        // this.queryExecutor(query, this.response, this);
+        this.queryExecutor(query, this.response, this);
     },
 
-    executeQueryMissing: function (rowsId) {
+    executeQueryMissing: function () {
         let query = {
             queryCode: 'ak_db_doubles_ButtonSkip',
             limit: -1,
             parameterValues: [
-                { key: '@Ids',  value: rowsId}
+                { key: '@Id_table',  value: this.tableId}
             ]
         };
         this.queryExecutor(query, this.response, this);
