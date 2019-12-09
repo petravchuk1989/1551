@@ -1,7 +1,7 @@
 (function () {
     return {
-         is_obj : undefined,
-         is_org : undefined,
+        is_obj: undefined,
+        is_org: undefined,
 
         init: function () {
 
@@ -425,14 +425,14 @@
                 this.queryExecutor.getValues(objAndOrg).subscribe(data => {
                     this.is_org = data.rows[0].values[0];
                     this.is_obj = data.rows[0].values[1];
- 
+
                     if (this.is_obj === true) {
                         this.form.setControlVisibility('Question_Building', true);
                         this.form.setControlVisibility('entrance', true);
                         this.form.setControlVisibility('flat', true);
 
                     }
-                    else if(this.is_obj !== true) {
+                    else if (this.is_obj !== true) {
                         this.form.setControlVisibility('Question_Building', false);
                         this.form.setControlVisibility('entrance', false);
                         this.form.setControlVisibility('flat', false);
@@ -441,7 +441,7 @@
                     if (this.is_org === true) {
                         this.form.setControlVisibility('Question_Organization', true);
                     }
-                    else if(this.is_org !== true) {
+                    else if (this.is_org !== true) {
                         this.form.setControlVisibility('Question_Organization', false);
                     }
 
@@ -543,6 +543,12 @@
             this.getOrgExecut();
             this.onQuestionControlDate(questionType);
             this.checkQuestionRegistrationAvailable();
+            if (questionType === "" || questionType === null) {
+                this.form.setControlValue('Question_Organization', { key: null, value: null });
+                this.form.setControlValue('flat', null);
+                this.form.setControlValue('entrance', null);
+                document.getElementById('Question_Btn_Add').disabled = true;
+            }
         },
         getOrgExecut: function () {
             const objAndOrg = {
