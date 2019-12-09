@@ -10,6 +10,11 @@
             "Name": "Ids"
         },
         {
+            "Code": "@Id_table",
+            "Name": "Id_table",
+            "ParameterType": "Integer"
+        },
+        {
             "Code": "@user_id",
             "Name": "usert_id",
             "ParameterType": "CurrentUserId"
