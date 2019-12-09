@@ -1,5 +1,7 @@
 (function () {
     return {
+         is_obj : undefined,
+         is_org : undefined,
 
         init: function () {
 
@@ -398,13 +400,11 @@
                 this.details.loadData('Detail_UGL_QuestionNumberAppeal', parameters/*, filters, sorting*/);
                 this.details.setVisibility('Detail_UGL_QuestionNumberAppeal', true);
             }.bind(this));
-
-            var is_obj = "";
-            var is_org = "";
         },
         // END INIT
 
         questionObjectOrg: function () {
+
             let q_type_id = this.form.getControlValue('Question_TypeId');
             if (q_type_id == undefined) {
                 this.form.setControlVisibility('Question_Building', false);
@@ -423,25 +423,25 @@
                     ]
                 };
                 this.queryExecutor.getValues(objAndOrg).subscribe(data => {
-                    this.is_obj = data.rows[0].values[1];
                     this.is_org = data.rows[0].values[0];
-
-                    if (this.is_org == true) {
+                    this.is_obj = data.rows[0].values[1];
+ 
+                    if (this.is_obj === true) {
                         this.form.setControlVisibility('Question_Building', true);
                         this.form.setControlVisibility('entrance', true);
                         this.form.setControlVisibility('flat', true);
 
                     }
-                    else {
+                    else if(this.is_obj !== true) {
                         this.form.setControlVisibility('Question_Building', false);
                         this.form.setControlVisibility('entrance', false);
                         this.form.setControlVisibility('flat', false);
                     }
 
-                    if (this.is_obj == true) {
+                    if (this.is_org === true) {
                         this.form.setControlVisibility('Question_Organization', true);
                     }
-                    else {
+                    else if(this.is_org !== true) {
                         this.form.setControlVisibility('Question_Organization', false);
                     }
 
@@ -605,8 +605,10 @@
         },
         // Условия допустимости регистрации Questions`a
         checkQuestionRegistrationAvailable: function () {
+
             // Куча ифов стартует
             if (this.form.getControlValue('Question_TypeId') != null) {
+
                 if (this.form.getControlValue('Question_Building') == null) {
                     this.form.setControlValue('flat', null);
                     this.form.setControlValue('entrance', null);
