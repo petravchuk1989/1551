@@ -1,18 +1,20 @@
 
 INSERT INTO [dbo].[EventFiles]
-           ([event_id]
-           ,[name]
+           (
+           [name]
            ,[file]
-           ,[user]
            ,[add_date]
+           ,[event_id]
+           ,[user]
            ,[edit_user_id]
            ,[edit_date])
      VALUES
-           (@event_id
-           ,@Name
+           (
+           @Name
            ,@File
-           ,@user
            ,GETUTCDATE()
+           ,@event_id
+           ,@user
            ,@user
            ,GETUTCDATE()
            )

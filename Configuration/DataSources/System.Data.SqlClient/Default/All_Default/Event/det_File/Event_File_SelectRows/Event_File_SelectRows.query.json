@@ -13,15 +13,9 @@
             "IsPrintable": false
         },
         {
-            "Code": "add_date",
-            "Name": "Дата створення",
-            "Position": 1,
-            "IsPrintable": false
-        },
-        {
             "Code": "Name",
             "Name": "Назва",
-            "Position": 2,
+            "Position": 1,
             "IsFileName": true,
             "IsPrintable": false,
             "SqlName": "name"
@@ -29,7 +23,7 @@
         {
             "Code": "File",
             "Name": "File",
-            "Position": 3,
+            "Position": 2,
             "IsFileContent": true,
             "IsPrintable": false,
             "SqlName": "File"
