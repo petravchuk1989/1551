@@ -139,7 +139,9 @@ BEGIN
 			SET @new_con = (SELECT TOP (1)
 				Id
 			FROM @output_con)
-			UPDATE [Assignments] SET current_assignment_consideration_id = @new_con WHERE Id = @Id
+			UPDATE [Assignments] SET current_assignment_consideration_id = @new_con 
+			,[edit_date]=GETUTCDATE()
+			WHERE Id = @Id
 
 
 
@@ -208,7 +210,9 @@ BEGIN
 			SET @new_con = ( SELECT TOP(1)
 				Id
 			FROM @output_con)
-			UPDATE [Assignments] SET current_assignment_consideration_id = @new_con WHERE Id = @Id
+			UPDATE [Assignments] SET current_assignment_consideration_id = @new_con 
+			,[edit_date]=getutcdate()
+			WHERE Id = @Id
 		-- @ass_id
 
 
@@ -281,7 +285,9 @@ BEGIN
 			SET @new_con = (SELECT TOP (1)
 				Id
 			FROM @output_con)
-			UPDATE [Assignments] SET current_assignment_consideration_id = @new_con WHERE Id = @Id
+			UPDATE [Assignments] SET current_assignment_consideration_id = @new_con
+			,[edit_date]=getutcdate()
+			 WHERE Id = @Id
 
 		END
 		ELSE
@@ -463,7 +469,8 @@ BEGIN
 																	[LogUpdated_Query] = N'Button_NeVKompetentcii__Row379' 
 											WHERE Id = @Id
 					UPDATE [Assignments] SET current_assignment_consideration_id = @new_con,
-																	[LogUpdated_Query]= N'Button_NeVKompetentcii__Row382' 
+																	[LogUpdated_Query]= N'Button_NeVKompetentcii__Row382'
+																	,edit_date = GETUTCDATE()
 											WHERE Id = @ass_id
 				END
 										ELSE -- if @tested_transfer = 1
@@ -557,7 +564,9 @@ BEGIN
 					SET @new_con = ( SELECT TOP(1)
 						Id
 					FROM @output_con)
-					UPDATE [Assignments] SET current_assignment_consideration_id = @new_con WHERE Id = @New_Ass
+					UPDATE [Assignments] SET current_assignment_consideration_id = @new_con
+					,edit_date = GETUTCDATE()
+					 WHERE Id = @New_Ass
 				END
 								ELSE
 								BEGIN
