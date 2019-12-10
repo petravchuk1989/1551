@@ -13,9 +13,11 @@
     },{
       "Code": "content",
       "Name": "Зміст",
-      "FieldType": "text",
+      "FieldType": "textarea",
       "Position": 2,
       "IsRequired": true,
+      "Width": "100%",
+      "Rows": 30,
       "QueryParameters": []
     }
   ]
