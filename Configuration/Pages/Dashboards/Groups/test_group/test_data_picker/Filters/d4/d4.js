@@ -8,7 +8,6 @@
         this.yourFunctionName(date);
     },
     yourFunctionName: function(date) {
-        debugger;
         let message = {
             name: '',
             package: {

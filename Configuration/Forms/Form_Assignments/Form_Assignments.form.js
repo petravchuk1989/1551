@@ -81,6 +81,7 @@
             this.form.disableControl('responsible');
             this.form.disableControl('phones');
             this.form.disableControl('answer');
+            // this.form.disableControl('executor_person_id');
             //enter_number
             this.form.disableControl('enter_number');
 
@@ -229,8 +230,19 @@
             }
 
             this.form.onControlValueChanged('result_id', this.filterResolution.bind(this));
+            this.form.onControlValueChanged('performer_id', this.chooseExecutorPerson.bind(this));
         },
         /*END INIT */
+
+        chooseExecutorPerson: function(executor_id) {
+            if (executor_id == null) {
+                this.form.setControlValue('executor_person_id', {});
+            };
+
+            debugger;
+            let param = [{ parameterCode: '@org_id', parameterValue: executor_id }];
+            this.form.setControlParameterValues('executor_person_id', param);
+        },
 
         goToAssigView: function(column, row, value, event, indexOfColumnId) {
             this.navigateTo('/sections/Assignments_for_view/edit/' + row.values[0] + '/Questions/' + row.values[7]);
