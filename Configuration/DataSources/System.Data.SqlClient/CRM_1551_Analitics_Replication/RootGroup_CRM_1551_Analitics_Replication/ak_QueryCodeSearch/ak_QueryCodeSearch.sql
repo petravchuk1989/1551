@@ -563,7 +563,7 @@ select distinct --top 5000
   ,[assigm_user_reviewed_name] [assigm_user_reviewed] 
   ,[assigm_user_checked_name] [assigm_user_checked]
 
-  ,convert(datetime, [registration_date]) [registration_date]
+  ,/*convert(datetime, [registration_date])*/ [registration_date]
   ,convert(datetime, [transfer_date]) [transfer_date]
   ,convert(datetime, [state_changed_date]) [state_changed_date]
   ,convert(datetime, [state_changed_date_done]) [state_changed_date_done]
