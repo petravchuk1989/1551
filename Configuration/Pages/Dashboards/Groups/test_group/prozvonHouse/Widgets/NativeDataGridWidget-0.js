@@ -295,10 +295,10 @@
         let HH = date.getHours().toString();
         let MM = date.getMinutes().toString();
 
-        if( dd.length === 1){  dd = '0' + dd; }
-        if( mm.length === 1){ mm = '0' + mm; }
-        if( HH.length === 1){  HH = '0' + HH; }
-        if( MM.length === 1){ MM = '0' + MM ; }
+        dd = dd.length === 1 ? '0' + dd : dd;
+        mm = mm.length === 1 ? '0' + mm : mm;
+        HH = HH.length === 1 ? '0' + HH : HH;
+        MM = MM.length === 1 ? '0' + MM : MM;
         return  dd + '.' + mm + '.' + yyyy + ' ' + HH + ':' + MM;
     },     
     reloadMainTable: function(message){
