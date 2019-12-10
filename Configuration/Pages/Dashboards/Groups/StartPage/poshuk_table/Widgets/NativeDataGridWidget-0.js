@@ -476,7 +476,6 @@
         this.queryExecutor(exportQuery, this.myCreateExcel, this);
     },
     myCreateExcel: function(data){
-        console.log(data)
         if( data.rows.length > 0 ){    
             this.showPagePreloader('Зачекайте, формується документ');
             this.indexArr = [];
