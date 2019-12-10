@@ -1,5 +1,53 @@
- -- declare @user_id nvarchar(128) = 'dc61a839-2cbc-4822-bfb5-5ca157487ced'
+  -- declare @user_id nvarchar(128) = 'eb6d56d2-e217-45e4-800b-c851666ce795';
+  declare @user_org table ( Id int);
+  declare @is_root smallint;
 
+  Insert into @user_org
+  select OrganisationStructureId
+  from [CRM_1551_System].[dbo].[UserInOrganisation] 
+  where UserId = @user_id
+  
+  set @is_root = (
+  select count(x) xqty
+  from (
+  select 
+  case when Id in (2,4) then 'One' else 'Zero' end as x
+  from @user_org )x
+  where x.x = 'One'
+  )
+  		if object_id('tempdb..#orgList') is not null
+		drop table #orgList
+        create table #orgList (
+          Id int, 
+          parentID int, 
+          orgName nvarchar(255));
+
+  --- Если юзер из структуры админов или КБУ - показывать все
+    If(@is_root > 0)
+    begin
+   ; WITH RecursiveOrg 
+    (Id, parentID, orgName)
+     AS
+    (
+    SELECT o.Id, parent_organization_id, short_name
+    FROM Organizations o
+	where o.Id > 1 
+    UNION ALL
+    SELECT o.Id, o.parent_organization_id, o.short_name
+    FROM Organizations o
+        JOIN RecursiveOrg r ON o.parent_organization_id = r.Id
+         )
+
+		  Insert into #orgList
+          SELECT distinct 
+          Id, 
+          parentID, 
+          orgName
+          FROM RecursiveOrg r
+   end
+   --- Иначе выборка по должности
+   Else if (@is_root = 0)
+   begin
 ; WITH RecursiveOrg 
  (Id, parentID, orgName)
 AS
@@ -13,16 +61,18 @@ AS
     FROM Organizations o
         JOIN RecursiveOrg r ON o.parent_organization_id = r.Id
          )
+
+		  Insert into #orgList
           SELECT distinct 
           Id, 
           parentID, 
           orgName
-          Into #orgList
           FROM RecursiveOrg r
+	end
 
 		  Select 
 		  Id, orgName 
 		  from #orgList 
 		  where #filter_columns#
-                #sort_columns#
-          offset @pageOffsetRows rows fetch next @pageLimitRows rows only
+              	order by Id 
+         offset @pageOffsetRows rows fetch next @pageLimitRows rows only
