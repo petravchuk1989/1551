@@ -183,7 +183,10 @@ BEGIN
     				   )
     
     		set @new_con = (select top (1) Id from @output_con)
-    		update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id
+    		update [Assignments] 
+			set current_assignment_consideration_id = @new_con,
+			[edit_date]=getutcdate() 
+			where Id = @Id
     	end
     -- 	execute define_status_Question @question_id
     -- exec pr_chech_in_status_assignment @Id, @result_id, @resolution_id
@@ -286,7 +289,10 @@ BEGIN
 						   )
 
 				set @new_con = (select top (1) Id from @output_con)
-				update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id
+				update [Assignments] 
+				set current_assignment_consideration_id = @new_con,
+				[edit_date]=getutcdate() 
+				where Id = @Id
 				-- execute define_status_Question @question_id
 				-- exec pr_chech_in_status_assignment @Id, @result_id, @resolution_id
 		   end
@@ -306,6 +312,7 @@ BEGIN
 					,[assignment_result_id] = @result_id
 					,[assignment_resolution_id] = @resolution_id
 					,turn_organization_id = 1762
+					,[edit_date] = getutcdate()
 					where Id = @current_consid 
 
 			update [Assignments] 
@@ -357,6 +364,7 @@ BEGIN
 			    ,[assignment_result_id] = @result_id
 				,[assignment_resolution_id] = @resolution_id
 				,turn_organization_id = 1762
+				,[edit_date] = getutcdate()
 				where Id = @current_consid 
 
 		update [Assignments] 
@@ -461,7 +469,10 @@ BEGIN
 								   )
 
 						set @new_con = (select top (1) Id from @output_con)
-						update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id
+						update [Assignments] 
+						set current_assignment_consideration_id = @new_con,
+						[edit_date]=getutcdate() 
+						where Id = @Id
 
 					--end
 				-- execute define_status_Question @question_id
@@ -601,8 +612,10 @@ BEGIN
 											update [Assignments] set main_executor = 0,
 																	[LogUpdated_Query] = N'cx_App_Que_Assignments_Update_Row563' 
 											where Id = @Id
-											update [Assignments] set current_assignment_consideration_id = @new_con,
-																	[LogUpdated_Query]= N'cx_App_Que_Assignments_Update_Row590' 
+											update [Assignments] 
+											set current_assignment_consideration_id = @new_con,
+																	[LogUpdated_Query]= N'cx_App_Que_Assignments_Update_Row590',
+																	[edit_date]=getutcdate() 
 											where Id = @ass_id
 										end
 										else -- if @tested_transfer = 1
@@ -682,10 +695,15 @@ BEGIN
 											   ,GETUTCDATE()
 											from AssignmentConsiderations where Id = @current_consid
 											
-											update [Assignments] set main_executor = 0,[LogUpdated_Query] = N'cx_App_Que_Assignments_Update_Row639' where Id = @Id
+											update [Assignments] set main_executor = 0,
+											[LogUpdated_Query] = N'cx_App_Que_Assignments_Update_Row639' 
+											where Id = @Id
 
 											set @new_con = ( select top(1) Id from @output_con)
-											update [Assignments] set current_assignment_consideration_id = @new_con where Id = @New_Ass
+											update [Assignments] 
+											set current_assignment_consideration_id = @new_con,
+											[edit_date]=getutcdate() 
+											where Id = @New_Ass
                                 
 								end
 								else
@@ -767,7 +785,9 @@ BEGIN
 				)
 
 			set @new_con = (select top (1) Id from @output_con)
-			update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id
+			update [Assignments] set current_assignment_consideration_id = @new_con,
+			[edit_date]=getutcdate() 
+			where Id = @Id
 -- 			execute define_status_Question @question_id
         -- exec pr_chech_in_status_assignment @Id, @result_id, @resolution_id
 		return;
@@ -829,7 +849,9 @@ BEGIN
 					from AssignmentConsiderations where Id = @current_consid
 			
 			set @new_con = ( select top(1) Id from @output_con)
-			update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id -- @ass_id
+			update [Assignments] set current_assignment_consideration_id = @new_con,
+			[edit_date]=getutcdate() 
+			where Id = @Id -- @ass_id
 -- 			execute define_status_Question @question_id
         -- exec pr_chech_in_status_assignment @Id, @result_id, @resolution_id
 		return;
@@ -974,7 +996,9 @@ BEGIN
 					from AssignmentConsiderations where Id = @current_consid
 			
 			set @new_con = ( select top(1) Id from @output_con)
-			update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id
+			update [Assignments] set current_assignment_consideration_id = @new_con,
+			[edit_date]=getutcdate() 
+			where Id = @Id
 					
         -- execute define_status_Question @question_id
             -- exec pr_chech_in_status_assignment @Id, @result_id, @resolution_id
@@ -1036,7 +1060,9 @@ BEGIN
 					from AssignmentConsiderations where Id = @current_consid
 			
 			set @new_con = ( select top(1) Id from @output_con)
-			update [Assignments] set current_assignment_consideration_id = @new_con where Id = @Id
+			update [Assignments] set current_assignment_consideration_id = @new_con,
+			[edit_date]=getutcdate() 
+			where Id = @Id
 					
         -- execute define_status_Question @question_id
             -- exec pr_chech_in_status_assignment @Id, @result_id, @resolution_id

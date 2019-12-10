@@ -51,7 +51,9 @@
   where Id=@Applicant_Id
   --арт
 
-		 update [dbo].[Appeals] set [applicant_id] = @Applicant_Id
+		 update [dbo].[Appeals] 
+		 set [applicant_id] = @Applicant_Id
+		 ,[edit_date]=getutcdate()
 		 where [Id] = @AppealId
 
 		if (select count(1) from [dbo].[ApplicantPhones] where applicant_id = @Applicant_Id and phone_number = @Applicant_Phone and IsMain = 1) = 0

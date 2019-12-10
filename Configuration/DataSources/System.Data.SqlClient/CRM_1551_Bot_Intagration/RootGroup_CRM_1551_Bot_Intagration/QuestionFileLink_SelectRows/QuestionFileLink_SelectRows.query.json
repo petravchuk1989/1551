@@ -1,0 +1,77 @@
+{
+  "ModelType": "Query",
+  "Code": "QuestionFileLink_SelectRows",
+  "Name": "QuestionFileLink_SelectRows",
+  "ConnectionCode": "CRM_1551_Bot_Integration",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "link",
+      "Name": "link",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "create_date",
+      "Name": "create_date",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "user_id",
+      "Name": "user_id",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "edit_date",
+      "Name": "edit_date",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "edit_user_id",
+      "Name": "edit_user_id",
+      "Position": 5,
+      "IsPrintable": false
+    },
+    {
+      "Code": "name",
+      "Name": "name",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "File",
+      "Name": "File",
+      "Position": 7,
+      "IsPrintable": false
+    },
+    {
+      "Code": "question_id",
+      "Name": "question_id",
+      "Position": 8,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}
