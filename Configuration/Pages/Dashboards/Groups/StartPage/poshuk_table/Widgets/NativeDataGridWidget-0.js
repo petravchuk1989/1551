@@ -476,7 +476,7 @@
         this.queryExecutor(exportQuery, this.myCreateExcel, this);
     },
     myCreateExcel: function(data){
-        console.log(data)
+
         if( data.rows.length > 0 ){    
             this.showPagePreloader('Зачекайте, формується документ');
             this.indexArr = [];
@@ -600,8 +600,8 @@
                 for( i = 0; i < indexArr.length; i ++){
                     let el = indexArr[i];
 
-                    let cdValue = this.changeDateTimeValues(row.values[indexExecutionTerm])
-                    let rdValue = this.changeDateTimeValues(row.values[indexRegistrationDate])
+                    let cdValue = this.changeDateTimeValues(row.values[indexExecutionTerm]);
+                    let rdValue = this.changeDateTimeValues(row.values[indexRegistrationDate]);
                     if( el.name === 'question_registration_number'  ){
                         rowItem.registration_number = row.values[el.index] + ' ' + rdValue;
                     }else if(el.name === 'zayavnyk_full_name' ){
@@ -860,22 +860,23 @@
         }    
     },
     changeDateTimeValues: function(value){
-        let trueDate = ' ';
-        if( value !== null){
-            let date = new Date(value);
-            let dd = date.getDate();
-            let MM = date.getMonth();
-            let yyyy = date.getFullYear();
-            let HH = date.getUTCHours()
-            let mm = date.getMinutes();
-            MM += 1 ;
-            if( (dd.toString()).length === 1){  dd = '0' + dd; }
-            if( (MM.toString()).length === 1){ MM = '0' + MM ; }
-            if( (HH.toString()).length === 1){  HH = '0' + HH; }
-            if( (mm.toString()).length === 1){ mm = '0' + mm; }
-            trueDate = dd+'.'+MM+'.' + yyyy;
+        if( value === null){
+            return ' '
         }
-        return trueDate;
+        debugger;
+        let date = new Date(value);
+        let dd = date.getDate().toString();
+        let mm = (date.getMonth() + 1).toString();
+        let yyyy = date.getFullYear().toString();
+        let HH = date.getHours().toString();
+        let MM = date.getMinutes().toString();
+
+        if( dd.length === 1){  dd = '0' + dd; }
+        if( mm.length === 1){ mm = '0' + mm; }
+        if( HH.length === 1){  HH = '0' + HH; }
+        if( MM.length === 1){ MM = '0' + MM ; }
+        debugger;
+        return  dd + '.' + mm + '.' + yyyy + ' ' + HH + ':' + MM;
     },
     destroy: function(){
         this.sub.unsubscribe();  
