@@ -86,7 +86,7 @@
         }
         this.changeFilterItemDistrict();
     },
-    setDepartamentData: function(data){
+    setDepartmentData: function(data){
         this.departData = data;
         this.createFilterDepartElements(data);
     },
