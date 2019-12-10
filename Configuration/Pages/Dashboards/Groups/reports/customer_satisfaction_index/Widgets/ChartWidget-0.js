@@ -20,7 +20,7 @@
                     label: {
                         connectorAllowed: false
                     },
-                    pointStart: 2010
+                    pointStart: 1
                 }
             },
         
@@ -40,6 +40,21 @@
                 name: 'Other',
                 data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
             }],
+        
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
         },
 
         init: function() {
