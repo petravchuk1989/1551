@@ -1,56 +1,53 @@
 (function () {
-  return {
-    chartConfig:{
-
-
-      chart: {
-        type: 'spline',
-        inverted: true
-    },
-    title: {
-        text: 'Швидкiсть виконання звернень'
-    },
-    xAxis: {
-        reversed: false,
-        title: {
-            enabled: true,
-            text: 'Altitude'
+    return {
+        chartConfig:{
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'line'
+            },
+            title: {
+                text: 'Швидкiсть виконання звернень'
+            },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
         },
-        labels: {
-            format: '{value} km'
-        },
-        maxPadding: 0.05,
-        showLastLabel: true
-    },
-    yAxis: {
-        title: {
-            text: 'Temperature'
-        },
-        labels: {
-            format: '{value}°'
-        },
-        lineWidth: 2
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-        headerFormat: '<b>{series.name}</b><br/>',
-        pointFormat: '{point.x} km: {point.y}°C'
-    },
-    plotOptions: {
-        spline: {
-            marker: {
-                enable: false
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
             }
-        }
-    },
-    series: [{
-        name: 'Temperature',
-        data: [[0, 15], [10, -50], [20, -56.5], [30, -46.5], [40, -22.1],
-            [50, -2.5], [60, -27.7], [70, -55.7], [80, -76.5]]
-    }]
-
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Chrome',
+                y: 61.41,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Internet Explorer',
+                y: 11.84
+            }, {
+                name: 'Firefox',
+                y: 10.85
+            }, {
+                name: 'Edge',
+                y: 4.67
+            }, {
+                name: 'Safari',
+                y: 4.18
+            }, {
+                name: 'Other',
+                y: 7.05
+            }]
+        }]
     },
         
     init: function() {

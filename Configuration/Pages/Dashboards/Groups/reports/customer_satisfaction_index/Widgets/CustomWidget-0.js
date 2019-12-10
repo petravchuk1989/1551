@@ -21,7 +21,7 @@
             afterViewInit: function(data) {
                 const reportTitle = document.getElementById('reportTitle');
                 const organizationNameInput = document.createElement('span');
-                organizationNameInput.innerText = 'Індекс задоволеності клієнтів';
+                organizationNameInput.innerText = 'Індекс задоволеності клієнтів (CSI)';
                 reportTitle.appendChild(organizationNameInput);
                 organizationNameInput.id = 'organizationName';
             }
