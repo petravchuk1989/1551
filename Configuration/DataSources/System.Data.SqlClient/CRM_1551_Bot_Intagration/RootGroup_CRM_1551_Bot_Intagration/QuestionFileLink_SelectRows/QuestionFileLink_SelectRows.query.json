@@ -7,57 +7,43 @@
   "Columns": [
     {
       "Code": "Id",
-      "Name": "Id",
+      "Name": "Идентифікатор запису",
       "Position": 0,
-      "IsPrintable": false
-    },
-    {
-      "Code": "link",
-      "Name": "link",
-      "Position": 1,
-      "IsPrintable": false
-    },
-    {
-      "Code": "create_date",
-      "Name": "create_date",
-      "Position": 2,
-      "IsPrintable": false
-    },
-    {
-      "Code": "user_id",
-      "Name": "user_id",
-      "Position": 3,
-      "IsPrintable": false
-    },
-    {
-      "Code": "edit_date",
-      "Name": "edit_date",
-      "Position": 4,
-      "IsPrintable": false
-    },
-    {
-      "Code": "edit_user_id",
-      "Name": "edit_user_id",
-      "Position": 5,
-      "IsPrintable": false
-    },
-    {
-      "Code": "name",
-      "Name": "name",
-      "Position": 6,
-      "IsPrintable": false
-    },
-    {
-      "Code": "File",
-      "Name": "File",
-      "Position": 7,
-      "IsPrintable": false
+      "IsPrintable": false,
+      "SqlName": "[QuestionDocFiles].[Id]",
+      "FilterParameterCode": "@Id"
     },
     {
       "Code": "question_id",
-      "Name": "question_id",
-      "Position": 8,
-      "IsPrintable": false
+      "Name": "Идентифікатор питання",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "[QuestionDocFiles].[question_id]",
+      "FilterParameterCode": "@question_id"
+    },
+    {
+      "Code": "registration_number",
+      "Name": "Номер питання",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "[Questions].[registration_number]",
+      "FilterParameterCode": "@registration_number"
+    },
+    {
+      "Code": "link",
+      "Name": "Посилання на файл",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "[QuestionDocFiles].[link]",
+      "FilterParameterCode": "@link"
+    },
+    {
+      "Code": "create_date",
+      "Name": "Дата створення",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "[QuestionDocFiles].[create_date]",
+      "FilterParameterCode": "@create_date"
     }
   ],
   "Parameters": [

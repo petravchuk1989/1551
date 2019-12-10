@@ -20,6 +20,7 @@ begin
 					left join [CRM_1551_Analitics].[dbo].[ApplicantPhones] on [ApplicantPhones].[applicant_id] = [Appeals].[applicant_id]
 					where [ApplicantPhones].phone_number = @phone_number
 					and [Questions].[Id] is not null
+					and [Questions].[registration_date] >= dateadd(hour, -2, getutcdate())
 					
 	 ) as result
 		order by result.[QuestionId] 

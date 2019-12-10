@@ -452,24 +452,16 @@
     
     },
     changeDateTimeValues: function(value){
-        let trueDate ;
         if( value !== null){
             let date = new Date(value);
-            let dd = date.getDate();
-            let MM = date.getMonth();
+            let dd = date.getDate().toString();
+            let mm = (date.getMonth() + 1).toString();
             let yyyy = date.getFullYear();
-            let HH = date.getUTCHours()
-            let mm = date.getMinutes();
-            MM += 1 ;
-            if( (dd.toString()).length === 1){  dd = '0' + dd; }
-            if( (MM.toString()).length === 1){ MM = '0' + MM ; }
-            if( (HH.toString()).length === 1){  HH = '0' + HH; }
-            if( (mm.toString()).length === 1){ mm = '0' + mm; }
-            trueDate = dd+'.'+MM+'.' + yyyy;
-        }else{
-            trueDate = ' ';
+            dd = dd.length === 1 ? '0' + dd : dd;
+            mm = mm.length === 1 ? '0' + mm : mm;
+            return dd + '.' + mm + '.' + yyyy ;
         }
-        return trueDate;
+        return ' ';
     },     
     afterRenderTable: function(e){
         if(this.data.length > 0 ){

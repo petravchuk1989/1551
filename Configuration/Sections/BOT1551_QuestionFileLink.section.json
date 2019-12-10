@@ -4,7 +4,7 @@
   },
   "ModelType": "Section",
   "Code": "BOT1551_QuestionFileLink",
-  "Name": "BOT1551_QuestionFileLink",
+  "Name": "Посилання на файл по питанням",
   "FormCode": "BOT1551_QuestionFileLink",
   "SelectRowsQueryCode": "QuestionFileLink_SelectRows",
   "SelectRowQueryCode": "QuestionFileLink_SelectRow"

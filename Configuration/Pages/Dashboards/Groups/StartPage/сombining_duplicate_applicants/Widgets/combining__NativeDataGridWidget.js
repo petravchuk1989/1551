@@ -23,6 +23,12 @@
                 dataField: 'Privilege',
                 caption: 'Пільга',
             }, {
+                dataField: 'SocialState',
+                caption: 'Соц. стан',
+            }, {
+                dataField: 'Years',
+                caption: 'Вік',
+            }, {
                 dataField: 'Check',
                 caption: 'Головний',
                 dataType: 'boolean',
