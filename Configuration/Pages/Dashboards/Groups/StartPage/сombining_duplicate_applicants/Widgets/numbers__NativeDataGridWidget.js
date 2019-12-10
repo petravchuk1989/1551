@@ -16,7 +16,7 @@
             }, {
 
                 dataField: 'Count_applicants',
-                caption: 'Кількість дзвінків',
+                caption: 'Кількість заявникiв',
             }
         ],
         keyExpr: 'Id',
