@@ -21,17 +21,12 @@
           return value;
         }
         let date = new Date(value);
-        let dd = date.getDate();
-        let MM = date.getMonth() + 1;
+        let dd = date.getDate().toString();
+        let mm = (date.getMonth() + 1).toString();
         let yyyy = date.getFullYear();
-        let HH = date.getUTCHours()
-        let mm = date.getMinutes();
-        if( (dd.toString()).length === 1){  dd = '0' + dd; }
-        if( (MM.toString()).length === 1){ MM = '0' + MM; }
-        if( (HH.toString()).length === 1){  HH = '0' + HH; }
-        if( (mm.toString()).length === 1){ mm = '0' + mm; }
-        let trueDate = yyyy + '-' + MM + '-' + dd;
-        return trueDate;
+        dd = dd.length === 1 ? '0' + dd : dd;
+        mm = mm.length === 1 ? '0' + mm : mm;
+        return yyyy + '-' + mm + '-' + dd;
     },
     destroy: function () {
       this.sub.unsubscribe();

@@ -1,4 +1,8 @@
 [{
+        "Code": "@Name",
+        "Name": "Name"
+    },
+    {
         "Code": "@File",
         "Name": "File"
     },
@@ -11,9 +15,5 @@
         "Code": "@user",
         "Name": "user",
         "ParameterType": "CurrentUserId"
-    },
-    {
-        "Code": "@Name",
-        "Name": "Name"
     }
 ]
