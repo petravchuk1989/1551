@@ -240,6 +240,7 @@
                 }
             });
             
+
             this.dataGridInstance.height = window.innerHeight - 90;
             this.config.onContentReady = this.onMyContentReady.bind(this);
             this.config.onToolbarPreparing = this.createTableButton.bind(this);
@@ -472,6 +473,6 @@
         },
         onMyContentReady: function () {
             this.visibleColumns = this.dataGridInstance.instance.getVisibleColumns();
-        },
+        }
     };
 }());
