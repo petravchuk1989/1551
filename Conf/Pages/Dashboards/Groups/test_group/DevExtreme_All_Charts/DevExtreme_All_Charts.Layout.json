@@ -1,0 +1,237 @@
+{
+  "css": "string:MainPage.css",
+  "rootContainer": {
+    "width": "auto",
+    "margin": "0 5px 10px",
+    "flexWrap": "wrap",
+    "flexDirection": "column",
+    "order": 1,
+    "flexGrow": 1,
+    "alignSelf": "flex-start",
+    "border": "none",
+    "children": [
+      {
+        "width": "auto",
+        "margin": "0 5px 10px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "code": "sankey_FunnelDevextremeWidget",
+            "type": "SankeyDevextremeWidgetComponent",
+            "name": "funnelChart"
+          }
+        ],
+        "id": "Container-0",
+        "height": "30%",
+        "minHeight": "100px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white"
+      },
+      {
+        "width": "auto",
+        "margin": "0 5px 10px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "code": "funnelChart-FunnelDevextremeWidget",
+            "type": "FunnelDevextremeWidgetComponent",
+            "name": "funnelChart"
+          }
+        ],
+        "id": "Container-0",
+        "height": "30%",
+        "minHeight": "100px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white"
+      },
+      {
+        "width": "auto",
+        "margin": "0 5px 10px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "code": "disRatInd_NativeDataGridWidget",
+            "type": "NativeDataGridWidgetComponent",
+            "name": "bullet rating"
+          }
+        ],
+        "id": "Container-0",
+        "height": "30%",
+        "minHeight": "100px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white"
+      },
+      {
+        "width": "auto",
+        "margin": "0 5px 10px",
+        "flexWrap": "nowrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "polarChart_DevextremeWidget",
+                "type": "PolarChartWidgetComponent",
+                "name": "bullet rating"
+              }
+            ],
+            "id": "Container-0",
+            "height": "100%",
+            "minHeight": "100px",
+            "minWidth": "calc(80% - 10px)",
+            "backgroundColor": "white"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "selectPolar_CustomWidget",
+                "type": "CustomWidgetComponent",
+                "name": "bullet rating"
+              }
+            ],
+            "id": "Container-0",
+            "height": "100%",
+            "minHeight": "100px",
+            "minWidth": "calc(20% - 10px)",
+            "backgroundColor": "white"
+          }
+        ],
+        "id": "Container-0",
+        "height": "30%",
+        "minHeight": "100px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white"
+      },
+      {
+        "width": "100%",
+        "margin": "0 5px 10px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "code": "simple_ChartsDevextremeWidget",
+            "type": "ChartDevextremeWidgetComponent",
+            "name": "column"
+          }
+        ],
+        "id": "Container-0",
+        "height": "30%",
+        "minHeight": "100px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white"
+      },
+      {
+        "width": "100%",
+        "margin": "0 5px 10px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "code": "treeMap_TreeMapDevextremeWidget",
+            "type": "TreeMapDevextremeWidgetComponent",
+            "name": "column"
+          }
+        ],
+        "id": "Container-0",
+        "height": "30%",
+        "minHeight": "100px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white"
+      },
+      {
+        "width": "100%",
+        "margin": "0 5px 10px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "code": "pie_ChartsDevextremeWidget",
+            "type": "PieChartDevextremeWidgetComponent",
+            "name": "pie"
+          }
+        ],
+        "id": "Container-0",
+        "height": "30%",
+        "minHeight": "100px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white",
+        "containerId": "myPieChart"
+      },
+      {
+        "width": "100%",
+        "margin": "0 5px 10px",
+        "flexWrap": "wrap",
+        "flexDirection": "row",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "auto",
+        "border": "none",
+        "children": [
+          {
+            "code": "sparkLine_CustomWidget",
+            "type": "CustomWidgetComponent",
+            "name": "pie"
+          }
+        ],
+        "id": "Container-0",
+        "height": "30%",
+        "minHeight": "100px",
+        "minWidth": "calc(100% - 10px)",
+        "backgroundColor": "white",
+        "containerId": "myPieChart"
+      }
+    ],
+    "id": "Container-0",
+    "height": "100%",
+    "minHeight": "100%",
+    "minWidth": "100%",
+    "backgroundColor": "white"
+  }
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "Code": "@date_to",
+    "Name": "date_to",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@position_id",
+    "Name": "position_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@user_Id",
+    "Name": "user_Id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@replace_position_id",
+    "Name": "replace_position_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@date_from",
+    "Name": "date_from",
+    "ParameterType": "DateTime"
+  }
+]

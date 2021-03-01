@@ -1,0 +1,7 @@
+{
+  "ModelType": "Query",
+  "Code": "ServiceTypesTexts_ToSend_UpdateRow",
+  "Name": "ServiceTypesTexts_ToSend_UpdateRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false
+}

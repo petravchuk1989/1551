@@ -1,0 +1,9 @@
+{
+  "DashboardGroupCode": "test_group",
+  "Description": "",
+  "DescriptionUrl": "",
+  "ModelType": "Dashboard",
+  "Code": "DevExtreme_All_Charts",
+  "Name": "Примеры DevExtreme DataGrid Charts",
+  "IsAnonymousAccess": true
+}

@@ -1,0 +1,70 @@
+{
+  "ModelType": "Query",
+  "Code": "RatingFormulas_SelectRows",
+  "Name": "RatingFormulas_SelectRows",
+  "ConnectionCode": "CRM_1551_Rating",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "Date_Start",
+      "Name": "Дата",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "[Rating_ReferenceWeight_IntegratedMetric_PerformanceLevel].[Date_Start]",
+      "FilterParameterCode": "@Date_Start"
+    },
+    {
+      "Code": "RatingFormulaName",
+      "Name": "Тип формули",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "[RatingFormulas].[name]",
+      "FilterParameterCode": "@RatingFormulaName"
+    },
+    {
+      "Code": "RatingName",
+      "Name": "Рейтинг",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "[Rating].[name]",
+      "FilterParameterCode": "@RatingName"
+    },
+    {
+      "Code": "comment",
+      "Name": "Коментар",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "[Rating_ReferenceWeight_IntegratedMetric_PerformanceLevel].[comment]",
+      "FilterParameterCode": "@comment"
+    },
+    {
+      "Code": "CreatedUserByName",
+      "Name": "Користувач",
+      "Position": 5,
+      "IsPrintable": false,
+      "SqlName": "ISNULL([User].[LastName], N'')+ISNULL(N' '+[User].[FirstName], N'')",
+      "FilterParameterCode": "@CreatedUserByName"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

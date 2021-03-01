@@ -1,0 +1,30 @@
+{
+  "ModelType": "Query",
+  "Code": "Assignment_ClassesURow",
+  "Name": "Assignment_ClassesURow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@execution_term",
+      "Name": "execution_term",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@name",
+      "Name": "name"
+    },
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    }
+  ]
+}

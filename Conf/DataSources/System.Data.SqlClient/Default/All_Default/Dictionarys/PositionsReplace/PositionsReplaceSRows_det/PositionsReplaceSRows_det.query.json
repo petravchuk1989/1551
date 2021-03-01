@@ -1,0 +1,61 @@
+{
+  "ModelType": "Query",
+  "Code": "PositionsReplaceSRows_det",
+  "Name": "PositionsReplaceSRows_det",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false,
+      "IsPrimaryKey": true,
+      "ViewState": "Hidden"
+    },
+    {
+      "Code": "date_from",
+      "Name": "Дата початку",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "[PositionsReplace].date_from",
+      "FilterParameterCode": "@date_from"
+    },
+    {
+      "Code": "date_to",
+      "Name": "Дата завершення",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "[PositionsReplace].date_to",
+      "FilterParameterCode": "@date_to"
+    },
+    {
+      "Code": "position",
+      "Name": "Підмінна посада",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "[Positions].position",
+      "FilterParameterCode": "@position"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@position_id",
+      "Name": "position_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

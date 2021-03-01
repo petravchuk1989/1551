@@ -1,0 +1,44 @@
+{
+  "ModelType": "Query",
+  "Code": "db_Report_3",
+  "Name": "db_Report_3",
+  "ConnectionCode": "CRM_1551_Analitics_Replication",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@dateFrom",
+      "Name": "dateFrom",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@sourceId",
+      "Name": "sourceId",
+      "ParameterType": "text"
+    },
+    {
+      "Code": "@questionType",
+      "Name": "questionType",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@questionGroup",
+      "Name": "questionGroup",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@organization",
+      "Name": "organization",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@organizationGroup",
+      "Name": "organizationGroup",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@dateTo",
+      "Name": "dateTo",
+      "ParameterType": "DateTime"
+    }
+  ]
+}

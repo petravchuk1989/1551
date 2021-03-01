@@ -1,0 +1,7 @@
+{
+  "ModelType": "Query",
+  "Code": "ClaimTypesTexts_ToSend_UpdateRow",
+  "Name": "ClaimTypesTexts_ToSend_UpdateRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false
+}

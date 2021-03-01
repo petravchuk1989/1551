@@ -1,0 +1,17 @@
+{
+  "ModelType": "Form",
+  "Code": "SN_ServiceTypesTexts_ToSend",
+  "Name": "Шаблони повідомлень по типам послуг",
+  "Details": [
+    "string:Details\\SN_Det1.detail.json",
+    "string:Details\\SN_Det2.detail.json",
+    "string:Details\\SN_Det3.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\Group1.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:SN_ServiceTypesTexts_ToSend.form.js"
+  }
+}

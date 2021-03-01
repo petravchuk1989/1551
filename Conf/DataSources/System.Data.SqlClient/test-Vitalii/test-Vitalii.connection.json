@@ -1,0 +1,7 @@
+{
+    "ModelType": "Connection",
+    "Code": "test-Vitalii",
+    "Name": "мое первое подключение",
+    "ProviderCode": "System.Data.SqlClient",
+    "ConnectionString": "string:c:\\Dev\\ConnectionStrings\\CRM-1551\\Default.connectionString.txt"
+}

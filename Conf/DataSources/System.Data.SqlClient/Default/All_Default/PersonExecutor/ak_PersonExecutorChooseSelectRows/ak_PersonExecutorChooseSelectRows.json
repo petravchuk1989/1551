@@ -1,0 +1,64 @@
+{
+    "ModelType": "Query",
+    "Code": "ak_PersonExecutorChooseSelectRows",
+    "Name": "ak_PersonExecutorChooseSelectRows",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Columns": [
+      {
+        "Code": "Id",
+        "Name": "Id",
+        "Position": 1,
+        "ViewState": "Hidden",
+        "IsPrimaryKey": true
+      },{
+        "Code": "Organization_name",
+        "Name": "Організація",
+        "Position": 2,
+        "SqlName": "Organization_name",
+        "FilterParameterCode": "@Organization_name"
+      },{
+        "Code": "Positions_name",
+        "Name": "Посада",
+        "Position": 3,
+        "SqlName": "Positions_name",
+        "FilterParameterCode": "@Positions_name"
+      },{
+        "Code": "PersonExecutorChoose_name",
+        "Name": "Група питань",
+        "Position": 4,
+        "SqlName": "PersonExecutorChoose_name",
+        "FilterParameterCode": "@PersonExecutorChoose_name"
+      },{
+        "Code": "questions_types",
+        "Name": "Типи питаннь",
+        "Position": 5,
+        "SqlName": "questions_types",
+        "FilterParameterCode": "@questions_types"
+      },{
+        "Code": "Objects",
+        "Name": "Кількість об'єктів",
+        "Position": 6,
+        "SqlName": "Objects",
+        "FilterParameterCode": "@Objects"
+      }
+    ],
+    "Parameters": [
+      {
+        "Code": "@pageOffsetRows",
+        "Name": "pageOffsetRows",
+        "ParameterType": "Integer",
+        "IsPageOffsetRows": true
+      },
+      {
+        "Code": "@pageLimitRows",
+        "Name": "pageLimitRows",
+        "ParameterType": "Integer",
+        "IsPageLimitRows": true
+      },{
+        "Code": "@user_id",
+        "Name": "user_id",
+        "ParameterType": "CurrentUserId"
+      }
+    ]
+  }

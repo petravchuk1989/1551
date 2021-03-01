@@ -1,0 +1,9 @@
+{
+  "ModelType": "Query",
+  "Code": "DevExtreme_DataGrid_RowChart_SelectRows",
+  "Name": "DevExtreme_DataGrid_RowChart_SelectRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": true,
+  "Parameters": []
+}

@@ -1,0 +1,62 @@
+{
+  "ModelType": "Query",
+  "Code": "db_ModStat_Main",
+  "Name": "db_ModStat_Main",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "on_moderation_2h",
+      "Name": "on_moderation_2h",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "registered_2h",
+      "Name": "registered_2h",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "registered_percent",
+      "Name": "registered_percent",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "come_avg",
+      "Name": "come_avg",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "come_avg_percent",
+      "Name": "come_avg_percent",
+      "Position": 5,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@date_to",
+      "Name": "date_to",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@date_from",
+      "Name": "date_from",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@user_ids",
+      "Name": "user_ids"
+    }
+  ]
+}

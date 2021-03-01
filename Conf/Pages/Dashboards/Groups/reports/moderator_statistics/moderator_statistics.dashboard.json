@@ -1,0 +1,8 @@
+{
+  "DashboardGroupCode": "reports",
+  "Description": "",
+  "DescriptionUrl": "",
+  "ModelType": "Dashboard",
+  "Code": "moderator_statistics",
+  "Name": "Статистика модератора"
+}

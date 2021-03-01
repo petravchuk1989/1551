@@ -1,0 +1,9 @@
+{
+    "ModelType": "Query",
+    "Code": "SelectArchivationRow",
+    "Name": "SelectArchivationRow",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Parameters": [],
+    "Columns": []
+  }

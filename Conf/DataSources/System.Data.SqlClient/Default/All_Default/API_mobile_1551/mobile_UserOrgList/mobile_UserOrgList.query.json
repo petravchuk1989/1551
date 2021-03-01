@@ -1,0 +1,46 @@
+{
+  "ModelType": "Query",
+  "Code": "mobile_UserOrgList",
+  "Name": "mobile_UserOrgList",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "shortName",
+      "Name": "shortName",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "trim([shortName])",
+      "FilterParameterCode": "@shortName"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@userId",
+      "Name": "userId",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@Id",
+      "Name": "Id"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

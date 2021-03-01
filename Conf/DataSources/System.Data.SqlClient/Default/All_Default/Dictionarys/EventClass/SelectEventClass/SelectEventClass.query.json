@@ -1,0 +1,77 @@
+{
+  "ModelType": "Query",
+  "Code": "SelectEventClass",
+  "Name": "SelectEventClass",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrimaryKey": true,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "name",
+      "Name": "Назва",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "global_id",
+      "Name": "global_id",
+      "Position": 2,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "eventClassTypeId",
+      "Name": "eventClassTypeId",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "eventClassTypeName",
+      "Name": "eventClassTypeName",
+      "Position": 4,
+      "IsPrintable": false,
+      "ReferenceKeyCode": "eventClassTypeId"
+    },
+    {
+      "Code": "globalType",
+      "Name": "Глобальний тип",
+      "Position": 5,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_class_id",
+      "Name": "assignment_class_id",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_class_name",
+      "Name": "assignment_class_name",
+      "Position": 7,
+      "IsPrintable": false,
+      "ReferenceKeyCode": "assignment_class_id"
+    },
+    {
+      "Code": "execution_term",
+      "Name": "execution_term",
+      "Position": 8,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    }
+  ]
+}

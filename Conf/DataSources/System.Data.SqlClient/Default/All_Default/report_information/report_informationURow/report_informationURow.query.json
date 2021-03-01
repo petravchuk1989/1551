@@ -1,0 +1,8 @@
+{
+  "ModelType": "Query",
+  "Code": "report_informationURow",
+  "Name": "report_informationURow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false
+}

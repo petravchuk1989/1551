@@ -1,0 +1,109 @@
+{
+  "Code": "Group1",
+  "Name": "Основна інформація",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "ClaimTypeId",
+      "Name": "Тип заявки",
+      "FieldType": "select",
+      "IsRequired": true,
+      "Position": 1,
+      "QueryCode": "List_SN_ClaimTypesByServiceType",
+      "KeyColumnCode": "Id",
+      "Width": "100%",
+      "DisplayColumnCode": "Name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "ServiceTypeId",
+      "Name": "ServiceTypeId  (скрите поле)",
+      "FieldType": "number",
+      "Position": 1,
+      "IsHidden": true
+    },
+    {
+      "Code": "Action",
+      "Name": "Нотифікація",
+      "FieldType": "select",
+      "IsRequired": true,
+      "Position": 2,
+      "Width": "100%",
+      "QueryCode": "List_SN_Actions",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "Name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "ActionId",
+      "Name": "ActionId  (скрите поле)",
+      "FieldType": "number",
+      "Position": 2,
+      "IsHidden": true,
+      "Width": "50%"
+    }, 
+    {
+      "Maxlength": 2000,
+      "Code": "Title",
+      "Name": "Текст заголовку",
+      "FieldType": "text",
+      "Position": 3,
+      "Width": "100%"
+    },
+    {
+      "Maxlength": 2000,
+      "Code": "Description",
+      "Name": "Текст опису",
+      "FieldType": "textarea",
+      "Position": 5,
+      "Width": "100%"
+    },
+    {
+      "Maxlength": 2000,
+      "Code": "Description_without_Executor",
+      "Name": "Текст опису без виконавця",
+      "FieldType": "textarea",
+      "Position": 6,
+      "Width": "100%"
+    },
+    {
+      "Maxlength": 2000,
+      "Code": "Text",
+      "Name": "Текст тіла",
+      "FieldType": "textarea",
+      "Position": 8,
+      "Width": "100%"
+    },
+    {
+      "Maxlength": 2000,
+      "Code": "Text_without_Executor",
+      "Name": "Текст тіла без виконавця",
+      "FieldType": "textarea",
+      "Position": 9,
+      "Width": "100%"
+    },
+    {
+      "Maxlength": 2000,
+      "Code": "Text_without_PlanDate",
+      "Name": "Текст тіла без планової дати завершення",
+      "FieldType": "textarea",
+      "Position": 10,
+      "Width": "100%"
+    },
+    {
+      "Maxlength": 2000,
+      "Code": "Text_without_Executor_PlanDate",
+      "Name": "Текст тіла без виконавця та планової дати завершення",
+      "FieldType": "textarea",
+      "Position": 11,
+      "Width": "100%"
+    },
+    {
+      "Code": "IsActive",
+      "Name": "Активне",
+      "FieldType": "checkbox",
+      "Position": 13,
+      "Width": "100%"
+    }
+  ]
+}

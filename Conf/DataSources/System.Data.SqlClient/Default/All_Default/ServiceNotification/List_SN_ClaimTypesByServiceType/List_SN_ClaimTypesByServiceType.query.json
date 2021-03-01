@@ -1,0 +1,44 @@
+{
+  "ModelType": "Query",
+  "Code": "List_SN_ClaimTypesByServiceType",
+  "Name": "List_SN_ClaimTypesByServiceType",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 1,
+      "IsPrimaryKey": true,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "Name",
+      "Name": "Name",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "Name",
+      "FilterParameterCode": "@Name"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    },
+    {
+      "Code": "@ServiceTypeId",
+      "Name": "ServiceTypeId",
+      "ParameterType": "Integer"
+    }
+  ]
+}

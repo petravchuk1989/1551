@@ -1,0 +1,13 @@
+{
+  "Add": {
+    "InsertQueryCode": "report_informationIRow"
+  },
+  "ModelType": "Section",
+  "Code": "report_information",
+  "Name": "Інформація по звіту",
+  "FormCode": "Form_report_information",
+  "SelectRowsQueryCode": "report_informationSRows",
+  "SelectRowQueryCode": "report_informationSRow",
+  "UpdateQueryCode": "report_informationURow",
+  "DeleteQueryCode": "report_informationDRow"
+}

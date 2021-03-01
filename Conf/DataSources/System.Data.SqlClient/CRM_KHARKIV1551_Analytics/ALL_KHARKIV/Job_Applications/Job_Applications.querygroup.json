@@ -1,0 +1,6 @@
+{
+  "ModelType": "QueryGroup",
+  "Code": "Job_Applications",
+  "Name": "ДБ \"Заявки посади\"",
+  "ConnectionCode": "CRM_KHARKIV1551_Analytics"
+}

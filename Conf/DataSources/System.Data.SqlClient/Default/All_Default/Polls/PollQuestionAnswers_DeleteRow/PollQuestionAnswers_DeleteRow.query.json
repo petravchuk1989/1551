@@ -1,0 +1,8 @@
+{
+  "ModelType": "Query",
+  "Code": "PollQuestionAnswers_DeleteRow",
+  "Name": "PollQuestionAnswers_DeleteRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false
+}

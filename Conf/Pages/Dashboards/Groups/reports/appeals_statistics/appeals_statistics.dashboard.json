@@ -1,0 +1,8 @@
+{
+  "DashboardGroupCode": "reports",
+  "Description": "",
+  "DescriptionUrl": "",
+  "ModelType": "Dashboard",
+  "Code": "appeals_statistics",
+  "Name": "Статистика по зверненням з сайту"
+}

@@ -1,0 +1,28 @@
+{
+  "ModelType": "Query",
+  "Code": "InsertEventClass",
+  "Name": "InsertEventClass",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@name",
+      "Name": "name"
+    },
+    {
+      "Code": "@eventClassTypeId",
+      "Name": "eventClassTypeId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@execution_term",
+      "Name": "execution_term",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@assignment_class_id",
+      "Name": "assignment_class_id",
+      "ParameterType": "Integer"
+    }
+  ]
+}

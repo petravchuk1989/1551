@@ -1,0 +1,37 @@
+{
+  "Code": "Group_WIKI",
+  "Name": "Консультація за БЗ",
+  "Position": 7,
+  "IsWithClosing": true,
+  "Fields": [
+    {
+      "Code": "WIKI_KnowledgeBaseState",
+      "Name": "Стаття в БЗ",
+      "FieldType": "lookup",
+      "Position": 1,
+      "QueryCode": "ListTree_KnowledgeBaseStates_SelectRows",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "Name",
+      "QueryParameters": [],
+      "LookupType": "tree",
+      "ParentColumnCode": "ParentId",
+      "PathColumnCode": "Path",
+      "SearchQueryCode": "ListTree_KnowledgeBaseStates_SelectRows_Search",
+      "SearchKeyColumnCode": "Id",
+      "SearchDisplayColumnCode": "Name",
+      "Width": "100%"
+    },
+    {
+      "Code": "WIKI_Btn_Search",
+      "Name": "Шукати в БЗ",
+      "FieldType": "button",
+      "Position": 2
+    },
+    {
+      "Code": "WIKI_Btn_Consultation",
+      "Name": "Консультація за БЗ",
+      "FieldType": "button",
+      "Position": 3
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "ModelType": "Query",
+  "Code": "ReferenceAPI_Request_SelectRows",
+  "Name": "ReferenceAPI_Request_SelectRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Result",
+      "Name": "Result",
+      "Position": 0,
+      "IsPrintable": false
+    }
+  ]
+}

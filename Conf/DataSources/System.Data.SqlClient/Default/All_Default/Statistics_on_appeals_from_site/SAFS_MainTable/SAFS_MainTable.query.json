@@ -1,0 +1,196 @@
+{
+  "ModelType": "Query",
+  "Code": "SAFS_MainTable",
+  "Name": "SAFS_MainTable",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell1",
+      "Name": "cell1",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell2",
+      "Name": "cell2",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell2_delta",
+      "Name": "cell2_delta",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell3",
+      "Name": "cell3",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell4",
+      "Name": "cell4",
+      "Position": 5,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell5",
+      "Name": "cell5",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell1_count_applicants",
+      "Name": "cell1_count_applicants",
+      "Position": 7,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell1_count_applicants_more1appeals",
+      "Name": "cell1_count_applicants_more1appeals",
+      "Position": 8,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell1_count_applicants_verified",
+      "Name": "cell1_count_applicants_verified",
+      "Position": 9,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell4_windows",
+      "Name": "cell4_windows",
+      "Position": 10,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell4_android",
+      "Name": "cell4_android",
+      "Position": 11,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell4_Apple",
+      "Name": "cell4_Apple",
+      "Position": 12,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell5_ReturnToApplicant",
+      "Name": "cell5_ReturnToApplicant",
+      "Position": 13,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell1_info_value1",
+      "Name": "cell1_info_value1",
+      "Position": 14,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell1_info_value2",
+      "Name": "cell1_info_value2",
+      "Position": 15,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell1_info_value3",
+      "Name": "cell1_info_value3",
+      "Position": 16,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell2_info_value1",
+      "Name": "cell2_info_value1",
+      "Position": 17,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell2_info_value2",
+      "Name": "cell2_info_value2",
+      "Position": 18,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell2_info_value3",
+      "Name": "cell2_info_value3",
+      "Position": 19,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell2_info_value4",
+      "Name": "cell2_info_value4",
+      "Position": 20,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell3_info_value1",
+      "Name": "cell3_info_value1",
+      "Position": 21,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell3_info_value2",
+      "Name": "cell3_info_value2",
+      "Position": 22,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell3_info_value3",
+      "Name": "cell3_info_value3",
+      "Position": 23,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell4_info_value1",
+      "Name": "cell4_info_value1",
+      "Position": 24,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell4_info_value2",
+      "Name": "cell4_info_value2",
+      "Position": 25,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell4_info_value3",
+      "Name": "cell4_info_value3",
+      "Position": 26,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell5_info_value1",
+      "Name": "cell5_info_value1",
+      "Position": 27,
+      "IsPrintable": false
+    },
+    {
+      "Code": "cell5_info_value2",
+      "Name": "cell5_info_value2",
+      "Position": 28,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@date_from",
+      "Name": "date_from",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@date_to",
+      "Name": "date_to",
+      "ParameterType": "DateTime"
+    }
+  ]
+}

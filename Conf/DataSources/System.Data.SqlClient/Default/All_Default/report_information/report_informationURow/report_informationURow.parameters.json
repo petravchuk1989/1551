@@ -1,0 +1,29 @@
+[
+  {
+    "Code": "@content",
+    "Name": "content"
+  },
+  {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@diagramcode",
+    "Name": "diagramcode"
+  },
+  {
+    "Code": "@reportcode",
+    "Name": "reportcode"
+  },
+  {
+    "Code": "@valuecode",
+    "Name": "valuecode"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  }
+]

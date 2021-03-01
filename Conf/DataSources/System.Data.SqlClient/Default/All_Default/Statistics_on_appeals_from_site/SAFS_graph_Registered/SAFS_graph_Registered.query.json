@@ -1,0 +1,21 @@
+{
+  "ModelType": "Query",
+  "Code": "SAFS_graph_Registered",
+  "Name": "Зареєстровано модератором",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [],
+  "Parameters": [
+    {
+      "Code": "@date_to",
+      "Name": "date_to",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@date_from",
+      "Name": "date_from",
+      "ParameterType": "DateTime"
+    }
+  ]
+}

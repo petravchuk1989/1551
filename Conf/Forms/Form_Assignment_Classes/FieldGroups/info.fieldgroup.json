@@ -1,0 +1,56 @@
+{
+  "Code": "info",
+  "Name": " ",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "assignment_classes_Id",
+      "Name": "Id",
+      "FieldType": "number",
+      "Position": 1,
+      "Width": "5%"
+    },
+    {
+      "Code": "name",
+      "Name": "Назва",
+      "FieldType": "text",
+      "Position": 2,
+      "Width": "85%"
+    },
+    {
+      "Code": "execution_term",
+      "Name": "Термін виконання",
+      "FieldType": "number",
+      "Position": 3,
+      "Width": "10%"
+    },
+    {
+      "Code": "create_date",
+      "Name": "Дата створення",
+      "FieldType": "date-time",
+      "Position": 4,
+      "Width": "15%"
+    },
+    {
+      "Code": "user_name",
+      "Name": "ПІБ хто створив",
+      "FieldType": "text",
+      "Position": 5,
+      "Width": "85%"
+    },
+    {
+      "Code": "edit_date",
+      "Name": "Дата редагування",
+      "FieldType": "date-time",
+      "Position": 6,
+      "Width": "15%"
+    },
+    {
+      "Code": "user_edit_name",
+      "Name": "ПІБ, редагував",
+      "FieldType": "text",
+      "Position": 7,
+      "Width": "85%"
+    }
+  ]
+}

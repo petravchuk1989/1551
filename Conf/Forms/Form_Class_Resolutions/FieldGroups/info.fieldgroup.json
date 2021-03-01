@@ -1,0 +1,101 @@
+{
+  "Code": "info",
+  "Name": " ",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "class_resolutions_Id",
+      "Name": "Id",
+      "FieldType": "number",
+      "Position": 1,
+      "Width": "5%"
+    },
+    {
+      "Code": "assignment_class_id",
+      "Name": "Клас доручення",
+      "FieldType": "select",
+      "Position": 2,
+      "Width": "95%",
+      "QueryCode": "list_Assignment_Classes",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "Name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "name",
+      "Name": "Назва",
+      "FieldType": "text",
+      "Position": 3,
+      "Width": "100%"
+    },
+    {
+      "Code": "create_assignment_class_id",
+      "Name": "Клас нового доручення",
+      "FieldType": "select",
+      "Position": 5,
+      "Width": "100%",
+      "QueryCode": "list_Assignment_Classes",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "Name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "event_class_id",
+      "Name": "Клас Заходу",
+      "FieldType": "select",
+      "Position": 4,
+      "QueryCode": "SelectAllEventClass",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "assignment_result_id",
+      "Name": "Результат",
+      "FieldType": "select",
+      "Position": 6,
+      "QueryCode": "dir_AssignmentResults_SelectRows",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "assignment_resolution_id",
+      "Name": "Резолюція",
+      "FieldType": "select",
+      "Position": 7,
+      "QueryCode": "dir_AssignmentResolutions_SelectRows",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "create_date",
+      "Name": "Дата створення",
+      "FieldType": "date-time",
+      "Position": 8,
+      "Width": "15%"
+    },
+    {
+      "Code": "user_name",
+      "Name": "ПІБ, хто створив",
+      "FieldType": "text",
+      "Position": 9,
+      "Width": "85%"
+    },
+    {
+      "Code": "edit_date",
+      "Name": "Дата редагування",
+      "FieldType": "date-time",
+      "Position": 10,
+      "Width": "15%"
+    },
+    {
+      "Code": "user_edit_name",
+      "Name": "ПІБ, редагував",
+      "FieldType": "text",
+      "Position": 11,
+      "Width": "85%"
+    }
+  ]
+}

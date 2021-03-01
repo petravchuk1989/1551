@@ -1,0 +1,20 @@
+{
+  "ModelType": "Query",
+  "Code": "db_red_ButtonStartDate",
+  "Name": "db_red_ButtonStartDate",
+  "ConnectionCode": "CRM_1551_Rating",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@Ids",
+      "Name": "Ids",
+      "IsPageLimitRows": true
+    },
+    {
+      "Code": "@DateStart",
+      "Name": "DateStart",
+      "ParameterType": "DateTime",
+      "IsPageOffsetRows": true
+    }
+  ]
+}

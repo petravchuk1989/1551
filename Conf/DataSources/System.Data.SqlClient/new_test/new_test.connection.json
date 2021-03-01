@@ -1,0 +1,7 @@
+{
+    "ModelType": "Connection",
+    "Code": "new_test",
+    "Name": "Тестовое подключение",
+    "ProviderCode": "System.Data.SqlClient",
+    "ConnectionString": "string:c:\\Dev\\ConnectionStrings\\CRM-1551\\Default.connectionString.txt"
+}

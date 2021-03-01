@@ -1,0 +1,16 @@
+{
+  "ModelType": "Query",
+  "Code": "det_PersonExecutorChooseDistrictsDRow",
+  "Name": "det_PersonExecutorChooseDistrictsDRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    }
+  ]
+}

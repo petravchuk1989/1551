@@ -1,0 +1,103 @@
+{
+  "css": "string:MainPage.css",
+  "rootContainer": {
+    "width": "auto",
+    "margin": "0 5px 10px",
+    "flexWrap": "wrap",
+    "flexDirection": "row",
+    "order": 1,
+    "flexGrow": 1,
+    "alignSelf": "auto",
+    "border": "none",
+    "children": [
+      {
+        "width": "auto",
+        "margin": "0 5px 10px",
+        "flexWrap": "nowrap",
+        "flexDirection": "column",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "flex-start",
+        "border": "none",
+        "children": [
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "executorInfoCustomWidget",
+                "type": "CustomWidgetComponent",
+                "name": "executor info"
+              }
+            ],
+            "id": "Container-1",
+            "height": "215px",
+            "minHeight": "100px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "flex-start",
+            "border": "none",
+            "children": [
+              {
+                "code": "applicantsNativeDataGridWidget",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "executor applicants"
+              }
+            ],
+            "id": "Container-1",
+            "height": "calc(100% - 215px)",
+            "minHeight": "100px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "flex-start",
+            "border": "none",
+            "children": [
+              {
+                "code": "modalFormCustomWidget",
+                "type": "CustomWidgetComponent",
+                "name": "modalForm"
+              }
+            ],
+            "id": "Container-1",
+            "height": "0px",
+            "minHeight": "0px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white"
+          }
+        ],
+        "id": "Container-0",
+        "height": "calc(100% - 10px)",
+        "minHeight": "100px",
+        "minWidth": "100px",
+        "backgroundColor": "white"
+      }
+    ],
+    "id": "Container-0",
+    "height": "100%",
+    "minHeight": "100%",
+    "minWidth": "100%",
+    "backgroundColor": "#eee"
+  }
+}

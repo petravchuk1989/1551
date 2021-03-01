@@ -1,0 +1,16 @@
+{
+  "ModelType": "Detail",
+  "Code": "Detail_Assig_Event",
+  "Name": "Пов'язані Заходи",
+  "SelectRowsQueryCode": "cx_App_Events_SelectRows",
+  "SectionCode": "",
+  "Position": 2,
+  "IsExpand": true,
+  "PrintType": "None",
+  "QueryParameters": [
+    {
+      "FormFieldName": "question_id",
+      "ParameterCode": "@Id"
+  }
+  ]
+}

@@ -1,0 +1,71 @@
+[
+  {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@ServiceTypeId",
+    "Name": "ServiceTypeId",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Action",
+    "Name": "Action",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@Title",
+    "Name": "Title"
+  },
+  {
+    "Code": "@UseClaimTypeTitle",
+    "Name": "UseClaimTypeTitle",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@Description",
+    "Name": "Description"
+  },
+  {
+    "Code": "@Description_without_Executor",
+    "Name": "Description_without_Executor"
+  },
+  {
+    "Code": "@UseClaimTypeDescription",
+    "Name": "UseClaimTypeDescription",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@Text",
+    "Name": "Text"
+  },
+  {
+    "Code": "@Text_without_Executor",
+    "Name": "Text_without_Executor"
+  },
+  {
+    "Code": "@Text_without_PlanDate",
+    "Name": "Text_without_PlanDate"
+  },
+  {
+    "Code": "@Text_without_Executor_PlanDate",
+    "Name": "Text_without_Executor_PlanDate"
+  },
+  {
+    "Code": "@UseClaimTypeText",
+    "Name": "UseClaimTypeText",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@IsActive",
+    "Name": "IsActive",
+    "ParameterType": "Boolean"
+  }
+]

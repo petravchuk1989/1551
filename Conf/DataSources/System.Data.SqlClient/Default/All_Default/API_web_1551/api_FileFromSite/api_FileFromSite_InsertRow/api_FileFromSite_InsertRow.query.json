@@ -1,0 +1,42 @@
+{
+  "ModelType": "Query",
+  "Code": "api_FileFromSite_InsertRow",
+  "Name": "api_FileFromSite_InsertRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@file",
+      "Name": "file"
+    },
+    {
+      "Code": "@appeal_from_site_id",
+      "Name": "appeal_from_site_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@appeal_id",
+      "Name": "appeal_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@question_id",
+      "Name": "question_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@name",
+      "Name": "name"
+    },
+    {
+      "Code": "@is_revision",
+      "Name": "is_revision",
+      "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    }
+  ]
+}

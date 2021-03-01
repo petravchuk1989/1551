@@ -1,0 +1,14 @@
+{
+  "ModelType": "Query",
+  "Code": "GetFormulaNameById",
+  "Name": "GetFormulaNameById",
+  "ConnectionCode": "CRM_1551_Rating",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer"
+    }
+  ]
+}

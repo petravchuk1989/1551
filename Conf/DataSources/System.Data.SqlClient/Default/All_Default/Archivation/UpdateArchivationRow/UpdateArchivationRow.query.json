@@ -1,0 +1,7 @@
+{
+    "ModelType": "Query",
+    "Code": "UpdateArchivationRow",
+    "Name": "UpdateArchivationRow",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false
+  }

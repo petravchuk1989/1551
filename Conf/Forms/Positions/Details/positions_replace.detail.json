@@ -1,0 +1,22 @@
+{
+  "ModelType": "Detail",
+  "Code": "positions_replace",
+  "Name": "Підмінні посади",
+  "FormCode": "PositionsReplace",
+  "SelectRowsQueryCode": "PositionsReplaceSRows_det",
+  "SelectRowQueryCode": "PositionsReplaceSRow",
+  "UpdateQueryCode": "PositionsReplaceURow",
+  "DeleteQueryCode": "PositionsReplaceDRow",
+  "SectionCode": "",
+  "Position": 5,
+  "IsExpand": true,
+  "Add": {
+    "InsertQueryCode": "PositionsReplaceIRow" 
+  },
+  "QueryParameters": [
+    {
+      "FormFieldName": "Id",
+      "ParameterCode": "@position_id"
+    }
+  ]
+}

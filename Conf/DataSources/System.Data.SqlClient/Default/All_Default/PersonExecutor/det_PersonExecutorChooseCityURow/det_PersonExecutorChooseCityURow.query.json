@@ -1,0 +1,25 @@
+{
+  "ModelType": "Query",
+  "Code": "det_PersonExecutorChooseCityURow",
+  "Name": "det_PersonExecutorChooseCityURow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@person_executor_choose_id",
+      "Name": "person_executor_choose_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@city_id",
+      "Name": "city_id",
+      "ParameterType": "Integer"
+    }
+  ]
+}

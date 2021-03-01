@@ -1,0 +1,24 @@
+{
+  "ModelType": "Query",
+  "Code": "ConstructorFilters_UName",
+  "Name": "ConstructorFilters_UName",
+  "ConnectionCode": "CRM_1551_Analitics_Replication",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    },
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@filter_name",
+      "Name": "filter_name"
+    }
+  ]
+}

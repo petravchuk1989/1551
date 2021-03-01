@@ -1,0 +1,21 @@
+{
+  "ModelType": "Query",
+  "Code": "db_StartMod_ButtonNextAppeal",
+  "Name": "db_StartMod_ButtonNextAppeal",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@user_Id",
+      "Name": "user_Id",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    }
+  ]
+}

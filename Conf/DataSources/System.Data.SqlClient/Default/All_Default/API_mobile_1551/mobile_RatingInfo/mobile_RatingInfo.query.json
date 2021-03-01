@@ -1,0 +1,39 @@
+{
+  "ModelType": "Query",
+  "Code": "mobile_RatingInfo",
+  "Name": "mobile_RatingInfo",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Result",
+      "Name": "Result",
+      "Position": 0,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@UserId",
+      "Name": "UserId",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@OrganizationId",
+      "Name": "OrganizationId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

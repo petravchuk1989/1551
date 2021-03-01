@@ -1,0 +1,43 @@
+[
+  {
+    "Code": "@poll_name",
+    "Name": "poll_name"
+  },
+  {
+    "Code": "@id",
+    "Name": "id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@direction_id",
+    "Name": "direction_id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@CreatedUserById",
+    "Name": "CreatedUserById",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@people_limit",
+    "Name": "people_limit",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@end_date",
+    "Name": "end_date",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@start_date",
+    "Name": "start_date",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@is_active",
+    "Name": "is_active",
+    "ParameterType": "Boolean"
+  }
+]

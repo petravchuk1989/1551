@@ -1,0 +1,16 @@
+{
+    "ModelType": "Detail",
+    "Code": "Detail_Que_Event",
+    "Name": "Пов'язані Заходи",
+    "FormCode": "Form_Events",
+    "SelectRowsQueryCode": "cx_App_Events_SelectRows",
+    "SectionCode": "",
+    "Position": 2,
+    "IsExpand": true,
+    "QueryParameters": [
+        {
+            "FormFieldName": "ques_id",
+            "ParameterCode": "@Id"
+        }
+    ]
+}

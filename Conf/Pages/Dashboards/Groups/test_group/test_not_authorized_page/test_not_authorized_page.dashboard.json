@@ -1,0 +1,9 @@
+{
+  "IsAnonymousAccess": true,
+  "DashboardGroupCode": "test_group",
+  "Description": "",
+  "DescriptionUrl": "",
+  "ModelType": "Dashboard",
+  "Code": "test_not_authorized_page",
+  "Name": "Тестовая страниза с неавторизированым доступом"
+}

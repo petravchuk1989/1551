@@ -1,0 +1,216 @@
+{
+  "ModelType": "Query",
+  "Code": "mobile_AssignmentOrEvent_Data",
+  "Name": "mobile_AssignmentOrEvent_Data",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Ідентифікатор",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "registration_number",
+      "Name": "Номер реєстрації",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "[registration_number]",
+      "FilterParameterCode": "@registration_number"
+    },
+    {
+      "Code": "event_class_name",
+      "Name": "Клас заходу",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "[event_class_name]",
+      "FilterParameterCode": "@event_class_name"
+    },
+    {
+      "Code": "assignment_state",
+      "Name": "Стан доручення",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "[assignment_state]",
+      "FilterParameterCode": "@assignment_state"
+    },
+    {
+      "Code": "event_active",
+      "Name": "Ознака активності заходу",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "[event_active]",
+      "FilterParameterCode": "@event_active"
+    },
+    {
+      "Code": "code",
+      "Name": "Код статусу",
+      "Position": 5,
+      "IsPrintable": false,
+      "SqlName": "[code]",
+      "FilterParameterCode": "@code"
+    },
+    {
+      "Code": "assignment_executor_organization_name",
+      "Name": "Організація виконавець доручення",
+      "Position": 6,
+      "IsPrintable": false,
+      "SqlName": "[assignment_executor_organization_name]",
+      "FilterParameterCode": "@assignment_executor_organization_name"
+    },
+    {
+      "Code": "assignment_executor_person_name",
+      "Name": "Особа виконавець доручення",
+      "Position": 7,
+      "IsPrintable": false,
+      "SqlName": "[assignment_executor_person_name]",
+      "FilterParameterCode": "@assignment_executor_person_name"
+    },
+    {
+      "Code": "event_organization_name",
+      "Name": "Організація заходу",
+      "Position": 8,
+      "IsPrintable": false,
+      "SqlName": "[event_organization_name]",
+      "FilterParameterCode": "@event_organization_name"
+    },
+    {
+      "Code": "question_type_name",
+      "Name": "Тип питання",
+      "Position": 9,
+      "IsPrintable": false,
+      "SqlName": "[question_type_name]",
+      "FilterParameterCode": "@question_type_name"
+    },
+    {
+      "Code": "question_object",
+      "Name": "Об'єкт питання",
+      "Position": 10,
+      "IsPrintable": false,
+      "SqlName": "[question_object]",
+      "FilterParameterCode": "@question_object"
+    },
+    {
+      "Code": "event_object",
+      "Name": "Об'єкт заходу",
+      "Position": 11,
+      "IsPrintable": false,
+      "SqlName": "[event_object]",
+      "FilterParameterCode": "@event_object"
+    },
+    {
+      "Code": "assignment_execution_date",
+      "Name": "Строк виконання доручення",
+      "Position": 12,
+      "IsPrintable": false,
+      "SqlName": "[assignment_execution_date]",
+      "FilterParameterCode": "@assignment_execution_date"
+    },
+    {
+      "Code": "assignment_registration_date",
+      "Name": "Дата-час реєстрації доручення",
+      "Position": 13,
+      "IsPrintable": false,
+      "SqlName": "[assignment_registration_date]",
+      "FilterParameterCode": "@assignment_registration_date"
+    },
+    {
+      "Code": "event_start_date",
+      "Name": "Дата-час реєстрації заходу",
+      "Position": 14,
+      "IsPrintable": false,
+      "SqlName": "[event_start_date]",
+      "FilterParameterCode": "@event_start_date"
+    },
+    {
+      "Code": "event_plan_end_date",
+      "Name": "Дата-час планового виконання заходу",
+      "Position": 15,
+      "IsPrintable": false,
+      "SqlName": "[event_plan_end_date]",
+      "FilterParameterCode": "@event_plan_end_date"
+    },
+    {
+      "Code": "event_real_end_date",
+      "Name": "Дата-час реального виконання заходу",
+      "Position": 16,
+      "IsPrintable": false,
+      "SqlName": "[event_real_end_date]",
+      "FilterParameterCode": "@event_real_end_date"
+    },
+    {
+      "Code": "active_subscribe",
+      "Name": "Стан підписки",
+      "Position": 17,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@userId",
+      "Name": "userId",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@orgId",
+      "Name": "orgId"
+    },
+    {
+      "Code": "@startDate",
+      "Name": "startDate",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@endDate",
+      "Name": "endDate",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@Control_startDate",
+      "Name": "Control_startDate",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@Control_endDate",
+      "Name": "Control_endDate",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@code",
+      "Name": "code"
+    },
+    {
+      "Code": "@entity",
+      "Name": "entity"
+    },
+    {
+      "Code": "@entityNumber",
+      "Name": "entityNumber"
+    },
+    {
+      "Code": "@objecId",
+      "Name": "objecId"
+    },
+    {
+      "Code": "@applicant_fio",
+      "Name": "applicant_fio"
+    },
+    {
+      "Code": "@executor_fio",
+      "Name": "executor_fio"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

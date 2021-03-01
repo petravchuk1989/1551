@@ -1,0 +1,77 @@
+{
+  "ModelType": "Query",
+  "Code": "mobile_QuestionTypes",
+  "Name": "mobile_QuestionTypes",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false,
+      "SqlName": "qt.[Id]",
+      "FilterParameterCode": "@Id"
+    },
+    {
+      "Code": "Name",
+      "Name": "Name",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "qt.[Name]",
+      "FilterParameterCode": "@Name"
+    },
+    {
+      "Code": "parentId",
+      "Name": "parentId",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "qt.[question_type_id]",
+      "FilterParameterCode": "@parentId"
+    },
+    {
+      "Code": "parentName",
+      "Name": "parentName",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "pqt.[name]",
+      "FilterParameterCode": "parentName"
+    },
+    {
+      "Code": "Index",
+      "Name": "Index",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "qt.[Index]",
+      "FilterParameterCode": "@Index"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@userId",
+      "Name": "userId",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@Name",
+      "Name": "Name"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+    "ModelType": "Detail",
+    "Code": "det_PersonExecutorChooseCity",
+    "Name": "Місто",
+    "SelectRowsQueryCode": "det_PersonExecutorChooseCitySRows",
+    "SectionCode": "",
+    "FormCode": "Form_PersonExecutorChooseCity",
+    "SelectRowQueryCode": "det_PersonExecutorChooseCitySRow",
+    "DeleteQueryCode": "det_PersonExecutorChooseCityDRow",
+    "UpdateQueryCode": "det_PersonExecutorChooseCityURow",
+    "Position": 3,
+    "IsExpand": false,
+    "Add": {
+        "InsertQueryParameterCode": "@city_id",
+        "QueryCode": "list_PersonExecutorChooseCitySRows", 
+        "ColumnCode": "Id",
+        "AddType": "Lookup",
+        "InsertQueryCode": "det_PersonExecutorChooseCityIObject",
+        "QueryParameters": [{
+            "FormFieldName": "Id",
+            "ParameterCode": "@city_id"
+        }],
+        "InsertQueryParameters": [{
+            "FormFieldName": "Id",
+            "ParameterCode": "@person_executor_choose_id"
+        }]
+    },
+    "QueryParameters": [
+        {
+          "FormFieldName": "Id",
+          "ParameterCode": "@person_executor_choose_id"
+        }
+      ] 
+}

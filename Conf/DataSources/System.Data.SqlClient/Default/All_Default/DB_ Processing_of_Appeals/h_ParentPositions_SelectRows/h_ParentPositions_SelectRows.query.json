@@ -1,0 +1,46 @@
+{
+  "ModelType": "Query",
+  "Code": "h_ParentPositions_SelectRows",
+  "Name": "h_ParentPositions_SelectRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 1,
+      "IsPrimaryKey": true,
+      "IsPrintable": false
+    },
+    {
+      "Code": "vykonavets_Id",
+      "Name": "vykonavets_Id",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "vykonavets_Id",
+      "FilterParameterCode": "@vykonavets_Id"
+    },
+    {
+      "Code": "possible_Id",
+      "Name": "possible_Id",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "possible_Id",
+      "FilterParameterCode": "@possible_Id"
+    },
+    {
+      "Code": "possible_name",
+      "Name": "possible_name",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "possible_name",
+      "FilterParameterCode": "@possible_name"
+    },
+    {
+      "Code": "phone_number",
+      "Name": "phone_number",
+      "Position": 5,
+      "IsPrintable": false
+    }
+  ]
+}

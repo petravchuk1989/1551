@@ -1,0 +1,7 @@
+{
+  "ModelType": "Query",
+  "Code": "ServiceTypesTexts_ToSend_InsertRow",
+  "Name": "ServiceTypesTexts_ToSend_InsertRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false
+}

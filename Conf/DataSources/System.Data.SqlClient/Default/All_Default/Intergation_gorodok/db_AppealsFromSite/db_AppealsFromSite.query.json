@@ -1,0 +1,116 @@
+{
+  "ModelType": "Query",
+  "Code": "db_AppealsFromSite",
+  "Name": "db_AppealsFromSite",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "receiptDate",
+      "Name": "receiptDate",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "workDirection",
+      "Name": "workDirection",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "appealObject",
+      "Name": "appealObject",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "content",
+      "Name": "content",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "result",
+      "Name": "result",
+      "Position": 5,
+      "IsPrintable": false,
+      "SqlName": "sar.Id",
+      "FilterParameterCode": "@result"
+    },
+    {
+      "Code": "moderComment",
+      "Name": "moderComment",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "SystemIP",
+      "Name": "SystemIP",
+      "Position": 7,
+      "IsPrintable": false,
+      "SqlName": "afs.SystemIP",
+      "FilterParameterCode": "@SystemIP"
+    },
+    {
+      "Code": "Surname",
+      "Name": "Surname",
+      "Position": 8,
+      "IsPrintable": false,
+      "SqlName": "app.Surname",
+      "FilterParameterCode": "@Surname"
+    },
+    {
+      "Code": "Firstname",
+      "Name": "Firstname",
+      "Position": 9,
+      "IsPrintable": false,
+      "SqlName": "app.Firstname",
+      "FilterParameterCode": "@Firstname"
+    },
+    {
+      "Code": "ApplicantPhone",
+      "Name": "ApplicantPhone",
+      "Position": 10,
+      "IsPrintable": false,
+      "SqlName": "SELECT STUFF((SELECT N', '+PhoneNumber FROM [CRM_1551_Site_Integration].[dbo].[ApplicantFromSiteMoreContacts]
+      WHERE PhoneNumber IS NOT NULL AND [ApplicantFromSiteId]=app.Id
+      FOR XML PATH('')),1,2,N'')",
+      "FilterParameterCode": "@ApplicantPhone"
+    },
+    {
+      "Code": "ApplicantMail",
+      "Name": "ApplicantMail",
+      "Position": 11,
+      "IsPrintable": false,
+      "SqlName": "SELECT STUFF((SELECT N', '+Mail FROM [CRM_1551_Site_Integration].[dbo].[ApplicantFromSiteMoreContacts]
+      WHERE Mail IS NOT NULL AND [ApplicantFromSiteId]=app.Id
+      FOR XML PATH('')),1,2,N'')",
+      "FilterParameterCode": "@ApplicantMail"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    },
+    {
+      "Code": "@result",
+      "Name": "result",
+      "ParameterType": "Integer"
+    }
+  ]
+}

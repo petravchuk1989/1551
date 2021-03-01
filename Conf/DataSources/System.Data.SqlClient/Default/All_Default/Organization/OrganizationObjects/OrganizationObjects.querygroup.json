@@ -1,0 +1,6 @@
+{
+  "ModelType": "QueryGroup",
+  "Code": "OrganizationObjects",
+  "Name": "ObjectsOrganizations",
+  "ConnectionCode": "Default"
+}

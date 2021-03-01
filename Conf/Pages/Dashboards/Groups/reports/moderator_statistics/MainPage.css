@@ -1,0 +1,42 @@
+#title{
+    font-family: Roboto;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #999999;
+    padding-top: 10px;
+}
+
+.main-con{
+    text-align: center;
+    padding: 10px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.cell-item{
+    margin-top: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5px 2px;
+    font-family: Roboto;
+    font-size: 18px;
+    padding-top: 5px;
+    background-color: rgba(235, 235, 235, 1);
+    width: 20%;
+    border-radius: 10px ;
+    position: relative;
+}
+
+.fa-arrow-up{
+    color:green;
+    font-size: 24px;
+  }
+  
+  .fa-arrow-down{
+      color:red;
+      font-size: 24px;
+  }
+
+  .cell-info{
+    font-size: 32px;
+}

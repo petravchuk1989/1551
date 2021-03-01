@@ -1,0 +1,31 @@
+{
+  "ModelType": "Query",
+  "Code": "api_VrobotiSelectRow",
+  "Name": "api_VrobotiSelectRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@ApplicantFromSiteId",
+      "Name": "ApplicantFromSiteId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@ApplicantFromSitePhone",
+      "Name": "ApplicantFromSitePhone",
+      "ParameterType": "text"
+    }
+  ]
+}

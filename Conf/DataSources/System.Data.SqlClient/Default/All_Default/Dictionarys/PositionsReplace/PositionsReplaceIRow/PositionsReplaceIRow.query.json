@@ -1,0 +1,8 @@
+{
+  "ModelType": "Query",
+  "Code": "PositionsReplaceIRow",
+  "Name": "PositionsReplaceIRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false
+}

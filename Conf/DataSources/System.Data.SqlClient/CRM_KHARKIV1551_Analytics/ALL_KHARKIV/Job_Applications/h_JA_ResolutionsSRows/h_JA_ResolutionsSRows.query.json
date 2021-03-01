@@ -1,0 +1,48 @@
+{
+  "ModelType": "Query",
+  "Code": "h_JA_ResolutionsSRows",
+  "Name": "h_JA_ResolutionsSRows",
+  "ConnectionCode": "CRM_KHARKIV1551_Analytics",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "resolution_id",
+      "Name": "resolution_id",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "result_id",
+      "Name": "result_id",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "resolution_name",
+      "Name": "resolution_name",
+      "Position": 4,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

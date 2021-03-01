@@ -1,0 +1,13 @@
+{
+  "ModelType": "Form",
+  "Code": "Form_Class_Resolutions",
+  "Name": "Резолюція класів",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\info.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:Form_Class_Resolutions.form.js"
+  }
+}

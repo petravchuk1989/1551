@@ -1,0 +1,16 @@
+{
+  "ModelType": "Query",
+  "Code": "Polls_DeleteRow",
+  "Name": "Polls_DeleteRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@id",
+      "Name": "id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    }
+  ]
+}

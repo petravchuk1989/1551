@@ -1,0 +1,14 @@
+{
+  "ModelType": "Form",
+  "Code": "Form_PersonExecutorChooseCity",
+  "Name": "Місто",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\Form_PersonExecutorChooseCity.fieldgroup.json"
+    ],
+    "DefaultFields": [
+    ],
+    "Script": "string:Form_PersonExecutorChooseCity.form.js"
+  }
+}

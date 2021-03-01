@@ -1,0 +1,71 @@
+{
+  "Code": "Group_Complains",
+  "Name": "Інформація",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "registration_date",
+      "Name": "Дата реєстрації скарги",
+      "FieldType": "date-time",
+      "Position": 1,
+      "Width": "20%"
+    },
+    {
+      "Code": "complain_type_id",
+      "Name": "Тип скарги",
+      "FieldType": "select",
+      "Position": 2,
+      "Width": "40%",
+      "Icon": "turned_in",
+      "QueryCode": "list_complain_type",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "culpritname",
+      "Name": "Скаржник",
+      "FieldType": "text",
+      "Position": 3,
+      "Width": "40%",
+      "Icon": "sentiment_dissatisfied"
+    },
+    {
+      "Code": "guilty_name",
+      "Name": "Винуватець",
+      "FieldType": "text",
+      "Position": 5
+    },
+    {
+      "Code": "user_name",
+      "Name": "Хто зареєстрував скаргу",
+      "FieldType": "text",
+      "Position": 6
+    },
+    {
+      "Code": "text",
+      "Name": "Коментар",
+      "FieldType": "textarea",
+      "Position": 7,
+      "Width": "100%"
+    },
+    {
+      "Code": "complain_state_id",
+      "Name": "Стан скарги",
+      "FieldType": "select",
+      "IsRequired": false,
+      "Position": 8,
+      "QueryCode": "list_complain_state",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "revision_comment",
+      "Name": "Коментар перевіряючого",
+      "FieldType": "textarea",
+      "Position": 9,
+      "Width": "100%"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "ModelType": "Form",
+  "Code": "Positions",
+  "Name": "Посади",
+  "Details": [
+    "string:Details\\OrganizationIn.detail.json",
+    "string:Details\\main_position1.detail.json",
+    "string:Details\\add_position1.detail.json",
+    "string:Details\\helper.detail.json",
+    "string:Details\\positions_replace.detail.json"
+  ],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\all.fieldgroup.json"
+    ],
+    "DefaultFields": [
+      {
+        "Code": "organization_id",
+        "ParentFormFieldCodeForKeyValue": "id",
+        "ParentFormFieldCodeForDisplayValue": "short_name"
+      }
+    ],
+    "Script": "string:Positions.form.js"
+  }
+}

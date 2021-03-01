@@ -1,0 +1,36 @@
+{
+  "Code": "info",
+  "Name": "Загальна інформація",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "date_from",
+      "Name": "Дата початку",
+      "FieldType": "date",
+      "Position": 1
+    },
+    {
+      "Code": "date_to",
+      "Name": "Дата завершення",
+      "FieldType": "date",
+      "Position": 2
+    },
+    {
+      "Code": "replace_position_id",
+      "Name": "Підмінна посада",
+      "FieldType": "select",
+      "Position": 3,
+      "QueryCode": "list_PositionsSelectRows",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "position_id",
+      "Name": "position_id",
+      "FieldType": "number",
+      "Position": 100,
+      "IsHidden": true
+    }
+  ]
+}

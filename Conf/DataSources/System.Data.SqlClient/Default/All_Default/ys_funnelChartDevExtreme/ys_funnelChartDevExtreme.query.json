@@ -1,0 +1,9 @@
+{
+    "ModelType": "Query",
+    "Code": "ys_funnelChartDevExtreme",
+    "Name": "ys_funnelChartDevExtreme",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "IsAnonymousAccess": true,
+    "Parameters": []
+}

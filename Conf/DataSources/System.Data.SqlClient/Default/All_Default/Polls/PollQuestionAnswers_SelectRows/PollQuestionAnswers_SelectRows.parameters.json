@@ -1,0 +1,12 @@
+[
+  {
+    "Code": "@poll_id",
+    "Name": "poll_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  } 
+]

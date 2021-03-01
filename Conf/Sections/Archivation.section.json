@@ -1,0 +1,11 @@
+{
+    "Add": {},
+    "ModelType": "Section",
+    "Code": "Archivation",
+    "Name": "Archivation",
+    "FormCode": "Archivation_Form",
+    "SelectRowsQueryCode": "SelectArchivationRows",
+    "SelectRowQueryCode": "SelectArchivationRow",
+    "UpdateQueryCode": "UpdateArchivationRow",
+    "IsVisible": true
+  }

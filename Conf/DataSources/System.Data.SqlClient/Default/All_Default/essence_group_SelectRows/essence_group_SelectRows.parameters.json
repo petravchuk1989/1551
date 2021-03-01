@@ -1,0 +1,7 @@
+[
+  {
+    "Code": "@UserId",
+    "Name": "UserId",
+    "ParameterType": "CurrentUserId"
+  }
+]

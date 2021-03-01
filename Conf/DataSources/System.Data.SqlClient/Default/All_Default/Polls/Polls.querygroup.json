@@ -1,0 +1,6 @@
+{
+  "ModelType": "QueryGroup",
+  "Code": "Polls",
+  "Name": "Опитування",
+  "ConnectionCode": "Default"
+}

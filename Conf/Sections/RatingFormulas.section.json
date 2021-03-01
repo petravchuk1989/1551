@@ -1,0 +1,12 @@
+{
+  "Add": {
+    "InsertQueryCode": "RatingFormulas_InsertRow"
+  },
+  "ModelType": "Section",
+  "Code": "RatingFormulas",
+  "Name": "Використання ітогової формули",
+  "FormCode": "RatingFormula",
+  "SelectRowsQueryCode": "RatingFormulas_SelectRows",
+  "SelectRowQueryCode": "RatingFormulas_SelectRow",
+  "UpdateQueryCode": "RatingFormulas_UpdateRow"
+}

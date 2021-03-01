@@ -1,0 +1,8 @@
+{
+  "ModelType": "Query",
+  "Code": "PollQuestionAnswers_SelectRows",
+  "Name": "PollQuestionAnswers_SelectRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false
+}

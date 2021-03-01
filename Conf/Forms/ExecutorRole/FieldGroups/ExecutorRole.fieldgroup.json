@@ -1,0 +1,13 @@
+{
+  "Code": "ExecutorRole",
+  "Name": "Роль виконавця",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "name",
+      "Name": "Назва",
+      "FieldType": "text",
+      "Position": 1
+    }
+  ]
+}

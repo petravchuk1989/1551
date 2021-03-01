@@ -1,0 +1,9 @@
+{
+    "ModelType": "Query",
+    "Code": "ys_testPolarChartDevExtreme",
+    "Name": "ys_testPolarChartDevExtreme",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "IsAnonymousAccess": true,
+    "Parameters": []
+}

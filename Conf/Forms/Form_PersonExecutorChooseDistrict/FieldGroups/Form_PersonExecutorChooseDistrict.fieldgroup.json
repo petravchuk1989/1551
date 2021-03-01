@@ -1,0 +1,28 @@
+{
+  "Code": "Form_PersonExecutorChooseDistrict",
+  "Name": "Район",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "person_executor_choose_id",
+      "Name": "Посада-виконавець",
+      "FieldType": "select",
+      "Position": 1,
+      "QueryCode": "list_PersonExecutorChoose",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "IsRequired": true,
+      "QueryParameters": []
+    },{
+      "Code": "district_id",
+      "Name": "Район",
+      "FieldType": "select",
+      "Position": 2,
+      "QueryCode": "list_PersonExecutorChooseDistrictSRows",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "IsRequired": true,
+      "QueryParameters": []
+    }
+  ]
+}

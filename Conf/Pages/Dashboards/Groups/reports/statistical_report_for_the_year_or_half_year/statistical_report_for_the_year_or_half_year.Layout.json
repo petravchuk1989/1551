@@ -1,0 +1,169 @@
+{
+  "css": "string:MainPage.css",
+  "rootContainer": {
+    "width": "auto",
+    "margin": "0 5px 10px",
+    "flexWrap": "nowrap",
+    "flexDirection": "row",
+    "order": 1,
+    "flexGrow": 1,
+    "alignSelf": "auto",
+    "border": "none",
+    "children": [
+      {
+        "width": "auto",
+        "margin": "0 5px 10px",
+        "flexWrap": "nowrap",
+        "flexDirection": "column",
+        "order": 1,
+        "flexGrow": 1,
+        "alignSelf": "flex-start",
+        "border": "none",
+        "children": [
+          {
+            "width": "calc(100% - 10px)",
+            "margin": "0 5px",
+            "flexWrap": "nowrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "flex-start",
+            "border": "none",
+            "children": [
+              {
+                "code": "CustomWidget-0",
+                "type": "CustomWidgetComponent",
+                "name": "title"
+              }
+            ],
+            "id": "Container-1",
+            "height": "auto",
+            "minHeight": "90px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "flex-start",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-0",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "assigments_1"
+              }
+            ],
+            "id": "Container-1",
+            "height": "auto",
+            "minHeight": "100px",
+            "minWidth": "calc(100% - 10px)",
+            "backgroundColor": "white"
+          },
+          {
+            "width": "calc(100% - 10px)",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-1",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "assigments_2"
+              }
+            ],
+            "id": "Container-1",
+            "height": "calc(100% - 10px)",
+            "minHeight": "100px",
+            "minWidth": "100px",
+            "backgroundColor": "white"
+          },
+          {
+            "width": "calc(100% - 10px)",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-3",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "questions_1"
+              }
+            ],
+            "id": "Container-1",
+            "height": "calc(100% - 10px)",
+            "minHeight": "100px",
+            "minWidth": "100px",
+            "backgroundColor": "white"
+          },
+          {
+            "width": "calc(100% - 10px)",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-2",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "question_2"
+              }
+            ],
+            "id": "Container-1",
+            "height": "calc(100% - 10px)",
+            "minHeight": "100px",
+            "minWidth": "100px",
+            "backgroundColor": "white"
+          },
+          {
+            "width": "auto",
+            "margin": "0 5px 10px",
+            "flexWrap": "wrap",
+            "flexDirection": "row",
+            "order": 1,
+            "flexGrow": 1,
+            "alignSelf": "auto",
+            "border": "none",
+            "children": [
+              {
+                "code": "NativeDataGridWidget-4",
+                "type": "NativeDataGridWidgetComponent",
+                "name": "question_3"
+              }
+            ],
+            "id": "Container-1",
+            "height": "calc(100% - 10px)",
+            "minHeight": "100px",
+            "minWidth": "100px",
+            "backgroundColor": "white"
+          }
+        ],
+        "id": "Container-0",
+        "height": "auto",
+        "minHeight": "100px",
+        "minWidth": "100px",
+        "backgroundColor": "white"
+      }
+    ],
+    "id": "Container-0",
+    "height": "100%",
+    "minHeight": "100%",
+    "minWidth": "100%",
+    "backgroundColor": "white"
+  }
+}

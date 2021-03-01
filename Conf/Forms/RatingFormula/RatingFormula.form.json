@@ -1,0 +1,13 @@
+{
+  "ModelType": "Form",
+  "Code": "RatingFormula",
+  "Name": "Формула рівня виконання",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\MainGroup.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:RatingFormula.form.js"
+  }
+}

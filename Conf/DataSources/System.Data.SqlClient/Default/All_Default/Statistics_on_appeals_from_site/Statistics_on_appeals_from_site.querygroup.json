@@ -1,0 +1,6 @@
+{
+  "ModelType": "QueryGroup",
+  "Code": " Statistics_on_appeals_from_site",
+  "Name": "Статистика по зверненнях з сайту",
+  "ConnectionCode": "Default"
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "Code": "id",
+    "Name": "id",
+    "Position": 0,
+    "IsPrintable": false
+  },
+  {
+    "Code": "applicant_id",
+    "Name": "applicant_id",
+    "Position": 1,
+    "IsPrintable": false
+  },
+  {
+    "Code": "poll_id",
+    "Name": "poll_id",
+    "Position": 2,
+    "IsPrintable": false
+  },
+  {
+    "Code": "reject_poll",
+    "Name": "reject_poll",
+    "Position": 3,
+    "IsPrintable": false
+  },
+  {
+    "Code": "all_question_done",
+    "Name": "all_question_done",
+    "Position": 4,
+    "IsPrintable": false
+  },
+  {
+    "Code": "poll_date",
+    "Name": "poll_date",
+    "Position": 5,
+    "IsPrintable": false
+  },
+  {
+    "Code": "poller_id",
+    "Name": "poller_id",
+    "Position": 6,
+    "IsPrintable": false
+  },
+  {
+    "Code": "add_date",
+    "Name": "add_date",
+    "Position": 7,
+    "IsPrintable": false
+  },
+  {
+    "Code": "user_id",
+    "Name": "user_id",
+    "Position": 8,
+    "IsPrintable": false
+  },
+  {
+    "Code": "edit_date",
+    "Name": "edit_date",
+    "Position": 9,
+    "IsPrintable": false
+  },
+  {
+    "Code": "user_edir_id",
+    "Name": "user_edir_id",
+    "Position": 10,
+    "IsPrintable": false
+  }
+]

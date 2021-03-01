@@ -1,0 +1,66 @@
+{
+  "ModelType": "Query",
+  "Code": "Polls_SelectRow",
+  "Name": "Polls_SelectRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "poll_name",
+      "Name": "poll_name",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "is_active",
+      "Name": "is_active",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "start_date",
+      "Name": "start_date",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "end_date",
+      "Name": "end_date",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "name",
+      "Name": "name",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "col_Applicants",
+      "Name": "col_Applicants",
+      "Position": 5,
+      "IsPrintable": false
+    },
+    {
+      "Code": "col_IsPollsApplicants",
+      "Name": "col_IsPollsApplicants",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "col_IsNotApplicants",
+      "Name": "col_IsNotApplicants",
+      "Position": 7,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@id",
+      "Name": "id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "ModelType": "Query",
+  "Code": "ServiceTypesTexts_ToSend_Det2",
+  "Name": "ServiceTypesTexts_ToSend_Det2",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 1,
+      "IsPrimaryKey": true,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "ClaimTypeName",
+      "Name": "Тип заявки",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "t2.[Name]",
+      "FilterParameterCode": "@ClaimTypeName"
+    },
+    {
+      "Code": "Description",
+      "Name": "Текст опису",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "t1.[Description]",
+      "FilterParameterCode": "@Description"
+    },
+    {
+      "Code": "Description_without_Executor",
+      "Name": "Текст опису без виконавця",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "t1.[Description_without_Executor]",
+      "FilterParameterCode": "@Description_without_Executor"
+    },
+    {
+      "Code": "IsActive",
+      "Name": "Активне",
+      "Position": 5,
+      "IsPrintable": false,
+      "SqlName": "t1.[IsActive]",
+      "FilterParameterCode": "@IsActive"
+    }    
+  ],
+  "Parameters": [
+    {
+      "Code": "@ServiceTypeId",
+      "Name": "ServiceTypeId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@ActionId",
+      "Name": "ActionId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    }
+  ]
+}

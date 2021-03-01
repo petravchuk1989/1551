@@ -1,0 +1,176 @@
+{
+  "ModelType": "Query",
+  "Code": "mobile_AssignmentInfo",
+  "Name": "mobile_AssignmentInfo",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "registration_number",
+      "Name": "Номер реєстрації (питання)",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "registration_date",
+      "Name": "Дата реєстрації",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "full_name",
+      "Name": "ПІБ заявника",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "ApplicantAddress",
+      "Name": "Адреса заявника",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "object_name",
+      "Name": "Об'єкт питання",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "balans_org_name",
+      "Name": "Балансоутримувач",
+      "Position": 5,
+      "IsPrintable": false
+    },
+    {
+      "Code": "organization_name",
+      "Name": "Організація питання",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "question_type_name",
+      "Name": "Тип питання",
+      "Position": 7,
+      "IsPrintable": false
+    },
+    {
+      "Code": "question_content",
+      "Name": "Зміст питання",
+      "Position": 8,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_state_name",
+      "Name": "Стан",
+      "Position": 9,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_result_name",
+      "Name": "Результат",
+      "Position": 10,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_resolution_name",
+      "Name": "Резолюція",
+      "Position": 11,
+      "IsPrintable": false
+    },
+    {
+      "Code": "rework_counter",
+      "Name": "Лічильник повернень",
+      "Position": 12,
+      "IsPrintable": false
+    },
+    {
+      "Code": "enter_number",
+      "Name": "Вхідний номер УГЛ",
+      "Position": 13,
+      "IsPrintable": false
+    },
+    {
+      "Code": "executor_organization_name",
+      "Name": "Виконавець",
+      "Position": 14,
+      "IsPrintable": false
+    },
+    {
+      "Code": "executor_phone_number",
+      "Name": "Телефон виконавця",
+      "Position": 15,
+      "IsPrintable": false
+    },
+    {
+      "Code": "received_organization_name",
+      "Name": "Надійшло до",
+      "Position": 16,
+      "IsPrintable": false
+    },
+    {
+      "Code": "short_answer",
+      "Name": "Коментар виконавця",
+      "Position": 17,
+      "IsPrintable": false
+    },
+    {
+      "Code": "question_files_exists",
+      "Name": "Ознака наявності файлів питання",
+      "Position": 18,
+      "IsPrintable": false
+    },
+    {
+      "Code": "execution_date",
+      "Name": "Дата контролю",
+      "Position": 19,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_id",
+      "Name": "Пов’язаний Захід",
+      "Position": 20,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_documents",
+      "Name": "Документы",
+      "Position": 21,
+      "IsPrintable": false
+    },
+    {
+      "Code": "documents_files_exists",
+      "Name": "Ознака наявності файлів виконання",
+      "Position": 22,
+      "IsPrintable": false
+    },
+    {
+      "Code": "active_subscribe",
+      "Name": "Стан підписки",
+      "Position": 23,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@userId",
+      "Name": "userId",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@assignmentId",
+      "Name": "assignmentId"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

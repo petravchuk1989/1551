@@ -1,0 +1,24 @@
+{
+  "ModelType": "Query",
+  "Code": "query1221",
+  "Name": "testingQueryVitalii",
+  "ConnectionCode": "new_test",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Sql": "select 1 as Id",
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id123",
+      "Position": 0,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    }
+  ]
+}

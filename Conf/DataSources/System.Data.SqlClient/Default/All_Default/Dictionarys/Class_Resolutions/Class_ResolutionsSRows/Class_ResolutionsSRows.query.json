@@ -1,0 +1,48 @@
+{
+  "ModelType": "Query",
+  "Code": "Class_ResolutionsSRows",
+  "Name": "Class_ResolutionsSRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false,
+      "SqlName": "cr.Id",
+      "FilterParameterCode": "@Id"
+    },
+    {
+      "Code": "name",
+      "Name": "Назва резолюції",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "cr.[name]",
+      "FilterParameterCode": "@name"
+    },
+    {
+      "Code": "assignment_class_name",
+      "Name": "Клас доручення",
+      "Position": 1,
+      "IsPrintable": false,
+      "SqlName": "ac.[name]",
+      "FilterParameterCode": "@assignment_class_name"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

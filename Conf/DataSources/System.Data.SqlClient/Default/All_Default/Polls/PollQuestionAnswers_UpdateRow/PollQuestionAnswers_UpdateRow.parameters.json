@@ -1,0 +1,11 @@
+[
+  {
+    "Code": "@json",
+    "Name": "json"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  } 
+]

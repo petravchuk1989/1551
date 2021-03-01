@@ -1,0 +1,37 @@
+[
+  {
+    "Code": "@user_edit_id",
+    "Name": "user_edit_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@poll_name",
+    "Name": "poll_name"
+  },
+  {
+    "Code": "@id",
+    "Name": "id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  },
+  {
+    "Code": "@start_date",
+    "Name": "start_date",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@is_active",
+    "Name": "is_active",
+    "ParameterType": "Boolean"
+  },
+  {
+    "Code": "@people_limit",
+    "Name": "people_limit",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@end_date",
+    "Name": "end_date",
+    "ParameterType": "DateTime"
+  }
+]

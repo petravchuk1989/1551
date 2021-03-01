@@ -1,0 +1,12 @@
+{
+  "Add": {
+    "InsertQueryCode": "Assignment_ClassesIRow"
+  },
+  "ModelType": "Section",
+  "Code": "Assignment_Classes",
+  "Name": "Класи доручень",
+  "FormCode": "Form_Assignment_Classes",
+  "SelectRowsQueryCode": "Assignment_ClassesSRows",
+  "SelectRowQueryCode": "Assignment_ClassesSRow",
+  "UpdateQueryCode": "Assignment_ClassesURow"
+}

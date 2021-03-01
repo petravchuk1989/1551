@@ -1,0 +1,6 @@
+{
+  "ModelType": "QueryGroup",
+  "Code": "moderator_statistics",
+  "Name": "ДБ Статистика модератора",
+  "ConnectionCode": "Default"
+}

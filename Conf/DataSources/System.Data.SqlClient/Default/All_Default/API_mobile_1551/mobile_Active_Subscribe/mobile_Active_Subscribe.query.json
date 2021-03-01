@@ -1,0 +1,196 @@
+{
+  "ModelType": "Query",
+  "Code": "mobile_Active_Subscribe",
+  "Name": "mobile_Active_Subscribe",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_id",
+      "Name": "assignment_id",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_registration_number",
+      "Name": "Номер доручення",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_registration_date",
+      "Name": "Дата та час реєстрації питання",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_full_name",
+      "Name": "ПІБ заявника",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_ApplicantAdress",
+      "Name": "Адреса заявника",
+      "Position": 5,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_object_name",
+      "Name": "Об'єкт питання",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_question_type_name",
+      "Name": "Тип питання",
+      "Position": 7,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_question_content",
+      "Name": "Зміст",
+      "Position": 8,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_state_name",
+      "Name": "Стан",
+      "Position": 9,
+      "IsPrintable": false
+    },
+    {
+      "Code": "assignment_result_name",
+      "Name": "Результат розгляду",
+      "Position": 10,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_id",
+      "Name": "event_id",
+      "Position": 11,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_number",
+      "Name": "Номер Заходу",
+      "Position": 12,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_class_name",
+      "Name": "Клас заходу",
+      "Position": 13,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_type_name",
+      "Name": "Тип заходу",
+      "Position": 14,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_object_name",
+      "Name": "Об'єкт",
+      "Position": 15,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_organization_name",
+      "Name": "Відповідальний",
+      "Position": 16,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_comment",
+      "Name": "Зміст",
+      "Position": 17,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_start_date",
+      "Name": "Дата початку",
+      "Position": 18,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_plan_end_date",
+      "Name": "Планова дата завершення",
+      "Position": 19,
+      "IsPrintable": false
+    },
+    {
+      "Code": "event_real_end_date",
+      "Name": "Фактична дата завершення",
+      "Position": 20,
+      "IsPrintable": false
+    },
+    {
+      "Code": "question_type_id",
+      "Name": "Ід типів питання",
+      "Position": 21,
+      "IsPrintable": false
+    },
+    {
+      "Code": "question_type_name",
+      "Name": "Назви типів питання",
+      "Position": 22,
+      "IsPrintable": false
+    },
+    {
+      "Code": "parent_question_type_id",
+      "Name": "Ід батьківського типу питання",
+      "Position": 23,
+      "IsPrintable": false
+    },
+    {
+      "Code": "parent_question_type_name",
+      "Name": "Назви батьківського типу питання",
+      "Position": 24,
+      "IsPrintable": false
+    },
+    {
+      "Code": "object_id",
+      "Name": "Ід об'єктів",
+      "Position": 25,
+      "IsPrintable": false
+    },
+    {
+      "Code": "object_name",
+      "Name": "Назви об'єктів",
+      "Position": 26,
+      "IsPrintable": false
+    },
+    {
+      "Code": "statecode",
+      "Name": "Назви статусів",
+      "Position": 27,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

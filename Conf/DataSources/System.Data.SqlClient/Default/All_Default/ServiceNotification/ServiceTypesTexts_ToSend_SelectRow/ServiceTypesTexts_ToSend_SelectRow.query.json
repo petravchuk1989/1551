@@ -1,0 +1,117 @@
+{
+  "ModelType": "Query",
+  "Code": "ServiceTypesTexts_ToSend_SelectRow",
+  "Name": "ServiceTypesTexts_ToSend_SelectRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 1,
+      "IsPrimaryKey": true,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "ServiceTypeId",
+      "Name": "Тип послуги",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "ServiceTypeName",
+      "Name": "Тип послуги",
+      "Position": 3,
+      "IsPrintable": false,
+      "ReferenceKeyCode": "ServiceTypeId"
+    },
+    {
+      "Code": "Action",
+      "Name": "Нотифікація",
+      "Position": 4,
+      "IsPrintable": false
+    },
+    {
+      "Code": "ActionName",
+      "Name": "Нотифікація",
+      "Position": 5,
+      "IsPrintable": false,
+      "ReferenceKeyCode": "Action"
+    },
+    {
+      "Code": "Title",
+      "Name": "Текст заголовку",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "UseClaimTypeTitle",
+      "Name": "UseClaimTypeTitle",
+      "Position": 7,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Description",
+      "Name": "Текст опису",
+      "Position": 8,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Description_without_Executor",
+      "Name": "Текст опису без виконавця",
+      "Position": 9,
+      "IsPrintable": false
+    },
+    {
+      "Code": "UseClaimTypeDescription",
+      "Name": "UseClaimTypeDescription",
+      "Position": 10,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Text",
+      "Name": "Текст тіла",
+      "Position": 11,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Text_without_Executor",
+      "Name": "Текст тіла без виконавця",
+      "Position": 12,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Text_without_PlanDate",
+      "Name": "Текст тіла без планової дати завершення",
+      "Position": 13,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Text_without_Executor_PlanDate",
+      "Name": "Текст тіла без виконавця та планової дати завершення",
+      "Position": 14,
+      "IsPrintable": false
+    },
+    {
+      "Code": "UseClaimTypeText",
+      "Name": "UseClaimTypeText",
+      "Position": 15,
+      "IsPrintable": false
+    },
+    {
+      "Code": "IsActive",
+      "Name": "Активне",
+      "Position": 16,
+      "IsPrintable": false
+    }    
+  ],
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+    "ModelType": "Query",
+    "Code": "ak_Rating_Department",
+    "Name": "ak_Rating_Department",
+    "ConnectionCode": "CRM_1551_Rating_Department",
+    "IsUsedForRightsFilter": false,
+    "Columns": [
+        {
+          "Code": "Id",
+          "Name": "Id",
+          "Position": 1
+        },
+        {
+          "Code": "Organization_name",
+          "Name": "Organization_name",
+          "Position": 2
+        },
+        {
+          "Code": "ReestrZKMM",
+          "Name": "ReestrZKMM",
+          "Position": 3
+        },
+        {
+          "Code": "ReestrZKPM",
+          "Name": "ReestrZKPM",
+          "Position": 4
+        },
+        {
+          "Code": "ReestrZNZ",
+          "Name": "ReestrZNZ",
+          "Position": 5
+        },
+        {
+          "Code": "ReestrZNVR",
+          "Name": "ReestrZNVR",
+          "Position": 6
+        },
+        {
+          "Code": "ReestrZVV",
+          "Name": "ReestrZVV",
+          "Position": 7
+        },
+        {
+          "Code": "ReestrZVNV",
+          "Name": "ReestrZVNV",
+          "Position": 8
+        },
+        {
+          "Code": "ReestrZVP",
+          "Name": "ReestrZVP",
+          "Position": 9
+        },
+        {
+          "Code": "Vids_vz",
+          "Name": "Vids_vz",
+          "Position": 10
+        }
+      ],
+    "Parameters": [
+      {
+        "Code": "@Date",
+        "Name": "Date",
+        "ParameterType": "DateTime"
+      }
+    ]
+  }

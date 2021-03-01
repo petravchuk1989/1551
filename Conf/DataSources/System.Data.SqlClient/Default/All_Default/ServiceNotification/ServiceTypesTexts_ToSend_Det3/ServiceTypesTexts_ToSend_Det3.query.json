@@ -1,0 +1,89 @@
+{
+  "ModelType": "Query",
+  "Code": "ServiceTypesTexts_ToSend_Det3",
+  "Name": "ServiceTypesTexts_ToSend_Det3",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 1,
+      "IsPrimaryKey": true,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "ClaimTypeName",
+      "Name": "Тип заявки",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "t2.[Name]",
+      "FilterParameterCode": "@ClaimTypeName"
+    },
+    {
+      "Code": "Text",
+      "Name": "Текст тіла",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "t1.[Text]",
+      "FilterParameterCode": "@Text"
+    },
+    {
+      "Code": "Text_without_Executor",
+      "Name": "Текст тіла без виконавця",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "t1.[Text_without_Executor]",
+      "FilterParameterCode": "@Text_without_Executor"
+    },
+    {
+      "Code": "Text_without_PlanDate",
+      "Name": "Текст тіла без планової дати завершення",
+      "Position": 5,
+      "IsPrintable": false,
+      "SqlName": "t1.[Text_without_PlanDate]",
+      "FilterParameterCode": "@Text_without_PlanDate"
+    },
+    {
+      "Code": "Text_without_Executor_PlanDate",
+      "Name": "Текст тіла без виконавця та планової дати завершення",
+      "Position": 6,
+      "IsPrintable": false,
+      "SqlName": "t1.[Text_without_Executor_PlanDate]",
+      "FilterParameterCode": "@Text_without_Executor_PlanDate"
+    },
+    {
+      "Code": "IsActive",
+      "Name": "Активне",
+      "Position": 7,
+      "IsPrintable": false,
+      "SqlName": "t1.[IsActive]",
+      "FilterParameterCode": "@IsActive"
+    }    
+  ],
+  "Parameters": [
+    {
+      "Code": "@ServiceTypeId",
+      "Name": "ServiceTypeId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@ActionId",
+      "Name": "ActionId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "ModelType": "Query",
+  "Code": "Polls_SelectRows",
+  "Name": "Polls_SelectRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "poll_name",
+      "Name": "poll_name",
+      "Position": 0,
+      "IsPrintable": false,
+      "SqlName": "[poll_name]",
+      "FilterParameterCode": "@poll_name"
+    },
+    {
+
+      "Code": "idIcon",
+      "Name": "idIcon",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Polls_Id",
+      "Name": "Polls_Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "is_active",
+      "Name": "is_active",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "start_date",
+      "Name": "start_date",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "[start_date]",
+      "FilterParameterCode": "@start_date"
+    },
+    {
+      "Code": "end_date",
+      "Name": "end_date",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "[end_date]",
+      "FilterParameterCode": "@end_date"
+    },
+    {
+      "Code": "name",
+      "Name": "name",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "[PollDirection].[name]",
+      "FilterParameterCode": "@name"
+    },
+    {
+      "Code": "PollDirId",
+      "Name": "PollDirId",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "[PollDirection].id",
+      "FilterParameterCode": "@PollDirId"
+    },
+    {
+      "Code": "col_Applicants",
+      "Name": "col_Applicants",
+      "Position": 5,
+      "IsPrintable": false
+    },
+    {
+      "Code": "col_IsPollsApplicants",
+      "Name": "col_IsPollsApplicants",
+      "Position": 6,
+      "IsPrintable": false
+    },
+    {
+      "Code": "col_IsNotApplicants",
+      "Name": "col_IsNotApplicants",
+      "Position": 7,
+      "IsPrintable": false
+    },
+    {
+      "Code": "people_limit",
+      "Name": "people_limit",
+      "Position": 8,
+      "IsPrintable": false
+    },
+    {
+      "Code": "poll_directions",
+      "Name": "poll_directions",
+      "Position": 9,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@DateEnd",
+      "Name": "DateEnd",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@DateStart",
+      "Name": "DateStart",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@is_active",
+      "Name": "is_active",
+      "ParameterType": "Integer"
+    }
+  ]
+}

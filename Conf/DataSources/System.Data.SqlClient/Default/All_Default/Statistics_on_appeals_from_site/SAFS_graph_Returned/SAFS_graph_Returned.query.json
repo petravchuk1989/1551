@@ -1,0 +1,52 @@
+{
+  "ModelType": "Query",
+  "Code": "SAFS_graph_Returned",
+  "Name": "Повернуто заявникові",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "date",
+      "Name": "date",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "indicator_value",
+      "Name": "indicator_value",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "name",
+      "Name": "name",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "IsSendError_value",
+      "Name": "IsSendError_value",
+      "Position": 4,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@date_to",
+      "Name": "date_to",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@date_from",
+      "Name": "date_from",
+      "ParameterType": "DateTime"
+    }
+  ]
+}

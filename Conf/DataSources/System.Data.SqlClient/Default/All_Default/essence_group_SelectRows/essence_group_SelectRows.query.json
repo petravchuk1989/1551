@@ -1,0 +1,7 @@
+{
+  "ModelType": "Query",
+  "Code": "essence_group_SelectRows",
+  "Name": "essence_group_SelectRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false
+}

@@ -1,0 +1,48 @@
+{
+  "ModelType": "Query",
+  "Code": "report_informationSRow",
+  "Name": "report_informationSRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "reportcode",
+      "Name": "reportcode",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "diagramcode",
+      "Name": "diagramcode",
+      "Position": 2,
+      "IsPrintable": false
+    },
+    {
+      "Code": "content",
+      "Name": "content",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "valuecode",
+      "Name": "valuecode",
+      "Position": 4,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    }
+  ]
+}

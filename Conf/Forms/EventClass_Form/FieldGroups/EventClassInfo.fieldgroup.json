@@ -1,0 +1,44 @@
+{
+  "Code": "EventClassInfo",
+  "Name": "Класи заходів",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "name",
+      "Name": "Назва",
+      "FieldType": "text",
+      "IsRequired": true,
+      "Position": 1,
+      "Width": "33%"
+    },
+    {
+      "Code": "eventClassTypeId",
+      "Name": "Тип заходу",
+      "FieldType": "select",
+      "Position": 2,
+      "Width": "33%",
+      "QueryCode": "SelectEventClassType",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "eventClassType",
+      "QueryParameters": []
+    },
+    {
+      "Code": "execution_term",
+      "Name": "Термін виконання",
+      "FieldType": "number",
+      "Position": 3,
+      "Width": "33%"
+    },
+    {
+      "Code": "assignment_class_id",
+      "Name": "Клас доручення",
+      "FieldType": "select",
+      "Position": 4,
+      "Width": "100%",
+      "QueryCode": "list_Assignment_Classes",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "Name",
+      "QueryParameters": []
+    }
+  ]
+}

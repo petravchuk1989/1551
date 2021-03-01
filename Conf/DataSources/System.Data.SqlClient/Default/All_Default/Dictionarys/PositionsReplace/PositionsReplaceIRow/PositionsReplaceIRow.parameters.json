@@ -1,0 +1,27 @@
+[
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@replace_position_id",
+    "Name": "replace_position_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@date_to",
+    "Name": "date_to",
+    "ParameterType": "DateTime"
+  },
+  {
+    "Code": "@position_id",
+    "Name": "position_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@date_from",
+    "Name": "date_from",
+    "ParameterType": "DateTime"
+  }
+]

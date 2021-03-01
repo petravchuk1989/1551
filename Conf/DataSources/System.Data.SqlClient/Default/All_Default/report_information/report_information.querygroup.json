@@ -1,0 +1,6 @@
+{
+  "ModelType": "QueryGroup",
+  "Code": "report_information",
+  "Name": "Інформація по звіту",
+  "ConnectionCode": "Default"
+}

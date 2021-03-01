@@ -1,0 +1,46 @@
+{
+  "ModelType": "Query",
+  "Code": "mobile_SelectFileBinary",
+  "Name": "mobile_SelectFileBinary",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "name",
+      "Name": "name",
+      "Position": 1,
+      "IsPrintable": false,
+      "isFileName": true
+    },
+    {
+      "Code": "File",
+      "Name": "File",
+      "Position": 2,
+      "IsPrintable": false,
+      "isFileContent": true
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@table",
+      "Name": "table"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

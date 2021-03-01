@@ -1,0 +1,9 @@
+{
+    "ModelType": "Query",
+    "Code": "ys_sankeyChartDevExtreme",
+    "Name": "ys_sankeyChartDevExtreme",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "IsAnonymousAccess": true,
+    "Parameters": []
+}

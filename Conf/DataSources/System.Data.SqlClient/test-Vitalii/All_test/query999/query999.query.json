@@ -1,0 +1,45 @@
+{
+  "ModelType": "Query",
+  "Code": "query999",
+  "Name": "Тестовый запрос",
+  "ConnectionCode": "test-Vitalii",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Sql": "select * from (select 1 as [Id], N'test1' as [Name] UNION ALL select 2 as [Id], N'test2' as [Name]) as t1 where #filter_columns# #sort_columns# offset @pageOffsetRows rows fetch next @pageLimitRows rows only ",
+  "Columns": [
+    
+    {
+      "Code": "Id",
+      "Name": "Идентифкатор",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "Name",
+      "Name": "Назва",
+      "Position": 0,
+      "IsPrintable": false,
+      "SqlName": "t1.[Name]",
+      "FilterParameterCode": "@Name"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@user_id",
+      "Name": "user_id123",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}

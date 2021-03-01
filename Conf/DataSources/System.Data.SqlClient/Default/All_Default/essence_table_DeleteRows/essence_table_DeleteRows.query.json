@@ -1,0 +1,7 @@
+{
+  "ModelType": "Query",
+  "Code": "essence_table_DeleteRows",
+  "Name": "essence_table_DeleteRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false
+}

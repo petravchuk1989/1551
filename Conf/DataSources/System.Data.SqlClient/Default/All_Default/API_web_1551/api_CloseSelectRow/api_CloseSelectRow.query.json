@@ -1,0 +1,31 @@
+{
+  "ModelType": "Query",
+  "Code": "api_CloseSelectRow",
+  "Name": "api_CloseSelectRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    },
+    {
+      "Code": "@ApplicantFromSiteId",
+      "Name": "ApplicantFromSiteId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@ApplicantFromSitePhone",
+      "Name": "ApplicantFromSitePhone",
+      "ParameterType": "text"
+    }
+  ]
+}

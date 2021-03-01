@@ -1,0 +1,14 @@
+{
+  "ModelType": "Query",
+  "Code": "h_JA_MainTable",
+  "Name": "h_JA_MainTable",
+  "ConnectionCode": "CRM_KHARKIV1551_Analytics",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@phone_nunber",
+      "Name": "phone_nunber"
+    }
+  ]
+}

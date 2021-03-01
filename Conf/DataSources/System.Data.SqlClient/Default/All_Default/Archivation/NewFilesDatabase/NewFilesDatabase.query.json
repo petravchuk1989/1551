@@ -1,0 +1,22 @@
+{
+    "ModelType": "Query",
+    "Code": "NewFilesDatabase",
+    "Name": "NewFilesDatabase",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Parameters": [
+        {
+            "Code": "@Disk",
+            "Name": "Disk",
+            "ParameterType": "text"
+        }
+    ],
+    "Columns": [
+        {
+            "Code": "result",
+            "Name": "result",
+            "Position": 1,
+            "IsPrintable": false
+        }
+    ]
+}

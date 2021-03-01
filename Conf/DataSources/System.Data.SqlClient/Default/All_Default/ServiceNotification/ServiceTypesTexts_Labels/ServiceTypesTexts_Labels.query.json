@@ -1,0 +1,16 @@
+{
+  "ModelType": "Query",
+  "Code": "ServiceTypesTexts_Labels",
+  "Name": "ServiceTypesTexts_Labels",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Result",
+      "Name": "Result",
+      "Position": 1,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": []
+}

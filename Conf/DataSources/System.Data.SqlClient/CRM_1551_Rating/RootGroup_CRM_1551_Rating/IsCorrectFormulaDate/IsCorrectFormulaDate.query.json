@@ -1,0 +1,19 @@
+{
+  "ModelType": "Query",
+  "Code": "IsCorrectFormulaDate",
+  "Name": "IsCorrectFormulaDate",
+  "ConnectionCode": "CRM_1551_Rating",
+  "IsUsedForRightsFilter": false,
+  "Parameters": [
+    {
+      "Code": "@Date",
+      "Name": "Date",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@RatingId",
+      "Name": "RatingId",
+      "ParameterType": "Integer"
+    }
+  ]
+}

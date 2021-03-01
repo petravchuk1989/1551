@@ -1,0 +1,31 @@
+{
+  "ModelType": "Query",
+  "Code": "det_PersonExecutorChooseDistrictsURow",
+  "Name": "det_PersonExecutorChooseDistrictsURow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@person_executor_choose_id",
+      "Name": "person_executor_choose_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@district_id",
+      "Name": "district_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    },
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    }
+  ]
+}

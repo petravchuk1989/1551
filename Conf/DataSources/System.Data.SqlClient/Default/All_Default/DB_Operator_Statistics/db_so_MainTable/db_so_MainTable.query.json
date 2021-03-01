@@ -1,0 +1,24 @@
+{
+  "ModelType": "Query",
+  "Code": "db_so_MainTable",
+  "Name": "db_so_MainTable",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@date_to",
+      "Name": "date_to",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@date_from",
+      "Name": "date_from",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@organizations_Id",
+      "Name": "organizations_Id"
+    }
+  ]
+}

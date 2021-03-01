@@ -1,0 +1,12 @@
+{
+  "Add": {
+    "InsertQueryCode": "ServiceTypesTexts_ToSend_InsertRow"
+  },
+  "ModelType": "Section",
+  "Code": "ServiceNotification_ServiceTypesTexts_ToSend",
+  "Name": "Шаблони повідомлень по типам послуг",
+  "FormCode": "SN_ServiceTypesTexts_ToSend",
+  "SelectRowsQueryCode": "ServiceTypesTexts_ToSend_SelectRows",
+  "SelectRowQueryCode": "ServiceTypesTexts_ToSend_SelectRow",
+  "UpdateQueryCode": "ServiceTypesTexts_ToSend_UpdateRow"
+}

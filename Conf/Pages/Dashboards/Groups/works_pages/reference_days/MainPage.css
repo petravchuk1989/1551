@@ -1,0 +1,141 @@
+.dx-datagrid-group-opened{
+    margin: 10px;
+    font: 18px/18px DXIcons;
+    height: 18px;
+    background-position: 0 0;
+    background-size: 10px 8px;
+    padding: 0;
+    text-align: center;
+    color: #959595;
+    background-image: url('assets/img/1551/crm1551_arrow_open.png');
+    background-repeat: no-repeat;
+}
+.dx-datagrid-group-opened::before{
+    display:none;
+}
+.dx-datagrid-group-closed::before{
+    display:none;
+}
+.dx-datagrid-group-closed{
+    margin: 10px;
+    font: 18px/18px DXIcons;
+    height: 18px;
+    background-position: 0 0;
+    background-size: 10px 10px;
+    padding: 0;
+    text-align: center;
+    color: #959595;
+    background-image: url('assets/img/1551/crm1551_arrow_close.png');
+    background-repeat: no-repeat;
+}
+.dx-datagrid-text-content{
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #999999;
+    text-align: left;
+}
+.dx-data-row{
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    font-size: 14px;
+    color: #000000;
+}
+.dx-master-detail-cell{
+    background-color: rgba(239, 247, 249, 1)!important;
+}
+.dx-button-default{
+    background-color: rgba(21, 189, 244, 1)!important;
+}
+.dx-datagrid-export-button{
+    background-color: rgba(21, 189, 244, 1)!important;
+    color: #fff!important;
+    padding: 0 8px!important;
+}
+.dx-icon-export-excel-button{
+    color: #fff!important;
+    margin-right: 9px!important;
+}
+.dx-header-row>td>.dx-datagrid-text-content {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+.lookup-con{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    padding: 20px;
+    border-radius: 10px;
+    transform: translate(-50%,-50%);
+    background: rgba(255, 255, 255, 0.897);
+    width: 30%;
+    border:1px solid grey;
+    text-align: center;
+    z-index: 11;
+    height: 300px;
+    }
+    
+    .blocker {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.404);
+        z-index: 10;
+    }
+    
+    .btn-primary{
+        font-size: 20px;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        outline: none;
+        border: none;
+    }
+    
+    .styled-btn:nth-last-child(1){
+        background-color: rgba(16, 168, 11, 0.904);
+    }
+
+    .lookup-buttons-con{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 40px;
+    }
+    
+    .btn{
+        padding: 10px 0;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        width: 150px;
+    }
+    
+    .add-btn{
+        background-color: rgb(54, 163, 78);
+        color: #fff;
+    }
+    
+    .exit-btn{
+        background-color: rgb(204, 41, 41);
+        color: #fff;
+    }
+    
+    .date-input{
+        padding: 10px;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 18px;
+        border-radius: 10px;
+        margin-top: 50px;
+    }
+
+    .material-icons.create.fix-row {
+        cursor: pointer;
+    }

@@ -1,0 +1,24 @@
+{
+  "ModelType": "Query",
+  "Code": "db_ModStat_registration_graph1",
+  "Name": "db_ModStat_registration_graph1",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Parameters": [
+    {
+      "Code": "@user_Ids",
+      "Name": "user_Ids"
+    },
+    {
+      "Code": "@date_from",
+      "Name": "date_from",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@date_to",
+      "Name": "date_to",
+      "ParameterType": "DateTime"
+    }
+  ]
+}

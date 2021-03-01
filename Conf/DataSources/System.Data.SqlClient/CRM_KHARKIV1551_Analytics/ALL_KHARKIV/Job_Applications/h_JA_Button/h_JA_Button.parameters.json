@@ -1,0 +1,25 @@
+[
+  {
+    "Code": "@Ids",
+    "Name": "Ids"
+  },
+  {
+    "Code": "@comment",
+    "Name": "comment"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@result_Id",
+    "Name": "result_Id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@resolution_Id",
+    "Name": "resolution_Id",
+    "ParameterType": "Integer"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "ModelType": "Form",
+  "Code": "Archivation_Form",
+  "Name": "Картка даних по архівації",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\Disk.fieldgroup.json",
+      "string:FieldGroups\\Information.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:Archivation.form.js"
+  }
+}

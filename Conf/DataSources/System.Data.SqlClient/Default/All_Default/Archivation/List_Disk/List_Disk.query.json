@@ -1,0 +1,22 @@
+{
+    "ModelType": "Query",
+    "Code": "List_Disk",
+    "Name": "List_Disk",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Parameters": [],
+    "Columns": [
+        {
+            "Code": "Name",
+            "Name": "Name",
+            "Position": 1,
+            "IsPrintable": true
+        },
+        {
+            "Code": "Space",
+            "Name": "Space",
+            "Position": 2,
+            "IsPrintable": true
+        }
+    ]
+}

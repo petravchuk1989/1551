@@ -1,0 +1,218 @@
+{
+  "Code": "MainGroup",
+  "Name": "Основна інформація",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "Date_Start",
+      "Name": "Дата",
+      "FieldType": "date",
+      "IsRequired": true,
+      "Position": 1
+    },
+    {
+      "Code": "RatingId",
+      "Name": "Рейтинг",
+      "FieldType": "select",
+      "IsRequired": true,
+      "Position": 2,
+      "QueryCode": "ListRating",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "Name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "k1_name",
+      "Name": "Показник 1",
+      "FieldType": "text",
+      "Position": 3,      
+      "Width": "40%"
+    },
+    {
+      "PatternType": "NumbersWithPoint",
+      "Pattern": "^([,.\\d]+)([.]\\d{2})$",
+      "Code": "k1_value",
+      "Name": "Значення",
+      "FieldType": "text",
+      "IsRequired": true,
+      "Position": 3,
+      "Width": "30%"
+    },
+    {
+      "Code": "k1_isUse",
+      "Name": "Використовувати?",
+      "FieldType": "checkbox",
+      "Position": 3,      
+      "Width": "30%"
+    },
+    {
+      "Code": "k2_name",
+      "Name": "Показник 2",
+      "FieldType": "text",
+      "Position": 3,      
+      "Width": "40%"
+    },
+    {
+      "PatternType": "NumbersWithPoint",
+      "Pattern": "^([,.\\d]+)([.]\\d{2})$",
+      "Code": "k2_value",
+      "Name": "Значення",
+      "FieldType": "text",
+      "IsRequired": true,
+      "Position": 3,
+      "Width": "30%"
+    },
+    {
+      "Code": "k2_isUse",
+      "Name": "Використовувати?",
+      "FieldType": "checkbox",
+      "Position": 3,      
+      "Width": "30%"
+    },
+    {
+      "Code": "k3_name",
+      "Name": "Показник 3",
+      "FieldType": "text",
+      "Position": 3,      
+      "Width": "40%"
+    },
+    {
+      "PatternType": "NumbersWithPoint",
+      "Pattern": "^([,.\\d]+)([.]\\d{2})$",
+      "Code": "k3_value",
+      "Name": "Значення",
+      "FieldType": "text",
+      "IsRequired": true,
+      "Position": 3,
+      "Width": "30%"
+    },
+    {
+      "Code": "k3_isUse",
+      "Name": "Використовувати?",
+      "FieldType": "checkbox",
+      "Position": 3,      
+      "Width": "30%"
+    },
+    {
+      "Code": "k4_name",
+      "Name": "Показник 4",
+      "FieldType": "text",
+      "Position": 3,      
+      "Width": "40%"
+    },
+    {
+      "PatternType": "NumbersWithPoint",
+      "Pattern": "^([,.\\d]+)([.]\\d{2})$",
+      "Code": "k4_value",
+      "Name": "Значення",
+      "FieldType": "text",
+      "IsRequired": true,
+      "Position": 3,
+      "Width": "30%"
+    },
+    {
+      "Code": "k4_isUse",
+      "Name": "Використовувати?",
+      "FieldType": "checkbox",
+      "Position": 3,      
+      "Width": "30%"
+    },
+    {
+      "Code": "k5_name",
+      "Name": "Показник 5",
+      "FieldType": "text",
+      "Position": 3,      
+      "Width": "40%"
+    },
+    {
+      "PatternType": "NumbersWithPoint",
+      "Pattern": "^([,.\\d]+)([.]\\d{2})$",
+      "Code": "k5_value",
+      "Name": "Значення",
+      "FieldType": "text",
+      "IsRequired": true,
+      "Position": 3,
+      "Width": "30%"
+    },
+    {
+      "Code": "k5_isUse",
+      "Name": "Використовувати?",
+      "FieldType": "checkbox",
+      "Position": 3,      
+      "Width": "30%"
+    },
+    {
+      "Code": "k6_name",
+      "Name": "Показник 6",
+      "FieldType": "text",
+      "Position": 3,      
+      "Width": "40%"
+    },
+    {
+      "PatternType": "NumbersWithPoint",
+      "Pattern": "^([,.\\d]+)([.]\\d{2})$",
+      "Code": "k6_value",
+      "Name": "Значення",
+      "FieldType": "text",
+      "IsRequired": true,
+      "Position": 3,
+      "Width": "30%"
+    },
+    {
+      "Code": "k6_isUse",
+      "Name": "Використовувати?",
+      "FieldType": "checkbox",
+      "Position": 3,      
+      "Width": "30%"
+    },
+    {
+      "Code": "k7_name",
+      "Name": "Показник 7",
+      "FieldType": "text",
+      "Position": 3,      
+      "Width": "40%"
+    },
+    {
+      "PatternType": "NumbersWithPoint",
+      "Pattern": "^([,.\\d]+)([.]\\d{2})$",
+      "Code": "k7_value",
+      "Name": "Значення",
+      "FieldType": "text",
+      "IsRequired": true,
+      "Position": 3,
+      "Width": "30%"
+    },
+    {
+      "Code": "k7_isUse",
+      "Name": "Використовувати?",
+      "FieldType": "checkbox",
+      "Position": 3,      
+      "Width": "30%"
+    },
+    {
+      "Code": "formula_id",
+      "Name": "Тип формули",
+      "FieldType": "select",
+      "IsRequired": true,
+      "Position": 6,
+      "QueryCode": "ListFormulas",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "Name",
+      "QueryParameters": []
+    },
+    {
+      "Code": "RatingFormulaContent",
+      "Name": "Опис формули",
+      "FieldType": "textarea",
+      "Position": 7,      
+      "Width": "100%"
+    },
+    {
+      "Code": "comment",
+      "Name": "Коментар",
+      "FieldType": "textarea",
+      "Position": 8,      
+      "Width": "100%"
+    }
+  ]
+}

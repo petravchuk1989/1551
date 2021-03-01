@@ -1,0 +1,193 @@
+{
+  "ModelType": "Query",
+  "Code": "RatingFormulas_SelectRow",
+  "Name": "RatingFormulas_SelectRow",
+  "ConnectionCode": "CRM_1551_Rating",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "Date_Start",
+      "Name": "Date_Start",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "RatingId",
+      "Name": "RatingId",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "RatingName",
+      "Name": "RatingName",
+      "Position": 3,
+      "IsPrintable": false,
+      "ReferenceKeyCode": "RatingId"
+    },
+    {
+      "Code": "k1_name",
+      "Name": "k1_name",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k1_value",
+      "Name": "k1_value",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k1_isUse",
+      "Name": "k1_isUse",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k2_name",
+      "Name": "k2_name",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k2_value",
+      "Name": "k2_value",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k2_isUse",
+      "Name": "k2_isUse",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k3_name",
+      "Name": "k3_name",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k3_value",
+      "Name": "k3_value",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k3_isUse",
+      "Name": "k3_isUse",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k4_name",
+      "Name": "k4_name",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k4_value",
+      "Name": "k4_value",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k4_isUse",
+      "Name": "k4_isUse",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k5_name",
+      "Name": "k5_name",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k5_value",
+      "Name": "k5_value",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k5_isUse",
+      "Name": "k5_isUse",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k6_name",
+      "Name": "k6_name",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k6_value",
+      "Name": "k6_value",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k6_isUse",
+      "Name": "k6_isUse",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k7_name",
+      "Name": "k7_name",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k7_value",
+      "Name": "k7_value",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "k7_isUse",
+      "Name": "k7_isUse",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "formula_id",
+      "Name": "formula_id",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "formula_name",
+      "Name": "formula_name",
+      "Position": 3,
+      "IsPrintable": false,
+      "ReferenceKeyCode": "formula_id"
+    },
+    {
+      "Code": "RatingFormulaContent",
+      "Name": "RatingFormulaContent",
+      "Position": 3,
+      "IsPrintable": false
+    },
+    {
+      "Code": "comment",
+      "Name": "comment",
+      "Position": 3,
+      "IsPrintable": false
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer"
+    }
+  ]
+}

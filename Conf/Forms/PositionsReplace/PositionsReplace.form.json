@@ -1,0 +1,18 @@
+{
+  "ModelType": "Form",
+  "Code": "PositionsReplace",
+  "Name": "Підмінні посади",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\info.fieldgroup.json"
+    ],
+    "DefaultFields": [
+      {
+        "Code": "position_id",
+        "ParentFormFieldCodeForKeyValue": "Id",
+        "ParentFormFieldCodeForDisplayValue": "Id"
+      }
+    ]
+  }
+}

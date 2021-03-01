@@ -1,0 +1,47 @@
+{
+    "ModelType": "Query",
+    "Code": "Class_Resolutions_Result",
+    "Name": "Class_Resolutions_Result",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "IsAnonymousAccess": false,
+    "Columns": [
+        {
+            "Code": "assignment_result_id",
+            "Name": "assignment_result_id",
+            "Position": 1
+        },
+        {
+            "Code": "assignment_result_name",
+            "Name": "assignment_result_name",
+            "Position": 2
+        },
+        {
+            "Code": "assignment_resolution_id",
+            "Name": "assignment_resolution_id",
+            "Position": 3
+        },
+        {
+            "Code": "assignment_resolution_name",
+            "Name": "assignment_resolution_name",
+            "Position": 4
+        },
+        {
+            "Code": "assignment_state_id",
+            "Name": "assignment_state_id",
+            "Position": 5
+        },
+        {
+            "Code": "assignment_state_name",
+            "Name": "assignment_state_name",
+            "Position": 6
+        }
+    ],
+    "Parameters": [
+        {
+            "Code": "@class_resolution_id",
+            "Name": "class_resolution_id",
+            "ParameterType": "Integer"
+        }
+    ]
+}

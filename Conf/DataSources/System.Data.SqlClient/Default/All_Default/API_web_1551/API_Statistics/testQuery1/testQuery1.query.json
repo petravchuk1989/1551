@@ -1,0 +1,373 @@
+{
+  "ModelType": "Query",
+  "Code": "testQuery1",
+  "Name": "testQuery1",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Sql": "
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10 
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10
+  UNION ALL
+  select rand() as Col1, rand() as Col2, rand() as Col3, rand() as Col4, rand() as Col5, rand() as Col6, rand() as Col7, rand() as Col8, rand() as Col9, rand() as Col10",
+  "Columns": [],
+  "Parameters": []
+}

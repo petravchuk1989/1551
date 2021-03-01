@@ -1,0 +1,29 @@
+{
+    "ModelType": "Query",
+    "Code": "UpdateEventClass",
+    "Name": "UpdateEventClass",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Columns": [],
+    "Parameters": [{
+            "Code": "@name",
+            "Name": "name"
+        },
+        {
+            "Code": "@Id",
+            "Name": "Id",
+            "ParameterType": "Integer",
+            "isPrimaryKey": true
+        },
+        {
+            "Code": "@execution_term",
+            "Name": "execution_term",
+            "ParameterType": "Integer"
+        },
+        {
+            "Code": "@assignment_class_id",
+            "Name": "assignment_class_id",
+            "ParameterType": "Integer"
+        }
+    ]
+}

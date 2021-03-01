@@ -1,0 +1,42 @@
+[
+  {
+    "Code": "@create_assignment_class_id",
+    "Name": "create_assignment_class_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@assignment_result_id",
+    "Name": "assignment_result_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@assignment_class_id",
+    "Name": "assignment_class_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@assignment_resolution_id",
+    "Name": "assignment_resolution_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@event_class_id",
+    "Name": "event_class_id",
+    "ParameterType": "Integer"
+  },
+  {
+    "Code": "@name",
+    "Name": "name"
+  },
+  {
+    "Code": "@user_id",
+    "Name": "user_id",
+    "ParameterType": "CurrentUserId"
+  },
+  {
+    "Code": "@Id",
+    "Name": "Id",
+    "ParameterType": "Integer",
+    "IsPrimaryKey": true
+  }
+]

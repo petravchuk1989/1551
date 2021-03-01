@@ -1,0 +1,39 @@
+{
+  "Code": "Information",
+  "Name": "Інформація",
+  "Position": 2,
+  "Fields": [
+    {
+      "Code": "current_db",
+      "Name": "Використовується БД: ",
+      "FieldType": "text",
+      "Position": 1,
+      "IsHidden": false,
+      "Width": "50%"
+    },
+    {
+      "Code": "last_loadDate",
+      "Name": "Дата останньої операції: ",
+      "FieldType": "text",
+      "Position": 2,
+      "IsHidden": false,
+      "Width": "30%"
+    },
+    {
+      "Code": "last_loadResult",
+      "Name": "Результат останньої операції: ",
+      "FieldType": "text",
+      "Position": 3,
+      "IsHidden": false,
+      "Width": "50%"
+    },
+    {
+      "Code": "new_filesDatabase",
+      "Name": "Створити нову БД файлів",
+      "FieldType": "button",
+      "Position": 3,
+      "IsHidden": false,
+      "Width": "30%"
+    }
+  ]
+}

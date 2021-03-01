@@ -1,0 +1,7 @@
+{
+  "ModelType": "Query",
+  "Code": "ClaimTypesTexts_ToSend_InsertRow",
+  "Name": "ClaimTypesTexts_ToSend_InsertRow",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false
+}

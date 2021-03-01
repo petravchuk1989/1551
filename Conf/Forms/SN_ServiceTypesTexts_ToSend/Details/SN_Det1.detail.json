@@ -1,0 +1,26 @@
+{
+    "ModelType": "Detail",
+    "Code": "SN_Det1",
+    "Name": "Шаблони повідомлень по типам заявок - Заголовок",
+    "FormCode": "SN_ClaimTypesTexts_ToSend",
+    "SelectRowsQueryCode": "ServiceTypesTexts_ToSend_Det1",
+    "SelectRowQueryCode": "ClaimTypesTexts_ToSend_SelectRow",
+    "UpdateQueryCode": "ClaimTypesTexts_ToSend_UpdateRow",
+    "SectionCode": "",
+  //  "DeleteQueryCode": "ak_Ruses_RulesForExecutorRoleDelete",
+    "Position": 1,
+    "IsExpand": true,
+    "Add": {
+     "InsertQueryCode": "ClaimTypesTexts_ToSend_InsertRow"
+    },
+    "QueryParameters": [
+      {
+        "FormFieldName": "ServiceTypeId",
+        "ParameterCode": "@ServiceTypeId"
+      },
+      {
+        "FormFieldName": "Action",
+        "ParameterCode": "@ActionId"
+      }
+    ]
+  }

@@ -1,0 +1,13 @@
+{
+  "ModelType": "Form",
+  "Code": "Form_Assignment_Classes",
+  "Name": "Класи доручень",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\info.fieldgroup.json"
+    ],
+    "DefaultFields": [],
+    "Script": "string:Form_Assignment_Classes.form.js"
+  }
+}

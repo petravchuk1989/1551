@@ -1,0 +1,58 @@
+{
+  "Code": "Group_Assigments_Event",
+  "Name": "Інформація по проблемі",
+  "Position": 3,
+  "IsExpanded": false,
+  "Fields": [
+    {
+      "Code": "event_number",
+      "Name": "Номер",
+      "FieldType": "text",
+      "Position": 1,
+      "Width": "10%"
+    },
+    {
+      "Code": "event_class",
+      "Name": "Клас Заходу",
+      "FieldType": "text",
+      "Position": 2,
+      "Width": "90%"
+    },
+    {
+      "Code": "event_object",
+      "Name": "Об'єкт",
+      "FieldType": "text",
+      "Position": 3,
+      "Width": "100%"
+    },
+    {
+      "Code": "event_comment",
+      "Name": "Зміст",
+      "FieldType": "textarea",
+      "Position": 4,
+      "Width": "100%",
+      "Rows": 1
+    },
+    {
+      "Code": "event_start_date",
+      "Name": "Дата початку",
+      "FieldType": "datetime",
+      "Position": 5,
+      "Width": "33.3%"
+    },
+    {
+      "Code": "event_plan_end",
+      "Name": "Планова дата завершення",
+      "FieldType": "datetime",
+      "Position": 5,
+      "Width": "33.3%"
+    },
+    {
+      "Code": "event_real_end",
+      "Name": "Фактична дата завершення",
+      "FieldType": "datetime",
+      "Position": 6,
+      "Width": "33.3%"
+    }
+  ]
+}

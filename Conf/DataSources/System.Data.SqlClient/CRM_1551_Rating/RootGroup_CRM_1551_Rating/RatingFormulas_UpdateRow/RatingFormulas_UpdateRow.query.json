@@ -1,0 +1,138 @@
+{
+  "ModelType": "Query",
+  "Code": "RatingFormulas_UpdateRow",
+  "Name": "RatingFormulas_UpdateRow",
+  "ConnectionCode": "CRM_1551_Rating",
+  "IsUsedForRightsFilter": false,
+  "Columns": [],
+  "Parameters": [
+    {
+      "Code": "@Id",
+      "Name": "Id",
+      "ParameterType": "Integer",
+      "IsPrimaryKey": true
+    },
+    {
+      "Code": "@Date_Start",
+      "Name": "Date_Start",
+      "ParameterType": "DateTime"
+    },
+    {
+      "Code": "@k1_name",
+      "Name": "k1_name"
+    },
+    {
+      "Code": "@k1_value",
+      "Name": "k1_value",
+      "ParameterType": "Decimal"
+    },
+    {
+      "Code": "@k1_isUse",
+      "Name": "k1_isUse",
+      "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@k2_name",
+      "Name": "k2_name"
+    },
+    {
+      "Code": "@k2_value",
+      "Name": "k2_value",
+      "ParameterType": "Decimal"
+    },
+    {
+      "Code": "@k2_isUse",
+      "Name": "k2_isUse",
+      "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@k3_name",
+      "Name": "k3_name"
+    },
+    {
+      "Code": "@k3_value",
+      "Name": "k3_value",
+      "ParameterType": "Decimal"
+    },
+    {
+      "Code": "@k3_isUse",
+      "Name": "k3_isUse",
+      "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@k4_name",
+      "Name": "k4_name"
+    },
+    {
+      "Code": "@k4_value",
+      "Name": "k4_value",
+      "ParameterType": "Decimal"
+    },
+    {
+      "Code": "@k4_isUse",
+      "Name": "k4_isUse",
+      "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@k5_name",
+      "Name": "k5_name"
+    },
+    {
+      "Code": "@k5_value",
+      "Name": "k5_value",
+      "ParameterType": "Decimal"
+    },
+    {
+      "Code": "@k5_isUse",
+      "Name": "k5_isUse",
+      "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@k6_name",
+      "Name": "k6_name"
+    },
+    {
+      "Code": "@k6_value",
+      "Name": "k6_value",
+      "ParameterType": "Decimal"
+    },
+    {
+      "Code": "@k6_isUse",
+      "Name": "k6_isUse",
+      "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@k7_name",
+      "Name": "k7_name"
+    },
+    {
+      "Code": "@k7_value",
+      "Name": "k7_value",
+      "ParameterType": "Decimal"
+    },
+    {
+      "Code": "@k7_isUse",
+      "Name": "k7_isUse",
+      "ParameterType": "Boolean"
+    },
+    {
+      "Code": "@formula_id",
+      "Name": "formula_id",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@comment",
+      "Name": "comment"
+    },
+    {
+      "Code": "@RatingId",
+      "Name": "RatingId",
+      "ParameterType": "Integer"
+    },
+    {
+      "Code": "@UpdatedUserById",
+      "Name": "UpdatedUserById",
+      "ParameterType": "CurrentUserId"
+    }
+  ]
+}

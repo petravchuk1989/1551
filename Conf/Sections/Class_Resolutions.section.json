@@ -1,0 +1,12 @@
+{
+  "Add": {
+    "InsertQueryCode": "Class_ResolutionsIRow"
+  },
+  "ModelType": "Section",
+  "Code": "Class_Resolutions",
+  "Name": "Резолюції класів",
+  "FormCode": "Form_Class_Resolutions",
+  "SelectRowsQueryCode": "Class_ResolutionsSRows",
+  "SelectRowQueryCode": "Class_ResolutionsSRow",
+  "UpdateQueryCode": "Class_ResolutionsURow"
+}

@@ -1,0 +1,21 @@
+{
+  "ModelType": "Query",
+  "Code": "tw1_q1",
+  "Name": "tw1_q1",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "DistrictName",
+      "Name": "DistrictName",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "AverageArrivalTime",
+      "Name": "AverageArrivalTime",
+      "Position": 1,
+      "IsPrintable": false
+    }
+  ]
+}

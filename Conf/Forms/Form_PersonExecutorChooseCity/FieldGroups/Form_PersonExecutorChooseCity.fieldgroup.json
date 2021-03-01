@@ -1,0 +1,28 @@
+{
+  "Code": "Form_PersonExecutorChooseCity",
+  "Name": "Місто",
+  "Position": 1,
+  "Fields": [
+    {
+      "Code": "person_executor_choose_id",
+      "Name": "Посада-виконавець",
+      "FieldType": "select",
+      "Position": 1,
+      "QueryCode": "list_PersonExecutorChoose",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "IsRequired": true,
+      "QueryParameters": []
+    },{
+      "Code": "city_id",
+      "Name": "Місто",
+      "FieldType": "select",
+      "Position": 2,
+      "QueryCode": "list_PersonExecutorChooseCitySRows",
+      "KeyColumnCode": "Id",
+      "DisplayColumnCode": "name",
+      "IsRequired": true,
+      "QueryParameters": []
+    }
+  ]
+}

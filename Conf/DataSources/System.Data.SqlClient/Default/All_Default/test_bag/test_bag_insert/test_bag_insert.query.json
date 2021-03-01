@@ -1,0 +1,17 @@
+{
+    "ModelType": "Query",
+    "Code": "test_bag_insert",
+    "Name": "test_bag_insert",
+    "ConnectionCode": "Default",
+    "IsUsedForRightsFilter": false,
+    "Parameters": [
+        {
+          "Code": "@SystemUserId",
+          "Name": "SystemUserId"
+        },
+        {
+          "Code": "@SystemUser",
+          "Name": "SystemUser"
+        }
+      ]
+  }

@@ -1,0 +1,28 @@
+{
+  "ModelType": "Query",
+  "Code": "SAFS_CItySRows",
+  "Name": "SAFS_CItySRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "IsAnonymousAccess": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 0,
+      "IsPrintable": false
+    },
+    {
+      "Code": "in_Kyiv",
+      "Name": "in_Kyiv",
+      "Position": 1,
+      "IsPrintable": false
+    },
+    {
+      "Code": "in_not_Kyiv",
+      "Name": "in_not_Kyiv",
+      "Position": 2,
+      "IsPrintable": false
+    }
+  ]
+}

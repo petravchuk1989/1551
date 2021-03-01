@@ -1,0 +1,74 @@
+[
+  {
+    "Code": "Id",
+    "Name": "Id",
+    "Position": 0,
+    "IsPrintable": false
+  },
+  {
+    "Code": "Registration_Number",
+    "Name": "Номер",
+    "Position": 1,
+    "IsPrintable": false
+  },
+  {
+    "Code": "AssignmentState",
+    "Name": "Стан",
+    "Position": 2,
+    "IsPrintable": false
+  },
+  {
+    "Code": "QuestionType",
+    "Name": "Тип питання",
+    "Position": 3,
+    "IsPrintable": false
+  },
+  {
+    "Code": "Place_Problem",
+    "Name": "Місце проблеми",
+    "Position": 4,
+    "IsPrintable": false
+  },
+  {
+    "Code": "Positions_Name",
+    "Name": "Виконавець",
+    "Position": 5,
+    "IsPrintable": false
+  },
+  {
+    "Code": "Control_Date",
+    "Name": "Дата контролю",
+    "Position": 6,
+    "IsPrintable": false
+  },
+  {
+    "Code": "Comment",
+    "Name": "Коментар",
+    "Position": 7,
+    "IsPrintable": false
+  },
+  {
+    "Code": "Applicant_Name",
+    "Name": "Заявник",
+    "Position": 8,
+    "IsPrintable": false
+  },
+  {
+    "Code": "ApplicantAdress",
+    "Name": "Адреса заявника",
+    "Position": 9,
+    "IsPrintable": false
+  },
+  {
+    "Code": "Content",
+    "Name": "Зміст",
+    "Position": 10,
+    "IsPrintable": false
+  },
+  {
+    "Code": "Registration_date",
+    "Name": "Дата реєстації",
+    "Position": 11,
+    "IsPrintable": false
+  }
+]

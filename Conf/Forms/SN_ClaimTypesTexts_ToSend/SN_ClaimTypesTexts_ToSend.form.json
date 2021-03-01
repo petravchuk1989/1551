@@ -1,0 +1,22 @@
+{
+  "ModelType": "Form",
+  "Code": "SN_ClaimTypesTexts_ToSend",
+  "Name": "Шаблони повідомлень по типам заявок",
+  "Details": [],
+  "Config": {
+    "FieldGroups": [
+      "string:FieldGroups\\Group1.fieldgroup.json"
+    ],
+    "DefaultFields": [{
+      "Code": "ServiceTypeId",
+      "ParentFormFieldCodeForKeyValue": "ServiceTypeId",
+      "ParentFormFieldCodeForDisplayValue": "ServiceTypeId"
+    },
+    {
+      "Code": "ActionId",
+      "ParentFormFieldCodeForKeyValue": "Action",
+      "ParentFormFieldCodeForDisplayValue": "Action"
+    }],
+    "Script": "string:SN_ClaimTypesTexts_ToSend.form.js"
+  }
+}

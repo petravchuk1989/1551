@@ -1,0 +1,84 @@
+{
+  "ModelType": "Query",
+  "Code": "cx_Complains_SelectRows",
+  "Name": "cx_Complains_SelectRows",
+  "ConnectionCode": "Default",
+  "IsUsedForRightsFilter": false,
+  "Columns": [
+    {
+      "Code": "Id",
+      "Name": "Id",
+      "Position": 1,
+      "IsPrimaryKey": true,
+      "ViewState": "Hidden",
+      "IsPrintable": false
+    },
+    {
+      "Code": "registration_date",
+      "Name": "Дата реєстрації скарги",
+      "Position": 2,
+      "IsPrintable": false,
+      "SqlName": "[registration_date]",
+      "FilterParameterCode": "@date"
+    },
+    {
+      "Code": "complain_type_name",
+      "Name": "Тип скарги",
+      "Position": 3,
+      "IsPrintable": false,
+      "SqlName": "[complain_type_name]",
+      "FilterParameterCode": "@Name"
+    },
+    {
+      "Code": "culpritname",
+      "Name": "Скаржник",
+      "Position": 4,
+      "IsPrintable": false,
+      "SqlName": "[culpritname]",
+      "FilterParameterCode": "@culpritname"
+    },
+    {
+      "Code": "guilty",
+      "Name": "Винуватець",
+      "Position": 5,
+      "IsPrintable": false,
+      "SqlName": "[guilty]",
+      "FilterParameterCode": "@guilty"
+    },
+    {
+      "Code": "text",
+      "Name": "Коментар",
+      "Position": 6,
+      "IsPrintable": false,
+      "SqlName": "[text]",
+      "FilterParameterCode": "@name_param"
+    },
+    {
+      "Code": "user_name",
+      "Name": "Хто зареєстрував скаргу",
+      "Position": 7,
+      "IsPrintable": false,
+      "SqlName": "[user_name]",
+      "FilterParameterCode": "@name"
+    }
+  ],
+  "Parameters": [
+    {
+      "Code": "@user_id",
+      "Name": "user_id",
+      "ParameterType": "CurrentUserId"
+    },
+    {
+      "Code": "@pageOffsetRows",
+      "Name": "pageOffsetRows",
+      "ParameterType": "Integer",
+      "IsPageOffsetRows": true
+    },
+    {
+      "Code": "@pageLimitRows",
+      "Name": "pageLimitRows",
+      "ParameterType": "Integer",
+      "IsPageLimitRows": true
+    }
+  ]
+}
