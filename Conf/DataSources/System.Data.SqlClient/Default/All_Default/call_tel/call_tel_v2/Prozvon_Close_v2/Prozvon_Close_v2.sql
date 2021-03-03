@@ -103,7 +103,7 @@ END
 								,[user_edit_id]=@user_id
 								,[edit_date]=GETUTCDATE()
 								,[close_date]= CASE WHEN @state_id=5 THEN GETUTCDATE() ELSE [close_date] END
-								,LogUpdated_Query = N'Prozvon_Close_ROW156'											
+								,LogUpdated_Query = N'Prozvon_Close_v2_ROW105'											
 							FROM @assigments_table AS ast
 							WHERE [Assignments].Id IN (SELECT Id FROM @assigments_table);
 
@@ -239,7 +239,7 @@ END
 							,[state_change_date] = GETUTCDATE()
 							,[edit_date]=GETUTCDATE()
 							,[close_date]= CASE WHEN @state_id=5 THEN GETUTCDATE() ELSE [close_date] END
-							,LogUpdated_Query = N'Prozvon_Close_ROW199'											
+							,LogUpdated_Query = N'Prozvon_Close_v2_ROW240'											
 						WHERE [Assignments].Id IN (SELECT Id FROM @assigments_table);
 
 						/*

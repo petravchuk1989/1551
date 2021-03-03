@@ -7,9 +7,9 @@ DECLARE @IsHere BIT = IIF(
       SELECT
 		COUNT(1)
       FROM
-         dbo.QuestionDocFiles
+         dbo.Questions
       WHERE
-        question_id = @Id
+        id = @Id
    ) = 0,
    0,
    1

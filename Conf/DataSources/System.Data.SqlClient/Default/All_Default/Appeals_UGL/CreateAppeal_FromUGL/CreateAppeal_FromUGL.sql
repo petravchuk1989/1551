@@ -36,6 +36,32 @@ SET
         WHERE
             Id = @uglId
     );
+
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+declare @AppealNumberSeq int = NEXT VALUE FOR GenerateNumberSequence
+--select @AppealNumberSeq
+
+
+if not exists(
+					select top 1 id
+					from [dbo].[Appeals]
+					where left(registration_number, 1) in (right(ltrim(year(getutcdate())),1))
+					order by id desc
+				)
+begin
+	ALTER SEQUENCE dbo.GenerateNumberSequence
+	RESTART WITH 1;
+	set @AppealNumberSeq = NEXT VALUE FOR GenerateNumberSequence
+end
+
+declare @AppealNumberSeqText nvarchar(50) = LTRIM(RIGHT(YEAR(getutcdate()),1))+N'-'+ltrim(@AppealNumberSeq)
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+
+
+
 INSERT INTO
     dbo.Appeals (
         registration_date,
@@ -53,21 +79,7 @@ output inserted.Id INTO @outId (Id)
 VALUES
     (
         getutcdate(),
-		(
-			SELECT 
-			case when not exists(
-				select top 1 LTRIM(RIGHT(YEAR(getutcdate()),1))+N'-'+ltrim(substring(registration_number, 3, len(registration_number)-2)*1+1)
-				from [dbo].[Appeals]
-				where left(registration_number, 1) in (right(ltrim(year(getutcdate())),1))
-				order by id desc
-				)
-			then LTRIM(RIGHT(YEAR(getutcdate()),1))+N'-1'
-			else (select top 1 LTRIM(RIGHT(YEAR(getutcdate()),1))+N'-'+ltrim(substring(registration_number, 3, len(registration_number)-2)*1+1)
-				from [dbo].[Appeals]
-				where left(registration_number, 1) in (right(ltrim(year(getutcdate())),1))
-				order by id desc)
-			end
-		),
+		@AppealNumberSeqText,
         3,
         @phone,
         getutcdate(),
