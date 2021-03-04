@@ -7,7 +7,7 @@
             queryCode: 'db_red_RatingSRows',
             filterColumns: null,
             limit: -1,
-            parameterValues: [ {key:'@pageOffsetRows' , value:0},{key: '@pageLimitRows', value: 50} ],
+            parameterValues: [{key:'@pageOffsetRows' , value:0},{key: '@pageLimitRows', value: 50}],
             pageNumber: 1,
             sortColumns: [
                 {
@@ -17,11 +17,14 @@
             ]
         },
         onItemSelect: function(item) {
-            this.yourFunctionName(item);
+            this.setValues(item);
         },
         onClearFilter: function() {
         },
-        yourFunctionName: function(item) {
+        initValue: function() {
+            this.setDefaultValue('first');
+        },
+        setValues: function(item) {
             let message = {
                 name: '',
                 package: {

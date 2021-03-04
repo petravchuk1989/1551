@@ -1,3 +1,7 @@
+
+delete from [dbo].[Rating_EtalonDaysToExecution] where [QuestionTypeId] = @QuestionTypes_Id and [DateStart] = CONVERT(DATE, @DateStart)
+
+
 INSERT INTO [dbo].[Rating_EtalonDaysToExecution]
   (
   [QuestionTypeId]

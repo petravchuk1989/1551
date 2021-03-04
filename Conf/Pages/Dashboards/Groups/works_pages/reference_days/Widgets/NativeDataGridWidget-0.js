@@ -10,7 +10,11 @@
                 chunkSize: 1000
             },
             columns: [
-                {
+                /*{
+                    dataField: 'RatingName',
+                    caption: 'Рейтинг',
+                    alignment: 'left'
+                },*/ {
                     dataField: 'QuestionTypes_Name',
                     caption: 'Тип питання',
                     alignment: 'left'
@@ -91,19 +95,27 @@
             this.config.onToolbarPreparing = this.createTableButton.bind(this);
 
             this.config.onCellPrepared = this.onCellPrepared.bind(this);
+
+            const msg = {
+                name: 'SetFilterPanelState',
+                package: {
+                    value: true
+                }
+            };
+            this.messageService.publish(msg);
         },
         setFiltersParams: function(message) {
             const period = message.package.value.values.find(f => f.name === 'period').value;
-            const rating = message.package.value.values.find(f => f.name === 'rating').value;
+            const rating = message.package.value.values.find(f => f.name === 'rating').value.value;
             if(period !== null) {
                 if(period.dateFrom !== '' && period.dateTo !== '') {
                     this.dateFrom = this.toUTC(period.dateFrom);
                     this.dateTo = this.toUTC(period.dateTo);
-                    this.rating = this.extractOrgValues(rating);
+                    this.rating = rating;
                     this.config.query.parameterValues = [
                         {key: '@dateFrom' , value: this.dateFrom },
                         {key: '@dateTo', value: this.dateTo },
-                        {key: '@rating' , value: this.rating.join(',') }
+                        {key: '@rating' , value: (this.rating ? String(this.rating) : null) }
                     ];
                 }
             }
@@ -215,13 +227,16 @@
                 this.promiseAll = [];
                 rows.forEach(row => {
                     const promise = new Promise((resolve) => {
+                        row.avg_EtalonDaysToExecution_change = (row.avg_EtalonDaysToExecution_change == 0 ? 1 : row.avg_EtalonDaysToExecution_change)
+                        row.avg_EtalonDaysToExplain_change = (row.avg_EtalonDaysToExplain_change == 0 ? 1 : row.avg_EtalonDaysToExplain_change)
+
                         const executeApplyRowsChanges = this.createExecuteApplyRowsChanges(row);
                         this.queryExecutor(executeApplyRowsChanges, this.applyRequest.bind(this, resolve), this);
                         this.showPreloader = false;
                     });
                     this.promiseAll.push(promise);
-                });
-                this.afterApplyAllRequests();
+                    this.afterApplyAllRequests();
+                });                
             }
         },
         createExecuteApplyRowsChanges: function(row) {
@@ -240,6 +255,7 @@
             resolve(data);
         },
         afterApplyAllRequests: function() {
+            debugger
             Promise.all(this.promiseAll).then(() => {
                 this.promiseAll = [];
                 this.dataGridInstance.instance.deselectAll();
@@ -248,14 +264,17 @@
             });
         },
         applyGlobalFilters: function() {
-            const msg = {
-                name: 'SetFilterPanelState',
-                package: {
-                    value: false
-                }
-            };
-            this.messageService.publish(msg);
-            this.loadData(this.afterLoadDataHandler);
+            if (this.rating != undefined && this.rating != null) {
+                const msg = {
+                    name: 'SetFilterPanelState',
+                    package: {
+                        value: false
+                    }
+                };
+                this.messageService.publish(msg);
+                this.loadData(this.afterLoadDataHandler);
+            }
+            
         },
         afterLoadDataHandler: function() {
             this.render();

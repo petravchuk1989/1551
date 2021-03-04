@@ -64,5 +64,11 @@
     "Name": "Rating_id",
     "Position": 10,
     "IsPrintable": false
+  },
+  {
+    "Code": "RatingName",
+    "Name": "RatingName",
+    "Position": 11,
+    "IsPrintable": false
   }
 ]
